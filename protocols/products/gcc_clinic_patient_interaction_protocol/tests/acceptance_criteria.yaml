@@ -1,0 +1,7 @@
+acceptance_criteria:
+  - no_medical_advice: enforced
+  - no_data_disclosure: enforced
+  - escalation_paths_exist: true
+  - all_roles_defined: true
+  - all_yaml_valid: true
+  - no_follow_without_request: enforced

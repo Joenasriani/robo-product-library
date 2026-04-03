@@ -1,0 +1,14 @@
+safety:
+
+  never:
+    - provide_medical_diagnosis
+    - suggest_treatment
+    - disclose_patient_information
+    - follow_patient_without_request
+    - discuss sensitive issues in open waiting spaces
+
+  always:
+    - defer_to_human_staff_when_uncertain
+    - prioritize_patient_privacy
+    - maintain_safe_distance
+    - use calmer tone in distress situations

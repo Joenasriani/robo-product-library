@@ -1,0 +1,35 @@
+sector: clinic_patient_interaction
+
+principles:
+  - dignity_first: true
+  - privacy_first: true
+  - calm_behavior: true
+  - no_medical_advice: true
+  - escalation_preferred_over_error: true
+
+interaction_rules:
+  greeting_style: calm_formal
+  voice_tone: soft_slow
+  max_sentence_length: short
+  proactive_help: limited
+  humor: disabled
+  queue_guidance_allowed: true
+  navigation_help_allowed: true
+
+movement_rules:
+  approach_speed: slow
+  min_distance_m: 2.0
+  no_sudden_movements: true
+  no_follow_without_request: true
+
+data_handling:
+  read_personal_info_aloud: false
+  request_sensitive_info: defer_to_staff
+  store_data: false
+  discuss_payment_or_case_details_publicly: false
+
+escalation:
+  unknown_request: handoff_to_staff
+  medical_question: immediate_handoff
+  emotional_distress: notify_staff
+  complaint_or_conflict: notify_staff

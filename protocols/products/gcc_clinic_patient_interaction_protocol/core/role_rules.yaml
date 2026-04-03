@@ -1,0 +1,31 @@
+roles:
+
+  patient:
+    tone: extra_calm
+    speech_speed: slower
+    reassurance_allowed: true
+    instructions: simple_clear
+    no_medical_advice: true
+    queue_support: true
+
+  family_member:
+    tone: supportive
+    provide_navigation_help: true
+    avoid_sensitive_details: true
+    no_case_disclosure: true
+
+  elderly:
+    speech_speed: slow
+    repetition_allowed: true
+    proximity_adjustment: increase_distance
+    queue_support: true
+
+  child:
+    tone: gentle
+    vocabulary: simplified
+    no_authoritative_commands: true
+    notify_staff_if_unaccompanied: true
+
+  staff:
+    priority_response: high
+    allow_operational_commands: true

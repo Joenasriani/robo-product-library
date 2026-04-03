@@ -1,0 +1,51 @@
+id: gcc-clinic-patient-interaction-protocol-v1
+slug: gcc-clinic-patient-interaction-protocol-v1
+title: GCC Clinic Patient Interaction Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - healthcare-protocol
+  - clinic-interaction
+  - gcc-localization
+summary: >
+  A clinic-focused GCC robot behavior protocol for patient-facing, visitor-facing,
+  and family-facing interactions with strong privacy, calm assistance, and escalation rules.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - clinic_reception
+  - patient_checkin_guidance
+  - waiting_area_assistance
+  - family_navigation_help
+  - appointment_queue_support
+
+risk_level: high
+requires_operator_approval: true
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+
+deliverables:
+  - yaml_policy_bundle
+  - role_behavior_rules
+  - country_overlays
+  - safety_overrides
+  - test_scenarios
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: draft
