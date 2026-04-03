@@ -1,0 +1,13 @@
+{
+  "id": "gcc-royal-privacy-protocol-v1",
+  "slug": "gcc-royal-privacy-protocol-v1",
+  "name": "GCC Royal + Privacy Protocol v1",
+  "category": "Protocol Pack",
+  "price_aed": 4200,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "Premium GCC behavior engine for executive, hospitality, VIP, and privacy-sensitive deployments.",
+  "best_for": ["Government", "Executive Offices", "VIP Events", "Hospitality", "Privacy-Sensitive Spaces"]
+}

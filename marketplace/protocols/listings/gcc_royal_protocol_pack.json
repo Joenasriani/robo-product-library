@@ -1,0 +1,13 @@
+{
+  "id": "gcc-royal-protocol-pack-v1",
+  "slug": "gcc-royal-protocol-pack-v1",
+  "name": "GCC Royal Protocol Pack",
+  "category": "Protocol Pack",
+  "price_aed": 2400,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "High-formality behavior layer for executive, VIP, and authority-sensitive GCC environments.",
+  "best_for": ["Government", "Executive Reception", "VIP Arrival", "Majlis"]
+}

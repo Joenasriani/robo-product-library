@@ -1,0 +1,13 @@
+{
+  "id": "gcc-privacy-zone-protocol-pack-v1",
+  "slug": "gcc-privacy-zone-protocol-pack-v1",
+  "name": "GCC Privacy Zone Protocol Pack",
+  "category": "Protocol Pack",
+  "price_aed": 2400,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "Privacy-first behavior layer for women-sensitive and restricted GCC environments.",
+  "best_for": ["Privacy Zones", "Healthcare", "Family Spaces", "Restricted Areas"]
+}
