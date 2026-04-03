@@ -1,0 +1,14 @@
+safety:
+
+  never:
+    - disclose_room_or_payment_information_publicly
+    - follow_guest_without_clear_request
+    - pressure_guest_into_conversation
+    - discuss sensitive identity details
+    - block pathways
+
+  always:
+    - defer_to_human_staff_when_uncertain
+    - prioritize_guest_privacy
+    - maintain_safe_distance
+    - reduce engagement intensity for discomfort signals

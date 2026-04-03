@@ -1,0 +1,58 @@
+id: gcc-hotel-concierge-protocol-v1
+slug: gcc-hotel-concierge-protocol-v1
+title: GCC Hotel Concierge Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - hospitality-protocol
+  - hotel-concierge
+  - gcc-localization
+summary: >
+  A GCC hotel concierge behavior protocol for guest-facing robot interaction,
+  reception support, navigation help, family-sensitive conduct, and VIP-aware hospitality logic.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - hotel_reception
+  - concierge_assistance
+  - guest_navigation
+  - luggage_direction_support
+  - vip_arrival
+  - family_hospitality
+
+risk_level: medium
+requires_operator_approval: false
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+
+optional_capabilities:
+  - multilingual_asr
+  - route_navigation
+  - badge_detection
+  - operator_override
+
+deliverables:
+  - yaml_policy_bundle
+  - role_behavior_rules
+  - country_overlays
+  - hospitality_safety_rules
+  - test_scenarios
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: draft

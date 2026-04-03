@@ -1,0 +1,30 @@
+countries:
+
+  uae:
+    formality: high
+    hospitality_style: polished_international
+    language_default: arabic_english
+    vip_sensitivity: high
+
+  saudi_arabia:
+    formality: very_high
+    hospitality_style: conservative_premium
+    privacy_buffer_m: 2.3
+    family_sensitivity: high
+
+  qatar:
+    formality: high
+    hospitality_style: formal_refined
+    vip_sensitivity: high
+
+  kuwait:
+    formality: medium_high
+    hospitality_style: warm_respectful
+
+  bahrain:
+    formality: medium
+    hospitality_style: friendly_polished
+
+  oman:
+    formality: high
+    hospitality_style: calm_respectful
