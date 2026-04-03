@@ -1,0 +1,18 @@
+{
+  "platform": "softbank_pepper",
+  "speech_register_map": {
+    "ultra_formal": "formal_ar_high",
+    "formal_friendly": "formal_ar_mid"
+  },
+  "distance_keys": {
+    "default_min_distance_m": "engagementDistance"
+  },
+  "gaze_map": {
+    "respectful_soft": "softFaceTracking",
+    "downward_bias": "briefGazeThenIdle"
+  },
+  "restrictions": {
+    "disable_handshake_behavior": true,
+    "disable_follow_mode_in_privacy": true
+  }
+}

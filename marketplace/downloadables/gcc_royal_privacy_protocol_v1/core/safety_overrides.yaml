@@ -1,0 +1,36 @@
+safety_overrides:
+  emergency_stop:
+    priority: critical
+    action: halt_all_motion
+
+  low_sensor_confidence:
+    threshold: 0.60
+    action:
+      - halt_approach
+      - switch_to_neutral_formal
+      - notify_operator
+
+  conflicting_context_signals:
+    action:
+      - apply_more_conservative_rule
+      - log_conflict
+      - request_operator_confirmation
+
+  crowd_density_high:
+    threshold: 0.80
+    action:
+      - increase_distance_by_m: 0.7
+      - disable_proactive_engagement
+      - reduce_gesture_amplitude
+
+  restricted_zone_entered:
+    action:
+      - disable_camera_if_supported
+      - disable_follow_behavior
+      - switch_to_privacy_mode
+
+  manual_staff_override:
+    priority: absolute
+    action:
+      - stop_current_protocol_path
+      - execute_staff_command

@@ -1,0 +1,38 @@
+{
+  "id": "gcc-royal-privacy-protocol-v1",
+  "slug": "gcc-royal-privacy-protocol-v1",
+  "title": "GCC Royal + Privacy Protocol v1",
+  "subtitle": "A culturally adaptive behavior engine for robots operating across GCC executive, hospitality, and privacy-sensitive environments.",
+  "category": "Protocol Pack",
+  "price_aed": 4200,
+  "tier": "Professional",
+  "delivery_type": "downloadable_zip",
+  "status": "active",
+  "vendor": "RoboMarket.ae",
+  "includes": [
+    "manifest.yaml",
+    "core policy files",
+    "ROS2 adapter",
+    "brand adapter mappings",
+    "QA scenarios",
+    "operator guide",
+    "compatibility guide",
+    "commercial license"
+  ],
+  "best_for": [
+    "Government reception",
+    "Executive offices",
+    "VIP arrivals",
+    "Hospitality",
+    "Privacy-sensitive public spaces"
+  ],
+  "requirements": [
+    "Speech output",
+    "Speech recognition",
+    "People detection",
+    "Distance estimation",
+    "Gaze-capable interaction layer",
+    "Human supervisor"
+  ],
+  "important_note": "This product does not infer protected attributes and does not replace a human protocol officer."
+}

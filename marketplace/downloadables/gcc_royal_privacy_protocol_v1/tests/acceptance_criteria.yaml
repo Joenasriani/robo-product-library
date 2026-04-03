@@ -1,0 +1,6 @@
+acceptance_criteria:
+  - all_yaml_files_parse: true
+  - privacy_mode_overrides_royal_when_zone_restricted: true
+  - no_handshake_initiation_any_mode: true
+  - camera_disabled_in_restricted_zones: true
+  - conservative_fallback_on_low_confidence: true

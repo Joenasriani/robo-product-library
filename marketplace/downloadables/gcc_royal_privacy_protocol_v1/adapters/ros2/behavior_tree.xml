@@ -1,0 +1,28 @@
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <Fallback name="protocol_root">
+      <Sequence name="emergency_override">
+        <Condition ID="EmergencyStopActive"/>
+        <Action ID="HaltMotion"/>
+      </Sequence>
+
+      <Sequence name="privacy_branch">
+        <Condition ID="PrivacyZoneDetected"/>
+        <Action ID="ApplyPrivacyMode"/>
+        <Action ID="WaitForUserSignal"/>
+      </Sequence>
+
+      <Sequence name="royal_branch">
+        <Condition ID="RoyalModeConfirmed"/>
+        <Action ID="ApplyRoyalMode"/>
+        <Action ID="WaitForUserSignal"/>
+      </Sequence>
+
+      <Sequence name="standard_branch">
+        <Action ID="ApplyCountryVenueOverlay"/>
+        <Action ID="PerformFormalGreetingIfAllowed"/>
+        <Action ID="HandleUserRequest"/>
+      </Sequence>
+    </Fallback>
+  </BehaviorTree>
+</root>

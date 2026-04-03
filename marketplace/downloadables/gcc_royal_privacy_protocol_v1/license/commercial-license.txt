@@ -1,0 +1,16 @@
+RoboMarket Commercial License
+
+This product is licensed for commercial deployment under the following conditions:
+
+- Usage is permitted for a single deployment per license purchase
+- Redistribution of this package is prohibited
+- Modification is allowed for internal deployment only
+- Liability remains with the deploying organization
+- RoboMarket provides no guarantee of cultural compliance without operator supervision
+
+Enterprise licenses include:
+- customization rights
+- multi-site deployment
+- support SLA agreements
+
+Contact: support@robomarket.ae

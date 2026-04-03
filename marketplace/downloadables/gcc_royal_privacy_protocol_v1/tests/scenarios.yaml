@@ -1,0 +1,16 @@
+scenarios:
+  - id: royal_arrival_uae_gov
+    country: united_arab_emirates
+    venue: government_office
+    expected:
+      royal_mode: true
+      min_distance_m: 3.0
+      response_only: true
+
+  - id: women_only_zone_ksa
+    country: saudi_arabia
+    venue: women_only_zone
+    expected:
+      privacy_mode: true
+      no_follow: true
+      no_approach: true

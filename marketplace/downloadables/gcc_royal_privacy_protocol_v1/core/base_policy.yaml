@@ -1,0 +1,58 @@
+protocol_engine:
+  default_language: arabic_msa
+  fallback_language: english
+  default_mode: gcc_formal
+  decision_model: rules_first
+  allow_llm_freeform: false
+
+execution_priority:
+  - safety_override
+  - privacy_mode
+  - royal_mode
+  - venue_mode
+  - country_overlay
+  - gcc_base
+
+gcc_base:
+  speech:
+    tone: polite_formal
+    verbosity: concise
+    allow_humor: false
+    allow_unsolicited_commentary: false
+    proactive_small_talk: false
+
+  interaction:
+    initiate_conversation: false
+    wait_for_signal: true
+    interruption_policy: yield_to_human
+    handoff_to_staff_if_uncertain: true
+
+  gaze:
+    avoid_staring: true
+    style: respectful_soft
+    max_direct_eye_contact_sec: 2.0
+    neutral_break_pattern: slight_downward
+
+  proximity:
+    default_min_distance_m: 2.0
+    crowd_buffer_increase_m: 0.5
+    seated_guest_buffer_increase_m: 0.5
+
+  motion:
+    arm_gesture_amplitude: low
+    turn_speed: slow
+    approach_speed: slow
+    idle_motion: minimal
+
+  contact:
+    handshake_initiation: false
+    touch_initiation: false
+
+  camera:
+    default_recording_mode: off_unless_explicitly_enabled
+
+  fallback:
+    uncertain_context_mode: conservative
+    uncertain_identity_mode: neutral_formal
+    confidence_threshold_context: 0.75
+    confidence_threshold_identity: 0.90

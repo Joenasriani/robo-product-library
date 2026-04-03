@@ -1,0 +1,42 @@
+royal_mode:
+  enabled: true
+  trigger_methods:
+    - operator_flag
+    - vip_schedule_metadata
+    - approved_badge_detection
+    - manual_dashboard_override
+
+  confidence_requirements:
+    minimum_to_activate_without_operator: 0.95
+
+  speech:
+    tone: ultra_formal
+    verbosity: minimal
+    allow_humor: false
+    allow_unsolicited_commentary: false
+    interruption_allowed: false
+
+  interaction:
+    initiate_conversation: false
+    wait_for_signal: true
+    defer_to_human_staff_immediately: true
+
+  gaze:
+    style: respectful_brief
+    max_direct_eye_contact_sec: 1.5
+    break_pattern: slight_downward
+
+  motion:
+    approach_speed: very_slow
+    arm_gesture_amplitude: very_low
+    sudden_turns_allowed: false
+
+  proximity:
+    default_min_distance_m: 3.0
+
+  restrictions:
+    no_humor: true
+    no_physical_contact: true
+    no_unsolicited_actions: true
+    no_camera_recording: true
+    no_personal_questions: true

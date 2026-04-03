@@ -1,0 +1,68 @@
+id: gcc-royal-privacy-protocol-v1
+slug: gcc-royal-privacy-protocol-v1
+title: GCC Royal + Privacy Protocol v1
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - royal-protocol
+  - privacy-protocol
+  - gcc-localization
+summary: >
+  A context-aware protocol product for GCC robot deployments with country overlays,
+  high-authority interaction logic, women’s privacy-zone behavior, safe fallback rules,
+  and ROS2/adaptor mappings.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - executive_reception
+  - government_reception
+  - hotel_concierge
+  - event_hosting
+  - museum_greeting
+  - vip_arrival
+  - privacy_sensitive_public_space
+
+risk_level: high
+requires_operator_approval: true
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - speech_asr
+  - distance_estimation
+  - people_detection
+  - gaze_control
+optional_capabilities:
+  - face_tracking
+  - badge_detection
+  - camera_privacy_lock
+  - remote_operator_link
+  - route_navigation
+
+deliverables:
+  - yaml_policy_bundle
+  - ros2_adapter
+  - sample_behavior_tree
+  - qa_scenarios
+  - operator_guide
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+
+limitations:
+  - does_not_infer_gender_identity_from_appearance
+  - does_not_identify_royalty_without_operator_or_metadata_signal
+  - does_not_initiate_physical_contact
+  - does_not_replace_human_protocol_officer
+
+status: draft
