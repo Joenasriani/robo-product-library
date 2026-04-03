@@ -1,0 +1,5 @@
+products:
+  - protocols/products/gcc_royal_privacy_protocol_v1/manifest.yaml
+  - protocols/products/gcc_base_civility_pack/manifest.yaml
+  - protocols/products/gcc_royal_protocol_pack/manifest.yaml
+  - protocols/products/gcc_privacy_zone_protocol_pack/manifest.yaml
