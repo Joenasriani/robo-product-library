@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tender Analyzer GCC | RoboMarket</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">RoboMarket</div>
+    <nav class="nav">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#plans">Plans</a>
+      <a href="#api">API</a>
+    </nav>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">Enterprise GCC Tender Intelligence</p>
+      <h1>Tender Analyzer GCC</h1>
+      <p class="lead">Upload tender PDFs, evaluate fit, manage credits, and deploy tender-scoring workflows for UAE, Saudi, Qatar, Kuwait, Bahrain, Oman, and wider Middle East procurement teams.</p>
+    </section>
+    <section class="grid two">
+      <div class="card" id="dashboard">
+        <h2>Account</h2>
+        <label>API Key</label>
+        <input id="apiKey" type="password" placeholder="Paste your X-API-Key" />
+        <button id="loadAccount">Load Account</button>
+        <pre id="accountOutput">No account loaded.</pre>
+      </div>
+      <div class="card">
+        <h2>Text Analysis</h2>
+        <input id="title" placeholder="Tender title" />
+        <input id="issuer" placeholder="Issuer" />
+        <input id="country" placeholder="Country (e.g. UAE)" />
+        <input id="sector" placeholder="Sector (e.g. IT, construction)" />
+        <textarea id="description" rows="10" placeholder="Paste tender text here"></textarea>
+        <button id="analyzeBtn">Analyze Tender</button>
+      </div>
+    </section>
+    <section class="card">
+      <h2>PDF Upload → Auto Extract → Analyze</h2>
+      <input id="pdfTitle" placeholder="Optional title override" />
+      <input id="pdfIssuer" placeholder="Optional issuer override" />
+      <input id="pdfCountry" placeholder="Country" />
+      <input id="pdfSector" placeholder="Sector" />
+      <input id="pdfFile" type="file" accept=".pdf,.txt" />
+      <button id="uploadBtn">Upload & Analyze</button>
+      <pre id="resultOutput">Analysis output will appear here.</pre>
+    </section>
+  </main>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+services:
+  tender-analyzer-gcc:
+    build: .
+    container_name: tender-analyzer-gcc
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8000}:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data

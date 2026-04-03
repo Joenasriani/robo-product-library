@@ -1,0 +1,11 @@
+fastapi<0.100
+uvicorn<0.24
+pydantic<2
+httpx
+python-dotenv
+slowapi
+requests
+python-multipart
+pypdf
+email-validator<2.1.1
+stripe
