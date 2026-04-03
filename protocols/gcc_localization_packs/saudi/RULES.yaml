@@ -1,0 +1,12 @@
+pack_name: "saudi_localization_pack"
+status: planned
+country: "saudi"
+language_modes:
+  - arabic
+  - english
+risk_levels:
+  - low
+  - medium
+  - high
+rules: []
+hardware_requirements: []

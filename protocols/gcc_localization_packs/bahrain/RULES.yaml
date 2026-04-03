@@ -1,0 +1,12 @@
+pack_name: "bahrain_localization_pack"
+status: planned
+country: "bahrain"
+language_modes:
+  - arabic
+  - english
+risk_levels:
+  - low
+  - medium
+  - high
+rules: []
+hardware_requirements: []

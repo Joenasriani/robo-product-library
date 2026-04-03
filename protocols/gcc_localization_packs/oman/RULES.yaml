@@ -1,0 +1,12 @@
+pack_name: "oman_localization_pack"
+status: planned
+country: "oman"
+language_modes:
+  - arabic
+  - english
+risk_levels:
+  - low
+  - medium
+  - high
+rules: []
+hardware_requirements: []
