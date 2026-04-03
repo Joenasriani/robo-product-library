@@ -1,0 +1,29 @@
+product_id: "uae_pack_v1"
+slug: "uae-localization-protocol"
+name: "UAE Localization Protocol Pack"
+category: "gcc_localization"
+region: "uae"
+
+description: >
+  Enterprise-grade robot behavior protocol designed for UAE environments.
+  Covers hospitality, retail, government, and public interaction scenarios
+  with strict privacy, proximity, and cultural behavior rules.
+
+price_aed: 1200
+status: "active"
+version: "v1"
+
+risk_level: "high"
+
+hardware_requirements:
+  - voice_tts
+  - directional_audio
+  - proximity_sensing
+  - basic_gaze_control
+
+included_files:
+  - protocols/gcc_localization_packs/uae/RULES.yaml
+  - protocols/gcc_localization_packs/uae/SCENARIOS.md
+  - protocols/gcc_localization_packs/uae/README.md
+
+delivery_type: "dashboard_download"

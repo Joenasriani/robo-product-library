@@ -1,0 +1,29 @@
+product_id: "saudi_pack_v1"
+slug: "saudi-localization-protocol"
+name: "Saudi Localization Protocol Pack"
+category: "gcc_localization"
+region: "saudi"
+
+description: >
+  High-formality robot behavior protocol designed for Saudi environments.
+  Includes rules for hierarchy, privacy, heritage settings, and formal
+  service contexts such as government, hospitality, and executive spaces.
+
+price_aed: 1200
+status: "active"
+version: "v1"
+
+risk_level: "high"
+
+hardware_requirements:
+  - voice_tts
+  - proximity_sensing
+  - directional_audio
+  - basic_gaze_control
+
+included_files:
+  - protocols/gcc_localization_packs/saudi/RULES.yaml
+  - protocols/gcc_localization_packs/saudi/SCENARIOS.md
+  - protocols/gcc_localization_packs/saudi/README.md
+
+delivery_type: "dashboard_download"
