@@ -1,0 +1,51 @@
+id: gcc-privacy-zone-protocol-pack-v1
+slug: gcc-privacy-zone-protocol-pack-v1
+title: GCC Privacy Zone Protocol Pack
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - privacy-protocol
+  - gcc-localization
+summary: >
+  A privacy-first behavior layer for robots operating in women-sensitive,
+  family-sensitive, and restricted GCC public environments.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - privacy_sensitive_public_space
+  - women_only_zone
+  - family_sensitive_space
+  - healthcare_reception
+  - restricted_service_zone
+
+risk_level: high
+requires_operator_approval: true
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+optional_capabilities:
+  - camera_privacy_lock
+  - remote_operator_link
+
+deliverables:
+  - yaml_policy_bundle
+  - operator_guide
+  - qa_scenarios
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: draft

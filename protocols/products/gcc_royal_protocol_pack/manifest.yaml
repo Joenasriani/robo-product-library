@@ -1,0 +1,52 @@
+id: gcc-royal-protocol-pack-v1
+slug: gcc-royal-protocol-pack-v1
+title: GCC Royal Protocol Pack
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - royal-protocol
+  - gcc-localization
+summary: >
+  A high-formality behavior layer for robots operating in executive, royal,
+  VIP, and authority-sensitive GCC environments.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - executive_reception
+  - government_reception
+  - vip_arrival
+  - majlis_protocol
+  - palace_protocol
+
+risk_level: high
+requires_operator_approval: true
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+optional_capabilities:
+  - badge_detection
+  - remote_operator_link
+
+deliverables:
+  - yaml_policy_bundle
+  - ros2_adapter
+  - operator_guide
+  - qa_scenarios
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: draft

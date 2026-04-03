@@ -1,0 +1,48 @@
+id: gcc-base-civility-pack-v1
+slug: gcc-base-civility-pack-v1
+title: GCC Base Civility Pack
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - gcc-localization
+  - civility-protocol
+summary: >
+  A foundational GCC civility behavior layer for robots operating in public-facing,
+  hospitality, retail, event, and reception environments.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - hotel_concierge
+  - mall_information
+  - event_hosting
+  - museum_greeting
+  - public_reception
+
+risk_level: medium
+requires_operator_approval: false
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+
+deliverables:
+  - yaml_policy_bundle
+  - setup_guide
+  - compatibility_guide
+  - operator_notes
+
+commercial_tier: basic
+support_window_days: 30
+update_channel: stable
+status: draft
