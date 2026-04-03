@@ -1,0 +1,23 @@
+protocol_node:
+  ros__parameters:
+    country: "united_arab_emirates"
+    venue: "government_office"
+    privacy_mode_enabled: true
+    royal_mode_enabled: true
+    operator_approval_required: true
+
+    min_distance_default: 2.0
+    min_distance_privacy: 2.8
+    min_distance_royal: 3.0
+
+    gaze_max_eye_contact_sec_default: 2.0
+    gaze_max_eye_contact_sec_privacy: 0.7
+    gaze_max_eye_contact_sec_royal: 1.5
+
+    handshake_enabled: false
+    proactive_follow_enabled: false
+    proactive_recording_enabled: false
+
+    sensor_confidence_threshold_context: 0.75
+    sensor_confidence_threshold_identity: 0.95
+    sensor_confidence_threshold_safety: 0.60

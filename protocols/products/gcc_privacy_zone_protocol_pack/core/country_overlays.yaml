@@ -1,0 +1,75 @@
+country_overlays:
+  saudi_arabia:
+    name: saudi_arabia
+    speech:
+      tone: ultra_formal
+      dialect_bias: neutral_formal
+    gaze:
+      max_direct_eye_contact_sec: 1.5
+      neutral_break_pattern: downward_bias
+    proximity:
+      default_min_distance_m: 2.5
+    interaction:
+      initiate_conversation: false
+      response_mode_default: response_only
+    women_context:
+      default_profile: privacy_first
+
+  united_arab_emirates:
+    name: united_arab_emirates
+    speech:
+      tone: formal_friendly
+      dialect_bias: neutral_emirati_compatible
+    gaze:
+      max_direct_eye_contact_sec: 2.5
+      neutral_break_pattern: respectful_soft
+    proximity:
+      default_min_distance_m: 1.8
+    interaction:
+      public_service_mode_allows_initiation: true
+    women_context:
+      default_profile: context_based
+
+  qatar:
+    name: qatar
+    speech:
+      tone: formal_respectful
+    gaze:
+      max_direct_eye_contact_sec: 1.8
+    proximity:
+      default_min_distance_m: 2.2
+    interaction:
+      initiate_conversation: false
+    women_context:
+      default_profile: restricted_proactive
+
+  kuwait:
+    name: kuwait
+    speech:
+      tone: respectful
+    interaction:
+      elder_priority: true
+    proximity:
+      default_min_distance_m: 2.0
+    women_context:
+      default_profile: conservative_private_spaces
+
+  bahrain:
+    name: bahrain
+    speech:
+      tone: formal_light
+    proximity:
+      default_min_distance_m: 1.8
+    women_context:
+      default_profile: venue_based
+
+  oman:
+    name: oman
+    speech:
+      tone: calm_formal
+    interaction:
+      slower_response_style: true
+    proximity:
+      default_min_distance_m: 2.2
+    women_context:
+      default_profile: privacy_respectful

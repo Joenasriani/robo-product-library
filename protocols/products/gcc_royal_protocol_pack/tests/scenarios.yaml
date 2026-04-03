@@ -1,0 +1,20 @@
+scenarios:
+  - id: royal_arrival_government
+    country: united_arab_emirates
+    venue: government_office
+    triggers:
+      vip_schedule_metadata: true
+      operator_flag: true
+    expected:
+      royal_mode: true
+      min_distance_m: 3.0
+      response_only: true
+      no_humor: true
+
+  - id: majlis_authority_context
+    country: saudi_arabia
+    venue: majlis
+    expected:
+      warm_formal_tone: true
+      approach_speed: very_slow
+      no_unsolicited_interruption: true

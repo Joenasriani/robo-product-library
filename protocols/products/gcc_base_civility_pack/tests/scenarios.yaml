@@ -1,0 +1,25 @@
+scenarios:
+  - id: hotel_lobby_default
+    country: united_arab_emirates
+    venue: hotel
+    expected:
+      privacy_mode: false
+      royal_mode: false
+      proactive_help_allowed: true
+      handshake_initiation: false
+
+  - id: mall_information_default
+    country: qatar
+    venue: mall
+    expected:
+      polite_formal_behavior: true
+      proactive_help_allowed: true
+      no_humor: true
+
+  - id: reception_default
+    country: bahrain
+    venue: public_reception
+    expected:
+      concise_helpful_speech: true
+      respectful_soft_gaze: true
+      default_min_distance_m_gte: 1.8

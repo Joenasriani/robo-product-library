@@ -1,0 +1,6 @@
+acceptance_criteria:
+  - all_yaml_files_parse: true
+  - royal_mode_requires_high_confidence_or_operator: true
+  - no_physical_contact: true
+  - no_unsolicited_actions: true
+  - min_distance_for_royal_mode_gte_3: true

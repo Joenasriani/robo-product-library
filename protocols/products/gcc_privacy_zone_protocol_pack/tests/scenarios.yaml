@@ -1,0 +1,20 @@
+scenarios:
+  - id: women_only_zone_ksa
+    country: saudi_arabia
+    venue: women_only_zone
+    triggers:
+      zone_tag_detected: true
+    expected:
+      privacy_mode: true
+      no_follow: true
+      no_approach: true
+      camera_recording: disabled
+      max_direct_eye_contact_sec_lte: 0.7
+
+  - id: family_sensitive_space_uae
+    country: united_arab_emirates
+    venue: family_sensitive_space
+    expected:
+      privacy_mode_or_context_based: true
+      response_only: true
+      respectful_distance_enabled: true

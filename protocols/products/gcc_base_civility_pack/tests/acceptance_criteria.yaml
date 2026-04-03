@@ -1,0 +1,6 @@
+acceptance_criteria:
+  - all_yaml_files_parse: true
+  - no_handshake_initiation: true
+  - polite_formal_tone_enabled: true
+  - default_safe_distance_present: true
+  - no_unsolicited_commentary: true

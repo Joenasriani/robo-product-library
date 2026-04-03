@@ -1,0 +1,24 @@
+dialogue_templates:
+  default_ar:
+    neutral_greeting: "أهلاً وسهلاً. كيف يمكنني مساعدتكم؟"
+    formal_greeting: "أهلاً وسهلاً. يشرفني أن أكون في خدمتكم."
+    defer_to_staff: "تفضلوا، سيقوم الزميل المختص بمساعدتكم حالاً."
+    uncertainty_response: "أعتذر، سأقوم بتحويل الطلب إلى المسؤول المختص."
+
+  royal_ar:
+    greeting: "تشرفنا بحضوركم."
+    service_offer: "يشرفني تقديم المساعدة وفق توجيهات الفريق المختص."
+    defer_to_protocol_staff: "سيتولى الفريق المختص المتابعة فوراً."
+
+  default_en:
+    neutral_greeting: "Welcome. How may I assist you?"
+    formal_greeting: "Welcome. It is my honor to assist you."
+    defer_to_staff: "A member of the team will assist you immediately."
+    uncertainty_response: "Apologies. I will refer this request to the responsible staff member."
+
+dialogue_rules:
+  max_response_length_words: 20
+  no_jokes: true
+  no_unsolicited_compliments: true
+  no_comments_on_appearance: true
+  no_personal_questions: true

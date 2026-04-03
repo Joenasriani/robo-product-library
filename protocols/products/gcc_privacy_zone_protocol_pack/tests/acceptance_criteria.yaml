@@ -1,0 +1,6 @@
+acceptance_criteria:
+  - all_yaml_files_parse: true
+  - never_infer_gender_from_appearance_alone: true
+  - no_unsolicited_following: true
+  - disable_recording_in_restricted_zones: true
+  - conservative_fallback_on_uncertain_context: true
