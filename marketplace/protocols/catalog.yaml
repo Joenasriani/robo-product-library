@@ -1,0 +1,24 @@
+protocol_products:
+  - id: gcc-base-civility-pack-v1
+    manifest: protocols/products/gcc_base_civility_pack/manifest.yaml
+    page_copy: protocols/products/gcc_base_civility_pack/docs/product_page_copy.md
+    listing_status: draft
+    sales_mode: inquire
+
+  - id: gcc-royal-protocol-pack-v1
+    manifest: protocols/products/gcc_royal_protocol_pack/manifest.yaml
+    page_copy: protocols/products/gcc_royal_protocol_pack/docs/product_page_copy.md
+    listing_status: draft
+    sales_mode: inquire
+
+  - id: gcc-privacy-zone-protocol-pack-v1
+    manifest: protocols/products/gcc_privacy_zone_protocol_pack/manifest.yaml
+    page_copy: protocols/products/gcc_privacy_zone_protocol_pack/docs/product_page_copy.md
+    listing_status: draft
+    sales_mode: inquire
+
+  - id: gcc-royal-privacy-protocol-v1
+    manifest: protocols/products/gcc_royal_privacy_protocol_v1/manifest.yaml
+    page_copy: protocols/products/gcc_royal_privacy_protocol_v1/docs/product_page_copy.md
+    listing_status: draft
+    sales_mode: inquire
