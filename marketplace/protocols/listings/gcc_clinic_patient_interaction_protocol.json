@@ -1,0 +1,19 @@
+{
+  "id": "gcc-clinic-patient-interaction-protocol-v1",
+  "slug": "gcc-clinic-patient-interaction-protocol-v1",
+  "name": "GCC Clinic Patient Interaction Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 2400,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "active",
+  "card_subtitle": "Clinic-focused GCC behavior protocol for patient-facing interactions with privacy, calm assistance, and escalation rules.",
+  "best_for": [
+    "Clinics",
+    "Patient Check-In",
+    "Waiting Areas",
+    "Family Navigation",
+    "Appointment Support"
+  ]
+}

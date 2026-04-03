@@ -7,7 +7,12 @@
   "button_primary": "View",
   "button_secondary": "Inquire",
   "sales_mode": "inquire",
-  "status": "draft",
+  "status": "active",
   "card_subtitle": "High-formality behavior layer for executive, VIP, and authority-sensitive GCC environments.",
-  "best_for": ["Government", "Executive Reception", "VIP Arrival", "Majlis"]
+  "best_for": [
+    "Government",
+    "Executive Reception",
+    "VIP Arrival",
+    "Majlis"
+  ]
 }

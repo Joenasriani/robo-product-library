@@ -1,0 +1,19 @@
+{
+  "id": "gcc-hospital-reception-protocol-v1",
+  "slug": "gcc-hospital-reception-protocol-v1",
+  "name": "GCC Hospital Reception Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 2800,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "active",
+  "card_subtitle": "Healthcare-grade GCC robot behavior protocol for hospital reception, patient guidance, and safe escalation.",
+  "best_for": [
+    "Hospitals",
+    "Healthcare Reception",
+    "Patient Navigation",
+    "Visitor Assistance",
+    "Medical Facilities"
+  ]
+}

@@ -7,7 +7,12 @@
   "button_primary": "View",
   "button_secondary": "Inquire",
   "sales_mode": "inquire",
-  "status": "draft",
+  "status": "active",
   "card_subtitle": "Privacy-first behavior layer for women-sensitive and restricted GCC environments.",
-  "best_for": ["Privacy Zones", "Healthcare", "Family Spaces", "Restricted Areas"]
+  "best_for": [
+    "Privacy Zones",
+    "Healthcare",
+    "Family Spaces",
+    "Restricted Areas"
+  ]
 }

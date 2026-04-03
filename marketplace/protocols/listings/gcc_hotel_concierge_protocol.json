@@ -1,0 +1,19 @@
+{
+  "id": "gcc-hotel-concierge-protocol-v1",
+  "slug": "gcc-hotel-concierge-protocol-v1",
+  "name": "GCC Hotel Concierge Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 2600,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "active",
+  "card_subtitle": "GCC hospitality behavior protocol for hotel robot concierges with guest-sensitive conduct and VIP-aware logic.",
+  "best_for": [
+    "Hotels",
+    "Concierge Services",
+    "Guest Navigation",
+    "VIP Arrival",
+    "Family Hospitality"
+  ]
+}

@@ -1,7 +1,10 @@
 import json
+import logging
 import re
 from src.models.schemas import Tender, Analysis
 from src.llm_factory import LLMProvider
+
+logger = logging.getLogger(__name__)
 
 _VALID_ACTIONS = {"pursue", "review", "skip"}
 _VALID_RISKS = {"low", "medium", "high"}
@@ -39,11 +42,16 @@ class TenderAnalysisAgent:
         for candidate in [response, re.sub(r"```(?:json)?", "", response).strip()]:
             try:
                 return self._validate(json.loads(candidate))
-            except Exception:
+            except (json.JSONDecodeError, ValueError):
                 pass
         start, end = response.find("{"), response.rfind("}")
         if start != -1 and end != -1 and end > start:
-            return self._validate(json.loads(response[start:end+1]))
+            try:
+                return self._validate(json.loads(response[start:end+1]))
+            except (json.JSONDecodeError, ValueError) as exc:
+                logger.error("Failed to extract JSON from model response: %s | snippet: %.200s", exc, response)
+                raise ValueError("Failed to parse model response") from exc
+        logger.error("No JSON object found in model response: %.200s", response)
         raise ValueError("Failed to parse model response")
 
     def _validate(self, data: dict) -> Analysis:

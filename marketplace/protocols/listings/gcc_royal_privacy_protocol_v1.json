@@ -7,7 +7,13 @@
   "button_primary": "View",
   "button_secondary": "Inquire",
   "sales_mode": "inquire",
-  "status": "draft",
+  "status": "active",
   "card_subtitle": "Premium GCC behavior engine for executive, hospitality, VIP, and privacy-sensitive deployments.",
-  "best_for": ["Government", "Executive Offices", "VIP Events", "Hospitality", "Privacy-Sensitive Spaces"]
+  "best_for": [
+    "Government",
+    "Executive Offices",
+    "VIP Events",
+    "Hospitality",
+    "Privacy-Sensitive Spaces"
+  ]
 }

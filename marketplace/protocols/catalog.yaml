@@ -3,54 +3,54 @@ protocol_products:
     manifest: protocols/products/gcc_base_civility_pack/manifest.yaml
     page_copy: protocols/products/gcc_base_civility_pack/docs/product_page_copy.md
     listing: marketplace/protocols/listings/gcc_base_civility_pack.json
-    listing_status: draft
+    listing_status: active
     sales_mode: inquire
 
   - id: gcc-royal-protocol-pack-v1
     manifest: protocols/products/gcc_royal_protocol_pack/manifest.yaml
     page_copy: protocols/products/gcc_royal_protocol_pack/docs/product_page_copy.md
     listing: marketplace/protocols/listings/gcc_royal_protocol_pack.json
-    listing_status: draft
+    listing_status: active
     sales_mode: inquire
 
   - id: gcc-privacy-zone-protocol-pack-v1
     manifest: protocols/products/gcc_privacy_zone_protocol_pack/manifest.yaml
     page_copy: protocols/products/gcc_privacy_zone_protocol_pack/docs/product_page_copy.md
     listing: marketplace/protocols/listings/gcc_privacy_zone_protocol_pack.json
-    listing_status: draft
+    listing_status: active
     sales_mode: inquire
 
   - id: gcc-royal-privacy-protocol-v1
     manifest: protocols/products/gcc_royal_privacy_protocol_v1/manifest.yaml
     page_copy: protocols/products/gcc_royal_privacy_protocol_v1/docs/product_page_copy.md
     listing: marketplace/protocols/listings/gcc_royal_privacy_protocol_v1.json
-    listing_status: draft
+    listing_status: active
     sales_mode: inquire
 
   - id: gcc-hospital-reception-protocol-v1
     manifest: protocols/products/gcc_hospital_reception_protocol/manifest.yaml
     page_copy: protocols/products/gcc_hospital_reception_protocol/docs/product_page_copy.md
     listing: marketplace/protocols/listings/gcc_hospital_reception_protocol.json
-    listing_status: draft
+    listing_status: active
     sales_mode: inquire
 
   - id: gcc-clinic-patient-interaction-protocol-v1
     manifest: protocols/products/gcc_clinic_patient_interaction_protocol/manifest.yaml
     page_copy: protocols/products/gcc_clinic_patient_interaction_protocol/docs/product_page_copy.md
     listing: marketplace/protocols/listings/gcc_clinic_patient_interaction_protocol.json
-    listing_status: draft
+    listing_status: active
     sales_mode: inquire
 
   - id: gcc-hotel-concierge-protocol-v1
     manifest: protocols/products/gcc_hotel_concierge_protocol/manifest.yaml
     page_copy: protocols/products/gcc_hotel_concierge_protocol/docs/product_page_copy.md
     listing: marketplace/protocols/listings/gcc_hotel_concierge_protocol.json
-    listing_status: draft
+    listing_status: active
     sales_mode: inquire
 
   - id: gcc-restaurant-host-protocol-v1
     manifest: protocols/products/gcc_restaurant_host_protocol/manifest.yaml
     page_copy: protocols/products/gcc_restaurant_host_protocol/docs/product_page_copy.md
     listing: marketplace/protocols/listings/gcc_restaurant_host_protocol.json
-    listing_status: draft
+    listing_status: active
     sales_mode: inquire

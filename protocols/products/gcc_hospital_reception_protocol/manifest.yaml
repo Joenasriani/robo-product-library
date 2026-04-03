@@ -1,0 +1,67 @@
+id: gcc-hospital-reception-protocol-v1
+slug: gcc-hospital-reception-protocol-v1
+title: GCC Hospital Reception Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - healthcare-protocol
+  - hospital-reception
+  - gcc-localization
+summary: >
+  A GCC hospital reception behavior protocol for patient-facing, visitor-facing,
+  and family-facing robot interactions with strong dignity, privacy, calm assistance,
+  and safe escalation rules for healthcare environments.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - hospital_reception
+  - patient_arrival_guidance
+  - visitor_navigation
+  - waiting_area_support
+  - appointment_check_in_direction
+  - emergency_escalation_handoff
+
+risk_level: high
+requires_operator_approval: true
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+
+optional_capabilities:
+  - multilingual_asr
+  - route_navigation
+  - operator_override
+  - badge_detection
+
+deliverables:
+  - yaml_policy_bundle
+  - role_behavior_rules
+  - country_overlays
+  - healthcare_safety_rules
+  - test_scenarios
+  - acceptance_criteria
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+
+limitations:
+  - does_not_provide_medical_advice
+  - does_not_access_patient_records
+  - does_not_initiate_physical_contact
+  - does_not_replace_clinical_staff
+  - escalates_all_medical_queries_to_human_staff
+
+status: active

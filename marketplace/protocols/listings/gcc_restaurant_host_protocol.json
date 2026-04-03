@@ -7,7 +7,13 @@
   "button_primary": "View",
   "button_secondary": "Inquire",
   "sales_mode": "inquire",
-  "status": "draft",
+  "status": "active",
   "card_subtitle": "Polished GCC hospitality behavior layer for restaurant reception, table guidance, and guest interaction.",
-  "best_for": ["Restaurants", "Host Stands", "Guest Arrival", "Family Dining", "VIP Guests"]
+  "best_for": [
+    "Restaurants",
+    "Host Stands",
+    "Guest Arrival",
+    "Family Dining",
+    "VIP Guests"
+  ]
 }

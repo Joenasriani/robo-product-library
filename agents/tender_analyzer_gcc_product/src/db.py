@@ -59,19 +59,24 @@ def create_client(name, email, plan, initial_credits, api_key=None):
     api_key = api_key or f"tr_{secrets.token_urlsafe(24)}"
     conn = _connect()
     cur = conn.cursor()
-    cur.execute(
-        "INSERT INTO api_clients (name, email, api_key_hash, plan, credits_total, credits_used, is_active, created_at) VALUES (?, ?, ?, ?, ?, 0, 1, ?)",
-        (name, email, hash_api_key(api_key), plan, initial_credits, datetime.utcnow().isoformat())
-    )
-    client_id = cur.lastrowid
-    cur.execute(
-        "INSERT INTO credit_ledger (client_id, delta, reason, created_at) VALUES (?, ?, ?, ?)",
-        (client_id, initial_credits, "initial_allocation", datetime.utcnow().isoformat())
-    )
-    conn.commit()
-    cur.execute("SELECT * FROM api_clients WHERE id = ?", (client_id,))
-    row = cur.fetchone()
-    conn.close()
+    try:
+        cur.execute(
+            "INSERT INTO api_clients (name, email, api_key_hash, plan, credits_total, credits_used, is_active, created_at) VALUES (?, ?, ?, ?, ?, 0, 1, ?)",
+            (name, email, hash_api_key(api_key), plan, initial_credits, datetime.utcnow().isoformat())
+        )
+        client_id = cur.lastrowid
+        cur.execute(
+            "INSERT INTO credit_ledger (client_id, delta, reason, created_at) VALUES (?, ?, ?, ?)",
+            (client_id, initial_credits, "initial_allocation", datetime.utcnow().isoformat())
+        )
+        conn.commit()
+        cur.execute("SELECT * FROM api_clients WHERE id = ?", (client_id,))
+        row = cur.fetchone()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
     return row_to_public(row), api_key
 
 def seed_demo_client():
@@ -112,32 +117,47 @@ def list_clients():
 def add_credits(client_id, credits, reason):
     conn = _connect()
     cur = conn.cursor()
-    cur.execute("UPDATE api_clients SET credits_total = credits_total + ? WHERE id = ?", (credits, client_id))
-    cur.execute("INSERT INTO credit_ledger (client_id, delta, reason, created_at) VALUES (?, ?, ?, ?)",
-                (client_id, credits, reason, datetime.utcnow().isoformat()))
-    conn.commit()
-    cur.execute("SELECT * FROM api_clients WHERE id = ?", (client_id,))
-    row = cur.fetchone()
-    conn.close()
+    try:
+        cur.execute("UPDATE api_clients SET credits_total = credits_total + ? WHERE id = ?", (credits, client_id))
+        if cur.rowcount == 0:
+            raise ValueError("Client not found or update failed")
+        cur.execute("INSERT INTO credit_ledger (client_id, delta, reason, created_at) VALUES (?, ?, ?, ?)",
+                    (client_id, credits, reason, datetime.utcnow().isoformat()))
+        conn.commit()
+        cur.execute("SELECT * FROM api_clients WHERE id = ?", (client_id,))
+        row = cur.fetchone()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
     return row_to_public(row) if row else None
 
 def deduct_credit(client_id, amount=1):
     conn = _connect()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM api_clients WHERE id = ?", (client_id,))
-    row = cur.fetchone()
-    if not row:
+    try:
+        cur.execute(
+            "UPDATE api_clients SET credits_used = credits_used + ? "
+            "WHERE id = ? AND is_active = 1 AND (credits_total - credits_used) >= ?",
+            (amount, client_id, amount)
+        )
+        if cur.rowcount == 0:
+            cur.execute("SELECT id, is_active, credits_total, credits_used FROM api_clients WHERE id = ?", (client_id,))
+            row = cur.fetchone()
+            if not row:
+                raise ValueError("Client not found")
+            if not row["is_active"]:
+                raise ValueError("Client account is inactive")
+            raise ValueError("Insufficient credits")
+        cur.execute("INSERT INTO credit_ledger (client_id, delta, reason, created_at) VALUES (?, ?, ?, ?)",
+                    (client_id, -amount, "analysis_request", datetime.utcnow().isoformat()))
+        conn.commit()
+        cur.execute("SELECT * FROM api_clients WHERE id = ?", (client_id,))
+        updated = cur.fetchone()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
         conn.close()
-        raise ValueError("Client not found")
-    remaining = row["credits_total"] - row["credits_used"]
-    if remaining < amount:
-        conn.close()
-        raise ValueError("Insufficient credits")
-    cur.execute("UPDATE api_clients SET credits_used = credits_used + ? WHERE id = ?", (amount, client_id))
-    cur.execute("INSERT INTO credit_ledger (client_id, delta, reason, created_at) VALUES (?, ?, ?, ?)",
-                (client_id, -amount, "analysis_request", datetime.utcnow().isoformat()))
-    conn.commit()
-    cur.execute("SELECT * FROM api_clients WHERE id = ?", (client_id,))
-    updated = cur.fetchone()
-    conn.close()
     return row_to_public(updated)

@@ -73,7 +73,10 @@ async def analyze(request: Request, tender: Tender, client=Depends(require_clien
 async def analyze_file(request: Request, file: UploadFile = File(...), title: str = Form(""), issuer: str = Form(""), country: str = Form("GCC"), sector: str = Form(""), client=Depends(require_client)):
     if file.content_type not in {"application/pdf", "text/plain"}:
         raise HTTPException(status_code=400, detail="Only PDF and TXT uploads are supported")
-    content = await file.read()
+    _MAX_BYTES = 10 * 1024 * 1024  # 10 MB
+    content = await file.read(_MAX_BYTES + 1)
+    if len(content) > _MAX_BYTES:
+        raise HTTPException(status_code=413, detail="File too large. Maximum upload size is 10 MB")
     extracted = extract_text_from_pdf_bytes(content) if file.content_type == "application/pdf" else content.decode("utf-8", errors="ignore")
     if not extracted.strip():
         raise HTTPException(status_code=400, detail="No text could be extracted from the uploaded file")
