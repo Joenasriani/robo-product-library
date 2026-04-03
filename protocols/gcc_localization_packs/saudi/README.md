@@ -1,13 +1,23 @@
-# SAUDI Localization Pack
+# Saudi Localization Pack
 
-Status: planned
+Status: specification
 
 Purpose:
-Regional robot etiquette, speech, proximity, privacy, and interaction rules for SAUDI contexts.
+Behavior rules for robots operating in Saudi enterprise, hospitality, public, heritage, retail, and formal service environments.
 
-Includes:
-- cultural behavior rules
-- interaction constraints
-- greeting logic
-- privacy rules
-- scenario-specific conduct
+Core priorities:
+- strong respect and formality
+- hierarchy awareness
+- privacy and dignity
+- culturally appropriate speech and spacing
+- calm and predictable conduct
+- adaptable behavior across modern and heritage contexts
+
+Deployment targets:
+- hotels
+- government service spaces
+- heritage venues
+- malls
+- healthcare reception
+- exhibitions
+- corporate offices

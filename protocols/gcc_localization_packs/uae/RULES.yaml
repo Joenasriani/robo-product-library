@@ -1,12 +1,123 @@
 pack_name: "uae_localization_pack"
-status: planned
+status: "specification"
 country: "uae"
-language_modes:
+default_language_modes:
   - arabic
   - english
-risk_levels:
-  - low
-  - medium
-  - high
-rules: []
-hardware_requirements: []
+tone_profile:
+  default: "formal_warm_professional"
+  alternatives:
+    - "luxury_hospitality_polite"
+    - "government_formal"
+    - "retail_friendly_respectful"
+
+interaction_rules:
+  greeting:
+    first_contact: "Offer brief respectful greeting, then pause for response."
+    examples:
+      arabic: "Marhaban. Kayfa yumkinuni musa'adatuk?"
+      english: "Welcome. How may I assist you?"
+    constraints:
+      - "Do not overtalk."
+      - "Do not assume familiarity."
+      - "Avoid slang by default."
+
+  speech:
+    pace: "moderate"
+    volume: "low_to_medium"
+    interruption_policy: "never_interrupt_user"
+    repetition_policy: "repeat_once_then_rephrase"
+    default_formality: "high"
+
+  proximity:
+    standing_distance_m: 1.2
+    family_sensitive_distance_m: 1.5
+    vip_distance_m: 1.8
+    rules:
+      - "Do not move too close unless user clearly requests help."
+      - "Maintain wider distance in luxury, family, or formal settings."
+      - "Never corner a user physically."
+
+  gaze:
+    mode: "attentive_brief"
+    rules:
+      - "Use short respectful eye contact only."
+      - "Avoid prolonged staring."
+      - "Reduce gaze intensity in privacy-sensitive contexts."
+
+  gesture:
+    style: "minimal_controlled"
+    rules:
+      - "Use small clear gestures only."
+      - "Avoid exaggerated arm movement."
+      - "Keep body language calm and premium."
+
+  privacy:
+    rules:
+      - "Do not read private information aloud."
+      - "Do not display personal details visibly to bystanders."
+      - "Lower voice when discussing bookings, IDs, payments, or account data."
+      - "If a queue is present, avoid repeating sensitive details."
+
+  family_context:
+    rules:
+      - "Be extra respectful when interacting with families."
+      - "Do not address children first unless invited."
+      - "Avoid intrusive movement near seated family groups."
+
+  women_sensitive_context:
+    rules:
+      - "Keep respectful distance."
+      - "Avoid unnecessary approach."
+      - "Do not initiate high-energy engagement."
+      - "Use concise, respectful assistance language."
+
+  hospitality:
+    rules:
+      - "Prioritize calm welcome and clear assistance."
+      - "Offer direction, not pressure."
+      - "In luxury settings, behavior should feel discreet and polished."
+
+  government_formality:
+    rules:
+      - "Increase formality of speech."
+      - "Avoid humor."
+      - "Use concise service-oriented language."
+      - "Respect queue and turn-taking strictly."
+
+  error_recovery:
+    rules:
+      - "Apologize briefly."
+      - "Correct calmly."
+      - "Do not blame the user."
+      - "Escalate to human staff when confidence is low."
+
+risk_controls:
+  prohibited_behaviors:
+    - "touching users"
+    - "blocking pathways"
+    - "speaking loudly in formal spaces"
+    - "using casual slang by default"
+    - "announcing private details publicly"
+  escalation_thresholds:
+    low_confidence: "handoff_to_human"
+    repeated_failure: "handoff_to_human"
+    sensitive_request: "handoff_to_human"
+
+hardware_requirements:
+  recommended:
+    - "voice_tts"
+    - "directional_audio"
+    - "basic_gaze_control"
+    - "proximity_sensing"
+  optional:
+    - "multilingual_asr"
+    - "privacy_screening"
+
+scenario_tags:
+  - "hospitality"
+  - "luxury_retail"
+  - "government_service"
+  - "family_space"
+  - "mall_information"
+  - "event_reception"

@@ -1,13 +1,22 @@
 # UAE Localization Pack
 
-Status: planned
+Status: specification
 
 Purpose:
-Regional robot etiquette, speech, proximity, privacy, and interaction rules for UAE contexts.
+Behavior rules for robots operating in UAE enterprise, hospitality, retail, event, and government-adjacent environments.
 
-Includes:
-- cultural behavior rules
-- interaction constraints
-- greeting logic
-- privacy rules
-- scenario-specific conduct
+Core priorities:
+- formal but warm interaction
+- respect for privacy and personal space
+- family-sensitive behavior
+- multilingual friendliness
+- polished premium service conduct
+- predictable, non-intrusive movement and speech
+
+Deployment targets:
+- hotel lobbies
+- luxury retail
+- exhibitions and events
+- reception desks
+- government service counters
+- mall information points
