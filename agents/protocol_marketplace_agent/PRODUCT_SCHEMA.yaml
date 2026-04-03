@@ -1,0 +1,14 @@
+product_schema:
+  product_id: ""
+  slug: ""
+  name: ""
+  category: "gcc_localization"
+  region: ""
+  description: ""
+  price_aed: 0
+  status: "draft"
+  version: "v1"
+  risk_level: "medium"
+  hardware_requirements: []
+  included_files: []
+  delivery_type: "dashboard_download"

@@ -1,12 +1,17 @@
 # Protocol Marketplace Agent
 
-Status: planned
+Status: specification
 
 Purpose:
-Marketplace system for browsing, packaging, selling, and delivering robot protocol packs.
+Turn robot protocol packs into real sellable digital products inside RoboMarket.
 
-Core functions:
-- list protocols
-- show protocol metadata
-- manage entitlements
-- support purchase and delivery flow
+What this agent manages:
+- protocol product listings
+- protocol metadata
+- pricing
+- entitlement checks
+- post-purchase delivery
+- buyer access rules
+
+Core rule:
+No protocol may be listed for sale unless it has real downloadable assets and a real delivery path.
