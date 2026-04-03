@@ -1,0 +1,13 @@
+{
+  "id": "gcc-restaurant-host-protocol-v1",
+  "slug": "gcc-restaurant-host-protocol-v1",
+  "name": "GCC Restaurant Host Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 2100,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "Polished GCC hospitality behavior layer for restaurant reception, table guidance, and guest interaction.",
+  "best_for": ["Restaurants", "Host Stands", "Guest Arrival", "Family Dining", "VIP Guests"]
+}

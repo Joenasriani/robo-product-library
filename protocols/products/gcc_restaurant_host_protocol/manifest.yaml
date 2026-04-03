@@ -1,0 +1,58 @@
+id: gcc-restaurant-host-protocol-v1
+slug: gcc-restaurant-host-protocol-v1
+title: GCC Restaurant Host Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - hospitality-protocol
+  - restaurant-host
+  - gcc-localization
+summary: >
+  A GCC restaurant host behavior protocol for guest-facing robot interaction,
+  reception support, table guidance, family-sensitive hospitality, and respectful service conduct.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - restaurant_reception
+  - table_guidance
+  - queue_management
+  - family_hospitality
+  - guest_arrival
+  - reservation_direction_support
+
+risk_level: medium
+requires_operator_approval: false
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+
+optional_capabilities:
+  - multilingual_asr
+  - route_navigation
+  - host_station_integration
+  - operator_override
+
+deliverables:
+  - yaml_policy_bundle
+  - role_behavior_rules
+  - country_overlays
+  - hospitality_safety_rules
+  - test_scenarios
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: draft

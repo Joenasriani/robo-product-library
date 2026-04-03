@@ -47,3 +47,10 @@ protocol_products:
     listing: marketplace/protocols/listings/gcc_hotel_concierge_protocol.json
     listing_status: draft
     sales_mode: inquire
+
+  - id: gcc-restaurant-host-protocol-v1
+    manifest: protocols/products/gcc_restaurant_host_protocol/manifest.yaml
+    page_copy: protocols/products/gcc_restaurant_host_protocol/docs/product_page_copy.md
+    listing: marketplace/protocols/listings/gcc_restaurant_host_protocol.json
+    listing_status: draft
+    sales_mode: inquire
