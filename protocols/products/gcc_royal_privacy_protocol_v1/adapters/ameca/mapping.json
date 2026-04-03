@@ -1,0 +1,14 @@
+{
+  "platform": "engineered_arts_ameca",
+  "expression_policy": {
+    "royal_mode": "minimal_expression",
+    "privacy_mode": "neutral_expression"
+  },
+  "gaze_map": {
+    "respectful_brief": "brief_eye_lock",
+    "downward_bias": "soft_lowered_focus"
+  },
+  "motion_map": {
+    "very_low_gesture": "micro_arm_idle"
+  }
+}

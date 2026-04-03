@@ -1,0 +1,27 @@
+regression_tests:
+  - id: privacy_overrides_royal
+    input:
+      privacy_zone: true
+      royal_flag: true
+    expected:
+      active_mode: privacy_mode
+
+  - id: low_confidence_forces_fallback
+    input:
+      context_confidence: 0.4
+    expected:
+      mode: conservative
+      response_only: true
+      min_distance_m_gte: 3.0
+
+  - id: no_handshake_any_mode
+    input:
+      mode: any
+    expected:
+      handshake_initiation: false
+
+  - id: camera_disabled_in_restricted_zone
+    input:
+      zone: restricted
+    expected:
+      camera_recording: disabled

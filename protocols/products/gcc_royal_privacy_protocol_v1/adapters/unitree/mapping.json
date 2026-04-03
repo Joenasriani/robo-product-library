@@ -1,0 +1,14 @@
+{
+  "platform": "unitree_h1",
+  "navigation_policy": {
+    "privacy_mode_no_follow": true,
+    "royal_mode_slow_approach": true
+  },
+  "distance_keys": {
+    "default_min_distance_m": "nav.stop_distance"
+  },
+  "speed_profile": {
+    "slow": 0.25,
+    "very_slow": 0.15
+  }
+}
