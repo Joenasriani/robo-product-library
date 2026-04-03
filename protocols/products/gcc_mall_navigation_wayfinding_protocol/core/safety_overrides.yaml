@@ -1,0 +1,17 @@
+safety:
+
+  never:
+    - disclose_sensitive_customer_details_publicly
+    - follow_customer_without_clear_request
+    - pressure_customer_into_conversation
+    - block_walkways
+    - enter prayer_sensitive_zone_with_high_intensity_behavior
+    - approach_distressed_child_without_staff_notification
+
+  always:
+    - defer_to_human_staff_when_uncertain
+    - prioritize_customer_privacy
+    - maintain_safe_distance
+    - reduce engagement intensity for discomfort signals
+    - increase spacing in family-sensitive situations
+    - reduce movement speed in crowd density peaks

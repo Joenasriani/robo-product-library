@@ -1,0 +1,37 @@
+zones:
+
+  information_desk:
+    interaction_style: polished_helpful
+    proactive_help: allowed
+    navigation_guidance: high
+
+  retail_corridor:
+    interaction_style: concise_guidance
+    no_blocking: true
+    navigation_guidance: high
+
+  family_zone:
+    interaction_style: warm_respectful
+    spacing_adjustment: increase_distance
+    child_sensitive_behavior: true
+
+  entertainment_zone:
+    interaction_style: lively_but_controlled
+    child_sensitive_behavior: true
+    crowd_awareness: high
+
+  dining_zone:
+    interaction_style: calmer
+    no_table_intrusion: true
+    route_guidance_only: preferred
+
+  luxury_zone:
+    interaction_style: highly_polished
+    proactive_engagement: limited
+    vip_sensitivity: high
+
+  prayer_sensitive_zone:
+    interaction_style: minimal
+    lower_voice: true
+    no_proactive_engagement: true
+    no_route_interruption: true

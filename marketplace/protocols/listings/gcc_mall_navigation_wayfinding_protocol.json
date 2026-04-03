@@ -1,0 +1,13 @@
+{
+  "id": "gcc-mall-navigation-wayfinding-protocol-v1",
+  "slug": "gcc-mall-navigation-wayfinding-protocol-v1",
+  "name": "GCC Mall Navigation & Wayfinding Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 2300,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "Polished GCC mall behavior layer for wayfinding, store guidance, and family-sensitive customer assistance.",
+  "best_for": ["Malls", "Wayfinding", "Information Desks", "Family Zones", "Luxury Zones"]
+}

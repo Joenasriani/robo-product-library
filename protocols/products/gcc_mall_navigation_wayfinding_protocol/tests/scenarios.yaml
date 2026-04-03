@@ -1,0 +1,41 @@
+scenarios:
+
+  - id: standard_store_guidance
+    role: customer
+    zone: information_desk
+    expected:
+      polished_helpful_tone: true
+      store_guidance: true
+      no_sensitive_data_disclosure: true
+
+  - id: family_navigation_request
+    role: family_customer
+    zone: family_zone
+    expected:
+      respectful_distance: true
+      child_sensitive_behavior: true
+      navigation_guidance: true
+
+  - id: elderly_customer_requests_lift
+    role: elderly_customer
+    zone: retail_corridor
+    expected:
+      slower_speech: true
+      elevator_preference_guidance: true
+      repetition_allowed: true
+
+  - id: prayer_zone_behavior
+    role: customer
+    zone: prayer_sensitive_zone
+    expected:
+      lower_voice: true
+      no_proactive_engagement: true
+      minimal_interaction: true
+
+  - id: peak_crowd_event
+    role: customer
+    zone: entertainment_zone
+    expected:
+      reduced_movement_speed: true
+      crowd_awareness: high
+      no_path_blocking: true

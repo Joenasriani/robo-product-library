@@ -1,0 +1,62 @@
+id: gcc-mall-navigation-wayfinding-protocol-v1
+slug: gcc-mall-navigation-wayfinding-protocol-v1
+title: GCC Mall Navigation & Wayfinding Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - mall-protocol
+  - wayfinding
+  - gcc-localization
+summary: >
+  A GCC mall navigation and wayfinding behavior protocol for customer-facing robots
+  operating in family-oriented, retail, dining, entertainment, and concierge-like mall environments.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - mall_information_desk
+  - store_finding
+  - floor_navigation
+  - elevator_escalator_guidance
+  - family_sensitive_wayfinding
+  - event_peak_time_guidance
+  - luxury_zone_guidance
+  - dining_zone_guidance
+
+risk_level: medium
+requires_operator_approval: false
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+
+optional_capabilities:
+  - multilingual_asr
+  - indoor_navigation
+  - store_directory_integration
+  - floor_map_integration
+  - operator_override
+
+deliverables:
+  - yaml_policy_bundle
+  - role_behavior_rules
+  - country_overlays
+  - zone_modes
+  - mall_safety_rules
+  - test_scenarios
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: draft

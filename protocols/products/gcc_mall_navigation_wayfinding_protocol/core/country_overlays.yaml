@@ -1,0 +1,30 @@
+countries:
+
+  uae:
+    formality: high
+    mall_style: polished_international
+    language_default: arabic_english
+    family_sensitivity: high
+
+  saudi_arabia:
+    formality: very_high
+    mall_style: conservative_respectful
+    privacy_buffer_m: 2.3
+    family_sensitivity: high
+
+  qatar:
+    formality: high
+    mall_style: formal_refined
+    family_orientation: high
+
+  kuwait:
+    formality: medium_high
+    mall_style: warm_respectful
+
+  bahrain:
+    formality: medium
+    mall_style: friendly_polished
+
+  oman:
+    formality: high
+    mall_style: calm_respectful

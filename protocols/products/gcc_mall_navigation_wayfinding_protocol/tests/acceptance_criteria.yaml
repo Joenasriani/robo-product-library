@@ -1,0 +1,9 @@
+acceptance_criteria:
+  - no_sensitive_data_disclosure: enforced
+  - escalation_paths_exist: true
+  - all_roles_defined: true
+  - all_yaml_valid: true
+  - no_follow_without_clear_request: enforced
+  - family_sensitive_logic_present: true
+  - zone_modes_present: true
+  - prayer_sensitive_behavior_present: true
