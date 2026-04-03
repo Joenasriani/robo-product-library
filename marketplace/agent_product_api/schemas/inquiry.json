@@ -1,0 +1,10 @@
+{
+  "name": "string",
+  "email": "string",
+  "company": "string",
+  "use_case": "string",
+  "product_id": "string",
+  "status": "pending | approved | rejected",
+  "created_at": "timestamp",
+  "notes": "string"
+}

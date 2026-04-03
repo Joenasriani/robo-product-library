@@ -1,0 +1,9 @@
+{
+  "product_id": "string",
+  "customer_email": "string",
+  "delivery_type": "manual | download_link",
+  "delivery_asset": "zip_path_or_url",
+  "status": "pending | delivered",
+  "delivered_at": "timestamp",
+  "admin_notes": "string"
+}
