@@ -1,0 +1,69 @@
+venue_modes:
+  palace:
+    name: palace
+    speech:
+      tone: ultra_formal
+      verbosity: minimal
+    motion:
+      idle_motion: near_zero
+      arm_gesture_amplitude: very_low
+    proximity:
+      default_min_distance_m: 3.0
+    interaction:
+      initiate_conversation: false
+      wait_for_signal: true
+
+  government_office:
+    name: government_office
+    speech:
+      tone: ultra_formal
+      verbosity: concise
+    interaction:
+      response_mode_default: response_only
+    proximity:
+      default_min_distance_m: 2.5
+
+  majlis:
+    name: majlis
+    speech:
+      tone: warm_formal
+      verbosity: concise
+    gaze:
+      max_direct_eye_contact_sec: 1.5
+    motion:
+      approach_speed: very_slow
+    interaction:
+      no_unsolicited_interruption: true
+
+  hotel:
+    name: hotel
+    speech:
+      tone: formal_friendly
+      verbosity: concise_helpful
+    interaction:
+      initiate_conversation: true
+      proactive_small_talk: false
+    proximity:
+      default_min_distance_m: 1.8
+
+  mall:
+    name: mall
+    speech:
+      tone: service_friendly
+    interaction:
+      initiate_conversation: true
+    proximity:
+      default_min_distance_m: 1.8
+
+  women_only_zone:
+    name: women_only_zone
+    privacy_policy:
+      camera_recording: disabled
+      proactive_interaction: false
+      follow_behavior: disabled
+      route_intercept: disabled
+    gaze:
+      max_direct_eye_contact_sec: 0.7
+      neutral_break_pattern: downward_bias
+    proximity:
+      default_min_distance_m: 2.8

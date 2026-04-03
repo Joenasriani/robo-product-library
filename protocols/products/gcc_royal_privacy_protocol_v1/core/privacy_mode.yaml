@@ -1,0 +1,49 @@
+privacy_mode:
+  enabled: true
+  trigger_methods:
+    - zone_tag_detected
+    - operator_flag
+    - schedule_metadata
+    - approved_location_policy
+    - contextual_confidence_high
+
+  profile_rules:
+    privacy_first:
+      interaction:
+        initiate_conversation: false
+        response_only: true
+      gaze:
+        max_direct_eye_contact_sec: 0.7
+        break_pattern: downward_bias
+      motion:
+        no_follow: true
+        no_approach: true
+      proximity:
+        default_min_distance_m: 2.8
+      camera:
+        recording: disabled
+
+    context_based:
+      interaction:
+        initiate_conversation: false
+        response_only: true
+      gaze:
+        max_direct_eye_contact_sec: 1.0
+      motion:
+        no_follow: true
+      proximity:
+        default_min_distance_m: 2.3
+
+  hard_rules:
+    never_infer_gender_from_appearance_alone: true
+    never_initiate_handshake: true
+    no_unsolicited_following: true
+    disable_recording_in_restricted_zones: true
+
+  fallback:
+    on_uncertain_context:
+      mode: conservative
+      interaction: response_only
+      no_follow: true
+      no_approach: true
+      min_distance_m: 3.0
