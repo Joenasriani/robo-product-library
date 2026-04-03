@@ -1,0 +1,13 @@
+{
+  "id": "tender-analyzer-gcc",
+  "slug": "tender-analyzer-gcc",
+  "name": "Tender Analyzer GCC",
+  "category": "AI Agent",
+  "price_aed": 2500,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "AI agent for evaluating GCC tenders from text and uploaded files.",
+  "best_for": ["Procurement Teams", "SMEs", "Consultants", "Bid Teams"]
+}

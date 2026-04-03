@@ -1,0 +1,13 @@
+{
+  "id": "ai-agent-download-center",
+  "slug": "ai-agent-download-center",
+  "name": "AI Agent Download Center",
+  "category": "AI Agent",
+  "price_aed": 3000,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "Delivery and entitlement system for downloadable AI agents sold through RoboMarket.",
+  "best_for": ["Marketplace Operators", "AI Product Sellers", "Enterprise Buyers"]
+}

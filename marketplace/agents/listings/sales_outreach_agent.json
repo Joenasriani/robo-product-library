@@ -1,0 +1,13 @@
+{
+  "id": "sales-outreach-agent",
+  "slug": "sales-outreach-agent",
+  "name": "Sales Outreach Agent",
+  "category": "AI Agent",
+  "price_aed": 1800,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "AI agent for lead research, opportunity detection, and tailored outreach generation.",
+  "best_for": ["Agencies", "B2B Service Sellers", "Founders", "Sales Teams"]
+}
