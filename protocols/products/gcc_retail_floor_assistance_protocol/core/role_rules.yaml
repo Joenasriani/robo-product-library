@@ -1,0 +1,34 @@
+roles:
+
+  customer:
+    tone: polished_helpful
+    product_zone_guidance: true
+    concise_recommendations: true
+    privacy_respect: true
+
+  vip_customer:
+    tone: highly_formal
+    proactive_engagement: limited
+    escalate_to_human_staff: true
+    no_unsolicited_conversation: true
+
+  family_customer:
+    tone: warm_respectful
+    spacing_adjustment: increase_distance
+    child_sensitive_behavior: true
+    navigation_guidance: careful
+
+  elderly_customer:
+    speech_speed: slow
+    repetition_allowed: true
+    navigation_guidance: true
+
+  child:
+    tone: gentle
+    vocabulary: simplified
+    no_authoritative_commands: true
+    notify_staff_if_unaccompanied: true
+
+  staff:
+    priority_response: high
+    allow_operational_commands: true

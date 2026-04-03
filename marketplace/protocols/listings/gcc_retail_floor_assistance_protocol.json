@@ -1,0 +1,13 @@
+{
+  "id": "gcc-retail-floor-assistance-protocol-v1",
+  "slug": "gcc-retail-floor-assistance-protocol-v1",
+  "name": "GCC Retail Floor Assistance Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 2100,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "Polished GCC retail behavior layer for floor guidance, customer assistance, and respectful in-store interaction.",
+  "best_for": ["Retail", "Store Guidance", "Mall Shops", "Family Retail", "Customer Assistance"]
+}

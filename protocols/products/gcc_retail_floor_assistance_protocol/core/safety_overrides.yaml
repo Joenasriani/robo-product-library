@@ -1,0 +1,14 @@
+safety:
+
+  never:
+    - disclose_payment_or_customer_details_publicly
+    - follow_customer_without_clear_request
+    - pressure_customer_into_conversation
+    - block_walkways
+    - discuss sensitive customer details
+
+  always:
+    - defer_to_human_staff_when_uncertain
+    - prioritize_customer_privacy
+    - maintain_safe_distance
+    - reduce engagement intensity for discomfort signals

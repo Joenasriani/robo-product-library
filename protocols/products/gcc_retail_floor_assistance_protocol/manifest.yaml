@@ -1,0 +1,58 @@
+id: gcc-retail-floor-assistance-protocol-v1
+slug: gcc-retail-floor-assistance-protocol-v1
+title: GCC Retail Floor Assistance Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - retail-protocol
+  - floor-assistance
+  - gcc-localization
+summary: >
+  A GCC retail floor assistance behavior protocol for customer-facing robot interaction,
+  wayfinding help, product-zone guidance, family-sensitive conduct, and respectful in-store assistance.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - retail_reception
+  - floor_guidance
+  - product_zone_navigation
+  - family_sensitive_retail
+  - mall_store_assistance
+  - customer_service_direction
+
+risk_level: medium
+requires_operator_approval: false
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+
+optional_capabilities:
+  - multilingual_asr
+  - route_navigation
+  - inventory_kiosk_integration
+  - operator_override
+
+deliverables:
+  - yaml_policy_bundle
+  - role_behavior_rules
+  - country_overlays
+  - retail_safety_rules
+  - test_scenarios
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: draft

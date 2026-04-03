@@ -1,0 +1,30 @@
+countries:
+
+  uae:
+    formality: high
+    retail_style: polished_international
+    language_default: arabic_english
+    family_sensitivity: high
+
+  saudi_arabia:
+    formality: very_high
+    retail_style: conservative_respectful
+    privacy_buffer_m: 2.3
+    family_sensitivity: high
+
+  qatar:
+    formality: high
+    retail_style: formal_refined
+    guest_respect_level: elevated
+
+  kuwait:
+    formality: medium_high
+    retail_style: warm_respectful
+
+  bahrain:
+    formality: medium
+    retail_style: friendly_polished
+
+  oman:
+    formality: high
+    retail_style: calm_respectful

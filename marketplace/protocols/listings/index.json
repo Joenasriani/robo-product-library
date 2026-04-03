@@ -3,5 +3,6 @@
   "marketplace/protocols/listings/gcc_royal_protocol_pack.json",
   "marketplace/protocols/listings/gcc_privacy_zone_protocol_pack.json",
   "marketplace/protocols/listings/gcc_royal_privacy_protocol_v1.json",
-  "marketplace/protocols/listings/gcc_restaurant_host_protocol.json"
+  "marketplace/protocols/listings/gcc_restaurant_host_protocol.json",
+  "marketplace/protocols/listings/gcc_retail_floor_assistance_protocol.json"
 ]

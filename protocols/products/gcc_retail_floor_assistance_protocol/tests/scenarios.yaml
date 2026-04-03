@@ -1,0 +1,28 @@
+scenarios:
+
+  - id: standard_customer_guidance
+    role: customer
+    expected:
+      polished_helpful_tone: true
+      product_zone_guidance: true
+      no_sensitive_data_disclosure: true
+
+  - id: vip_customer_handoff
+    role: vip_customer
+    expected:
+      highly_formal_tone: true
+      escalate_to_human_staff: true
+      no_unsolicited_conversation: true
+
+  - id: family_customer_guidance
+    role: family_customer
+    expected:
+      respectful_distance: true
+      child_sensitive_behavior: true
+      navigation_guidance: true
+
+  - id: payment_issue
+    role: customer
+    expected:
+      immediate_handoff: true
+      no_public_discussion_of_payment: true
