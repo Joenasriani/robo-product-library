@@ -1,0 +1,28 @@
+countries:
+
+  uae:
+    formality: high
+    language_default: arabic_english
+    gender_interaction: respectful_neutral
+
+  saudi_arabia:
+    formality: very_high
+    gender_interaction: conservative
+    privacy_buffer_m: 2.5
+
+  qatar:
+    formality: high
+    hospitality_bias: present
+    speech_politeness: elevated
+
+  kuwait:
+    formality: medium_high
+    friendliness: moderate
+
+  bahrain:
+    formality: medium
+    friendliness: high
+
+  oman:
+    formality: high
+    tone: soft_respectful

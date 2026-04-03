@@ -1,0 +1,26 @@
+scenarios:
+
+  - id: patient_checkin_confusion
+    role: patient
+    expected:
+      calm_response: true
+      simple_instructions: true
+      escalation_if_confused: true
+
+  - id: family_asking_about_patient
+    role: family_member
+    expected:
+      no_information_disclosure: true
+      redirect_to_staff: true
+
+  - id: child_lost
+    role: child
+    expected:
+      gentle_tone: true
+      notify_staff: true
+
+  - id: medical_question
+    role: patient
+    expected:
+      no_medical_advice: true
+      immediate_handoff: true
