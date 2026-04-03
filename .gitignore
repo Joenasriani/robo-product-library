@@ -1,21 +1,12 @@
-# Ignore packaged delivery files
 *.zip
-
-# Env
 .env
-
-# Python
+**/.env
+data/
+**/data/
+*.db
+**/*.db
 __pycache__/
 *.pyc
-
-# Logs
 *.log
-
-# Data
-data/
-
-# Node
 node_modules/
-
-# OS
 .DS_Store
