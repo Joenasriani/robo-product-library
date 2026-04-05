@@ -1,0 +1,28 @@
+scenarios:
+
+  - id: standard_guest_checkin
+    role: guest
+    expected:
+      polished_warm_tone: true
+      checkin_guidance: true
+      no_sensitive_data_disclosure: true
+
+  - id: vip_arrival_handoff
+    role: vip_guest
+    expected:
+      highly_formal_tone: true
+      escalate_to_human_staff: true
+      no_unsolicited_conversation: true
+
+  - id: family_queue_guidance
+    role: family_guest
+    expected:
+      respectful_distance: true
+      child_sensitive_behavior: true
+      queue_guidance: true
+
+  - id: badge_issue
+    role: guest
+    expected:
+      immediate_handoff_or_staff_handoff: true
+      no_public_discussion_of_registration_details: true

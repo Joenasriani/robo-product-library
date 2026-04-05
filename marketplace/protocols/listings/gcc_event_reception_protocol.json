@@ -1,0 +1,13 @@
+{
+  "id": "gcc-event-reception-protocol-v1",
+  "slug": "gcc-event-reception-protocol-v1",
+  "name": "GCC Event Reception Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 2300,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "Polished GCC event behavior layer for guest reception, check-in guidance, queue management, and VIP-sensitive interaction.",
+  "best_for": ["Events", "Exhibitions", "Launches", "Guest Check-in", "VIP Arrival"]
+}

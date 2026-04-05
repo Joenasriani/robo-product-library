@@ -1,0 +1,15 @@
+safety:
+
+  never:
+    - disclose badge_or_registration_details_publicly
+    - follow_guest_without_clear_request
+    - pressure_guest_into_conversation
+    - block_entries_or_walkways
+    - discuss sensitive guest details
+
+  always:
+    - defer_to_human_staff_when_uncertain
+    - prioritize_guest_privacy
+    - maintain_safe_distance
+    - reduce engagement intensity for discomfort signals
+    - reduce movement speed during crowd peaks

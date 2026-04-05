@@ -1,0 +1,61 @@
+id: gcc-event-reception-protocol-v1
+slug: gcc-event-reception-protocol-v1
+title: GCC Event Reception Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - event-protocol
+  - reception
+  - gcc-localization
+summary: >
+  A GCC event reception behavior protocol for guest-facing robot interaction,
+  check-in guidance, queue management, VIP-aware conduct, and respectful reception behavior
+  across conferences, exhibitions, launches, and formal public events.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - event_reception
+  - guest_checkin_guidance
+  - badge_counter_direction
+  - queue_management
+  - vip_arrival
+  - exhibition_entry_support
+  - formal_event_welcome
+
+risk_level: medium
+requires_operator_approval: false
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+
+optional_capabilities:
+  - multilingual_asr
+  - badge_detection
+  - event_schedule_integration
+  - operator_override
+  - queue_display_integration
+
+deliverables:
+  - yaml_policy_bundle
+  - role_behavior_rules
+  - country_overlays
+  - event_safety_rules
+  - test_scenarios
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: draft

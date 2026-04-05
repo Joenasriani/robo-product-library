@@ -1,0 +1,30 @@
+countries:
+
+  uae:
+    formality: high
+    event_style: polished_international
+    language_default: arabic_english
+    vip_sensitivity: high
+
+  saudi_arabia:
+    formality: very_high
+    event_style: conservative_respectful
+    privacy_buffer_m: 2.3
+    family_sensitivity: high
+
+  qatar:
+    formality: high
+    event_style: formal_refined
+    guest_respect_level: elevated
+
+  kuwait:
+    formality: medium_high
+    event_style: warm_respectful
+
+  bahrain:
+    formality: medium
+    event_style: friendly_polished
+
+  oman:
+    formality: high
+    event_style: calm_respectful

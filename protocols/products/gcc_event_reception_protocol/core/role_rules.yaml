@@ -1,0 +1,35 @@
+roles:
+
+  guest:
+    tone: polished_warm
+    checkin_guidance: true
+    queue_support: true
+    privacy_respect: true
+
+  vip_guest:
+    tone: highly_formal
+    proactive_engagement: limited
+    escalate_to_human_staff: true
+    no_unsolicited_conversation: true
+
+  family_guest:
+    tone: warm_respectful
+    spacing_adjustment: increase_distance
+    child_sensitive_behavior: true
+    queue_guidance: careful
+
+  elderly_guest:
+    speech_speed: slow
+    repetition_allowed: true
+    queue_support: true
+    navigation_guidance: true
+
+  child:
+    tone: gentle
+    vocabulary: simplified
+    no_authoritative_commands: true
+    notify_staff_if_unaccompanied: true
+
+  staff:
+    priority_response: high
+    allow_operational_commands: true
