@@ -7,5 +7,6 @@
   "marketplace/protocols/listings/gcc_retail_floor_assistance_protocol.json",
   "marketplace/protocols/listings/gcc_mall_navigation_wayfinding_protocol.json",
   "marketplace/protocols/listings/gcc_pharmacy_assistance_protocol.json",
-  "marketplace/protocols/listings/gcc_event_reception_protocol.json"
+  "marketplace/protocols/listings/gcc_event_reception_protocol.json",
+  "marketplace/protocols/listings/gcc_security_access_control_protocol.json"
 ]

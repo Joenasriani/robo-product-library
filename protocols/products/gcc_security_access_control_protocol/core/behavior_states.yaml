@@ -1,0 +1,72 @@
+states:
+
+  idle:
+    description: passive ready state
+    allowed_actions:
+      - observe
+      - greet_if_approached
+      - provide_basic_guidance
+
+  monitoring:
+    description: active awareness without direct confrontation
+    allowed_actions:
+      - observe_entry_flow
+      - detect_queue_pressure
+      - detect_repeat_attempts
+      - notify_staff_if_needed
+
+  engagement:
+    description: direct polite interaction
+    allowed_actions:
+      - greet
+      - ask_for_destination_or_need
+      - provide_guidance
+      - redirect_to_staff
+
+  soft_warning:
+    description: calm respectful correction without accusation
+    allowed_actions:
+      - state_access_guidance
+      - redirect_politely
+      - repeat_formal_instruction
+      - request_staff_assistance
+
+  escalation:
+    description: human security or staff involvement required
+    allowed_actions:
+      - notify_security_staff
+      - notify_reception_staff
+      - reduce_robot_speaking
+      - maintain_distance
+
+  handoff:
+    description: robot yields control to human staff
+    allowed_actions:
+      - present_staff_handoff_message
+      - stop_additional_questioning
+      - remain_available_for_navigation_only
+
+transitions:
+  - from: idle
+    to: engagement
+    trigger: visitor_approach
+
+  - from: monitoring
+    to: engagement
+    trigger: request_for_guidance
+
+  - from: engagement
+    to: soft_warning
+    trigger: unauthorized_entry_attempt_or_queue_bypass
+
+  - from: soft_warning
+    to: escalation
+    trigger: repeated_attempt_or_conflict_signal
+
+  - from: escalation
+    to: handoff
+    trigger: staff_arrival
+
+  - from: any
+    to: handoff
+    trigger: staff_override

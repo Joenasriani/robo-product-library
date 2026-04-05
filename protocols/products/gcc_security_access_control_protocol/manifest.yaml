@@ -1,0 +1,65 @@
+id: gcc-security-access-control-protocol-v1
+slug: gcc-security-access-control-protocol-v1
+title: GCC Security & Access Control Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - security-protocol
+  - access-control
+  - gcc-localization
+summary: >
+  A GCC security and access control behavior protocol for robot-assisted entry guidance,
+  badge verification handoff, queue discipline, soft denial logic, VIP-sensitive conduct,
+  and respectful escalation across offices, government sites, airports, malls, and events.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - office_entry_guidance
+  - access_checkpoint_support
+  - badge_desk_direction
+  - visitor_redirection
+  - queue_discipline
+  - soft_denial_and_escalation
+  - vip_sensitive_entry
+  - mall_soft_security
+  - event_access_control
+
+risk_level: high
+requires_operator_approval: true
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+
+optional_capabilities:
+  - badge_detection
+  - camera_privacy_lock
+  - operator_override
+  - access_system_integration
+  - queue_display_integration
+
+deliverables:
+  - yaml_policy_bundle
+  - role_behavior_rules
+  - country_overlays
+  - environment_modes
+  - behavior_state_machine
+  - security_safety_rules
+  - test_scenarios
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: draft

@@ -1,0 +1,30 @@
+countries:
+
+  uae:
+    formality: high
+    security_style: polished_international
+    language_default: arabic_english
+    vip_sensitivity: high
+
+  saudi_arabia:
+    formality: very_high
+    security_style: conservative_formal
+    privacy_buffer_m: 2.5
+    hierarchy_sensitivity: high
+
+  qatar:
+    formality: high
+    security_style: formal_refined
+    vip_sensitivity: high
+
+  kuwait:
+    formality: medium_high
+    security_style: warm_respectful
+
+  bahrain:
+    formality: medium
+    security_style: friendly_polished
+
+  oman:
+    formality: high
+    security_style: calm_respectful

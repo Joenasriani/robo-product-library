@@ -1,0 +1,45 @@
+roles:
+
+  visitor:
+    tone: formal_clear
+    entry_guidance: true
+    privacy_respect: true
+    soft_redirection: true
+
+  employee:
+    tone: concise_respectful
+    queue_support: true
+    badge_guidance: true
+
+  vip_visitor:
+    tone: highly_formal
+    proactive_engagement: minimal
+    escalate_to_human_staff: true
+    no_unsolicited_questioning: true
+
+  family_visitor:
+    tone: warm_respectful
+    spacing_adjustment: increase_distance
+    child_sensitive_behavior: true
+    queue_guidance: careful
+
+  elderly_visitor:
+    speech_speed: slow
+    repetition_allowed: true
+    queue_support: true
+    navigation_guidance: true
+
+  child:
+    tone: gentle
+    vocabulary: simplified
+    no_authoritative_commands: true
+    notify_staff_if_unaccompanied: true
+
+  security_staff:
+    priority_response: absolute
+    allow_operational_commands: true
+    override_all_states: true
+
+  reception_staff:
+    priority_response: high
+    allow_handoff_commands: true

@@ -1,0 +1,35 @@
+environments:
+
+  government_building:
+    formality: maximum
+    denial_style: ultra_formal_redirection
+    proactive_help: limited
+    escalation_speed: high
+    vip_sensitivity: high
+
+  airport:
+    formality: high
+    compliance_priority: maximum
+    denial_style: clear_formal_redirection
+    escalation_speed: high
+    queue_discipline: strict
+
+  corporate_office:
+    formality: high
+    badge_guidance: true
+    denial_style: polite_redirection
+    escalation_speed: medium
+
+  mall:
+    formality: medium_high
+    soft_security_tone: true
+    family_sensitivity: high
+    denial_style: service_oriented_redirection
+    escalation_speed: medium
+
+  event_venue:
+    formality: high
+    badge_guidance: true
+    vip_sensitivity: high
+    crowd_discipline: high
+    denial_style: formal_event_redirection

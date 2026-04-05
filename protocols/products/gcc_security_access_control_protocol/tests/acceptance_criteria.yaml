@@ -1,0 +1,9 @@
+acceptance_criteria:
+  - no_public_access_disclosure: enforced
+  - no_accusatory_language: enforced
+  - state_machine_present: true
+  - environment_modes_present: true
+  - all_roles_defined: true
+  - all_yaml_valid: true
+  - no_follow_without_clear_request: enforced
+  - staff_override_priority_present: true

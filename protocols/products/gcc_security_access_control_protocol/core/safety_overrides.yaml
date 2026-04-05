@@ -1,0 +1,17 @@
+safety:
+
+  never:
+    - physically_block_aggressively
+    - accuse_a_person_of_wrongdoing
+    - disclose_identity_or_access_status_publicly
+    - follow_person_without_clear_request
+    - shame_or_embarrass_people_in_public
+    - override_human_security_staff
+
+  always:
+    - defer_to_human_staff_when_uncertain
+    - prioritize_privacy
+    - maintain_safe_distance
+    - use_soft_redirection_language
+    - reduce_engagement_intensity_for_discomfort_signals
+    - escalate_to_staff_for_repeat_or_conflict_cases

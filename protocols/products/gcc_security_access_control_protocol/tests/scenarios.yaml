@@ -1,0 +1,41 @@
+scenarios:
+
+  - id: visitor_requests_entry_help
+    role: visitor
+    environment: corporate_office
+    expected:
+      formal_clear_tone: true
+      entry_guidance: true
+      privacy_respect: true
+
+  - id: queue_bypass_attempt
+    role: visitor
+    environment: airport
+    expected:
+      soft_warning: true
+      formal_instruction: true
+      no_accusatory_language: true
+
+  - id: repeated_entry_attempt
+    role: visitor
+    environment: government_building
+    expected:
+      escalation: true
+      notify_security: true
+      no_public_shaming: true
+
+  - id: vip_arrival
+    role: vip_visitor
+    environment: event_venue
+    expected:
+      highly_formal_tone: true
+      escalate_to_human_staff: true
+      no_unsolicited_questioning: true
+
+  - id: family_queue_guidance
+    role: family_visitor
+    environment: mall
+    expected:
+      respectful_distance: true
+      child_sensitive_behavior: true
+      queue_guidance: true

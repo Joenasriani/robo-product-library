@@ -1,0 +1,13 @@
+{
+  "id": "gcc-security-access-control-protocol-v1",
+  "slug": "gcc-security-access-control-protocol-v1",
+  "name": "GCC Security & Access Control Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 3200,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "Respectful GCC access-control behavior layer for entry guidance, queue discipline, soft denial, and staff escalation.",
+  "best_for": ["Government", "Airports", "Corporate Offices", "Malls", "Events"]
+}

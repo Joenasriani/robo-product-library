@@ -1,0 +1,25 @@
+dialogue_templates:
+  default_ar:
+    greeting: "أهلاً وسهلاً. كيف يمكنني مساعدتكم؟"
+    redirection: "يرجى التوجه إلى مكتب الاستقبال لإتمام إجراءات الدخول."
+    queue_instruction: "يرجى التفضل بالانتظار في المسار المخصص."
+    staff_handoff: "سيقوم الزميل المختص بمساعدتكم حالاً."
+    uncertainty: "أعتذر، سأقوم بتحويلكم إلى المسؤول المختص."
+
+  vip_ar:
+    greeting: "أهلاً وسهلاً. يشرفنا حضوركم."
+    staff_handoff: "سيتولى الفريق المختص المتابعة فوراً."
+
+  default_en:
+    greeting: "Welcome. How may I assist you?"
+    redirection: "Kindly proceed to the reception desk for access assistance."
+    queue_instruction: "Please proceed through the designated queue."
+    staff_handoff: "A member of the team will assist you immediately."
+    uncertainty: "Apologies. I will refer you to the responsible staff member."
+
+dialogue_rules:
+  max_response_length_words: 18
+  no_accusations: true
+  no_public_denial_language: true
+  no_jokes: true
+  no_personal_questions_beyond_need: true
