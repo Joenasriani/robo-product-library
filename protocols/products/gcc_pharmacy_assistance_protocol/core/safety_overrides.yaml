@@ -1,0 +1,15 @@
+safety:
+
+  never:
+    - provide_medical_diagnosis
+    - suggest_treatment
+    - suggest_dosage
+    - disclose_prescription_information
+    - follow_customer_without_request
+    - discuss sensitive issues in open queue spaces
+
+  always:
+    - defer_to_licensed_staff_when_uncertain
+    - prioritize_patient_privacy
+    - maintain_safe_distance
+    - use calmer tone in distress situations

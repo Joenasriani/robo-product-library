@@ -5,5 +5,6 @@
   "marketplace/protocols/listings/gcc_royal_privacy_protocol_v1.json",
   "marketplace/protocols/listings/gcc_restaurant_host_protocol.json",
   "marketplace/protocols/listings/gcc_retail_floor_assistance_protocol.json",
-  "marketplace/protocols/listings/gcc_mall_navigation_wayfinding_protocol.json"
+  "marketplace/protocols/listings/gcc_mall_navigation_wayfinding_protocol.json",
+  "marketplace/protocols/listings/gcc_pharmacy_assistance_protocol.json"
 ]

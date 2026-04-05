@@ -1,0 +1,58 @@
+id: gcc-pharmacy-assistance-protocol-v1
+slug: gcc-pharmacy-assistance-protocol-v1
+title: GCC Pharmacy Assistance Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+  - healthcare-protocol
+  - pharmacy-assistance
+  - gcc-localization
+summary: >
+  A GCC pharmacy assistance behavior protocol for customer-facing and patient-facing robot interaction,
+  queue guidance, prescription-counter etiquette, privacy-aware support, and safe escalation to licensed staff.
+
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+
+supported_use_cases:
+  - pharmacy_reception
+  - queue_guidance
+  - counter_direction_support
+  - otc_zone_navigation
+  - family_sensitive_assistance
+  - prescription_pickup_guidance
+
+risk_level: high
+requires_operator_approval: true
+human_supervision_required: true
+
+required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+
+optional_capabilities:
+  - multilingual_asr
+  - queue_display_integration
+  - store_directory_integration
+  - operator_override
+
+deliverables:
+  - yaml_policy_bundle
+  - role_behavior_rules
+  - country_overlays
+  - pharmacy_safety_rules
+  - test_scenarios
+  - compatibility_guide
+
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: draft

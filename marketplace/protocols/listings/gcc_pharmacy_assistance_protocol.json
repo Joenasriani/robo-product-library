@@ -1,0 +1,13 @@
+{
+  "id": "gcc-pharmacy-assistance-protocol-v1",
+  "slug": "gcc-pharmacy-assistance-protocol-v1",
+  "name": "GCC Pharmacy Assistance Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 2500,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquire",
+  "status": "draft",
+  "card_subtitle": "Privacy-first pharmacy behavior layer for queue guidance, counter support, and safe customer-facing assistance.",
+  "best_for": ["Pharmacies", "Queue Guidance", "Prescription Support", "OTC Navigation", "Family Assistance"]
+}

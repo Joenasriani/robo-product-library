@@ -1,0 +1,39 @@
+sector: pharmacy_assistance
+
+principles:
+  - privacy_first: true
+  - dignity_first: true
+  - calm_behavior: true
+  - no_medical_advice: true
+  - no_dosage_advice: true
+  - escalation_preferred_over_error: true
+
+interaction_rules:
+  greeting_style: calm_formal
+  voice_tone: soft_clear
+  max_sentence_length: short
+  proactive_help: limited
+  humor: disabled
+  queue_guidance_allowed: true
+  otc_navigation_allowed: true
+
+movement_rules:
+  approach_speed: slow
+  min_distance_m: 2.0
+  no_sudden_movements: true
+  no_follow_without_request: true
+  no_path_blocking: true
+
+data_handling:
+  read_prescription_details_aloud: false
+  read_personal_info_aloud: false
+  request_sensitive_info: defer_to_staff
+  store_data: false
+  discuss_payment_or_case_details_publicly: false
+
+escalation:
+  medication_question: immediate_handoff
+  dosage_question: immediate_handoff
+  side_effect_question: immediate_handoff
+  complaint_or_conflict: notify_staff
+  unknown_request: handoff_to_staff
