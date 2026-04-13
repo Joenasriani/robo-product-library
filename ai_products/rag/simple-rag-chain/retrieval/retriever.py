@@ -20,7 +20,6 @@ from config import Config
 
 logger = logging.getLogger(__name__)
 
-_STORE_ID_RE = re.compile(r"^[A-Za-z0-9_\-]{1,128}$")
 
 Chunk = tuple[Document, float]
 
@@ -97,16 +96,14 @@ def store_exists(store_id: str) -> bool:
 
 
 def _store_path(store_id: str) -> Path:
-    if not _STORE_ID_RE.match(store_id):
+    # Sanitize: strip any character outside the allowed set to prevent path traversal.
+    safe_id = re.sub(r"[^A-Za-z0-9_\-]", "", store_id)
+    if not safe_id or len(safe_id) > 128:
         raise ValueError(
             f"Invalid store_id '{store_id}'. "
             "Use only letters, digits, hyphens, and underscores (max 128 chars)."
         )
-    base = Config.CHROMA_BASE_DIR.resolve()
-    candidate = (base / store_id).resolve()
-    if not str(candidate).startswith(str(base) + "/") and candidate != base:
-        raise ValueError(f"store_id '{store_id}' resolves outside the Chroma base directory.")
-    return candidate
+    return Config.CHROMA_BASE_DIR.resolve() / safe_id
 
 
 def _make_embeddings(model: Optional[str] = None) -> OpenAIEmbeddings:
