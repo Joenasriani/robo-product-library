@@ -88,7 +88,8 @@ async def download_product(product_id: int, client=Depends(require_client)):
 
 
 @app.get("/api/v1/download/{product_id}/file")
-async def download_product_file(product_id: int, client=Depends(require_client)):
+@limiter.limit("20/minute")
+async def download_product_file(request: Request, product_id: int, client=Depends(require_client)):
     product = db.get_product(product_id)
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")

@@ -119,7 +119,36 @@ async function loadHistory() {
 }
 
 // API docs
-document.getElementById('apiDocs').innerHTML = ``;
+document.getElementById('apiDocs').innerHTML = `
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">POST /api/v1/monitoring/analyze — Run AI-powered tender opportunity research</div>
+  <div class="code-block">curl -X POST http://localhost:8007/api/v1/monitoring/analyze \\
+  -H "X-API-Key: YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+  "target_sectors": ["Construction", "IT Infrastructure", "Healthcare"],
+  "countries": ["UAE", "KSA", "Qatar"],
+  "keywords": ["robotics", "automation", "AI integration"],
+  "budget_range": "AED 500K - 5M",
+  "company_profile": "Robotics integrator with 8 years GCC experience",
+  "exclusion_keywords": ["oil", "gas"]
+}'</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /api/v1/monitoring/history — List analysis history</div>
+  <div class="code-block">curl http://localhost:8007/api/v1/monitoring/history \\
+  -H "X-API-Key: YOUR_API_KEY"</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /api/v1/account/me — Get account &amp; credit balance</div>
+  <div class="code-block">curl http://localhost:8007/api/v1/account/me \\
+  -H "X-API-Key: YOUR_API_KEY"</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /health — Health check (no auth)</div>
+  <div class="code-block">curl http://localhost:8007/health</div>
+</div>
+`;
 
 function actionColor(a) { return a==='pursue'?'badge-green':a==='monitor'?'badge-yellow':'badge-red'; }
 function scoreColor(s) { return s >= 70 ? 'green' : s >= 40 ? 'yellow' : 'red'; }
