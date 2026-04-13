@@ -1,7 +1,8 @@
 """retrieval.retriever — Chroma-backed indexing and retrieval.
 
-Each store is persisted on disk under:
-  <app_root>/.chroma/<store_id>/
+All collections share a single Chroma persist directory.
+The user-provided store_id is used only as a Chroma collection name (metadata),
+never as a filesystem path component.
 """
 
 import json
@@ -32,8 +33,8 @@ def index(
 ) -> Chroma:
     """Embed documents and write them into a persistent Chroma collection."""
     t0 = time.monotonic()
-    persist_dir = _store_path(store_id)
-    persist_dir.mkdir(parents=True, exist_ok=True)
+    collection_name = _validate_store_id(store_id)
+    persist_dir = _chroma_dir()
 
     embeddings = _make_embeddings(embedding_model)
 
@@ -42,7 +43,7 @@ def index(
             documents=documents,
             embedding=embeddings,
             persist_directory=str(persist_dir),
-            collection_name=store_id,
+            collection_name=collection_name,
         )
     except Exception as exc:
         _log_error("indexing", str(exc), traceback.format_exc())
@@ -58,16 +59,13 @@ def load_store(
     embedding_model: Optional[str] = None,
 ) -> Chroma:
     """Load an existing persistent Chroma store from disk."""
-    persist_dir = _store_path(store_id)
-    if not persist_dir.exists():
-        raise FileNotFoundError(
-            f"No Chroma store found for store_id='{store_id}' at {persist_dir}."
-        )
+    collection_name = _validate_store_id(store_id)
+    persist_dir = _chroma_dir()
     embeddings = _make_embeddings(embedding_model)
     return Chroma(
         persist_directory=str(persist_dir),
         embedding_function=embeddings,
-        collection_name=store_id,
+        collection_name=collection_name,
     )
 
 
@@ -89,23 +87,34 @@ def retrieve(
 
 
 def store_exists(store_id: str) -> bool:
-    """Return True if a persisted Chroma store exists for store_id."""
+    """Return True if a Chroma collection indexed under store_id has documents."""
     try:
-        return _store_path(store_id).exists()
-    except ValueError:
+        collection_name = _validate_store_id(store_id)
+        persist_dir = _chroma_dir()
+        if not persist_dir.exists():
+            return False
+        import chromadb
+        client = chromadb.PersistentClient(path=str(persist_dir))
+        names = [c.name for c in client.list_collections()]
+        return collection_name in names
+    except Exception:
         return False
 
 
-def _store_path(store_id: str) -> Path:
-    # Sanitize: use os.path.basename to strip directory separators, then strip any
-    # remaining characters outside the allowed set (alphanumeric, hyphen, underscore).
-    safe_id = os.path.basename(re.sub(r"[^A-Za-z0-9_\-]", "", store_id))
+def _validate_store_id(store_id: str) -> str:
+    """Validate and return a safe store_id used only as a Chroma collection name."""
+    import os as _os
+    safe_id = _os.path.basename(re.sub(r"[^A-Za-z0-9_\-]", "", store_id))
     if not safe_id or len(safe_id) > 128:
-        raise ValueError(
-            f"Invalid store_id '{store_id}'. "
-            "Use only letters, digits, hyphens, and underscores (max 128 chars)."
-        )
-    return Config.CHROMA_BASE_DIR.resolve() / safe_id
+        raise ValueError(f"Invalid store_id '{store_id}'.")
+    return safe_id
+
+
+def _chroma_dir() -> Path:
+    """Return the fixed Chroma persist directory — not derived from user input."""
+    path = Config.CHROMA_BASE_DIR.resolve()
+    path.mkdir(parents=True, exist_ok=True)
+    return path
 
 
 def _make_embeddings(model: Optional[str] = None) -> OpenAIEmbeddings:
