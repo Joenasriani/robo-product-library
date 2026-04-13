@@ -1,56 +1,230 @@
-const apiKeyInput = document.getElementById('apiKey');
-const accountOutput = document.getElementById('accountOutput');
-const resultOutput = document.getElementById('resultOutput');
+// --- Utilities ---
+function getApiKey() { return document.getElementById('apiKey').value.trim(); }
+
+function showSection(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function setLoading(btn, loading) {
+  btn.disabled = loading;
+  btn.classList.toggle('loading', loading);
+}
+
+function showAlert(el, msg, type='error') {
+  el.className = 'alert show alert-' + type;
+  el.textContent = msg;
+}
+function hideAlert(el) { el.className = 'alert'; el.textContent = ''; }
 
 async function apiFetch(url, options = {}) {
   const headers = options.headers || {};
-  const key = apiKeyInput.value.trim();
+  const key = getApiKey();
   if (key) headers['X-API-Key'] = key;
   options.headers = headers;
-  const response = await fetch(url, options);
-  const text = await response.text();
-  try { return { ok: response.ok, data: JSON.parse(text) }; }
-  catch { return { ok: response.ok, data: text }; }
+  try {
+    const res = await fetch(url, options);
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); } catch { data = text; }
+    return { ok: res.ok, status: res.status, data };
+  } catch(e) {
+    return { ok: false, status: 0, data: { detail: 'Network error: ' + e.message } };
+  }
 }
 
+function updateCreditsDisplay(remaining) {
+  const badge = document.getElementById('creditsBadge');
+  const count = document.getElementById('creditsCount');
+  badge.style.display = 'inline-flex';
+  count.textContent = remaining;
+  badge.className = 'credit-badge' + (remaining < 5 ? ' low' : '');
+}
+
+// --- Score rendering ---
+function scoreColor(score) {
+  if (score >= 70) return 'green';
+  if (score >= 40) return 'yellow';
+  return 'red';
+}
+function actionBadgeClass(action) {
+  if (action === 'pursue') return 'badge-green';
+  if (action === 'review') return 'badge-yellow';
+  return 'badge-red';
+}
+function riskBadgeClass(risk) {
+  if (risk === 'low') return 'badge-green';
+  if (risk === 'medium') return 'badge-yellow';
+  return 'badge-red';
+}
+
+function renderResult(item) {
+  const a = item.analysis || item;
+  const sc = scoreColor(a.score);
+  const reqs = (a.key_requirements || []).map(r => `<li>${r}</li>`).join('');
+  const cr = item.credits_remaining != null ? item.credits_remaining : (a.credits_remaining != null ? a.credits_remaining : null);
+  return `
+  <div class="result-card">
+    <div class="result-header">
+      <div>
+        <div class="result-title">${item.id || 'Analysis Result'}</div>
+        <div class="result-meta" style="margin-top:6px">
+          <span class="badge ${actionBadgeClass(a.recommended_action)}">⚡ ${a.recommended_action?.toUpperCase()}</span>
+          <span class="badge ${riskBadgeClass(a.risk_level)}">Risk: ${a.risk_level}</span>
+          <span class="badge badge-blue">Confidence: ${Math.round((a.confidence_score||0)*100)}%</span>
+        </div>
+      </div>
+      <div class="score-section">
+        <div>
+          <div class="score-num" style="color:var(--${sc === 'green' ? 'success' : sc === 'yellow' ? 'warning' : 'danger'})">${a.score}</div>
+          <div class="score-label">/ 100</div>
+        </div>
+      </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar ${sc}" style="width:${a.score}%"></div></div>
+    <div class="result-section">
+      <div class="result-section-title">Summary</div>
+      <div class="result-text">${a.summary}</div>
+    </div>
+    ${reqs ? `<div class="result-section"><div class="result-section-title">Key Requirements</div><ul class="req-list">${reqs}</ul></div>` : ''}
+    <div class="result-section">
+      <div class="result-section-title">Reasoning</div>
+      <div class="result-text">${a.reasoning}</div>
+    </div>
+    ${cr != null ? `<div class="credits-note">⚡ ${cr} credits remaining</div>` : ''}
+  </div>`;
+}
+
+// --- Account ---
 document.getElementById('loadAccount').addEventListener('click', async () => {
+  const btn = document.getElementById('loadAccount');
+  const alertEl = document.getElementById('accountAlert');
+  setLoading(btn, true);
+  hideAlert(alertEl);
   const res = await apiFetch('/api/v1/account/me');
-  accountOutput.textContent = JSON.stringify(res.data, null, 2);
+  setLoading(btn, false);
+  if (!res.ok) { showAlert(alertEl, res.data?.detail || 'Failed to load account'); return; }
+  const c = res.data.client;
+  document.getElementById('accCredits').textContent = c.credits_remaining;
+  document.getElementById('accPlan').textContent = c.plan;
+  document.getElementById('accTotal').textContent = c.credits_total;
+  document.getElementById('accUsed').textContent = c.credits_used;
+  document.getElementById('accName').textContent = c.name;
+  document.getElementById('accountInfo').style.display = 'block';
+  updateCreditsDisplay(c.credits_remaining);
 });
 
+// --- Analyze text ---
 document.getElementById('analyzeBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('analyzeBtn');
+  const alertEl = document.getElementById('analyzeAlert');
+  hideAlert(alertEl);
   const payload = {
     id: `manual-${Date.now()}`,
-    title: document.getElementById('title').value || 'Untitled tender',
-    issuer: document.getElementById('issuer').value || 'Unknown issuer',
+    title: document.getElementById('title').value || 'Untitled Tender',
+    issuer: document.getElementById('issuer').value || 'Unknown Issuer',
     country: document.getElementById('country').value || 'GCC',
     sector: document.getElementById('sector').value || '',
     description: document.getElementById('description').value || ''
   };
+  if (!payload.description) { showAlert(alertEl, 'Please enter a tender description.'); return; }
+  setLoading(btn, true);
   const res = await apiFetch('/api/v1/tenders/analyze', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
-  resultOutput.textContent = JSON.stringify(res.data, null, 2);
+  setLoading(btn, false);
+  if (!res.ok) {
+    const msg = res.status === 402 ? '⚡ Insufficient credits — please top up your account.' : (res.data?.detail || 'Analysis failed.');
+    showAlert(alertEl, msg, res.status === 402 ? 'info' : 'error');
+    return;
+  }
+  const items = Array.isArray(res.data) ? res.data : [res.data];
+  const container = document.getElementById('resultContainer');
+  container.style.display = 'block';
+  container.innerHTML = '<h2 style="font-size:16px;font-weight:600;margin-bottom:4px">Analysis Results</h2>' + items.map(renderResult).join('');
+  if (items[0]?.credits_remaining != null) updateCreditsDisplay(items[0].credits_remaining);
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
+// --- Upload PDF ---
 document.getElementById('uploadBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('uploadBtn');
+  const alertEl = document.getElementById('uploadAlert');
+  hideAlert(alertEl);
   const file = document.getElementById('pdfFile').files[0];
-  if (!file) { resultOutput.textContent = 'Choose a file first.'; return; }
+  if (!file) { showAlert(alertEl, 'Please select a file first.'); return; }
+  setLoading(btn, true);
   const form = new FormData();
   form.append('file', file);
   form.append('title', document.getElementById('pdfTitle').value);
   form.append('issuer', document.getElementById('pdfIssuer').value);
   form.append('country', document.getElementById('pdfCountry').value || 'GCC');
   form.append('sector', document.getElementById('pdfSector').value);
-  const key = apiKeyInput.value.trim();
+  const key = getApiKey();
   const res = await fetch('/api/v1/tenders/analyze-file', {
     method: 'POST',
     headers: key ? { 'X-API-Key': key } : {},
     body: form
-  });
-  const text = await res.text();
-  try { resultOutput.textContent = JSON.stringify(JSON.parse(text), null, 2); }
-  catch { resultOutput.textContent = text; }
+  }).then(async r => {
+    const t = await r.text();
+    let d; try { d = JSON.parse(t); } catch { d = t; }
+    return { ok: r.ok, status: r.status, data: d };
+  }).catch(e => ({ ok: false, status: 0, data: { detail: e.message } }));
+  setLoading(btn, false);
+  if (!res.ok) {
+    const msg = res.status === 402 ? '⚡ Insufficient credits — please top up your account.' : (res.data?.detail || 'Upload failed.');
+    showAlert(alertEl, msg, res.status === 402 ? 'info' : 'error');
+    return;
+  }
+  const items = Array.isArray(res.data) ? res.data : [res.data];
+  const container = document.getElementById('resultContainer');
+  container.style.display = 'block';
+  container.innerHTML = '<h2 style="font-size:16px;font-weight:600;margin-bottom:4px">Analysis Results</h2>' + items.map(renderResult).join('');
+  if (items[0]?.credits_remaining != null) updateCreditsDisplay(items[0].credits_remaining);
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
+
+// --- History ---
+document.getElementById('loadHistoryBtn').addEventListener('click', loadHistory);
+async function loadHistory() {
+  const btn = document.getElementById('loadHistoryBtn');
+  const alertEl = document.getElementById('historyAlert');
+  const list = document.getElementById('historyList');
+  hideAlert(alertEl);
+  if (!getApiKey()) { showAlert(alertEl, 'Enter your API key first.'); return; }
+  setLoading(btn, true);
+  const res = await apiFetch('/api/v1/tenders/history');
+  setLoading(btn, false);
+  if (!res.ok) { showAlert(alertEl, res.data?.detail || 'Failed to load history'); return; }
+  const items = res.data;
+  if (!items.length) { list.innerHTML = '<div class="empty-state"><p>No analysis history yet. Run your first analysis!</p></div>'; return; }
+  list.innerHTML = items.map(item => {
+    const a = item.analysis?.analysis || item.analysis || {};
+    const sc = scoreColor(a.score || 0);
+    return `<div class="history-item" onclick="showHistoryDetail(${JSON.stringify(JSON.stringify(item))})">
+      <div>
+        <div class="history-title">${item.tender_title || item.tender_id}</div>
+        <div class="history-meta">${item.created_at?.substring(0,10) || ''} · Score: ${a.score || '?'} · ${a.recommended_action || '?'}</div>
+      </div>
+      <div class="badge ${actionBadgeClass(a.recommended_action)}">${a.recommended_action?.toUpperCase() || '?'}</div>
+    </div>`;
+  }).join('');
+}
+
+function showHistoryDetail(jsonStr) {
+  const item = JSON.parse(jsonStr);
+  const analysis = item.analysis;
+  // Normalize — history stores full TenderAnalysisResult
+  const toRender = analysis?.analysis ? { id: item.tender_id, ...analysis } : { id: item.tender_id, analysis: analysis };
+  const container = document.getElementById('resultContainer');
+  container.style.display = 'block';
+  container.innerHTML = '<h2 style="font-size:16px;font-weight:600;margin-bottom:4px">History Detail</h2>' + renderResult(toRender);
+  document.getElementById('section-analyze').classList.add('active');
+  document.getElementById('section-history').classList.remove('active');
+  document.querySelectorAll('.nav-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  container.scrollIntoView({ behavior: 'smooth' });
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robot Demo Video Generator | RoboMarket</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">Robo<span>Market</span></div>
+    <nav class="nav">
+      <button class="nav-btn active" onclick="showSection('analyze', this)">Analyze</button>
+      <button class="nav-btn" onclick="showSection('history', this)">History</button>
+      <button class="nav-btn" onclick="showSection('api', this)">API Docs</button>
+    </nav>
+    <div id="creditsBadge" class="credit-badge" style="display:none">⚡ <span id="creditsCount">—</span> credits</div>
+  </div>
+</header>
+<main class="container">
+  <div class="hero">
+    <p class="eyebrow">AI Video Production</p>
+    <h1>Robot Demo Video Generator</h1>
+    <p class="lead">Generate storyboards, scene plans, and AI image prompt packs for robot demo videos.</p>
+  </div>
+
+  <div id="section-analyze" class="section active">
+    <div class="grid2">
+      <div class="card">
+        <h2>Account</h2>
+        <label>API Key</label>
+        <input id="apiKey" type="password" placeholder="Paste your X-API-Key" />
+        <button class="btn btn-secondary" id="loadAccount">
+          <span class="spinner dark"></span>
+          <span class="btn-text">Load Account</span>
+        </button>
+        <div id="accountInfo" style="display:none;margin-top:16px">
+          <div class="account-grid">
+            <div class="stat-box"><div class="stat-label">Credits Remaining</div><div class="stat-value" id="accCredits">—</div></div>
+            <div class="stat-box"><div class="stat-label">Plan</div><div class="stat-value" id="accPlan" style="font-size:16px;margin-top:6px">—</div></div>
+            <div class="stat-box"><div class="stat-label">Total Credits</div><div class="stat-value" id="accTotal">—</div></div>
+            <div class="stat-box"><div class="stat-label">Used</div><div class="stat-value" id="accUsed">—</div></div>
+          </div>
+          <div style="margin-top:10px;font-size:13px;color:var(--muted)">Logged in as <strong id="accName">—</strong></div>
+        </div>
+        <div id="accountAlert" class="alert"></div>
+      </div>
+      <div class="card">
+        <h2>Generate Video Storyboard</h2>
+        <label>Robot Name *</label>
+        <input id="robotName" placeholder="e.g. ROBO-1 Concierge" />
+        <label>Robot Type *</label>
+        <input id="robotType" placeholder="e.g. Humanoid service robot" />
+        <label>Features (one per line) *</label>
+        <textarea id="featureList" rows="4" placeholder="Face recognition&#10;Multilingual speech&#10;Obstacle avoidance&#10;Digital signage integration"></textarea>
+        <label>Visual Style</label>
+        <input id="visualStyle" placeholder="professional corporate" value="professional corporate" />
+        <label>Target Duration (seconds)</label>
+        <input id="duration" type="number" placeholder="90" value="90" />
+        <label>Target Audience</label>
+        <input id="audience" placeholder="enterprise buyers" value="enterprise buyers" />
+        <label>Use Case</label>
+        <input id="useCase" placeholder="Hotel lobby, mall wayfinding..." />
+        <button class="btn btn-primary" id="analyzeBtn">
+          <span class="spinner"></span>
+          <span class="btn-text">Generate Storyboard →</span>
+        </button>
+        <div id="analyzeAlert" class="alert"></div>
+      </div>
+    </div>
+    <div id="resultContainer" style="display:none;margin-top:20px"></div>
+    
+  </div>
+
+  <div id="section-history" class="section">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2>Analysis History</h2>
+        <button class="btn btn-secondary" id="loadHistoryBtn" style="width:auto;margin:0">
+          <span class="spinner dark"></span>
+          <span class="btn-text">Refresh</span>
+        </button>
+      </div>
+      <div id="historyAlert" class="alert"></div>
+      <div id="historyList" style="margin-top:16px">
+        <div class="empty-state">🔑 Enter your API key and click Refresh to load history.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="section-api" class="section">
+    <div class="card">
+      <h2>API Reference</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:20px">Auth: <code>X-API-Key</code> header</p>
+      <div id="apiDocs"></div>
+    </div>
+  </div>
+</main>
+<script src="/assets/app.js"></script>
+
+</body>
+</html>

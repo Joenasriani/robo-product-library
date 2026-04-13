@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enterprise RFP Response Assistant | RoboMarket</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">Robo<span>Market</span></div>
+    <nav class="nav">
+      <button class="nav-btn active" onclick="showSection('analyze', this)">Analyze</button>
+      <button class="nav-btn" onclick="showSection('history', this)">History</button>
+      <button class="nav-btn" onclick="showSection('api', this)">API Docs</button>
+    </nav>
+    <div id="creditsBadge" class="credit-badge" style="display:none">⚡ <span id="creditsCount">—</span> credits</div>
+  </div>
+</header>
+<main class="container">
+  <div class="hero">
+    <p class="eyebrow">AI-Powered Bid Management</p>
+    <h1>RFP Response Assistant</h1>
+    <p class="lead">Parse RFP documents, extract requirements, and generate structured response frameworks for enterprise bids.</p>
+  </div>
+
+  <div id="section-analyze" class="section active">
+    <div class="grid2">
+      <div class="card">
+        <h2>Account</h2>
+        <label>API Key</label>
+        <input id="apiKey" type="password" placeholder="Paste your X-API-Key" />
+        <button class="btn btn-secondary" id="loadAccount">
+          <span class="spinner dark"></span>
+          <span class="btn-text">Load Account</span>
+        </button>
+        <div id="accountInfo" style="display:none;margin-top:16px">
+          <div class="account-grid">
+            <div class="stat-box"><div class="stat-label">Credits Remaining</div><div class="stat-value" id="accCredits">—</div></div>
+            <div class="stat-box"><div class="stat-label">Plan</div><div class="stat-value" id="accPlan" style="font-size:16px;margin-top:6px">—</div></div>
+            <div class="stat-box"><div class="stat-label">Total Credits</div><div class="stat-value" id="accTotal">—</div></div>
+            <div class="stat-box"><div class="stat-label">Used</div><div class="stat-value" id="accUsed">—</div></div>
+          </div>
+          <div style="margin-top:10px;font-size:13px;color:var(--muted)">Logged in as <strong id="accName">—</strong></div>
+        </div>
+        <div id="accountAlert" class="alert"></div>
+      </div>
+      <div class="card">
+        <h2>Analyze RFP</h2>
+        <label>RFP ID *</label>
+        <input id="rfpId" placeholder="e.g. RFP-2024-001" />
+        <label>Your Company Name *</label>
+        <input id="companyName" placeholder="e.g. TechSolutions ME" />
+        <label>Company Capabilities *</label>
+        <textarea id="capabilities" rows="4" placeholder="Describe your company's capabilities and expertise..."></textarea>
+        <label>Submission Deadline</label>
+        <input id="deadline" placeholder="e.g. 2024-03-31" />
+        <label>RFP Text *</label>
+        <textarea id="rfpText" rows="8" placeholder="Paste the full RFP text here..."></textarea>
+        <button class="btn btn-primary" id="analyzeBtn">
+          <span class="spinner"></span>
+          <span class="btn-text">Analyze RFP →</span>
+        </button>
+        <div id="analyzeAlert" class="alert"></div>
+      </div>
+    </div>
+    <div id="resultContainer" style="display:none;margin-top:20px"></div>
+    <div class="card" style="margin-top:20px">
+      <h2>Upload RFP File</h2>
+      <div class="grid2">
+        <div>
+          <label>Your Company Name *</label>
+          <input id="fileCompanyName" placeholder="Your company name" />
+          <label>Submission Deadline</label>
+          <input id="fileDeadline" placeholder="e.g. 2024-03-31" />
+        </div>
+        <div>
+          <label>Your Capabilities *</label>
+          <textarea id="fileCapabilities" rows="4" placeholder="Your company capabilities..."></textarea>
+        </div>
+      </div>
+      <label>RFP File (PDF or TXT)</label>
+      <input id="rfpFile" type="file" accept=".pdf,.txt" />
+      <button class="btn btn-primary" id="uploadBtn" style="max-width:220px">
+        <span class="spinner"></span>
+        <span class="btn-text">Upload & Analyze →</span>
+      </button>
+      <div id="uploadAlert" class="alert"></div>
+    </div>
+  </div>
+
+  <div id="section-history" class="section">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2>Analysis History</h2>
+        <button class="btn btn-secondary" id="loadHistoryBtn" style="width:auto;margin:0">
+          <span class="spinner dark"></span>
+          <span class="btn-text">Refresh</span>
+        </button>
+      </div>
+      <div id="historyAlert" class="alert"></div>
+      <div id="historyList" style="margin-top:16px">
+        <div class="empty-state">🔑 Enter your API key and click Refresh to load history.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="section-api" class="section">
+    <div class="card">
+      <h2>API Reference</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:20px">Auth: <code>X-API-Key</code> header</p>
+      <div id="apiDocs"></div>
+    </div>
+  </div>
+</main>
+<script src="/assets/app.js"></script>
+
+</body>
+</html>

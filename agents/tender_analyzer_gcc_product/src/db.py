@@ -52,6 +52,17 @@ def init_db():
             created_at TEXT NOT NULL
         )
     """)
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS analysis_history (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            client_id INTEGER NOT NULL,
+            tender_id TEXT NOT NULL,
+            tender_title TEXT NOT NULL,
+            analysis_json TEXT NOT NULL,
+            credits_used INTEGER NOT NULL DEFAULT 1,
+            created_at TEXT NOT NULL
+        )
+    """)
     conn.commit()
     conn.close()
 
@@ -141,3 +152,35 @@ def deduct_credit(client_id, amount=1):
     updated = cur.fetchone()
     conn.close()
     return row_to_public(updated)
+
+def save_analysis(client_id, tender_id, tender_title, analysis_dict):
+    import json
+    conn = _connect()
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO analysis_history (client_id, tender_id, tender_title, analysis_json, credits_used, created_at) VALUES (?, ?, ?, ?, 1, ?)",
+        (client_id, tender_id, tender_title, json.dumps(analysis_dict), datetime.utcnow().isoformat())
+    )
+    conn.commit()
+    conn.close()
+
+def get_history(client_id, limit=50):
+    import json
+    conn = _connect()
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT id, tender_id, tender_title, analysis_json, created_at FROM analysis_history WHERE client_id = ? ORDER BY id DESC LIMIT ?",
+        (client_id, limit)
+    )
+    rows = cur.fetchall()
+    conn.close()
+    return [
+        {
+            "id": r["id"],
+            "tender_id": r["tender_id"],
+            "tender_title": r["tender_title"],
+            "analysis": json.loads(r["analysis_json"]),
+            "created_at": r["created_at"],
+        }
+        for r in rows
+    ]

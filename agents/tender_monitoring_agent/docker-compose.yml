@@ -1,0 +1,11 @@
+services:
+  tender-monitoring-agent:
+    build: .
+    container_name: tender-monitoring-agent
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8007}:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data

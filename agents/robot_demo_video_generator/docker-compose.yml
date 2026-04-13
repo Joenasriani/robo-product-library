@@ -1,0 +1,11 @@
+services:
+  robot-demo-video-generator:
+    build: .
+    container_name: robot-demo-video-generator
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8005}:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data

@@ -13,38 +13,85 @@ Status legend:
 - Status: testing
 - Priority: high
 - Folder: agents/tender_analyzer_gcc_product
+- Port: 8000
 - Purpose: Evaluate GCC tenders from text or uploaded files
-- Uses skills:
-  - structured JSON output
-  - schema enforcement
-  - self-check loop
-  - task decomposition
-  - grounding
+- Features: multi-provider LLM, PDF upload, credit system, admin panel, analysis history, Stripe billing
 
-2. Protocol Marketplace Agent
+2. Sales Outreach Agent
 - Type: Agent
-- Status: planned
-- Priority: high
-- Folder: agents/protocol_marketplace_agent
-- Purpose: Browse, package, sell, and deliver robot protocol packs
-
-3. AI Agent Download Center
-- Type: Agent
-- Status: planned
-- Priority: high
-- Folder: agents/ai_agent_download_center
-- Purpose: Deliver downloadable AI agents through entitlement-based access
-
-4. Sales Outreach Agent
-- Type: Agent
-- Status: planned
+- Status: testing
 - Priority: high
 - Folder: agents/sales_outreach_agent
-- Purpose: Research leads and generate tailored outreach sequences
+- Port: 8001
+- Purpose: Research leads and generate tailored B2B outreach sequences for GCC/Middle East
 
-5. GCC Localization Packs
+3. Lead Research Agent
+- Type: Agent
+- Status: testing
+- Priority: high
+- Folder: agents/lead_research_agent
+- Port: 8002
+- Purpose: Research target companies, classify opportunities, and prepare structured lead intelligence
+
+4. Enterprise RFP Response Assistant
+- Type: Agent
+- Status: testing
+- Priority: high
+- Folder: agents/enterprise_rfp_response_assistant
+- Port: 8003
+- Purpose: Parse RFP documents, extract requirements, and generate structured response sections
+
+5. Social Content Ops Agent
+- Type: Agent
+- Status: testing
+- Priority: high
+- Folder: agents/social_content_ops_agent
+- Port: 8004
+- Purpose: Generate social media content calendars, post concepts, and captions for GCC brands
+
+6. Robot Demo Video Generator
+- Type: Agent
+- Status: testing
+- Priority: medium
+- Folder: agents/robot_demo_video_generator
+- Port: 8005
+- Purpose: Generate storyboards, scene plans, and AI image prompt packs for robot demo videos
+
+7. Claw Hub Installer Agent
+- Type: Agent
+- Status: testing
+- Priority: medium
+- Folder: agents/claw_hub_installer_agent
+- Port: 8006
+- Purpose: Guide installation and setup for robotics platforms with compatibility checks
+
+8. Tender Monitoring Agent
+- Type: Agent
+- Status: testing
+- Priority: medium
+- Folder: agents/tender_monitoring_agent
+- Port: 8007
+- Purpose: Monitor tender opportunities, match to company criteria, generate prioritized alert reports
+
+9. AI Agent Download Center
+- Type: Agent
+- Status: testing
+- Priority: high
+- Folder: agents/ai_agent_download_center
+- Port: 8008
+- Purpose: Entitlement-based download center for AI agent products; catalog, access control, delivery
+
+10. Protocol Marketplace Agent
+- Type: Agent
+- Status: testing
+- Priority: very_high
+- Folder: agents/protocol_marketplace_agent
+- Port: 8009
+- Purpose: Full marketplace for robot behavior protocol packs — catalog, inquiry, purchase, delivery
+
+11. GCC Localization Packs
 - Type: Protocol
-- Status: planned
+- Status: ready
 - Priority: high
 - Folder: protocols/gcc_localization_packs
 - Countries:
@@ -56,7 +103,7 @@ Status legend:
   - oman
 - Purpose: Cultural, etiquette, privacy, and interaction logic for robot deployment in GCC contexts
 
-6. Core Skill Library
+12. Core Skill Library
 - Type: Skills
 - Status: active
 - Priority: high
@@ -72,9 +119,9 @@ Status legend:
   - business
 - Purpose: Reusable AI building blocks for all agents and protocol systems
 
-Next build priorities:
-1. Upgrade Tender Analyzer GCC using skill modules
-2. Define RULES.yaml in detail for UAE and Saudi packs
-3. Build AI Agent Download Center delivery flow
-4. Build Protocol Marketplace product logic
-5. Build Sales Outreach Agent specification in depth
+Next priorities:
+1. Connect Stripe payment to each agent's billing flow
+2. Wire Protocol Marketplace to actual downloadable files in protocols/products/
+3. Add CI/CD pipeline configuration
+4. Add automated test suites for each agent
+5. Deploy to RoboMarket production infrastructure

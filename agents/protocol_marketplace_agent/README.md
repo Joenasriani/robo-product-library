@@ -1,17 +1,15 @@
 # Protocol Marketplace Agent
 
-Status: specification
+> **Status:** testing
 
-Purpose:
-Turn robot protocol packs into real sellable digital products inside RoboMarket.
+## Overview
+Full marketplace for robot behavior protocol packs. Browse, inquire, purchase, and receive delivery of GCC robot protocols.
 
-What this agent manages:
-- protocol product listings
-- protocol metadata
-- pricing
-- entitlement checks
-- post-purchase delivery
-- buyer access rules
+## Features
+- Protocol product catalog with real GCC protocol data
+- Inquiry system (buyer submits inquiry, admin reviews)
+- Entitlement & delivery system
+- Admin panel for managing products and approving inquiries
 
-Core rule:
-No protocol may be listed for sale unless it has real downloadable assets and a real delivery path.
+## Port
+Default: `8009`
