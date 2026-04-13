@@ -2,6 +2,7 @@
 
 import json
 import logging
+import os
 import re
 import time
 import traceback
@@ -108,8 +109,9 @@ def make_retrieval_tool(store: Chroma, k: int = Config.RETRIEVAL_K) -> Tool:
 
 
 def _store_path(store_id: str) -> Path:
-    # Sanitize: strip any character outside the allowed set to prevent path traversal.
-    safe_id = re.sub(r"[^A-Za-z0-9_\-]", "", store_id)
+    # Sanitize: use os.path.basename to strip directory separators, then strip any
+    # remaining characters outside the allowed set (alphanumeric, hyphen, underscore).
+    safe_id = os.path.basename(re.sub(r"[^A-Za-z0-9_\-]", "", store_id))
     if not safe_id or len(safe_id) > 128:
         raise ValueError(f"Invalid store_id '{store_id}'.")
     return Config.CHROMA_BASE_DIR.resolve() / safe_id
