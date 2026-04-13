@@ -1,0 +1,38 @@
+RoboMarket API Documentation Excerpts
+======================================
+
+## Overview
+The RoboMarket Platform API (v2) provides programmatic access to product listings,
+orders, inventory, and supplier data. All endpoints use HTTPS and require OAuth 2.0
+bearer tokens.
+
+Base URL: https://api.robomarket.io/v2
+
+## Authentication
+Obtain an access token via the OAuth 2.0 client credentials flow:
+
+POST https://auth.robomarket.io/oauth/token
+grant_type=client_credentials&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET
+
+Tokens expire after 3600 seconds. Include in all requests:
+Authorization: Bearer <access_token>
+
+## Rate Limits
+- Standard: 1,000 req/min, 100,000 req/day
+- Professional: 5,000 req/min, 1,000,000 req/day
+- Enterprise: 10,000 req/min, unlimited daily
+
+## Products API
+GET /products — List products with optional filters (category, brand, min_price, max_price, in_stock)
+GET /products/{sku} — Full product details including specs, pricing, stock levels
+
+## Orders API
+POST /orders — Create order with items and shipping address
+GET /orders/{order_id} — Order status: pending, confirmed, shipped, delivered, cancelled
+
+## Error Codes
+400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 429 Too Many Requests
+
+## SDKs
+Python: pip install robomarket-sdk
+JavaScript: npm install @robomarket/sdk

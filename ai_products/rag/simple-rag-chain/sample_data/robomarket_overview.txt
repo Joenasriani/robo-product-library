@@ -1,0 +1,46 @@
+RoboMarket Platform Overview
+============================
+
+RoboMarket is an AI-powered B2B marketplace that connects buyers and sellers of industrial
+robots, collaborative robots (cobots), robotic components, and automation systems. The
+platform serves manufacturers, system integrators, distributors, and research institutions
+across North America, Europe, and Asia-Pacific.
+
+Key Platform Features
+---------------------
+
+1. Intelligent Product Catalog
+   The catalog contains over 50,000 SKUs spanning six main categories:
+   - Industrial robots (6-axis, SCARA, delta, Cartesian)
+   - Collaborative robots (cobots) rated for human-robot interaction
+   - End-of-arm tooling (grippers, welding torches, vision systems)
+   - Motion controllers and servo drives
+   - Safety systems (light curtains, safety PLCs, force-torque sensors)
+   - Spare parts and consumables
+
+2. AI-Assisted Sourcing
+   Buyers submit a specification sheet or natural-language description of their
+   automation task. The platform's RAG-powered sourcing engine matches requirements to
+   products, retrieves relevant technical datasheets, and generates a ranked shortlist
+   with justification drawn directly from supplier documentation.
+
+3. Supplier Verification
+   All suppliers undergo a three-stage verification: legal entity check, product
+   authenticity audit, and reference customer validation.
+
+4. RFQ and Negotiation Workflow
+   Qualified buyers can send Requests for Quotation (RFQs) directly through the platform.
+
+5. Integration APIs
+   RoboMarket exposes REST and GraphQL APIs for product catalog search, order management,
+   and supplier rating aggregation.
+
+Supported Robot Brands
+-----------------------
+FANUC, KUKA, ABB, Yaskawa, Universal Robots, AUBO, Doosan, Techman Robot, Franka Emika,
+and over 200 additional regional and niche manufacturers.
+
+Pricing Model
+-------------
+RoboMarket operates on a transaction-fee model. Suppliers pay a tiered listing fee and
+a 1.5-3.5% transaction fee on completed orders.

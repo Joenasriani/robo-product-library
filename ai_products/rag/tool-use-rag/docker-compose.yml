@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  tool-use-rag:
+    build: .
+    ports:
+      - "8502:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o-mini}
+      - OPENAI_EMBEDDING_MODEL=${OPENAI_EMBEDDING_MODEL:-text-embedding-3-small}
+      - CHUNK_SIZE=${CHUNK_SIZE:-800}
+      - CHUNK_OVERLAP=${CHUNK_OVERLAP:-150}
+      - RETRIEVAL_K=${RETRIEVAL_K:-4}
+      - AGENT_MAX_ITERATIONS=${AGENT_MAX_ITERATIONS:-6}
+    volumes:
+      - chroma_data:/app/.chroma
+    restart: unless-stopped
+
+volumes:
+  chroma_data:

@@ -1,0 +1,23 @@
+RoboMarket FAQ — Frequently Asked Questions
+===========================================
+
+Q: What is RoboMarket?
+A: RoboMarket is a B2B marketplace for industrial robots, cobots, and automation components.
+
+Q: Which robot brands are available?
+A: FANUC, KUKA, ABB, Yaskawa Motoman, Universal Robots, Doosan, and more.
+
+Q: How does supplier verification work?
+A: Three-stage verification: legal entity check, product authenticity audit, and reference customer validation.
+
+Q: What transaction fees does RoboMarket charge?
+A: Tiered: 3.5% under $50k; 2.5% for $50k-$200k; 1.5% above $200k.
+
+Q: Does RoboMarket offer integration APIs?
+A: Yes — REST and GraphQL APIs with OAuth 2.0 authentication.
+
+Q: What payment methods are accepted?
+A: Wire transfers, letters of credit, RoboMarket Escrow Service, and credit cards for orders under $25k.
+
+Q: What is the return policy?
+A: New, uninstalled equipment may be returned within 30 days for a full refund minus a 5% restocking fee.

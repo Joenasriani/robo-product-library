@@ -1,0 +1,20 @@
+RoboMarket Local Knowledge Base — Automation & Robotics Reference
+==================================================================
+
+## Section 1: Industrial Robot Categories
+
+Articulated robots are the most common type with rotary joints (4-6 axes) for welding, painting, and assembly. FANUC, KUKA, ABB, and Yaskawa Motoman are leading manufacturers.
+
+Collaborative robots (Cobots) work alongside humans using force/torque sensing (ISO/TS 15066). Major cobot brands: Universal Robots, FANUC CRX, ABB YuMi, KUKA iiwa, Doosan.
+
+## Section 2: Integration Standards
+
+OPC UA is the recommended protocol for Industry 4.0. EtherNet/IP is common in North America; PROFINET dominates European Siemens environments.
+
+## Section 3: Safety Standards
+
+ISO 10218-1/2 covers industrial robot safety. ISO/TS 15066 covers collaborative robots. Every robot installation requires a documented risk assessment per ISO 12100.
+
+## Section 4: RoboMarket Platform
+
+Buyers get AI-powered product recommendations, configurable RFQ workflow, and order tracking with real-time carrier integration. Suppliers undergo a three-stage verification before listing.

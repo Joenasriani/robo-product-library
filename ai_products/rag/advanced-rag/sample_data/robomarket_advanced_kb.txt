@@ -1,0 +1,25 @@
+RoboMarket Advanced Knowledge Base — Automation & Robotics Reference
+======================================================================
+
+## Robot Safety Standards
+ISO 10218-1 covers safety requirements for industrial robots (robot design).
+ISO 10218-2 covers safety requirements for integration and installation.
+ISO/TS 15066 defines collaborative robot safety modes: safety-rated monitored stop,
+hand guiding, speed and separation monitoring, and power and force limiting.
+
+## Key Robot Brands
+FANUC (Japan) — leading in CNC and automotive; CRX series for cobots.
+KUKA (Germany) — iiwa collaborative robot series; KRC5 controller.
+ABB (Switzerland) — YuMi dual-arm cobot; FlexPicker delta robot.
+Universal Robots (Denmark) — UR3, UR5, UR10, UR16 cobot lineup.
+Yaskawa Motoman (Japan) — HC10 cobot series for assembly.
+
+## Hybrid Search Concepts
+Hybrid search combines dense vector retrieval with sparse keyword (BM25) scoring.
+BM25 excels at exact term matching; vector search captures semantic similarity.
+Reciprocal Rank Fusion (RRF) is a common score fusion strategy.
+
+## Cross-Encoder Reranking
+After initial retrieval, a cross-encoder model reads each (query, document) pair jointly
+to score relevance. This is more accurate than bi-encoder similarity but slower.
+Common models: ms-marco-MiniLM-L-6-v2 (fast), ms-marco-MiniLM-L-12-v2 (accurate).
