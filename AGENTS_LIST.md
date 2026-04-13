@@ -125,3 +125,58 @@ Next priorities:
 3. Add CI/CD pipeline configuration
 4. Add automated test suites for each agent
 5. Deploy to RoboMarket production infrastructure
+
+---
+
+RAG PRODUCTS (ai_products/rag/)
+================================
+
+Status legend:
+- ready    → fully implemented, tested, Docker-ready, sell-ready
+
+R1. Simple RAG Chain
+- Type: RAG App
+- Status: ready
+- Priority: high
+- Folder: ai_products/rag/simple-rag-chain
+- Port: 8501 (Streamlit)
+- Purpose: Foundational RAG app — upload documents, index into Chroma, ask grounded questions with citations
+- Stack: Streamlit, LangChain, OpenAI, Chroma
+
+R2. Tool-Use RAG (Agentic RAG)
+- Type: RAG App
+- Status: ready
+- Priority: high
+- Folder: ai_products/rag/tool-use-rag
+- Port: 8502 (Streamlit)
+- Purpose: ReAct agent that autonomously decides when and how to call retrieval — multi-turn, tool-use
+- Stack: Streamlit, LangChain ReAct, OpenAI, Chroma
+
+R3. Ollama RAG (Local / Privacy-First)
+- Type: RAG App
+- Status: ready
+- Priority: high
+- Folder: ai_products/rag/ollama-rag
+- Port: 8503 (Streamlit)
+- Purpose: 100% local RAG — no cloud API keys; Ollama-powered embeddings and generation
+- Stack: Streamlit, LangChain, Ollama, Chroma
+
+R4. RAG as a Service
+- Type: RAG API Service
+- Status: ready
+- Priority: high
+- Folder: ai_products/rag/rag-as-a-service
+- Port: 8000 (FastAPI)
+- Purpose: Production REST API for RAG — POST /index to ingest, POST /query for grounded answers
+- Stack: FastAPI, LangChain, OpenAI, Chroma
+
+R5. Advanced RAG
+- Type: RAG App
+- Status: ready
+- Priority: medium
+- Folder: ai_products/rag/advanced-rag
+- Port: 8504 (Streamlit)
+- Purpose: Advanced RAG with hybrid search (BM25 + vector) and cross-encoder reranking for higher precision
+- Stack: Streamlit, LangChain, OpenAI, Chroma, sentence-transformers, rank-bm25
+
+Index: ai_products/rag/README.md

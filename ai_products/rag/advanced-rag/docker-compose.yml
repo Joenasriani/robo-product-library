@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  advanced-rag:
+    build: .
+    ports:
+      - "8504:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o-mini}
+      - OPENAI_EMBEDDING_MODEL=${OPENAI_EMBEDDING_MODEL:-text-embedding-3-small}
+      - CHUNK_SIZE=${CHUNK_SIZE:-600}
+      - CHUNK_OVERLAP=${CHUNK_OVERLAP:-120}
+      - RETRIEVAL_K=${RETRIEVAL_K:-5}
+      - RERANK_MODEL=${RERANK_MODEL:-cross-encoder/ms-marco-MiniLM-L-6-v2}
+      - RERANK_TOP_K=${RERANK_TOP_K:-3}
+      - HYBRID_SEARCH_ENABLED=${HYBRID_SEARCH_ENABLED:-true}
+    volumes:
+      - chroma_data:/app/.chroma
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
