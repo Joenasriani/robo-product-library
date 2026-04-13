@@ -117,7 +117,36 @@ async function loadHistory() {
 }
 
 // API docs
-document.getElementById('apiDocs').innerHTML = ``;
+document.getElementById('apiDocs').innerHTML = `
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">POST /api/v1/install/analyze — Generate installation guide</div>
+  <div class="code-block">curl -X POST http://localhost:8006/api/v1/install/analyze \\
+  -H "X-API-Key: YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+  "target_platform": "ROS2 Humble on Ubuntu 22.04",
+  "package_name": "nav2_bringup",
+  "package_version": "1.1.5",
+  "os_version": "Ubuntu 22.04 LTS",
+  "environment_type": "production",
+  "constraints": "air-gapped network, no sudo access"
+}'</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /api/v1/install/history — List analysis history</div>
+  <div class="code-block">curl http://localhost:8006/api/v1/install/history \\
+  -H "X-API-Key: YOUR_API_KEY"</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /api/v1/account/me — Get account &amp; credit balance</div>
+  <div class="code-block">curl http://localhost:8006/api/v1/account/me \\
+  -H "X-API-Key: YOUR_API_KEY"</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /health — Health check (no auth)</div>
+  <div class="code-block">curl http://localhost:8006/health</div>
+</div>
+`;
 
 function compatBadge(s) { return s==='compatible'?'badge-green':s==='incompatible'?'badge-red':'badge-yellow'; }
 

@@ -118,7 +118,37 @@ async function loadHistory() {
 }
 
 // API docs
-document.getElementById('apiDocs').innerHTML = ``;
+document.getElementById('apiDocs').innerHTML = `
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">POST /api/v1/video/analyze — Generate robot demo video production plan</div>
+  <div class="code-block">curl -X POST http://localhost:8005/api/v1/video/analyze \\
+  -H "X-API-Key: YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+  "robot_name": "UR5e",
+  "robot_type": "cobot",
+  "feature_list": ["6-DOF articulation", "force-torque sensing", "tool changer"],
+  "visual_style": "cinematic",
+  "target_duration": 90,
+  "target_audience": "industrial automation buyers",
+  "use_case": "automotive assembly line"
+}'</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /api/v1/video/history — List analysis history</div>
+  <div class="code-block">curl http://localhost:8005/api/v1/video/history \\
+  -H "X-API-Key: YOUR_API_KEY"</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /api/v1/account/me — Get account &amp; credit balance</div>
+  <div class="code-block">curl http://localhost:8005/api/v1/account/me \\
+  -H "X-API-Key: YOUR_API_KEY"</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /health — Health check (no auth)</div>
+  <div class="code-block">curl http://localhost:8005/health</div>
+</div>
+`;
 
 function renderVideo(data) {
   const r = data.result || data;

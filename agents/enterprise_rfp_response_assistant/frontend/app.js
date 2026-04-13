@@ -116,7 +116,44 @@ async function loadHistory() {
 }
 
 // API docs
-document.getElementById('apiDocs').innerHTML = ``;
+document.getElementById('apiDocs').innerHTML = `
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">POST /api/v1/rfp/analyze — Analyze RFP text and generate response plan</div>
+  <div class="code-block">curl -X POST http://localhost:8003/api/v1/rfp/analyze \\
+  -H "X-API-Key: YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+  "id": "rfp-2024-001",
+  "rfp_text": "We require a robotics integration partner for our warehouse...",
+  "company_name": "Acme Robotics LLC",
+  "company_capabilities": "10 years robotics integration, ROS2, AGV deployment",
+  "submission_deadline": "2024-12-31"
+}'</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">POST /api/v1/rfp/analyze-file — Upload PDF/TXT and analyze</div>
+  <div class="code-block">curl -X POST http://localhost:8003/api/v1/rfp/analyze-file \\
+  -H "X-API-Key: YOUR_API_KEY" \\
+  -F "file=@rfp_document.pdf" \\
+  -F "company_name=Acme Robotics LLC" \\
+  -F "company_capabilities=10 years robotics integration, ROS2" \\
+  -F "submission_deadline=2024-12-31"</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /api/v1/rfp/history — List analysis history</div>
+  <div class="code-block">curl http://localhost:8003/api/v1/rfp/history \\
+  -H "X-API-Key: YOUR_API_KEY"</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /api/v1/account/me — Get account &amp; credit balance</div>
+  <div class="code-block">curl http://localhost:8003/api/v1/account/me \\
+  -H "X-API-Key: YOUR_API_KEY"</div>
+</div>
+<div style="margin-bottom:20px">
+  <div style="font-weight:600;margin-bottom:8px;font-size:14px">GET /health — Health check (no auth)</div>
+  <div class="code-block">curl http://localhost:8003/health</div>
+</div>
+`;
 
 function renderRFP(data) {
   const r = data.result || data;
