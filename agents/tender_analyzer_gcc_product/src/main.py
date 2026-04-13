@@ -62,8 +62,12 @@ async def account_me(client=Depends(require_client)):
 @app.post("/api/v1/tenders/analyze")
 @limiter.limit("10/minute")
 async def analyze(request: Request, tender: Tender, client=Depends(require_client)):
-    updated = db.deduct_credit(client["id"], 1)
+    try:
+        updated = db.deduct_credit(client["id"], 1)
+    except ValueError:
+        raise HTTPException(status_code=402, detail="Insufficient credits")
     result = await analyze_tender(tender)
+    db.save_analysis(client["id"], tender.id, tender.title, result.dict())
     payload = result.dict()
     payload["credits_remaining"] = updated["credits_remaining"]
     return [payload]
@@ -85,12 +89,44 @@ async def analyze_file(request: Request, file: UploadFile = File(...), title: st
         country=country,
         sector=sector or None,
     )
-    updated = db.deduct_credit(client["id"], 1)
+    try:
+        updated = db.deduct_credit(client["id"], 1)
+    except ValueError:
+        raise HTTPException(status_code=402, detail="Insufficient credits")
     result = await analyze_tender(tender)
+    db.save_analysis(client["id"], tender.id, tender.title, result.dict())
     payload = result.dict()
     payload["credits_remaining"] = updated["credits_remaining"]
     payload["extracted_characters"] = len(extracted)
     return [payload]
+
+@app.get("/api/v1/tenders/history")
+async def tender_history(client=Depends(require_client)):
+    return db.get_history(client["id"])
+
+@app.post("/api/v1/billing/webhooks/stripe")
+async def stripe_webhook(request: Request):
+    if not settings.STRIPE_WEBHOOK_SECRET:
+        raise HTTPException(status_code=503, detail="Stripe not configured")
+    body = await request.body()
+    sig_header = request.headers.get("stripe-signature", "")
+    try:
+        import stripe as stripe_lib
+        stripe_lib.api_key = settings.STRIPE_SECRET_KEY
+        event = stripe_lib.Webhook.construct_event(body, sig_header, settings.STRIPE_WEBHOOK_SECRET)
+    except Exception as exc:
+        logger.warning("Stripe webhook error: %s", exc)
+        raise HTTPException(status_code=400, detail="Invalid Stripe signature")
+    if event["type"] == "checkout.session.completed":
+        session = event["data"]["object"]
+        metadata = session.get("metadata", {})
+        client_id = int(metadata.get("client_id", 0))
+        plan = metadata.get("plan", "starter")
+        credit_map = {"starter": 100, "growth": 500, "enterprise": 2000}
+        credits = credit_map.get(plan, 100)
+        if client_id:
+            db.add_credits(client_id, credits, f"stripe_{plan}_purchase")
+    return {"received": True}
 
 @app.get("/api/v1/admin/clients")
 async def admin_list_clients(admin=Depends(require_admin)):

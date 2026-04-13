@@ -1,12 +1,15 @@
 # AI Agent Download Center
 
-Status: planned
+> **Status:** testing
 
-Purpose:
-Central system for selling and delivering downloadable AI agents through RoboMarket.
+## Overview
+Entitlement-based download center for AI agent products. Buyers get access to specific agents based on their entitlements.
 
-Core functions:
-- downloadable agent catalog
-- post-purchase delivery
-- entitlement-based access
-- buyer instructions
+## Features
+- Product catalog
+- Entitlement management
+- Download access control
+- Admin management panel
+
+## Port
+Default: `8008`

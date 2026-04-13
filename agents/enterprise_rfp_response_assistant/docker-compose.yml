@@ -1,0 +1,11 @@
+services:
+  enterprise-rfp-response-assistant:
+    build: .
+    container_name: enterprise-rfp-response-assistant
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8003}:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data

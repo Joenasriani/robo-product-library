@@ -7,49 +7,167 @@
   <link rel="stylesheet" href="/assets/style.css" />
 </head>
 <body>
-  <header class="header">
-    <div class="brand">RoboMarket</div>
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">Robo<span>Market</span></div>
     <nav class="nav">
-      <a href="#dashboard">Dashboard</a>
-      <a href="#plans">Plans</a>
-      <a href="#api">API</a>
+      <button class="nav-btn active" onclick="showSection('analyze')">Analyze</button>
+      <button class="nav-btn" onclick="showSection('history')">History</button>
+      <button class="nav-btn" onclick="showSection('api')">API Docs</button>
     </nav>
-  </header>
-  <main class="container">
-    <section class="hero">
-      <p class="eyebrow">Enterprise GCC Tender Intelligence</p>
-      <h1>Tender Analyzer GCC</h1>
-      <p class="lead">Upload tender PDFs, evaluate fit, manage credits, and deploy tender-scoring workflows for UAE, Saudi, Qatar, Kuwait, Bahrain, Oman, and wider Middle East procurement teams.</p>
-    </section>
-    <section class="grid two">
-      <div class="card" id="dashboard">
+    <div id="creditsBadge" class="credit-badge" style="display:none">⚡ <span id="creditsCount">—</span> credits</div>
+  </div>
+</header>
+<main class="container">
+  <div class="hero">
+    <p class="eyebrow">Enterprise GCC Tender Intelligence</p>
+    <h1>Tender Analyzer GCC</h1>
+    <p class="lead">Evaluate tender fit, extract key requirements, and get actionable recommendations for UAE, Saudi Arabia, Qatar, Kuwait, Bahrain & Oman procurement.</p>
+  </div>
+
+  <!-- Analyze Section -->
+  <div id="section-analyze" class="section active">
+    <div class="grid2">
+      <!-- Account card -->
+      <div class="card">
         <h2>Account</h2>
         <label>API Key</label>
         <input id="apiKey" type="password" placeholder="Paste your X-API-Key" />
-        <button id="loadAccount">Load Account</button>
-        <pre id="accountOutput">No account loaded.</pre>
+        <button class="btn btn-secondary" id="loadAccount">
+          <span class="spinner dark"></span>
+          <span class="btn-text">Load Account</span>
+        </button>
+        <div id="accountInfo" style="display:none;margin-top:16px">
+          <div class="account-grid">
+            <div class="stat-box"><div class="stat-label">Credits Remaining</div><div class="stat-value" id="accCredits">—</div></div>
+            <div class="stat-box"><div class="stat-label">Plan</div><div class="stat-value" id="accPlan" style="font-size:16px;margin-top:6px">—</div></div>
+            <div class="stat-box"><div class="stat-label">Total Credits</div><div class="stat-value" id="accTotal">—</div></div>
+            <div class="stat-box"><div class="stat-label">Used</div><div class="stat-value" id="accUsed">—</div></div>
+          </div>
+          <div style="margin-top:10px;font-size:13px;color:var(--muted)">Logged in as <strong id="accName">—</strong></div>
+        </div>
+        <div id="accountAlert" class="alert"></div>
       </div>
+
+      <!-- Text analysis card -->
       <div class="card">
-        <h2>Text Analysis</h2>
-        <input id="title" placeholder="Tender title" />
-        <input id="issuer" placeholder="Issuer" />
-        <input id="country" placeholder="Country (e.g. UAE)" />
-        <input id="sector" placeholder="Sector (e.g. IT, construction)" />
-        <textarea id="description" rows="10" placeholder="Paste tender text here"></textarea>
-        <button id="analyzeBtn">Analyze Tender</button>
+        <h2>Analyze Tender Text</h2>
+        <label>Title *</label>
+        <input id="title" placeholder="e.g. Smart City IoT Infrastructure Tender" />
+        <label>Issuer *</label>
+        <input id="issuer" placeholder="e.g. Dubai Municipality" />
+        <label>Country</label>
+        <input id="country" placeholder="UAE" value="UAE" />
+        <label>Sector</label>
+        <input id="sector" placeholder="e.g. IT, Construction, Healthcare" />
+        <label>Tender Description *</label>
+        <textarea id="description" rows="6" placeholder="Paste the full tender text here..."></textarea>
+        <button class="btn btn-primary" id="analyzeBtn">
+          <span class="spinner"></span>
+          <span class="btn-text">Analyze Tender →</span>
+        </button>
+        <div id="analyzeAlert" class="alert"></div>
       </div>
-    </section>
-    <section class="card">
-      <h2>PDF Upload → Auto Extract → Analyze</h2>
-      <input id="pdfTitle" placeholder="Optional title override" />
-      <input id="pdfIssuer" placeholder="Optional issuer override" />
-      <input id="pdfCountry" placeholder="Country" />
-      <input id="pdfSector" placeholder="Sector" />
+    </div>
+
+    <!-- PDF Upload -->
+    <div class="card" style="margin-top:20px">
+      <h2>Upload PDF / TXT File</h2>
+      <div class="grid2">
+        <div>
+          <label>Title Override (optional)</label>
+          <input id="pdfTitle" placeholder="Leave blank to use filename" />
+          <label>Issuer Override (optional)</label>
+          <input id="pdfIssuer" placeholder="Leave blank to auto-detect" />
+        </div>
+        <div>
+          <label>Country</label>
+          <input id="pdfCountry" placeholder="GCC" value="GCC" />
+          <label>Sector</label>
+          <input id="pdfSector" placeholder="e.g. IT, Construction" />
+        </div>
+      </div>
+      <label>Tender File (PDF or TXT)</label>
       <input id="pdfFile" type="file" accept=".pdf,.txt" />
-      <button id="uploadBtn">Upload & Analyze</button>
-      <pre id="resultOutput">Analysis output will appear here.</pre>
-    </section>
-  </main>
-  <script src="/assets/app.js"></script>
+      <button class="btn btn-primary" id="uploadBtn" style="max-width:220px">
+        <span class="spinner"></span>
+        <span class="btn-text">Upload & Analyze →</span>
+      </button>
+      <div id="uploadAlert" class="alert"></div>
+    </div>
+
+    <!-- Result output -->
+    <div id="resultContainer" style="display:none"></div>
+  </div>
+
+  <!-- History Section -->
+  <div id="section-history" class="section">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2>Analysis History</h2>
+        <button class="btn btn-secondary" id="loadHistoryBtn" style="width:auto;margin:0">
+          <span class="spinner dark"></span>
+          <span class="btn-text">Refresh</span>
+        </button>
+      </div>
+      <div id="historyAlert" class="alert"></div>
+      <div id="historyList" style="margin-top:16px">
+        <div class="empty-state">🔑 Enter your API key and click Refresh to load history.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- API Docs Section -->
+  <div id="section-api" class="section">
+    <div class="card">
+      <h2>API Reference</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:20px">Base URL: <code>http://localhost:8000</code> &nbsp;|&nbsp; Auth: <code>X-API-Key</code> header</p>
+
+      <h3>Analyze a Tender (Text)</h3>
+      <div class="code-block">curl -X POST http://localhost:8000/api/v1/tenders/analyze \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": "tender-001",
+    "title": "Smart City IoT Infrastructure",
+    "description": "The Dubai Municipality seeks...",
+    "issuer": "Dubai Municipality",
+    "country": "UAE",
+    "sector": "IT"
+  }'</div>
+
+      <h3 style="margin-top:20px">Analyze a PDF</h3>
+      <div class="code-block">curl -X POST http://localhost:8000/api/v1/tenders/analyze-file \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -F "file=@tender.pdf" \
+  -F "country=UAE" \
+  -F "sector=Construction"</div>
+
+      <h3 style="margin-top:20px">Get Analysis History</h3>
+      <div class="code-block">curl http://localhost:8000/api/v1/tenders/history \
+  -H "X-API-Key: YOUR_API_KEY"</div>
+
+      <h3 style="margin-top:20px">Account Info</h3>
+      <div class="code-block">curl http://localhost:8000/api/v1/account/me \
+  -H "X-API-Key: YOUR_API_KEY"</div>
+
+      <h3 style="margin-top:20px">Response Schema</h3>
+      <div class="code-block">{
+  "id": "tender-001",
+  "analysis": {
+    "summary": "...",
+    "key_requirements": ["..."],
+    "score": 78,
+    "recommended_action": "pursue",
+    "risk_level": "low",
+    "confidence_score": 0.87,
+    "reasoning": "..."
+  },
+  "credits_remaining": 49
+}</div>
+    </div>
+  </div>
+</main>
+<script src="/assets/app.js"></script>
 </body>
 </html>

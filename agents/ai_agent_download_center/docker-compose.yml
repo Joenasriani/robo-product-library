@@ -1,0 +1,11 @@
+services:
+  ai-agent-download-center:
+    build: .
+    container_name: ai-agent-download-center
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8008}:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data

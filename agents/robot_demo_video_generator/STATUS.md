@@ -1,3 +1,3 @@
-status: planned
-priority: medium
-phase: specification
+# Status
+
+status: testing
