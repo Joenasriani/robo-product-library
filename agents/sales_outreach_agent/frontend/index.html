@@ -67,6 +67,34 @@
         <div id="analyzeAlert" class="alert"></div>
       </div>
     </div>
+
+    <!-- PDF Upload for prospect profile -->
+    <div class="card" style="margin-top:20px">
+      <h2>Upload Prospect Profile (PDF / TXT)</h2>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:12px">Upload a company brief, LinkedIn export, or any text file to auto-extract the problem statement.</p>
+      <div class="grid2">
+        <div>
+          <label>Company Name *</label>
+          <input id="uploadCompany" placeholder="Target company name" />
+          <label>Target Role *</label>
+          <input id="uploadRole" placeholder="e.g. Head of Operations" />
+        </div>
+        <div>
+          <label>Your Service Offer</label>
+          <input id="uploadService" placeholder="e.g. AI-powered robotics automation" />
+          <label>Region</label>
+          <input id="uploadRegion" placeholder="GCC" value="GCC" />
+        </div>
+      </div>
+      <label>Prospect File (PDF or TXT)</label>
+      <input id="uploadFile" type="file" accept=".pdf,.txt" />
+      <button class="btn btn-primary" id="uploadBtn" style="max-width:260px">
+        <span class="spinner"></span>
+        <span class="btn-text">Upload & Generate Outreach →</span>
+      </button>
+      <div id="uploadAlert" class="alert"></div>
+    </div>
+
     <div id="resultContainer" style="display:none;margin-top:20px"></div>
     
   </div>

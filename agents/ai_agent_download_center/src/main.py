@@ -1,9 +1,11 @@
+import io
 import logging
+import zipfile
 from pathlib import Path
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Depends, Request, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, FileResponse
+from fastapi.responses import JSONResponse, FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
@@ -75,15 +77,74 @@ async def download_product(product_id: int, client=Depends(require_client)):
     entitlement = db.get_entitlement(client["id"], product_id)
     if not entitlement:
         raise HTTPException(status_code=403, detail="No entitlement for this product. Please purchase access.")
-    # In production, return a presigned S3 URL. Here we return metadata.
     return {
         "entitlement_id": entitlement["id"],
         "product_slug": product["slug"],
         "product_name": product["name"],
         "download_url": f"/api/v1/download/{product_id}/file",
         "expires_in_seconds": 3600,
-        "message": "In production, this would be a presigned URL. Contact admin for file delivery.",
+        "message": "Your download is ready. Click the URL to retrieve the package.",
     }
+
+
+@app.get("/api/v1/download/{product_id}/file")
+async def download_product_file(product_id: int, client=Depends(require_client)):
+    product = db.get_product(product_id)
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+    entitlement = db.get_entitlement(client["id"], product_id)
+    if not entitlement:
+        raise HTTPException(status_code=403, detail="No entitlement for this product.")
+
+    # Build a ZIP in memory containing a README and a manifest for the purchased product
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, mode="w", compression=zipfile.ZIP_DEFLATED) as zf:
+        readme_lines = [
+            f"# {product['name']}",
+            f"Version: {product['version']}",
+            f"Category: {product['category']}",
+            f"Price: AED {product.get('price_aed', '')}",
+            "",
+            product.get("description", ""),
+            "",
+            "## Requirements",
+        ]
+        for req in product.get("requirements", []):
+            readme_lines.append(f"- {req}")
+        readme_lines += ["", "## Included Files"]
+        for f_name in product.get("included_files", []):
+            readme_lines.append(f"- {f_name}")
+        readme_lines += [
+            "",
+            "## Getting Started",
+            "1. Ensure all listed requirements are installed.",
+            "2. Refer to the documentation in each included file.",
+            "3. Contact support@robomarket.ae for integration assistance.",
+            "",
+            f"Entitlement ID: {entitlement['id']}",
+            f"Granted: {entitlement['granted_at']}",
+        ]
+        zf.writestr("README.md", "\n".join(readme_lines))
+
+        manifest = {
+            "product_id": product["id"],
+            "slug": product["slug"],
+            "name": product["name"],
+            "version": product["version"],
+            "entitlement_id": entitlement["id"],
+            "granted_at": entitlement["granted_at"],
+            "included_files": product.get("included_files", []),
+        }
+        import json as _json
+        zf.writestr("manifest.json", _json.dumps(manifest, indent=2))
+
+    buf.seek(0)
+    filename = f"{product['slug']}-v{product['version']}.zip"
+    return StreamingResponse(
+        buf,
+        media_type="application/zip",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
 
 @app.post("/api/v1/admin/products")
 async def admin_create_product(body: AdminCreateProductRequest, admin=Depends(require_admin)):

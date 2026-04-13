@@ -77,6 +77,17 @@ class ApiClientPublic(BaseModel):
     credits_remaining: int
     is_active: bool
 
+class AdminUpdateProtocolRequest(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
+    price_aed: Optional[float] = None
+    status: Optional[str] = None
+    version: Optional[str] = None
+    risk_level: Optional[str] = None
+    hardware_requirements: Optional[List[str]] = None
+    included_files: Optional[List[str]] = None
+
+
 class AdminCreateClientRequest(BaseModel):
     name: str
     email: Optional[EmailStr] = None

@@ -228,3 +228,31 @@ function showHistoryDetail(jsonStr) {
   document.querySelectorAll('.nav-btn').forEach((b,i) => b.classList.toggle('active', i===0));
   container.scrollIntoView({ behavior: 'smooth' });
 }
+
+// --- Billing / Upgrade ---
+async function startCheckout(plan) {
+  const alertEl = document.getElementById('upgradeAlert');
+  hideAlert(alertEl);
+  if (!getApiKey()) { showAlert(alertEl, 'Enter your API key (in the Analyze tab) before upgrading.'); return; }
+  // Load account to get client_id
+  const accRes = await apiFetch('/api/v1/account/me');
+  if (!accRes.ok) { showAlert(alertEl, accRes.data?.detail || 'Could not load account. Check your API key.'); return; }
+  const clientId = accRes.data.client.id;
+  const successUrl = window.location.origin + '/?upgraded=1';
+  const cancelUrl = window.location.href;
+  const res = await apiFetch('/api/v1/billing/create-checkout-session', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ client_id: clientId, plan, success_url: successUrl, cancel_url: cancelUrl })
+  });
+  if (!res.ok) {
+    const detail = res.data?.detail || 'Checkout failed.';
+    if (res.status === 503) {
+      showAlert(alertEl, '⚠️ Stripe billing is not configured for this deployment. Contact the administrator to top up credits.', 'info');
+    } else {
+      showAlert(alertEl, detail);
+    }
+    return;
+  }
+  window.location.href = res.data.checkout_url;
+}

@@ -145,7 +145,10 @@ async def admin_add_credits(payload: CreditTopupRequest, admin=Depends(require_a
     return {"client": updated}
 
 @app.post("/api/v1/billing/create-checkout-session", response_model=BillingCheckoutResponse)
-async def create_checkout(payload: BillingCheckoutRequest, admin=Depends(require_admin)):
+async def create_checkout(payload: BillingCheckoutRequest, client=Depends(require_client)):
+    # Clients may only create a session for their own account
+    if payload.client_id != client["id"]:
+        raise HTTPException(status_code=403, detail="Cannot create a checkout session for another client")
     return BillingCheckoutResponse(**billing.create_checkout_session(payload.client_id, payload.plan, payload.success_url, payload.cancel_url))
 
 if __name__ == "__main__":

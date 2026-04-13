@@ -123,7 +123,12 @@ document.getElementById('loadEntitlementsBtn').addEventListener('click', async (
         <div class="history-title">${e.product_name}</div>
         <div class="history-meta">Granted: ${e.granted_at?.substring(0,10)} ${e.expires_at ? '· Expires: '+e.expires_at.substring(0,10) : ''}</div>
       </div>
-      <span class="badge badge-green">${e.status}</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="badge badge-green">${e.status}</span>
+        <a href="/api/v1/my-entitlements/${e.id}/download?email=${encodeURIComponent(email)}"
+           class="btn btn-secondary" style="width:auto;margin:0;padding:6px 12px;font-size:12px;text-decoration:none"
+           download>⬇ Download</a>
+      </div>
     </div>`).join('');
 });
 
