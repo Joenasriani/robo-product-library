@@ -127,6 +127,7 @@ function scoreColor(s) { return s >= 70 ? 'green' : s >= 40 ? 'yellow' : 'red'; 
 function renderMonitoring(data) {
   const r = data.result || data;
   const cr = data.credits_remaining;
+  const disclaimer = r.disclaimer || 'Results are AI-generated research leads. Verify on official procurement portals before acting.';
   const opps = (r.matched_opportunities||[]).map(o => {
     const sc = scoreColor(o.match_score);
     return `<div style="border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px">
@@ -149,7 +150,11 @@ function renderMonitoring(data) {
       <div class="result-meta">
         <span class="badge badge-blue">${r.shortlist_count} shortlisted</span>
         <span class="badge badge-green">Confidence: ${Math.round((r.confidence_score||0)*100)}%</span>
+        <span class="badge badge-yellow">🤖 AI Research</span>
       </div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--warning,#f59e0b);border-radius:8px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:var(--muted)">
+      ⚠️ <strong>Disclaimer:</strong> ${disclaimer}
     </div>
     <div class="result-section">
       <div class="result-section-title">Summary</div>

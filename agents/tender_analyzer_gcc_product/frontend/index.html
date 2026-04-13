@@ -13,6 +13,7 @@
     <nav class="nav">
       <button class="nav-btn active" onclick="showSection('analyze')">Analyze</button>
       <button class="nav-btn" onclick="showSection('history')">History</button>
+      <button class="nav-btn" onclick="showSection('upgrade')">Upgrade</button>
       <button class="nav-btn" onclick="showSection('api')">API Docs</button>
     </nav>
     <div id="creditsBadge" class="credit-badge" style="display:none">⚡ <span id="creditsCount">—</span> credits</div>
@@ -114,6 +115,61 @@
       <div id="historyList" style="margin-top:16px">
         <div class="empty-state">🔑 Enter your API key and click Refresh to load history.</div>
       </div>
+    </div>
+  </div>
+
+  <!-- Upgrade / Billing Section -->
+  <div id="section-upgrade" class="section">
+    <div class="card">
+      <h2>Upgrade Your Plan</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:20px">Top up credits to continue analyzing tenders. Enter your API key above to see your current balance.</p>
+      <div class="grid2" style="gap:16px;margin-bottom:24px">
+        <div style="border:2px solid var(--border);border-radius:12px;padding:20px;text-align:center">
+          <div style="font-weight:700;font-size:16px;margin-bottom:6px">Starter</div>
+          <div style="font-size:28px;font-weight:800;color:var(--primary);margin-bottom:4px">AED 299</div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:16px">100 analysis credits</div>
+          <ul style="text-align:left;font-size:13px;color:var(--muted);margin-bottom:16px;padding-left:16px">
+            <li>Text & PDF analysis</li>
+            <li>Full history</li>
+            <li>Email support</li>
+          </ul>
+          <button class="btn btn-secondary" onclick="startCheckout('starter')" style="width:100%;margin:0">
+            <span class="spinner dark"></span>
+            <span class="btn-text">Buy Starter →</span>
+          </button>
+        </div>
+        <div style="border:2px solid var(--primary);border-radius:12px;padding:20px;text-align:center;position:relative">
+          <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;font-size:11px;font-weight:700;padding:3px 12px;border-radius:20px">POPULAR</div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:6px">Growth</div>
+          <div style="font-size:28px;font-weight:800;color:var(--primary);margin-bottom:4px">AED 999</div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:16px">500 analysis credits</div>
+          <ul style="text-align:left;font-size:13px;color:var(--muted);margin-bottom:16px;padding-left:16px">
+            <li>Everything in Starter</li>
+            <li>Batch upload (coming soon)</li>
+            <li>Priority support</li>
+          </ul>
+          <button class="btn btn-primary" onclick="startCheckout('growth')" style="width:100%;margin:0">
+            <span class="spinner"></span>
+            <span class="btn-text">Buy Growth →</span>
+          </button>
+        </div>
+        <div style="border:2px solid var(--border);border-radius:12px;padding:20px;text-align:center">
+          <div style="font-weight:700;font-size:16px;margin-bottom:6px">Enterprise</div>
+          <div style="font-size:28px;font-weight:800;color:var(--primary);margin-bottom:4px">AED 2,999</div>
+          <div style="font-size:13px;color:var(--muted);margin-bottom:16px">2,000 analysis credits</div>
+          <ul style="text-align:left;font-size:13px;color:var(--muted);margin-bottom:16px;padding-left:16px">
+            <li>Everything in Growth</li>
+            <li>Dedicated onboarding</li>
+            <li>SLA & custom integrations</li>
+          </ul>
+          <button class="btn btn-secondary" onclick="startCheckout('enterprise')" style="width:100%;margin:0">
+            <span class="spinner dark"></span>
+            <span class="btn-text">Buy Enterprise →</span>
+          </button>
+        </div>
+      </div>
+      <div id="upgradeAlert" class="alert"></div>
+      <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px">Payments powered by Stripe. Credits are added instantly after payment.</p>
     </div>
   </div>
 

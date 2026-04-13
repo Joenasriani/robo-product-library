@@ -122,6 +122,48 @@ document.getElementById('apiDocs').innerHTML = `<div class="code-block">curl -X 
   -H "Content-Type: application/json" \\
   -d '{"company_name": "Al Futtaim", "target_role": "VP Operations", "problem_statement": "...", "service_offer": "..."}'</div>`;
 
+// PDF upload handler
+document.getElementById('uploadBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('uploadBtn');
+  const alertEl = document.getElementById('uploadAlert');
+  hideAlert(alertEl);
+  const file = document.getElementById('uploadFile').files[0];
+  if (!file) { showAlert(alertEl, 'Please select a file first.'); return; }
+  const company = document.getElementById('uploadCompany').value.trim();
+  const role = document.getElementById('uploadRole').value.trim();
+  if (!company || !role) { showAlert(alertEl, 'Company name and target role are required.'); return; }
+  if (!getApiKey()) { showAlert(alertEl, 'Enter your API key first.'); return; }
+  setLoading(btn, true);
+  const form = new FormData();
+  form.append('file', file);
+  form.append('company_name', company);
+  form.append('target_role', role);
+  form.append('service_offer', document.getElementById('uploadService').value || 'Robotics and AI solutions');
+  form.append('region', document.getElementById('uploadRegion').value || 'GCC');
+  form.append('tone', 'formal');
+  const key = getApiKey();
+  const res = await fetch('/api/v1/outreach/analyze-file', {
+    method: 'POST',
+    headers: key ? { 'X-API-Key': key } : {},
+    body: form
+  }).then(async r => {
+    const t = await r.text();
+    let d; try { d = JSON.parse(t); } catch { d = t; }
+    return { ok: r.ok, status: r.status, data: d };
+  }).catch(e => ({ ok: false, status: 0, data: { detail: e.message } }));
+  setLoading(btn, false);
+  if (!res.ok) {
+    const msg = res.status === 402 ? '⚡ Insufficient credits — please top up your account.' : (res.data?.detail || 'Upload failed.');
+    showAlert(alertEl, msg, res.status === 402 ? 'info' : 'error');
+    return;
+  }
+  const container = document.getElementById('resultContainer');
+  container.style.display = 'block';
+  container.innerHTML = '<h2 style="font-size:16px;font-weight:600;margin-bottom:4px">Outreach Results</h2>' + renderOutreach(res.data);
+  if (res.data?.credits_remaining != null) updateCreditsDisplay(res.data.credits_remaining);
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
 function renderOutreach(data) {
   const r = data.result || data;
   const cr = data.credits_remaining;

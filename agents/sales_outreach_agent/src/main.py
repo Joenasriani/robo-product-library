@@ -1,7 +1,7 @@
 import logging
 from pathlib import Path
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, HTTPException, Depends, Request, status
+from fastapi import FastAPI, HTTPException, Depends, Request, status, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -11,8 +11,8 @@ from slowapi.errors import RateLimitExceeded
 from src import settings, db
 from src.models.schemas import OutreachRequest, OutreachAnalysisResult, HealthResponse, ApiClientPublic, AccountResponse, AdminCreateClientRequest, AdminCreateClientResponse, CreditTopupRequest
 from src.analyzer import run_analysis
-from src.llm_factory import get_available_providers
 from src.auth import require_client, require_admin
+from src.pdf_extract import extract_text_from_pdf_bytes
 
 Path("data").mkdir(exist_ok=True)
 db.init_db()
@@ -71,6 +71,50 @@ async def analyze(request: Request, payload: OutreachRequest, client=Depends(req
     db.save_analysis(client["id"], result.id, payload.company_name, result.dict())
     out = result.dict()
     out["credits_remaining"] = updated["credits_remaining"]
+    return out
+
+
+@app.post("/api/v1/outreach/analyze-file")
+@limiter.limit("10/minute")
+async def analyze_file(
+    request: Request,
+    file: UploadFile = File(...),
+    company_name: str = Form(...),
+    target_role: str = Form(...),
+    service_offer: str = Form(""),
+    region: str = Form("GCC"),
+    tone: str = Form("formal"),
+    client=Depends(require_client),
+):
+    if file.content_type not in {"application/pdf", "text/plain"}:
+        raise HTTPException(status_code=400, detail="Only PDF and TXT uploads are supported")
+    content = await file.read()
+    extracted = extract_text_from_pdf_bytes(content) if file.content_type == "application/pdf" else content.decode("utf-8", errors="ignore")
+    if not extracted.strip():
+        raise HTTPException(status_code=400, detail="No text could be extracted from the uploaded file")
+    payload = OutreachRequest(
+        company_name=company_name,
+        target_role=target_role,
+        problem_statement=extracted[:2000],
+        service_offer=service_offer or "Robotics and AI solutions",
+        region=region,
+        tone=tone if tone in ("formal", "friendly", "direct") else "formal",
+    )
+    try:
+        updated = db.deduct_credit(client["id"], 1)
+    except ValueError:
+        raise HTTPException(status_code=402, detail="Insufficient credits")
+    try:
+        result = await run_analysis(payload)
+    except ValueError:
+        raise HTTPException(status_code=503, detail="No LLM provider configured.")
+    except Exception as exc:
+        logger.error("LLM failed: %s", exc, exc_info=True)
+        raise HTTPException(status_code=502, detail="LLM analysis failed.")
+    db.save_analysis(client["id"], result.id, payload.company_name, result.dict())
+    out = result.dict()
+    out["credits_remaining"] = updated["credits_remaining"]
+    out["extracted_characters"] = len(extracted)
     return out
 
 @app.get("/api/v1/outreach/history")

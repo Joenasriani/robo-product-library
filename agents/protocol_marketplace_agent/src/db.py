@@ -50,6 +50,11 @@ def init_db():
         inquiry_id INTEGER, buyer_email TEXT NOT NULL,
         granted_at TEXT NOT NULL, expires_at TEXT, status TEXT NOT NULL DEFAULT "active",
         delivery_notes TEXT)""")
+    cur.execute("""CREATE TABLE IF NOT EXISTS protocol_orders (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, inquiry_id INTEGER NOT NULL,
+        product_id INTEGER NOT NULL, buyer_email TEXT NOT NULL,
+        amount_aed REAL NOT NULL, status TEXT NOT NULL DEFAULT "approved",
+        created_at TEXT NOT NULL)""")
     conn.commit()
     _seed_products(conn)
     conn.close()
@@ -228,8 +233,14 @@ def approve_inquiry(inquiry_id, delivery_notes=None):
     cur.execute("UPDATE protocol_inquiries SET status = 'approved' WHERE id = ?", (inquiry_id,))
     cur.execute("INSERT INTO protocol_entitlements (product_id, inquiry_id, buyer_email, granted_at, status, delivery_notes) VALUES (?,?,?,?,?,?)",
                 (inquiry["product_id"], inquiry_id, inquiry["buyer_email"], datetime.utcnow().isoformat(), "active", delivery_notes))
-    conn.commit()
     entitlement_id = cur.lastrowid
+    # Record the order
+    cur.execute("SELECT price_aed FROM protocol_products WHERE id = ?", (inquiry["product_id"],))
+    price_row = cur.fetchone()
+    amount_aed = price_row["price_aed"] if price_row else 0.0
+    cur.execute("INSERT INTO protocol_orders (inquiry_id, product_id, buyer_email, amount_aed, status, created_at) VALUES (?,?,?,?,?,?)",
+                (inquiry_id, inquiry["product_id"], inquiry["buyer_email"], amount_aed, "approved", datetime.utcnow().isoformat()))
+    conn.commit()
     conn.close()
     return entitlement_id
 
@@ -243,3 +254,33 @@ def get_entitlements_by_email(buyer_email):
     rows = cur.fetchall()
     conn.close()
     return [dict(r) for r in rows]
+
+
+def get_entitlement_by_id(entitlement_id):
+    conn = _connect()
+    cur = conn.cursor()
+    cur.execute("""SELECT e.*, p.name as product_name, p.slug as product_slug
+                   FROM protocol_entitlements e JOIN protocol_products p ON e.product_id = p.id
+                   WHERE e.id = ?""", (entitlement_id,))
+    row = cur.fetchone()
+    conn.close()
+    return dict(row) if row else None
+
+
+def update_product(product_id, **kwargs):
+    allowed = {"name", "description", "price_aed", "status", "version", "risk_level",
+                "hardware_requirements", "included_files"}
+    conn = _connect()
+    cur = conn.cursor()
+    for key, value in kwargs.items():
+        if key not in allowed:
+            continue
+        if key in ("hardware_requirements", "included_files"):
+            cur.execute(f"UPDATE protocol_products SET {key}_json = ? WHERE id = ?",
+                        (json.dumps(value), product_id))
+        else:
+            cur.execute(f"UPDATE protocol_products SET {key} = ? WHERE id = ?",
+                        (value, product_id))
+    conn.commit()
+    conn.close()
+    return get_product(product_id)

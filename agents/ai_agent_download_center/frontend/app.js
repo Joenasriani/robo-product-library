@@ -79,7 +79,9 @@ async function downloadProduct(productId) {
   document.getElementById('modalContent').innerHTML += `
     <div class="alert show alert-success" style="margin-top:12px">
       ✓ ${res.data.message || 'Download authorized!'}<br>
-      <strong>URL:</strong> ${res.data.download_url}
+      <a href="${res.data.download_url}" style="color:var(--primary);font-weight:600;text-decoration:underline" download>
+        ⬇ Download ${res.data.product_slug}.zip
+      </a>
     </div>`;
 }
 

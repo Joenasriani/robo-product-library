@@ -19,6 +19,7 @@ class TenderOpportunity(BaseModel):
     match_rationale: str
     recommended_action: str
     source_type: str
+    source_url: Optional[str] = None
 
 class MonitoringResult(BaseModel):
     matched_opportunities: List[TenderOpportunity]
@@ -27,6 +28,8 @@ class MonitoringResult(BaseModel):
     shortlist_count: int
     next_recommended_action: str
     confidence_score: float = Field(..., ge=0, le=1)
+    ai_generated: bool = True
+    disclaimer: str = "Results are AI-generated research summaries based on your criteria. Always verify opportunities against official procurement portals before taking action."
 
 class MonitoringAnalysisResult(BaseModel):
     id: str
