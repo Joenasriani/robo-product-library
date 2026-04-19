@@ -35,7 +35,7 @@ def init_db():
     cur.execute("""CREATE TABLE IF NOT EXISTS agent_products (
         id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT NOT NULL UNIQUE, name TEXT NOT NULL,
         description TEXT NOT NULL, version TEXT NOT NULL DEFAULT "1.0.0", category TEXT NOT NULL,
-        price_aed REAL NOT NULL, status TEXT NOT NULL DEFAULT "active",
+        price_aed REAL NOT NULL, status TEXT NOT NULL DEFAULT "inquiry_only",
         file_size_mb REAL, requirements_json TEXT NOT NULL DEFAULT "[]",
         included_files_json TEXT NOT NULL DEFAULT "[]", created_at TEXT NOT NULL)""")
     cur.execute("""CREATE TABLE IF NOT EXISTS entitlements (
@@ -43,23 +43,51 @@ def init_db():
         granted_at TEXT NOT NULL, expires_at TEXT, status TEXT NOT NULL DEFAULT "active",
         UNIQUE(client_id, product_id))""")
     conn.commit()
-    _seed_products(conn)
+    load_canonical_products(conn)
     conn.close()
 
-def _seed_products(conn):
-    cur = conn.cursor()
-    cur.execute("SELECT COUNT(*) FROM agent_products")
-    if cur.fetchone()[0] > 0:
+def load_canonical_products(conn):
+    """Load agent products from canonical agent listings (idempotent by slug).
+
+    Reads the listing index from settings.CATALOG_INDEX, then loads each
+    referenced listing JSON relative to settings.REPO_ROOT.
+    Non-commercial listings (sales_mode or status == 'non_commercial') are skipped.
+    Products already present in the DB (matched by slug) are not duplicated.
+    """
+    index_path = Path(settings.CATALOG_INDEX)
+    repo_root = Path(settings.REPO_ROOT)
+    if not index_path.exists():
         return
-    products = [
-        ("tender-analyzer-gcc", "Tender Analyzer GCC", "AI-powered GCC tender evaluation engine. Scores, classifies and recommends actions for government procurement opportunities.", "2.0.0", "Analysis", 1200.0, 1.2, ["Python 3.11+", "FastAPI", "OpenAI API key"], ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"]),
-        ("sales-outreach-agent", "Sales Outreach Agent", "Generate tailored B2B outreach sequences for GCC/Middle East enterprise sales.", "1.0.0", "Sales", 900.0, 0.8, ["Python 3.11+", "FastAPI", "OpenAI API key"], ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"]),
-        ("lead-research-agent", "Lead Research Agent", "Research target companies, classify opportunities, and prepare structured lead intelligence.", "1.0.0", "Sales", 900.0, 0.8, ["Python 3.11+", "FastAPI", "OpenAI API key"], ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"]),
-    ]
-    for slug, name, desc, ver, cat, price, size, reqs, files in products:
+    with open(index_path) as f:
+        listing_paths = json.load(f)
+    cur = conn.cursor()
+    for rel_path in listing_paths:
+        listing_path = repo_root / rel_path
+        if not listing_path.exists():
+            continue
+        with open(listing_path) as lf:
+            listing = json.load(lf)
+        if listing.get("sales_mode") == "non_commercial" or listing.get("status") == "non_commercial":
+            continue
+        slug = listing.get("slug") or listing.get("id", "")
+        if not slug:
+            continue
+        cur.execute("SELECT id FROM agent_products WHERE slug = ?", (slug,))
+        if cur.fetchone():
+            continue
         cur.execute(
-            "INSERT INTO agent_products (slug, name, description, version, category, price_aed, file_size_mb, requirements_json, included_files_json, created_at) VALUES (?,?,?,?,?,?,?,?,?,?)",
-            (slug, name, desc, ver, cat, price, size, json.dumps(reqs), json.dumps(files), datetime.utcnow().isoformat())
+            "INSERT INTO agent_products (slug, name, description, version, category, price_aed, requirements_json, included_files_json, created_at) VALUES (?,?,?,?,?,?,?,?,?)",
+            (
+                slug,
+                listing.get("name", slug),
+                listing.get("card_subtitle", ""),
+                listing.get("version", "1.0.0"),
+                listing.get("category", "AI Agent"),
+                float(listing.get("price_aed", 0)),
+                json.dumps(listing.get("requirements", [])),
+                json.dumps(listing.get("deliverables", [])),
+                datetime.utcnow().isoformat(),
+            ),
         )
     conn.commit()
 
@@ -130,7 +158,7 @@ def list_products(active_only=True):
     conn = _connect()
     cur = conn.cursor()
     if active_only:
-        cur.execute("SELECT * FROM agent_products WHERE status = 'active' ORDER BY id")
+        cur.execute("SELECT * FROM agent_products WHERE status = 'inquiry_only' ORDER BY id")
     else:
         cur.execute("SELECT * FROM agent_products ORDER BY id")
     rows = cur.fetchall()

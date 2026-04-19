@@ -1,0 +1,27 @@
+name: Validate Product Catalog
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Catalog Canonical Truth & Schema Consistency
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PyYAML
+        run: pip install "pyyaml>=6.0.2"
+
+      - name: Validate catalog canonical truth, schema, and no hardcoded seeds
+        run: python shared/validation/validate_catalog.py

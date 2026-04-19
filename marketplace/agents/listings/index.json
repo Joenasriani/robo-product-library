@@ -1,6 +1,12 @@
 [
   "marketplace/agents/listings/tender_analyzer_gcc_product.json",
+  "marketplace/agents/listings/sales_outreach_agent.json",
+  "marketplace/agents/listings/lead_research_agent.json",
+  "marketplace/agents/listings/enterprise_rfp_response_assistant.json",
+  "marketplace/agents/listings/social_content_ops_agent.json",
+  "marketplace/agents/listings/robot_demo_video_generator.json",
+  "marketplace/agents/listings/claw_hub_installer_agent.json",
+  "marketplace/agents/listings/tender_monitoring_agent.json",
   "marketplace/agents/listings/ai_agent_download_center.json",
-  "marketplace/agents/listings/protocol_marketplace_agent.json",
-  "marketplace/agents/listings/sales_outreach_agent.json"
+  "marketplace/agents/listings/protocol_marketplace_agent.json"
 ]

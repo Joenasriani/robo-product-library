@@ -84,40 +84,31 @@ async def download_entitlement(entitlement_id: int, email: str = Query(..., desc
         raise HTTPException(status_code=403, detail="Entitlement is not active")
 
     slug = entitlement["product_slug"]
-    protocol_dir = Path("data/protocols") / slug
+    protocol_dir = Path(settings.PROTOCOLS_ROOT) / slug
+
+    if not protocol_dir.exists() or not any(protocol_dir.iterdir()):
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "The deliverable for this protocol is not yet available for automated download. "
+                "Delivery is fulfilled manually after inquiry approval. "
+                "Please contact protocols@robomarket.ae to arrange delivery."
+            ),
+        )
 
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, mode="w", compression=zipfile.ZIP_DEFLATED) as zf:
-        if protocol_dir.exists():
-            for file_path in sorted(protocol_dir.rglob("*")):
-                if file_path.is_file():
-                    arcname = file_path.relative_to(protocol_dir)
-                    zf.write(file_path, arcname)
-        else:
-            # Fallback: generate a README from DB product record
-            product = db.get_product(entitlement["product_id"])
-            if product:
-                lines = [
-                    f"# {product['name']}",
-                    f"Version: {product['version']}",
-                    f"Region: {product['region']}",
-                    f"Risk Level: {product['risk_level']}",
-                    "",
-                    product.get("description", ""),
-                    "",
-                    "## Included Files",
-                ]
-                for f_name in product.get("included_files", []):
-                    lines.append(f"- {f_name}")
-                lines += ["", "## Support", "protocols@robomarket.ae"]
-                zf.writestr("README.md", "\n".join(lines))
+        for file_path in sorted(protocol_dir.rglob("*")):
+            if file_path.is_file():
+                arcname = file_path.relative_to(protocol_dir)
+                zf.write(file_path, arcname)
 
     buf.seek(0)
-    filename = f"{slug}-v{entitlement.get('product_name', slug)}.zip".replace(" ", "_")
+    filename = f"{slug}.zip"
     return StreamingResponse(
         buf,
         media_type="application/zip",
-        headers={"Content-Disposition": f'attachment; filename="{slug}.zip"'},
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
     )
 
 @app.post("/api/v1/admin/inquiries/{inquiry_id}/approve")

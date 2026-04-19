@@ -31,6 +31,6 @@ POST /api/admin/approve
 Delivery Phase 1:
 - manual email with ZIP
 
-Delivery Phase 2:
+Delivery Phase 2 (future, when payment flow is integrated):
 - generate signed download link
 - send email with download URL

@@ -3,7 +3,7 @@
 > **Status:** testing
 
 ## Overview
-Full marketplace for robot behavior protocol packs. Browse, inquire, purchase, and receive delivery of GCC robot protocols.
+Marketplace for robot behavior protocol packs. Browse, inquire, and receive delivery of GCC robot protocols.
 
 ## Features
 - Protocol product catalog with real GCC protocol data

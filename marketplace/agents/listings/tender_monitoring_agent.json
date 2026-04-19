@@ -1,0 +1,21 @@
+{
+  "id": "tender-monitoring-agent",
+  "slug": "tender-monitoring-agent",
+  "name": "Tender Monitoring Agent",
+  "category": "AI Agent",
+  "price_aed": 2000,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquiry_only",
+  "status": "inquiry_only",
+  "card_subtitle": "AI agent for monitoring tender opportunities, matching to company criteria, and generating prioritized alert reports.",
+  "best_for": ["Procurement Teams", "Bid Teams", "SMEs", "Consultants"],
+  "deliverables": ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"],
+  "requirements": ["Python 3.11+", "FastAPI runtime", "Provider API key (OpenAI/Anthropic/Gemini/Local)", "Configured source list"],
+  "use_cases": ["Tender opportunity monitoring", "Match scoring against company criteria", "Alert report generation"],
+  "limitations": [
+    "Monitors configured source list only; does not crawl arbitrary public sources",
+    "Match rationale is advisory; human review required before committing to bid"
+  ],
+  "support_mode": "inquiry_only_code_package_with_buyer_managed_deployment"
+}

@@ -2,12 +2,13 @@
   "id": "ai-agent-download-center",
   "slug": "ai-agent-download-center",
   "name": "AI Agent Download Center",
-  "category": "AI Agent",
-  "price_aed": 3000,
+  "category": "Infrastructure",
+  "price_aed": 0,
   "button_primary": "View",
-  "button_secondary": "Inquire",
-  "sales_mode": "inquire",
-  "status": "draft",
+  "button_secondary": null,
+  "sales_mode": "non_commercial",
+  "status": "non_commercial",
+  "commercial_note": "Internal marketplace infrastructure product; not sold as a standalone commercial product.",
   "card_subtitle": "Delivery and entitlement system for downloadable AI agents sold through RoboMarket.",
   "best_for": ["Marketplace Operators", "AI Product Sellers", "Enterprise Buyers"]
 }

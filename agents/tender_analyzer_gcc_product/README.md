@@ -10,7 +10,6 @@ Enterprise tender evaluation product layer for GCC procurement teams.
 - PDF/TXT upload → text extraction → analysis
 - GCC-focused tender prompt
 - Admin endpoints to create clients and top up credits
-- Stripe-ready checkout endpoint for paid credits
 - Multi-provider LLM support: OpenAI, Anthropic, Gemini, Local
 
 ## Positioning

@@ -4,7 +4,7 @@ Private master repository for RoboMarket AI agents, reusable skills, robot proto
 
 ## Repository Structure
 
-- [`agents/`](./agents/) — sellable AI agent products (10 active agent apps)
+- [`agents/`](./agents/) — AI agent products (8 inquiry-ready domain agents + 2 internal infrastructure agents)
 - [`ai_products/`](./ai_products/) — AI product lines outside `agents/` (RAG suite + legacy Tender Analyzer app)
 - [`protocols/`](./protocols/) — canonical robot protocol products and GCC localization packs
 - [`marketplace/`](./marketplace/) — storefront catalogs, listings, product pages, and downloadable bundles
