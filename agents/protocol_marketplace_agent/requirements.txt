@@ -8,3 +8,4 @@ python-multipart
 pypdf
 email-validator<2.1.1
 stripe
+pyyaml>=6.0.2

@@ -76,7 +76,7 @@ async def download_product(product_id: int, client=Depends(require_client)):
         raise HTTPException(status_code=404, detail="Product not found")
     entitlement = db.get_entitlement(client["id"], product_id)
     if not entitlement:
-        raise HTTPException(status_code=403, detail="No entitlement for this product. Please purchase access.")
+        raise HTTPException(status_code=403, detail="No entitlement for this product. Please submit an inquiry to request access.")
     return {
         "entitlement_id": entitlement["id"],
         "product_slug": product["slug"],
@@ -97,47 +97,23 @@ async def download_product_file(request: Request, product_id: int, client=Depend
     if not entitlement:
         raise HTTPException(status_code=403, detail="No entitlement for this product.")
 
-    # Build a ZIP in memory containing a README and a manifest for the purchased product
+    agent_dir = Path(settings.AGENTS_ROOT) / product["slug"]
+    if not agent_dir.exists() or not any(agent_dir.iterdir()):
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "The deliverable for this agent product is not yet staged for automated download. "
+                "Delivery is fulfilled manually after inquiry approval. "
+                "Please contact support@robomarket.ae to arrange delivery."
+            ),
+        )
+
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, mode="w", compression=zipfile.ZIP_DEFLATED) as zf:
-        readme_lines = [
-            f"# {product['name']}",
-            f"Version: {product['version']}",
-            f"Category: {product['category']}",
-            f"Price: AED {product.get('price_aed', '')}",
-            "",
-            product.get("description", ""),
-            "",
-            "## Requirements",
-        ]
-        for req in product.get("requirements", []):
-            readme_lines.append(f"- {req}")
-        readme_lines += ["", "## Included Files"]
-        for f_name in product.get("included_files", []):
-            readme_lines.append(f"- {f_name}")
-        readme_lines += [
-            "",
-            "## Getting Started",
-            "1. Ensure all listed requirements are installed.",
-            "2. Refer to the documentation in each included file.",
-            "3. Contact support@robomarket.ae for integration assistance.",
-            "",
-            f"Entitlement ID: {entitlement['id']}",
-            f"Granted: {entitlement['granted_at']}",
-        ]
-        zf.writestr("README.md", "\n".join(readme_lines))
-
-        manifest = {
-            "product_id": product["id"],
-            "slug": product["slug"],
-            "name": product["name"],
-            "version": product["version"],
-            "entitlement_id": entitlement["id"],
-            "granted_at": entitlement["granted_at"],
-            "included_files": product.get("included_files", []),
-        }
-        import json as _json
-        zf.writestr("manifest.json", _json.dumps(manifest, indent=2))
+        for file_path in sorted(agent_dir.rglob("*")):
+            if file_path.is_file():
+                arcname = file_path.relative_to(agent_dir)
+                zf.write(file_path, arcname)
 
     buf.seek(0)
     filename = f"{product['slug']}-v{product['version']}.zip"
