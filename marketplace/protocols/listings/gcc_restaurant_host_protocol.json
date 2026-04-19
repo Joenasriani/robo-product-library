@@ -6,8 +6,17 @@
   "price_aed": 2100,
   "button_primary": "View",
   "button_secondary": "Inquire",
-  "sales_mode": "inquire",
-  "status": "draft",
-  "card_subtitle": "Polished GCC hospitality behavior layer for restaurant reception, table guidance, and guest interaction.",
-  "best_for": ["Restaurants", "Host Stands", "Guest Arrival", "Family Dining", "VIP Guests"]
+  "sales_mode": "inquiry",
+  "status": "inquiry_only",
+  "card_subtitle": "Inquiry-led GCC behavior package for restaurant reception and table guidance.",
+  "best_for": [
+    "Restaurant host stands",
+    "Guest arrival queues",
+    "Table guidance",
+    "Family dining areas",
+    "Reservation desk redirection"
+  ],
+  "canonical_manifest": "protocols/products/gcc_restaurant_host_protocol/manifest.yaml",
+  "fulfillment_method": "manual_delivery_after_inquiry_approval",
+  "deliverable_type": "protocol_configuration_bundle"
 }

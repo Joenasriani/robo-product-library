@@ -6,8 +6,17 @@
   "price_aed": 2500,
   "button_primary": "View",
   "button_secondary": "Inquire",
-  "sales_mode": "inquire",
-  "status": "draft",
-  "card_subtitle": "Privacy-first pharmacy behavior layer for queue guidance, counter support, and safe customer-facing assistance.",
-  "best_for": ["Pharmacies", "Queue Guidance", "Prescription Support", "OTC Navigation", "Family Assistance"]
+  "sales_mode": "inquiry",
+  "status": "inquiry_only",
+  "card_subtitle": "Inquiry-led GCC behavior package for pharmacy customer/patient assistance.",
+  "best_for": [
+    "Pharmacy queues",
+    "Counter routing",
+    "OTC zone navigation",
+    "Prescription pickup guidance",
+    "Family-sensitive pharmacy interaction"
+  ],
+  "canonical_manifest": "protocols/products/gcc_pharmacy_assistance_protocol/manifest.yaml",
+  "fulfillment_method": "manual_delivery_after_inquiry_approval",
+  "deliverable_type": "protocol_configuration_bundle"
 }

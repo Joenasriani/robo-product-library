@@ -11,7 +11,7 @@ Culturally adaptive behavior engine for robots operating across GCC executive, V
 ---
 
 Short Description:
-A production-ready behavior policy system that enforces respectful interaction, privacy-aware operation, and culturally compliant conduct for robots deployed in GCC environments.
+An inquiry-led behavior policy system for respectful interaction, privacy-aware operation, and culturally compliant conduct for robots deployed in GCC environments.
 
 ---
 

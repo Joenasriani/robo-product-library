@@ -1,0 +1,22 @@
+{
+  "id": "gcc-hotel-concierge-protocol-v1",
+  "slug": "gcc-hotel-concierge-protocol-v1",
+  "name": "GCC Hotel Concierge Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 2200,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquiry",
+  "status": "inquiry_only",
+  "card_subtitle": "Inquiry-led GCC behavior package for hotel concierge and guest-facing hospitality.",
+  "best_for": [
+    "Hotel lobbies",
+    "Guest check-in support",
+    "Concierge routing",
+    "VIP arrival etiquette",
+    "Family-friendly hospitality"
+  ],
+  "canonical_manifest": "protocols/products/gcc_hotel_concierge_protocol/manifest.yaml",
+  "fulfillment_method": "manual_delivery_after_inquiry_approval",
+  "deliverable_type": "protocol_configuration_bundle"
+}

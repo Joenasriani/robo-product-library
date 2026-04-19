@@ -5,54 +5,91 @@ version: 1.0.0
 vendor: RoboMarket.ae
 category: cultural-behavior-pack
 subcategory:
-  - hospitality-protocol
-  - hotel-concierge
-  - gcc-localization
-summary: >
-  A GCC hotel concierge behavior protocol for guest-facing robot interaction,
-  reception support, navigation help, family-sensitive conduct, and VIP-aware hospitality logic.
+- hospitality-protocol
+- hotel-concierge
+- gcc-localization
+summary: 'A GCC hotel concierge behavior protocol for guest-facing robot interaction,
+  reception support, navigation help, family-sensitive conduct, and VIP-aware hospitality
+  logic.
 
+  '
 supported_countries:
-  - saudi_arabia
-  - united_arab_emirates
-  - qatar
-  - kuwait
-  - bahrain
-  - oman
-
+- saudi_arabia
+- united_arab_emirates
+- qatar
+- kuwait
+- bahrain
+- oman
 supported_use_cases:
-  - hotel_reception
-  - concierge_assistance
-  - guest_navigation
-  - luggage_direction_support
-  - vip_arrival
-  - family_hospitality
-
+- hotel_reception
+- concierge_assistance
+- guest_navigation
+- luggage_direction_support
+- vip_arrival
+- family_hospitality
 risk_level: medium
 requires_operator_approval: false
 human_supervision_required: true
-
 required_capabilities:
-  - speech_tts
-  - distance_estimation
-  - people_detection
-  - gaze_control
-
+- speech_tts
+- distance_estimation
+- people_detection
+- gaze_control
 optional_capabilities:
-  - multilingual_asr
-  - route_navigation
-  - badge_detection
-  - operator_override
-
+- multilingual_asr
+- route_navigation
+- badge_detection
+- operator_override
 deliverables:
-  - yaml_policy_bundle
-  - role_behavior_rules
-  - country_overlays
-  - hospitality_safety_rules
-  - test_scenarios
-  - compatibility_guide
-
+- yaml_policy_bundle
+- role_behavior_rules
+- country_overlays
+- hospitality_safety_rules
+- test_scenarios
+- compatibility_guide
 commercial_tier: professional
 support_window_days: 90
 update_channel: stable
-status: draft
+status: inquiry_only
+name: GCC Hotel Concierge Protocol
+sales_mode: inquiry
+price_aed: 2200
+deliverable_type: protocol_configuration_bundle
+best_for:
+- Hotel lobbies
+- Guest check-in support
+- Concierge routing
+- VIP arrival etiquette
+- Family-friendly hospitality
+dependencies:
+- Robot behavior runtime capable of loading YAML policy files
+- On-site operator escalation workflow
+- Venue-specific map/directory data for navigation prompts
+hardware_requirements:
+- Speaker and TTS-capable audio output
+- Microphone input for operator-assisted interactions
+- People detection sensor (camera or depth sensor)
+- Safe mobility platform or stationary kiosk with guidance prompts
+software_requirements:
+- Policy loader for YAML behavior packs
+- Dialogue engine with Arabic and English phrase handling
+- Safety override and escalation hooks to human operator
+- Robot middleware integration (ROS2 or equivalent)
+compatibility_notes: Validated for GCC service-robot deployments focused on hotel
+  concierge and guest-facing hospitality. Final behavior quality depends on robot
+  middleware integrations listed in docs/compatibility.md.
+setup_time_estimate: 5-7 hours including concierge script localization
+support_scope: Remote implementation guidance during onboarding, one deployment review
+  session, and issue triage for protocol logic within the active support window.
+license_type: commercial_internal_deployment_license
+fulfillment_method: manual_delivery_after_inquiry_approval
+customer_receives:
+- Protocol package directory with core YAML behavior files
+- Product-specific setup and compatibility documentation
+- Acceptance criteria and QA checklist for deployment sign-off
+- Commercial usage license terms
+limitations:
+- Does not process payments or bookings autonomously.
+- Does not replace hotel front-desk staff.
+- Requires human supervision for VIP and sensitive guest scenarios.
+qa_status: acceptance_criteria_defined_with_manual_qa_checklist

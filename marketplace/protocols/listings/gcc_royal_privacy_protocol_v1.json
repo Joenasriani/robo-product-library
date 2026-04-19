@@ -6,8 +6,17 @@
   "price_aed": 4200,
   "button_primary": "View",
   "button_secondary": "Inquire",
-  "sales_mode": "inquire",
-  "status": "draft",
-  "card_subtitle": "Premium GCC behavior engine for executive, hospitality, VIP, and privacy-sensitive deployments.",
-  "best_for": ["Government", "Executive Offices", "VIP Events", "Hospitality", "Privacy-Sensitive Spaces"]
+  "sales_mode": "inquiry",
+  "status": "inquiry_only",
+  "card_subtitle": "Inquiry-led GCC behavior package for executive and privacy-sensitive deployments.",
+  "best_for": [
+    "Government reception",
+    "Executive offices",
+    "VIP arrivals",
+    "Hospitality concierge deployments",
+    "Privacy-sensitive public spaces"
+  ],
+  "canonical_manifest": "protocols/products/gcc_royal_privacy_protocol_v1/manifest.yaml",
+  "fulfillment_method": "manual_delivery_after_inquiry_approval",
+  "deliverable_type": "protocol_configuration_bundle"
 }

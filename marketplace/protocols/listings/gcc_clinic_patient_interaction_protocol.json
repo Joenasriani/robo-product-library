@@ -1,0 +1,22 @@
+{
+  "id": "gcc-clinic-patient-interaction-protocol-v1",
+  "slug": "gcc-clinic-patient-interaction-protocol-v1",
+  "name": "GCC Clinic Patient Interaction Protocol",
+  "category": "Protocol Pack",
+  "price_aed": 2600,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquiry",
+  "status": "inquiry_only",
+  "card_subtitle": "Inquiry-led GCC behavior package for clinic patient-facing assistance.",
+  "best_for": [
+    "Clinic reception",
+    "Patient check-in guidance",
+    "Waiting area support",
+    "Family visitor navigation",
+    "Appointment queue direction"
+  ],
+  "canonical_manifest": "protocols/products/gcc_clinic_patient_interaction_protocol/manifest.yaml",
+  "fulfillment_method": "manual_delivery_after_inquiry_approval",
+  "deliverable_type": "protocol_configuration_bundle"
+}

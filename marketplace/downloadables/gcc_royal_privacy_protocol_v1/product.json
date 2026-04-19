@@ -7,7 +7,7 @@
   "price_aed": 4200,
   "tier": "Professional",
   "delivery_type": "downloadable_zip",
-  "status": "active",
+  "status": "inquiry_only",
   "vendor": "RoboMarket.ae",
   "includes": [
     "manifest.yaml",
@@ -34,5 +34,8 @@
     "Gaze-capable interaction layer",
     "Human supervisor"
   ],
-  "important_note": "This product does not infer protected attributes and does not replace a human protocol officer."
+  "important_note": "This product does not infer protected attributes and does not replace a human protocol officer.",
+  "sales_mode": "inquiry",
+  "fulfillment_method": "manual_delivery_after_inquiry_approval",
+  "canonical_manifest": "protocols/products/gcc_royal_privacy_protocol_v1/manifest.yaml"
 }
