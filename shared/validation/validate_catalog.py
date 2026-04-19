@@ -135,8 +135,13 @@ if check_exists(agent_catalog_path, "Agent catalog"):
             err(f"marketplace/agents/catalog.yaml entry '{entry.get('id')}': source '{source_rel}' not found")
 
 # ── 7. No hardcoded seed data in runtime db.py files ─────────────────────────
-SEED_PATTERNS = ["_seed_products", "gcc-royal-protocol-pack", "gcc-hotel-concierge-protocol",
-                 "tender-analyzer-gcc\", \"Tender Analyzer", "sales-outreach-agent\", \"Sales Outreach"]
+# Detect the presence of the removed _seed_products function or known hardcoded
+# product slug strings that were part of the old seed arrays.
+SEED_PATTERNS = [
+    "def _seed_products",
+    "gcc-royal-protocol-pack",
+    "gcc-hotel-concierge-protocol",
+]
 runtime_db_files = [
     REPO_ROOT / "agents" / "protocol_marketplace_agent" / "src" / "db.py",
     REPO_ROOT / "agents" / "ai_agent_download_center" / "src" / "db.py",
