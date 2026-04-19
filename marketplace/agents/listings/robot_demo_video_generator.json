@@ -1,0 +1,21 @@
+{
+  "id": "robot-demo-video-generator",
+  "slug": "robot-demo-video-generator",
+  "name": "Robot Demo Video Generator",
+  "category": "AI Agent",
+  "price_aed": 1500,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquiry_only",
+  "status": "inquiry_only",
+  "card_subtitle": "AI agent for generating storyboards, scene plans, and AI image prompt packs for robot demo videos.",
+  "best_for": ["Robotics Companies", "Marketing Teams", "Demo Producers", "Product Managers"],
+  "deliverables": ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"],
+  "requirements": ["Python 3.11+", "FastAPI runtime", "Provider API key (OpenAI/Anthropic/Gemini/Local)"],
+  "use_cases": ["Demo storyboard generation", "Scene planning", "AI image prompt creation"],
+  "limitations": [
+    "Generates storyboards and prompt packs; does not produce rendered video",
+    "Video production requires separate tooling and human editing"
+  ],
+  "support_mode": "inquiry_only_code_package_with_buyer_managed_deployment"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "enterprise-rfp-response-assistant",
+  "slug": "enterprise-rfp-response-assistant",
+  "name": "Enterprise RFP Response Assistant",
+  "category": "AI Agent",
+  "price_aed": 2200,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquiry_only",
+  "status": "inquiry_only",
+  "card_subtitle": "AI agent for parsing RFP documents, extracting requirements, and generating structured response sections.",
+  "best_for": ["Enterprise Sales Teams", "Bid Writers", "Consultants", "Government Contractors"],
+  "deliverables": ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"],
+  "requirements": ["Python 3.11+", "FastAPI runtime", "Provider API key (OpenAI/Anthropic/Gemini/Local)"],
+  "use_cases": ["RFP requirement extraction", "Response outline generation", "Risk flag identification"],
+  "limitations": [
+    "Generates draft response sections; human review and approval required before submission",
+    "Does not submit RFP responses autonomously"
+  ],
+  "support_mode": "inquiry_only_code_package_with_buyer_managed_deployment"
+}

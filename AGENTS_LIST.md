@@ -76,6 +76,7 @@ Status legend:
 9. AI Agent Download Center
 - Type: Agent
 - Status: testing
+- Commercial: non_commercial (internal marketplace infrastructure)
 - Priority: high
 - Folder: agents/ai_agent_download_center
 - Port: 8008
@@ -84,10 +85,11 @@ Status legend:
 10. Protocol Marketplace Agent
 - Type: Agent
 - Status: testing
+- Commercial: non_commercial (internal marketplace infrastructure)
 - Priority: very_high
 - Folder: agents/protocol_marketplace_agent
 - Port: 8009
-- Purpose: Full marketplace for robot behavior protocol packs — catalog, inquiry, purchase, delivery
+- Purpose: Marketplace for robot behavior protocol packs — catalog, inquiry, and delivery
 
 11. GCC Localization Packs
 - Type: Protocol
@@ -120,8 +122,8 @@ Status legend:
 - Purpose: Reusable AI building blocks for all agents and protocol systems
 
 Next priorities:
-1. Connect Stripe payment to each agent's billing flow
-2. Wire Protocol Marketplace to actual downloadable files in protocols/products/
+1. Wire Protocol Marketplace Agent to actual deliverable files in data/protocols/
+2. Wire AI Agent Download Center to actual deliverable files in data/agents/
 3. Add CI/CD pipeline configuration
 4. Add automated test suites for each agent
 5. Deploy to RoboMarket production infrastructure

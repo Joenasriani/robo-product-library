@@ -63,20 +63,19 @@ This system does NOT infer protected attributes and does NOT replace a human pro
 
 UI Buttons:
 
-View → Opens full product page  
-Inquire → Opens form (name, company, use case)  
-Buy → Disabled OR triggers manual approval flow  
+View → Opens full product page
+Inquire → Opens form (name, company, use case)
 
 ---
 
 Delivery Logic:
 
-Initial Phase:
+Current Phase:
 - No automatic download
 - Admin reviews inquiry
 - Product delivered manually after approval
 
-Future Phase:
-- Stripe payment
-- Instant ZIP delivery
+Future Phase (when payment flow is integrated):
+- Payment processing
+- Automated delivery
 - Email confirmation with download link

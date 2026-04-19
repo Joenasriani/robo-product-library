@@ -1,0 +1,21 @@
+{
+  "id": "lead-research-agent",
+  "slug": "lead-research-agent",
+  "name": "Lead Research Agent",
+  "category": "AI Agent",
+  "price_aed": 1800,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquiry_only",
+  "status": "inquiry_only",
+  "card_subtitle": "AI agent for researching target companies, classifying opportunities, and generating structured lead intelligence.",
+  "best_for": ["B2B Sales Teams", "Agencies", "Founders", "Business Development"],
+  "deliverables": ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"],
+  "requirements": ["Python 3.11+", "FastAPI runtime", "Provider API key (OpenAI/Anthropic/Gemini/Local)"],
+  "use_cases": ["Company research", "Opportunity classification", "Lead record generation"],
+  "limitations": [
+    "Generates research summaries and qualification notes; does not make autonomous contact",
+    "Output quality depends on available public data for target company"
+  ],
+  "support_mode": "inquiry_only_code_package_with_buyer_managed_deployment"
+}

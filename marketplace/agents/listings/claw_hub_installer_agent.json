@@ -1,0 +1,21 @@
+{
+  "id": "claw-hub-installer-agent",
+  "slug": "claw-hub-installer-agent",
+  "name": "Claw Hub Installer Agent",
+  "category": "AI Agent",
+  "price_aed": 1200,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquiry_only",
+  "status": "inquiry_only",
+  "card_subtitle": "AI agent for guiding installation and setup of robotics platforms with compatibility checks.",
+  "best_for": ["Robotics Engineers", "System Integrators", "Platform Deployers"],
+  "deliverables": ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"],
+  "requirements": ["Python 3.11+", "FastAPI runtime", "Provider API key (OpenAI/Anthropic/Gemini/Local)"],
+  "use_cases": ["Platform installation guidance", "Compatibility checking", "Troubleshooting step generation"],
+  "limitations": [
+    "Provides installation guidance only; does not execute commands on target systems",
+    "Compatibility notes are advisory; always verify against platform documentation"
+  ],
+  "support_mode": "inquiry_only_code_package_with_buyer_managed_deployment"
+}

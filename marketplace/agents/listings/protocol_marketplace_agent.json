@@ -2,12 +2,13 @@
   "id": "protocol-marketplace-agent",
   "slug": "protocol-marketplace-agent",
   "name": "Protocol Marketplace Agent",
-  "category": "AI Agent",
-  "price_aed": 3500,
+  "category": "Infrastructure",
+  "price_aed": 0,
   "button_primary": "View",
-  "button_secondary": "Inquire",
-  "sales_mode": "inquire",
-  "status": "draft",
+  "button_secondary": null,
+  "sales_mode": "non_commercial",
+  "status": "non_commercial",
+  "commercial_note": "Internal marketplace infrastructure product; not sold as a standalone commercial product.",
   "card_subtitle": "Marketplace system for browsing, managing, and delivering robot protocol packs.",
   "best_for": ["Robotics Integrators", "Marketplace Operators", "Enterprise Robotics Teams"]
 }

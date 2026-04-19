@@ -1,0 +1,21 @@
+{
+  "id": "social-content-ops-agent",
+  "slug": "social-content-ops-agent",
+  "name": "Social Content Ops Agent",
+  "category": "AI Agent",
+  "price_aed": 1500,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquiry_only",
+  "status": "inquiry_only",
+  "card_subtitle": "AI agent for generating social media content calendars, post concepts, and captions for GCC brands.",
+  "best_for": ["Marketing Teams", "GCC Brands", "Social Media Managers", "Agencies"],
+  "deliverables": ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"],
+  "requirements": ["Python 3.11+", "FastAPI runtime", "Provider API key (OpenAI/Anthropic/Gemini/Local)"],
+  "use_cases": ["Content calendar planning", "Post concept generation", "Caption drafting"],
+  "limitations": [
+    "Generates content drafts; human review required before publishing",
+    "Does not publish posts directly to social platforms"
+  ],
+  "support_mode": "inquiry_only_code_package_with_buyer_managed_deployment"
+}

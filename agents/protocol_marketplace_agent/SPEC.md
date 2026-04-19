@@ -1,7 +1,7 @@
 # Protocol Marketplace Agent Spec
 
 ## Goal
-Create a real marketplace system for browsing, purchasing, entitling, and delivering robot protocol packs.
+Create a real marketplace system for browsing, inquiring about, and receiving delivery of robot protocol packs.
 
 ## Product Definition
 Each protocol product must include:
@@ -33,15 +33,15 @@ A protocol cannot be published unless:
 - SCENARIOS.md exists
 - README.md exists
 - downloadable assets are real
-- purchase flow is connected
+- inquiry flow is connected
 - delivery flow is defined
 
-### 3. Purchase Flow
+### 3. Inquiry and Approval Flow
 The system must support:
-- buy now
-- entitlement creation
+- inquiry submission
+- entitlement creation after admin approval
 - order record creation
-- post-purchase delivery trigger
+- post-approval delivery trigger
 
 ### 4. Entitlement Logic
 After purchase, buyer must receive:

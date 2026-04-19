@@ -9,9 +9,14 @@ description: >
   Includes rules for hierarchy, privacy, heritage settings, and formal
   service contexts such as government, hospitality, and executive spaces.
 
-price_aed: 1200
-status: "active"
+price_aed: 0
+status: "non_commercial"
+sales_mode: "non_commercial"
 version: "v1"
+commercial_note: >
+  Orphaned legacy product file. Not included in the canonical protocol index
+  (protocols/products/index.yaml). Content may be superseded by canonical
+  protocol products. Do not list on storefront.
 
 risk_level: "high"
 
@@ -26,4 +31,4 @@ included_files:
   - protocols/gcc_localization_packs/saudi/SCENARIOS.md
   - protocols/gcc_localization_packs/saudi/README.md
 
-delivery_type: "dashboard_download"
+delivery_type: "non_commercial"

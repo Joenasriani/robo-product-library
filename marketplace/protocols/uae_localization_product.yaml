@@ -9,9 +9,14 @@ description: >
   Covers hospitality, retail, government, and public interaction scenarios
   with strict privacy, proximity, and cultural behavior rules.
 
-price_aed: 1200
-status: "active"
+price_aed: 0
+status: "non_commercial"
+sales_mode: "non_commercial"
 version: "v1"
+commercial_note: >
+  Orphaned legacy product file. Not included in the canonical protocol index
+  (protocols/products/index.yaml). Content may be superseded by canonical
+  protocol products. Do not list on storefront.
 
 risk_level: "high"
 
@@ -26,4 +31,4 @@ included_files:
   - protocols/gcc_localization_packs/uae/SCENARIOS.md
   - protocols/gcc_localization_packs/uae/README.md
 
-delivery_type: "dashboard_download"
+delivery_type: "non_commercial"
