@@ -17,3 +17,9 @@ Enterprise tender evaluation product layer for GCC procurement teams.
 
 This is a **Tender Analyzer**, not a crawler or public portal monitor.
 You supply the tender document or text. The product evaluates commercial fit, key requirements, risk, and action recommendation.
+
+## Product Readiness
+- Getting started: [QUICK_START.md](QUICK_START.md)
+- Change history: [CHANGELOG.md](CHANGELOG.md)
+- Commercial boundaries: [LIMITATIONS.md](LIMITATIONS.md)
+- Support & fulfillment: [SUPPORT.md](SUPPORT.md)

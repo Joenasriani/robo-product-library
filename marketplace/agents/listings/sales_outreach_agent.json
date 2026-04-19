@@ -9,5 +9,13 @@
   "sales_mode": "inquire",
   "status": "draft",
   "card_subtitle": "AI agent for lead research, opportunity detection, and tailored outreach generation.",
-  "best_for": ["Agencies", "B2B Service Sellers", "Founders", "Sales Teams"]
+  "best_for": ["Agencies", "B2B Service Sellers", "Founders", "Sales Teams"],
+  "deliverables": ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"],
+  "requirements": ["Python 3.11+", "FastAPI runtime", "Provider API key (OpenAI/Anthropic/Gemini)"],
+  "use_cases": ["Lead research", "Outreach sequence drafting", "Persona-aware sales messaging"],
+  "limitations": [
+    "Generates recommendations/drafts only; does not auto-send campaigns",
+    "Requires human review before external outreach"
+  ],
+  "support_mode": "inquiry_only_code_package_with_buyer_managed_deployment"
 }

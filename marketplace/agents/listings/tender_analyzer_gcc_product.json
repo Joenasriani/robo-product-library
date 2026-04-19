@@ -9,5 +9,13 @@
   "sales_mode": "inquire",
   "status": "draft",
   "card_subtitle": "AI agent for evaluating GCC tenders from text and uploaded files.",
-  "best_for": ["Procurement Teams", "SMEs", "Consultants", "Bid Teams"]
+  "best_for": ["Procurement Teams", "SMEs", "Consultants", "Bid Teams"],
+  "deliverables": ["src/", "frontend/", "Dockerfile", "docker-compose.yml", "README.md"],
+  "requirements": ["Python 3.11+", "FastAPI runtime", "Provider API key (OpenAI/Anthropic/Gemini/Local)"],
+  "use_cases": ["Tender fit assessment", "Risk highlighting", "Go/no-go recommendation support"],
+  "limitations": [
+    "Analyzes submitted files/text only; no autonomous tender crawling",
+    "Decision support only; not legal or compliance advice"
+  ],
+  "support_mode": "inquiry_only_code_package_with_buyer_managed_deployment"
 }

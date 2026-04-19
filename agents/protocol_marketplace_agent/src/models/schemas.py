@@ -15,6 +15,9 @@ class ProtocolProduct(BaseModel):
     risk_level: str
     hardware_requirements: List[str] = []
     included_files: List[str] = []
+    use_cases: List[str] = []
+    limitations: List[str] = []
+    support_mode: str = "inquiry_and_manual_fulfillment"
     delivery_type: str = "download"
 
 class InquiryRequest(BaseModel):
@@ -60,6 +63,9 @@ class AdminCreateProtocolRequest(BaseModel):
     risk_level: str = "medium"
     hardware_requirements: List[str] = []
     included_files: List[str] = []
+    use_cases: List[str] = []
+    limitations: List[str] = []
+    support_mode: str = "inquiry_and_manual_fulfillment"
     delivery_type: str = "download"
 
 class HealthResponse(BaseModel):
@@ -86,6 +92,9 @@ class AdminUpdateProtocolRequest(BaseModel):
     risk_level: Optional[str] = None
     hardware_requirements: Optional[List[str]] = None
     included_files: Optional[List[str]] = None
+    use_cases: Optional[List[str]] = None
+    limitations: Optional[List[str]] = None
+    support_mode: Optional[str] = None
 
 
 class AdminCreateClientRequest(BaseModel):
