@@ -1,3 +1,5 @@
-Archive
+# Archive
 
-Paused, deprecated, or experimental work that is not currently active.
+Paused, deprecated, or historical assets that are not part of the active product surface.
+
+Use this folder for retained reference material that should stay versioned but is not currently shipped.
