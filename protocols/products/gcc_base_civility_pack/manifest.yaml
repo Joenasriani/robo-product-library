@@ -42,7 +42,7 @@ support_window_days: 30
 update_channel: stable
 status: inquiry_only
 name: GCC Base Civility Pack
-sales_mode: inquiry
+sales_mode: inquiry_only
 price_aed: 900
 deliverable_type: protocol_configuration_bundle
 best_for:

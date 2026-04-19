@@ -52,7 +52,7 @@ support_window_days: 90
 update_channel: stable
 status: inquiry_only
 name: GCC Retail Floor Assistance Protocol
-sales_mode: inquiry
+sales_mode: inquiry_only
 price_aed: 2100
 deliverable_type: protocol_configuration_bundle
 best_for:

@@ -6,7 +6,7 @@
   "price_aed": 4200,
   "button_primary": "View",
   "button_secondary": "Inquire",
-  "sales_mode": "inquiry",
+  "sales_mode": "inquiry_only",
   "status": "inquiry_only",
   "card_subtitle": "Inquiry-led GCC behavior package for executive and privacy-sensitive deployments.",
   "best_for": [

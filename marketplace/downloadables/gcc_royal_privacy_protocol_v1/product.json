@@ -35,7 +35,7 @@
     "Human supervisor"
   ],
   "important_note": "This product does not infer protected attributes and does not replace a human protocol officer.",
-  "sales_mode": "inquiry",
+  "sales_mode": "inquiry_only",
   "fulfillment_method": "manual_delivery_after_inquiry_approval",
   "canonical_manifest": "protocols/products/gcc_royal_privacy_protocol_v1/manifest.yaml"
 }

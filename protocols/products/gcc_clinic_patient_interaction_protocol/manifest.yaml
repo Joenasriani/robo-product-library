@@ -46,7 +46,7 @@ support_window_days: 90
 update_channel: stable
 status: inquiry_only
 name: GCC Clinic Patient Interaction Protocol
-sales_mode: inquiry
+sales_mode: inquiry_only
 price_aed: 2600
 deliverable_type: protocol_configuration_bundle
 best_for:
