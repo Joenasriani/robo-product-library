@@ -1,14 +1,6 @@
-# GCC Royal + Privacy Protocol v1
+# GCC Royal + Privacy Protocol v1 (Downloadable Package)
 
-Status: draft
+This package is the delivery artifact for the canonical product at:
+`protocols/products/gcc_royal_privacy_protocol_v1/manifest.yaml`
 
-Purpose:
-A standalone premium RoboMarket protocol product for GCC robot deployments requiring:
-- royal / high-authority behavior
-- privacy-sensitive behavior
-- country overlays
-- venue switching
-- safe fallback logic
-- adapter mappings
-
-This is a real product structure, not a placeholder listing.
+Sellability, status, pricing, and fulfillment terms are governed by the canonical manifest and marketplace listing.

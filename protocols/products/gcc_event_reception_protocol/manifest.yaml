@@ -5,57 +5,93 @@ version: 1.0.0
 vendor: RoboMarket.ae
 category: cultural-behavior-pack
 subcategory:
-  - event-protocol
-  - reception
-  - gcc-localization
-summary: >
-  A GCC event reception behavior protocol for guest-facing robot interaction,
-  check-in guidance, queue management, VIP-aware conduct, and respectful reception behavior
-  across conferences, exhibitions, launches, and formal public events.
+- event-protocol
+- reception
+- gcc-localization
+summary: 'A GCC event reception behavior protocol for guest-facing robot interaction,
+  check-in guidance, queue management, VIP-aware conduct, and respectful reception
+  behavior across conferences, exhibitions, launches, and formal public events.
 
+  '
 supported_countries:
-  - saudi_arabia
-  - united_arab_emirates
-  - qatar
-  - kuwait
-  - bahrain
-  - oman
-
+- saudi_arabia
+- united_arab_emirates
+- qatar
+- kuwait
+- bahrain
+- oman
 supported_use_cases:
-  - event_reception
-  - guest_checkin_guidance
-  - badge_counter_direction
-  - queue_management
-  - vip_arrival
-  - exhibition_entry_support
-  - formal_event_welcome
-
+- event_reception
+- guest_checkin_guidance
+- badge_counter_direction
+- queue_management
+- vip_arrival
+- exhibition_entry_support
+- formal_event_welcome
 risk_level: medium
 requires_operator_approval: false
 human_supervision_required: true
-
 required_capabilities:
-  - speech_tts
-  - distance_estimation
-  - people_detection
-  - gaze_control
-
+- speech_tts
+- distance_estimation
+- people_detection
+- gaze_control
 optional_capabilities:
-  - multilingual_asr
-  - badge_detection
-  - event_schedule_integration
-  - operator_override
-  - queue_display_integration
-
+- multilingual_asr
+- badge_detection
+- event_schedule_integration
+- operator_override
+- queue_display_integration
 deliverables:
-  - yaml_policy_bundle
-  - role_behavior_rules
-  - country_overlays
-  - event_safety_rules
-  - test_scenarios
-  - compatibility_guide
-
+- yaml_policy_bundle
+- role_behavior_rules
+- country_overlays
+- event_safety_rules
+- test_scenarios
+- compatibility_guide
 commercial_tier: professional
 support_window_days: 90
 update_channel: stable
-status: draft
+status: inquiry_only
+name: GCC Event Reception Protocol
+sales_mode: inquiry_only
+price_aed: 2300
+deliverable_type: protocol_configuration_bundle
+best_for:
+- Conference reception zones
+- Exhibition check-in
+- Launch event greeting
+- Badge desk direction
+- VIP arrival handling
+dependencies:
+- Robot behavior runtime capable of loading YAML policy files
+- On-site operator escalation workflow
+- Venue-specific map/directory data for navigation prompts
+hardware_requirements:
+- Speaker and TTS-capable audio output
+- Microphone input for operator-assisted interactions
+- People detection sensor (camera or depth sensor)
+- Safe mobility platform or stationary kiosk with guidance prompts
+software_requirements:
+- Policy loader for YAML behavior packs
+- Dialogue engine with Arabic and English phrase handling
+- Safety override and escalation hooks to human operator
+- Robot middleware integration (ROS2 or equivalent)
+compatibility_notes: Validated for GCC service-robot deployments focused on event
+  reception and check-in support. Final behavior quality depends on robot middleware
+  integrations listed in docs/compatibility.md.
+setup_time_estimate: 6-8 hours including event-flow simulation
+support_scope: Remote implementation guidance during onboarding, one deployment review
+  session, and issue triage for protocol logic within the active support window.
+license_type: commercial_internal_deployment_license
+fulfillment_method: manual_delivery_after_inquiry_approval
+customer_receives:
+- Protocol package directory with core YAML behavior files
+- Product-specific setup and compatibility documentation
+- Acceptance criteria and QA checklist for deployment sign-off
+- Commercial usage license terms
+limitations:
+- Does not validate ticketing or registration autonomously.
+- Does not replace event reception staff.
+- Requires human supervision for VIP and sensitive guest scenarios.
+qa_status: acceptance_criteria_defined_with_manual_qa_checklist

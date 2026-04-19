@@ -1,0 +1,210 @@
+[
+  {
+    "name": "GCC Base Civility Pack",
+    "slug": "gcc-base-civility-pack-v1",
+    "path": "protocols/products/gcc_base_civility_pack",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Clinic Patient Interaction Protocol",
+    "slug": "gcc-clinic-patient-interaction-protocol-v1",
+    "path": "protocols/products/gcc_clinic_patient_interaction_protocol",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Event Reception Protocol",
+    "slug": "gcc-event-reception-protocol-v1",
+    "path": "protocols/products/gcc_event_reception_protocol",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Hospital Reception Protocol",
+    "slug": "gcc-hospital-reception-protocol-v1",
+    "path": "protocols/products/gcc_hospital_reception_protocol",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Hotel Concierge Protocol",
+    "slug": "gcc-hotel-concierge-protocol-v1",
+    "path": "protocols/products/gcc_hotel_concierge_protocol",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Mall Navigation & Wayfinding Protocol",
+    "slug": "gcc-mall-navigation-wayfinding-protocol-v1",
+    "path": "protocols/products/gcc_mall_navigation_wayfinding_protocol",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Pharmacy Assistance Protocol",
+    "slug": "gcc-pharmacy-assistance-protocol-v1",
+    "path": "protocols/products/gcc_pharmacy_assistance_protocol",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Privacy Zone Protocol Pack",
+    "slug": "gcc-privacy-zone-protocol-pack-v1",
+    "path": "protocols/products/gcc_privacy_zone_protocol_pack",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Restaurant Host Protocol",
+    "slug": "gcc-restaurant-host-protocol-v1",
+    "path": "protocols/products/gcc_restaurant_host_protocol",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Retail Floor Assistance Protocol",
+    "slug": "gcc-retail-floor-assistance-protocol-v1",
+    "path": "protocols/products/gcc_retail_floor_assistance_protocol",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Royal + Privacy Protocol v1",
+    "slug": "gcc-royal-privacy-protocol-v1",
+    "path": "protocols/products/gcc_royal_privacy_protocol_v1",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Royal Protocol Pack",
+    "slug": "gcc-royal-protocol-pack-v1",
+    "path": "protocols/products/gcc_royal_protocol_pack",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  },
+  {
+    "name": "GCC Security & Access Control Protocol",
+    "slug": "gcc-security-access-control-protocol-v1",
+    "path": "protocols/products/gcc_security_access_control_protocol",
+    "status": "inquiry_only",
+    "ready_for_online_sale": false,
+    "ready_for_inquiry_sale": true,
+    "blocking_issues": [
+      "Manual inquiry and fulfillment flow required"
+    ],
+    "missing_files": [],
+    "missing_fields": [],
+    "fulfillment_readiness": "ready_for_inquiry",
+    "marketplace_readiness": "ready",
+    "recommended_next_step": "Run customer-specific scoping call and prepare manual delivery package."
+  }
+]
