@@ -61,7 +61,10 @@ limitations:
 status: inquiry_only
 name: GCC Royal + Privacy Protocol v1
 sales_mode: inquiry_only
-price_aed: 4200
+price_aed: null
+pricing_status: pending
+pricing_source: null
+not_complete: true
 deliverable_type: protocol_configuration_bundle
 best_for:
 - Government reception

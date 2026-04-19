@@ -47,7 +47,10 @@ update_channel: stable
 status: inquiry_only
 name: GCC Royal Protocol Pack
 sales_mode: inquiry_only
-price_aed: 2400
+price_aed: null
+pricing_status: pending
+pricing_source: null
+not_complete: true
 deliverable_type: protocol_configuration_bundle
 best_for:
 - Government reception

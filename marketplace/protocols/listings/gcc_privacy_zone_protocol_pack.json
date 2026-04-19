@@ -3,7 +3,7 @@
   "slug": "gcc-privacy-zone-protocol-pack-v1",
   "name": "GCC Privacy Zone Protocol Pack",
   "category": "Protocol Pack",
-  "price_aed": 2400,
+  "price_aed": null,
   "button_primary": "View",
   "button_secondary": "Inquire",
   "sales_mode": "inquiry_only",
@@ -18,5 +18,8 @@
   ],
   "canonical_manifest": "protocols/products/gcc_privacy_zone_protocol_pack/manifest.yaml",
   "fulfillment_method": "manual_delivery_after_inquiry_approval",
-  "deliverable_type": "protocol_configuration_bundle"
+  "deliverable_type": "protocol_configuration_bundle",
+  "pricing_status": "pending",
+  "pricing_source": null,
+  "not_complete": true
 }

@@ -3,7 +3,7 @@
   "slug": "gcc-retail-floor-assistance-protocol-v1",
   "name": "GCC Retail Floor Assistance Protocol",
   "category": "Protocol Pack",
-  "price_aed": 2100,
+  "price_aed": null,
   "button_primary": "View",
   "button_secondary": "Inquire",
   "sales_mode": "inquiry_only",
@@ -18,5 +18,8 @@
   ],
   "canonical_manifest": "protocols/products/gcc_retail_floor_assistance_protocol/manifest.yaml",
   "fulfillment_method": "manual_delivery_after_inquiry_approval",
-  "deliverable_type": "protocol_configuration_bundle"
+  "deliverable_type": "protocol_configuration_bundle",
+  "pricing_status": "pending",
+  "pricing_source": null,
+  "not_complete": true
 }

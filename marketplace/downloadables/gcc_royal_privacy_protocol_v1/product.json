@@ -4,7 +4,7 @@
   "title": "GCC Royal + Privacy Protocol v1",
   "subtitle": "A culturally adaptive behavior engine for robots operating across GCC executive, hospitality, and privacy-sensitive environments.",
   "category": "Protocol Pack",
-  "price_aed": 4200,
+  "price_aed": null,
   "tier": "Professional",
   "delivery_type": "downloadable_zip",
   "status": "inquiry_only",
@@ -37,5 +37,8 @@
   "important_note": "This product does not infer protected attributes and does not replace a human protocol officer.",
   "sales_mode": "inquiry_only",
   "fulfillment_method": "manual_delivery_after_inquiry_approval",
-  "canonical_manifest": "protocols/products/gcc_royal_privacy_protocol_v1/manifest.yaml"
+  "canonical_manifest": "protocols/products/gcc_royal_privacy_protocol_v1/manifest.yaml",
+  "pricing_status": "pending",
+  "pricing_source": null,
+  "not_complete": true
 }

@@ -6,7 +6,10 @@ version: 1.0.0
 category: cultural-behavior-pack
 status: inquiry_only
 sales_mode: inquiry_only
-price_aed: 2700
+price_aed: null
+pricing_status: pending
+pricing_source: null
+not_complete: true
 deliverable_type: protocol_configuration_bundle
 deliverables:
 - core/base_policy.yaml

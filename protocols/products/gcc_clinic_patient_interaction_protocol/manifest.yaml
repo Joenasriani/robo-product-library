@@ -47,7 +47,10 @@ update_channel: stable
 status: inquiry_only
 name: GCC Clinic Patient Interaction Protocol
 sales_mode: inquiry_only
-price_aed: 2600
+price_aed: null
+pricing_status: pending
+pricing_source: null
+not_complete: true
 deliverable_type: protocol_configuration_bundle
 best_for:
 - Clinic reception

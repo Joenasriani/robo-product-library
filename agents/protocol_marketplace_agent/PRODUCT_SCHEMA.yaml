@@ -5,7 +5,9 @@ product_schema:
   category: "gcc_localization"
   region: ""
   description: ""
-  price_aed: 0
+  price_aed: null
+  pricing_status: "pending"
+  pricing_source: null
   status: "draft"
   version: "v1"
   risk_level: "medium"

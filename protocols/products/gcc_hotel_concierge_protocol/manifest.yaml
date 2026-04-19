@@ -53,7 +53,10 @@ update_channel: stable
 status: inquiry_only
 name: GCC Hotel Concierge Protocol
 sales_mode: inquiry_only
-price_aed: 2200
+price_aed: null
+pricing_status: pending
+pricing_source: null
+not_complete: true
 deliverable_type: protocol_configuration_bundle
 best_for:
 - Hotel lobbies
