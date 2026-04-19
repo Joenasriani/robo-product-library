@@ -1,24 +1,21 @@
-# Tender Analyzer GCC for RoboMarket
+# Tender Analyzer GCC
 
-Enterprise tender evaluation product layer for GCC procurement teams.
+> **Status:** ready
 
-## What it does
+## Overview
+Docker-downloadable agent package with FastAPI backend + dashboard frontend.
 
-- Robomarket.ae-style dashboard
-- API-key based buyer access
-- Credit-based usage control
-- PDF/TXT upload → text extraction → analysis
-- GCC-focused tender prompt
-- Admin endpoints to create clients and top up credits
-- Multi-provider LLM support: OpenAI, Anthropic, Gemini, Local
+## Run
+See [QUICK_START.md](QUICK_START.md).
 
-## Positioning
+## Smoke test
+Run [`validation/smoke_test.sh`](validation/smoke_test.sh) after startup.
 
-This is a **Tender Analyzer**, not a crawler or public portal monitor.
-You supply the tender document or text. The product evaluates commercial fit, key requirements, risk, and action recommendation.
+## Examples
+- Input: [`examples/sample_input.json`](examples/sample_input.json)
+- Representative output: [`examples/expected_output.json`](examples/expected_output.json)
 
-## Product Readiness
-- Getting started: [QUICK_START.md](QUICK_START.md)
-- Change history: [CHANGELOG.md](CHANGELOG.md)
-- Commercial boundaries: [LIMITATIONS.md](LIMITATIONS.md)
-- Support & fulfillment: [SUPPORT.md](SUPPORT.md)
+## Product docs
+- Status checklist: [STATUS.md](STATUS.md)
+- Limitations: [LIMITATIONS.md](LIMITATIONS.md)
+- Support: [SUPPORT.md](SUPPORT.md)

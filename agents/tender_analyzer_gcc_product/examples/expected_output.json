@@ -1,0 +1,16 @@
+[
+  {
+    "id": "sample-001",
+    "analysis": {
+      "summary": "Representative analysis summary.",
+      "key_requirements": [
+        "Autonomous navigation"
+      ],
+      "confidence_score": 0.5,
+      "score": 50,
+      "recommended_action": "review",
+      "risk_level": "medium",
+      "reasoning": "Representative reasoning."
+    }
+  }
+]

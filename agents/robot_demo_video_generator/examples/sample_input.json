@@ -1,0 +1,12 @@
+{
+  "robot_name": "Astra",
+  "robot_type": "Hospitality robot",
+  "feature_list": [
+    "Multilingual greeting",
+    "Wayfinding"
+  ],
+  "visual_style": "corporate",
+  "target_duration": 90,
+  "target_audience": "Enterprise buyers",
+  "use_case": "Lobby demo"
+}

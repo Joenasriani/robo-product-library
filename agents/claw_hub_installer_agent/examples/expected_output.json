@@ -1,0 +1,26 @@
+{
+  "result": {
+    "install_steps": [
+      {
+        "step_number": 1,
+        "title": "Check dependencies",
+        "command": "apt-cache policy ros-humble-desktop",
+        "description": "...",
+        "notes": "..."
+      }
+    ],
+    "compatibility_notes": [
+      {
+        "component": "ROS2",
+        "status": "compatible",
+        "details": "..."
+      }
+    ],
+    "troubleshooting_guide": "...",
+    "estimated_install_time": "30-45 minutes",
+    "prerequisites": [
+      "Docker"
+    ],
+    "confidence_score": 0.5
+  }
+}

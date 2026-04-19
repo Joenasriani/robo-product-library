@@ -1,0 +1,17 @@
+{
+  "target_sectors": [
+    "Logistics"
+  ],
+  "countries": [
+    "UAE",
+    "Saudi Arabia"
+  ],
+  "keywords": [
+    "autonomous robot"
+  ],
+  "company_profile": "Regional robotics integrator",
+  "budget_range": "AED 1M - 10M",
+  "exclusion_keywords": [
+    "construction"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "result": {
+    "requirement_matrix": [
+      {
+        "requirement": "Multilingual UX",
+        "can_meet": true,
+        "notes": "Supported"
+      }
+    ],
+    "response_outline": [
+      "Executive Summary"
+    ],
+    "executive_summary_draft": "...",
+    "technical_approach_draft": "...",
+    "risk_flags": [
+      "Timeline"
+    ],
+    "win_probability": 65,
+    "confidence_score": 0.5
+  }
+}
