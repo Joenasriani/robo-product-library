@@ -1,0 +1,53 @@
+product:
+  id: gcc-royal-protocol-pack-v1
+  name: GCC Royal Protocol Pack
+  version: 1.0.0
+  risk_level: high
+runtime_policy:
+  decision_model: rules_first
+  human_supervision_required: true
+  requires_operator_approval: true
+  fallback_behavior: handoff_to_human_on_low_confidence_or_sensitive_request
+coverage:
+  supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+  supported_use_cases:
+  - executive_reception
+  - government_reception
+  - vip_arrival
+  - majlis_protocol
+  - palace_protocol
+constraints:
+  limitations:
+  - Does not identify royalty autonomously with commercial certainty.
+  - Requires operator approval for sensitive authority contexts.
+  - Does not replace a human protocol officer.
+  required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+  dependencies:
+  - Robot behavior runtime capable of loading YAML policy files
+  - On-site operator escalation workflow
+  - Venue-specific map/directory data for navigation prompts
+rule_sources:
+  core_policy_files:
+  - core/base_policy.yaml
+  - core/country_overlays.yaml
+  - core/dialogue_templates.yaml
+  - core/royal_mode.yaml
+  - core/safety_overrides.yaml
+  - core/venue_modes.yaml
+  test_scenarios:
+  - tests/acceptance_criteria.yaml
+  - tests/scenarios.yaml
+  documentation:
+  - README.md
+  - docs/setup.md
+  - docs/compatibility.md

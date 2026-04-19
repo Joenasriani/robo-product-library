@@ -1,0 +1,99 @@
+id: gcc-restaurant-host-protocol-v1
+slug: gcc-restaurant-host-protocol-v1
+title: GCC Restaurant Host Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+- hospitality-protocol
+- restaurant-host
+- gcc-localization
+summary: 'A GCC restaurant host behavior protocol for guest-facing robot interaction,
+  reception support, table guidance, family-sensitive hospitality, and respectful
+  service conduct.
+
+  '
+supported_countries:
+- saudi_arabia
+- united_arab_emirates
+- qatar
+- kuwait
+- bahrain
+- oman
+supported_use_cases:
+- restaurant_reception
+- table_guidance
+- queue_management
+- family_hospitality
+- guest_arrival
+- reservation_direction_support
+risk_level: medium
+requires_operator_approval: false
+human_supervision_required: true
+required_capabilities:
+- speech_tts
+- distance_estimation
+- people_detection
+- gaze_control
+optional_capabilities:
+- multilingual_asr
+- route_navigation
+- host_station_integration
+- operator_override
+deliverables:
+- yaml_policy_bundle
+- role_behavior_rules
+- country_overlays
+- hospitality_safety_rules
+- test_scenarios
+- compatibility_guide
+- manifest.yaml
+- RULES.yaml
+- README.md
+- bundle.zip
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: inquiry_only
+name: GCC Restaurant Host Protocol
+sales_mode: inquiry_only
+price_aed: 2100
+deliverable_type: protocol_configuration_bundle
+best_for:
+- Restaurant host stands
+- Guest arrival queues
+- Table guidance
+- Family dining areas
+- Reservation desk redirection
+dependencies:
+- Robot behavior runtime capable of loading YAML policy files
+- On-site operator escalation workflow
+- Venue-specific map/directory data for navigation prompts
+hardware_requirements:
+- Speaker and TTS-capable audio output
+- Microphone input for operator-assisted interactions
+- People detection sensor (camera or depth sensor)
+- Safe mobility platform or stationary kiosk with guidance prompts
+software_requirements:
+- Policy loader for YAML behavior packs
+- Dialogue engine with Arabic and English phrase handling
+- Safety override and escalation hooks to human operator
+- Robot middleware integration (ROS2 or equivalent)
+compatibility_notes: Validated for GCC service-robot deployments focused on restaurant
+  reception and table guidance. Final behavior quality depends on robot middleware
+  integrations listed in docs/compatibility.md.
+setup_time_estimate: 5-7 hours including floor-flow rehearsal
+support_scope: Remote implementation guidance during onboarding, one deployment review
+  session, and issue triage for protocol logic within the active support window.
+license_type: commercial_internal_deployment_license
+fulfillment_method: manual_delivery_after_inquiry_approval
+customer_receives:
+- Protocol package directory with core YAML behavior files
+- Product-specific setup and compatibility documentation
+- Acceptance criteria and QA checklist for deployment sign-off
+- Commercial usage license terms
+limitations:
+- Does not process payments or reservations autonomously.
+- Does not replace restaurant host staff.
+- Requires human supervision for VIP and sensitive guest scenarios.
+qa_status: acceptance_criteria_defined_with_manual_qa_checklist

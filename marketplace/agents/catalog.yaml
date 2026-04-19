@@ -1,57 +1,43 @@
-# Agent product storefront catalog
-# Maps each listing to its canonical source folder and commercial status.
-# Canonical source lives in agents/{folder_name}/.
-# listing is authoritative for pricing, sales_mode, and status.
-
 agent_products:
-  - id: tender-analyzer-gcc
-    listing: marketplace/agents/listings/tender_analyzer_gcc_product.json
-    source: agents/tender_analyzer_gcc_product
-    sales_mode: inquiry_only
-
-  - id: sales-outreach-agent
-    listing: marketplace/agents/listings/sales_outreach_agent.json
-    source: agents/sales_outreach_agent
-    sales_mode: inquiry_only
-
-  - id: lead-research-agent
-    listing: marketplace/agents/listings/lead_research_agent.json
-    source: agents/lead_research_agent
-    sales_mode: inquiry_only
-
-  - id: enterprise-rfp-response-assistant
-    listing: marketplace/agents/listings/enterprise_rfp_response_assistant.json
-    source: agents/enterprise_rfp_response_assistant
-    sales_mode: inquiry_only
-
-  - id: social-content-ops-agent
-    listing: marketplace/agents/listings/social_content_ops_agent.json
-    source: agents/social_content_ops_agent
-    sales_mode: inquiry_only
-
-  - id: robot-demo-video-generator
-    listing: marketplace/agents/listings/robot_demo_video_generator.json
-    source: agents/robot_demo_video_generator
-    sales_mode: inquiry_only
-
-  - id: claw-hub-installer-agent
-    listing: marketplace/agents/listings/claw_hub_installer_agent.json
-    source: agents/claw_hub_installer_agent
-    sales_mode: inquiry_only
-
-  - id: tender-monitoring-agent
-    listing: marketplace/agents/listings/tender_monitoring_agent.json
-    source: agents/tender_monitoring_agent
-    sales_mode: inquiry_only
-
-  - id: ai-agent-download-center
-    listing: marketplace/agents/listings/ai_agent_download_center.json
-    source: agents/ai_agent_download_center
-    sales_mode: non_commercial
-    commercial_note: Internal marketplace infrastructure; not sold as standalone.
-
-  - id: protocol-marketplace-agent
-    listing: marketplace/agents/listings/protocol_marketplace_agent.json
-    source: agents/protocol_marketplace_agent
-    sales_mode: non_commercial
-    commercial_note: Internal marketplace infrastructure; not sold as standalone.
+- id: tender-analyzer-gcc
+  listing: marketplace/agents/listings/tender_analyzer_gcc_product.json
+  source: systems/agents/tender_analyzer_gcc_product
+  sales_mode: inquiry_only
+- id: sales-outreach-agent
+  listing: marketplace/agents/listings/sales_outreach_agent.json
+  source: systems/agents/sales_outreach_agent
+  sales_mode: inquiry_only
+- id: lead-research-agent
+  listing: marketplace/agents/listings/lead_research_agent.json
+  source: systems/agents/lead_research_agent
+  sales_mode: inquiry_only
+- id: enterprise-rfp-response-assistant
+  listing: marketplace/agents/listings/enterprise_rfp_response_assistant.json
+  source: systems/agents/enterprise_rfp_response_assistant
+  sales_mode: inquiry_only
+- id: social-content-ops-agent
+  listing: marketplace/agents/listings/social_content_ops_agent.json
+  source: systems/agents/social_content_ops_agent
+  sales_mode: inquiry_only
+- id: robot-demo-video-generator
+  listing: marketplace/agents/listings/robot_demo_video_generator.json
+  source: systems/agents/robot_demo_video_generator
+  sales_mode: inquiry_only
+- id: claw-hub-installer-agent
+  listing: marketplace/agents/listings/claw_hub_installer_agent.json
+  source: systems/agents/claw_hub_installer_agent
+  sales_mode: inquiry_only
+- id: tender-monitoring-agent
+  listing: marketplace/agents/listings/tender_monitoring_agent.json
+  source: systems/agents/tender_monitoring_agent
+  sales_mode: inquiry_only
+- id: ai-agent-download-center
+  listing: marketplace/agents/listings/ai_agent_download_center.json
+  source: systems/agents/ai_agent_download_center
+  sales_mode: non_commercial
+  commercial_note: Internal marketplace infrastructure; not sold as standalone.
+- id: protocol-marketplace-agent
+  listing: marketplace/agents/listings/protocol_marketplace_agent.json
+  source: systems/agents/protocol_marketplace_agent
+  sales_mode: non_commercial
+  commercial_note: Internal marketplace infrastructure; not sold as standalone.

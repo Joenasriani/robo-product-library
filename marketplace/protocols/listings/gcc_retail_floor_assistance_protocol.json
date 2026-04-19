@@ -16,7 +16,7 @@
     "Family-friendly shopping areas",
     "Mall store assistance"
   ],
-  "canonical_manifest": "protocols/products/gcc_retail_floor_assistance_protocol/manifest.yaml",
+  "canonical_manifest": "products/protocols/gcc_retail_floor_assistance_protocol/manifest.yaml",
   "fulfillment_method": "manual_delivery_after_inquiry_approval",
   "deliverable_type": "protocol_configuration_bundle"
 }

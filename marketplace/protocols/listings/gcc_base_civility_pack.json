@@ -16,7 +16,7 @@
     "Event welcome desks",
     "Museum guest assistance"
   ],
-  "canonical_manifest": "protocols/products/gcc_base_civility_pack/manifest.yaml",
+  "canonical_manifest": "products/protocols/gcc_base_civility_pack/manifest.yaml",
   "fulfillment_method": "manual_delivery_after_inquiry_approval",
   "deliverable_type": "protocol_configuration_bundle"
 }

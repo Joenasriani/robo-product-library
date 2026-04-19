@@ -1,0 +1,13 @@
+required_files:
+- manifest.yaml
+- README.md
+- bundle.zip
+required_manifest_fields:
+- id
+- slug
+- name
+- version
+required_if_sellable:
+- price_aed
+- deliverable_type
+usage_instruction_requirement: README.md must include a Usage section

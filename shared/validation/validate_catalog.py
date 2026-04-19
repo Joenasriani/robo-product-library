@@ -2,11 +2,11 @@
 """Validate RoboMarket catalog canonical truth, schema consistency, and no hardcoded seeds.
 
 Checks:
-1. protocols/products/index.yaml — every manifest exists; status/sales_mode are valid.
+1. products/protocols/index.yaml — every manifest exists; status/sales_mode are valid.
 2. marketplace/protocols/listings/index.json — every listing exists; status/sales_mode valid;
    canonical_manifest references (if present) resolve.
 3. marketplace/protocols/catalog.yaml — every manifest and listing path exists.
-4. agents/index.yaml — every listing path exists.
+4. systems/agents/index.yaml — every listing path exists.
 5. marketplace/agents/listings/index.json — every listing exists; status/sales_mode valid.
 6. marketplace/agents/catalog.yaml — every listing and source folder exists.
 7. Runtime db.py files contain no hardcoded seed data.
@@ -46,7 +46,7 @@ def check_exists(path: Path, context: str) -> bool:
 
 
 # ── 1. Protocol manifest index ────────────────────────────────────────────────
-protocol_index_path = REPO_ROOT / "protocols" / "products" / "index.yaml"
+protocol_index_path = REPO_ROOT / "products" / "protocols" / "index.yaml"
 if check_exists(protocol_index_path, "Protocol manifest index"):
     with open(protocol_index_path) as f:
         protocol_index = yaml.safe_load(f)
@@ -96,7 +96,7 @@ if check_exists(proto_catalog_path, "Protocol catalog"):
                 err(f"marketplace/protocols/catalog.yaml entry '{entry.get('id')}': {key} '{val}' not found")
 
 # ── 4. Agent index ────────────────────────────────────────────────────────────
-agents_index_path = REPO_ROOT / "agents" / "index.yaml"
+agents_index_path = REPO_ROOT / "systems" / "agents" / "index.yaml"
 if check_exists(agents_index_path, "Agents index"):
     with open(agents_index_path) as f:
         agents_index = yaml.safe_load(f)
@@ -143,8 +143,8 @@ SEED_PATTERNS = [
     "gcc-hotel-concierge-protocol",
 ]
 runtime_db_files = [
-    REPO_ROOT / "agents" / "protocol_marketplace_agent" / "src" / "db.py",
-    REPO_ROOT / "agents" / "ai_agent_download_center" / "src" / "db.py",
+    REPO_ROOT / "systems" / "agents" / "protocol_marketplace_agent" / "src" / "db.py",
+    REPO_ROOT / "systems" / "agents" / "ai_agent_download_center" / "src" / "db.py",
 ]
 for db_path in runtime_db_files:
     if not db_path.exists():
@@ -153,6 +153,48 @@ for db_path in runtime_db_files:
     for pattern in SEED_PATTERNS:
         if pattern in content:
             err(f"{db_path.relative_to(REPO_ROOT)}: contains hardcoded seed pattern '{pattern}'")
+
+# ── 8. Product standard validation (/products) ───────────────────────────────
+products_catalog_path = REPO_ROOT / "products" / "catalog.yaml"
+if check_exists(products_catalog_path, "Products catalog"):
+    with open(products_catalog_path) as f:
+        products_catalog = yaml.safe_load(f) or {}
+
+    for section in ("protocol_products", "ai_products"):
+        for item in products_catalog.get(section, []):
+            product_id = item.get("id")
+            manifest_rel = item.get("manifest")
+            bundle_rel = item.get("bundle")
+            readme_rel = item.get("readme")
+
+            if not manifest_rel:
+                err(f"products/catalog.yaml section '{section}' item '{product_id}': missing manifest")
+                continue
+
+            manifest_path = REPO_ROOT / manifest_rel
+            if not check_exists(manifest_path, f"products/catalog.yaml manifest for '{product_id}'"):
+                continue
+
+            if bundle_rel:
+                check_exists(REPO_ROOT / bundle_rel, f"products/catalog.yaml bundle for '{product_id}'")
+            if readme_rel:
+                rpath = REPO_ROOT / readme_rel
+                if check_exists(rpath, f"products/catalog.yaml readme for '{product_id}'"):
+                    rtxt = rpath.read_text(encoding="utf-8", errors="ignore")
+                    if "## Usage" not in rtxt and "## Sellable Package Usage" not in rtxt:
+                        err(f"{readme_rel}: missing Usage instructions section")
+
+            manifest = yaml.safe_load(manifest_path.read_text()) or {}
+            for field in ("id", "slug", "name", "version"):
+                if not manifest.get(field):
+                    err(f"{manifest_rel}: missing required field '{field}'")
+
+            status = manifest.get("status")
+            sales_mode = manifest.get("sales_mode")
+            if status not in VALID_PROTOCOL_STATUSES:
+                err(f"{manifest_rel}: invalid status '{status}' — must be one of {sorted(VALID_PROTOCOL_STATUSES)}")
+            if sales_mode not in VALID_SALES_MODES:
+                err(f"{manifest_rel}: invalid sales_mode '{sales_mode}' — must be one of {sorted(VALID_SALES_MODES)}")
 
 # ── Result ────────────────────────────────────────────────────────────────────
 if errors:

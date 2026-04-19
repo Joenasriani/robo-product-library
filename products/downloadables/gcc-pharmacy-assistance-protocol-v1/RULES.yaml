@@ -1,0 +1,52 @@
+product:
+  id: gcc-pharmacy-assistance-protocol-v1
+  name: GCC Pharmacy Assistance Protocol
+  version: 1.0.0
+  risk_level: high
+runtime_policy:
+  decision_model: rules_first
+  human_supervision_required: true
+  requires_operator_approval: true
+  fallback_behavior: handoff_to_human_on_low_confidence_or_sensitive_request
+coverage:
+  supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+  supported_use_cases:
+  - pharmacy_reception
+  - queue_guidance
+  - counter_direction_support
+  - otc_zone_navigation
+  - family_sensitive_assistance
+  - prescription_pickup_guidance
+constraints:
+  limitations:
+  - Does not provide diagnosis, treatment, or dosage advice.
+  - Does not replace licensed pharmacy staff.
+  - Requires human supervision in sensitive or uncertain situations.
+  required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+  dependencies:
+  - Robot behavior runtime capable of loading YAML policy files
+  - On-site operator escalation workflow
+  - Venue-specific map/directory data for navigation prompts
+rule_sources:
+  core_policy_files:
+  - core/base_policy.yaml
+  - core/country_overlays.yaml
+  - core/role_rules.yaml
+  - core/safety_overrides.yaml
+  test_scenarios:
+  - tests/acceptance_criteria.yaml
+  - tests/scenarios.yaml
+  documentation:
+  - README.md
+  - docs/setup.md
+  - docs/compatibility.md

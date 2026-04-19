@@ -1,0 +1,59 @@
+product:
+  id: gcc-security-access-control-protocol-v1
+  name: GCC Security & Access Control Protocol
+  version: 1.0.0
+  risk_level: high
+runtime_policy:
+  decision_model: rules_first
+  human_supervision_required: true
+  requires_operator_approval: true
+  fallback_behavior: handoff_to_human_on_low_confidence_or_sensitive_request
+coverage:
+  supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+  supported_use_cases:
+  - office_entry_guidance
+  - access_checkpoint_support
+  - badge_desk_direction
+  - visitor_redirection
+  - queue_discipline
+  - soft_denial_and_escalation
+  - vip_sensitive_entry
+  - mall_soft_security
+  - event_access_control
+constraints:
+  limitations:
+  - Does not replace licensed security personnel.
+  - Does not perform physical enforcement.
+  - Does not publicly disclose access status or identity details.
+  - Requires human supervision for repeated, sensitive, or conflict scenarios.
+  required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+  dependencies:
+  - Robot behavior runtime capable of loading YAML policy files
+  - On-site operator escalation workflow
+  - Venue-specific map/directory data for navigation prompts
+rule_sources:
+  core_policy_files:
+  - core/base_policy.yaml
+  - core/behavior_states.yaml
+  - core/country_overlays.yaml
+  - core/dialogue_templates.yaml
+  - core/environment_modes.yaml
+  - core/role_rules.yaml
+  - core/safety_overrides.yaml
+  test_scenarios:
+  - tests/acceptance_criteria.yaml
+  - tests/scenarios.yaml
+  documentation:
+  - README.md
+  - docs/setup.md
+  - docs/compatibility.md

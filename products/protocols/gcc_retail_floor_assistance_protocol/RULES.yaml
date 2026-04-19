@@ -1,0 +1,52 @@
+product:
+  id: gcc-retail-floor-assistance-protocol-v1
+  name: GCC Retail Floor Assistance Protocol
+  version: 1.0.0
+  risk_level: medium
+runtime_policy:
+  decision_model: rules_first
+  human_supervision_required: true
+  requires_operator_approval: false
+  fallback_behavior: handoff_to_human_on_low_confidence_or_sensitive_request
+coverage:
+  supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+  supported_use_cases:
+  - retail_reception
+  - floor_guidance
+  - product_zone_navigation
+  - family_sensitive_retail
+  - mall_store_assistance
+  - customer_service_direction
+constraints:
+  limitations:
+  - Does not process payments or purchases autonomously.
+  - Does not replace retail floor staff.
+  - Requires human supervision for VIP and sensitive customer scenarios.
+  required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+  dependencies:
+  - Robot behavior runtime capable of loading YAML policy files
+  - On-site operator escalation workflow
+  - Venue-specific map/directory data for navigation prompts
+rule_sources:
+  core_policy_files:
+  - core/base_policy.yaml
+  - core/country_overlays.yaml
+  - core/role_rules.yaml
+  - core/safety_overrides.yaml
+  test_scenarios:
+  - tests/acceptance_criteria.yaml
+  - tests/scenarios.yaml
+  documentation:
+  - README.md
+  - docs/setup.md
+  - docs/compatibility.md

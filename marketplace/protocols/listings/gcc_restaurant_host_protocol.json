@@ -16,7 +16,7 @@
     "Family dining areas",
     "Reservation desk redirection"
   ],
-  "canonical_manifest": "protocols/products/gcc_restaurant_host_protocol/manifest.yaml",
+  "canonical_manifest": "products/protocols/gcc_restaurant_host_protocol/manifest.yaml",
   "fulfillment_method": "manual_delivery_after_inquiry_approval",
   "deliverable_type": "protocol_configuration_bundle"
 }

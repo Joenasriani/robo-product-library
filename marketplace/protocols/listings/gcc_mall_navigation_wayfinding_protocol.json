@@ -16,7 +16,7 @@
     "Luxury zone assistance",
     "Dining and entertainment routing"
   ],
-  "canonical_manifest": "protocols/products/gcc_mall_navigation_wayfinding_protocol/manifest.yaml",
+  "canonical_manifest": "products/protocols/gcc_mall_navigation_wayfinding_protocol/manifest.yaml",
   "fulfillment_method": "manual_delivery_after_inquiry_approval",
   "deliverable_type": "protocol_configuration_bundle"
 }

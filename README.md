@@ -1,51 +1,34 @@
 # Robo Product Library
 
-Private master repository for RoboMarket AI agents, reusable skills, robot protocols, RAG products, and marketplace delivery assets.
+Production-oriented repository for RoboMarket sellable products, runtime systems, and planning artifacts.
 
 ## Repository Structure
 
-- [`agents/`](./agents/) — AI agent products (8 inquiry-ready domain agents + 2 internal infrastructure agents)
-- [`ai_products/`](./ai_products/) — AI product lines outside `agents/` (RAG suite + legacy Tender Analyzer app)
-- [`protocols/`](./protocols/) — canonical robot protocol products and GCC localization packs
-- [`marketplace/`](./marketplace/) — storefront catalogs, listings, product pages, and downloadable bundles
+- [`products/`](./products/) — sellable, deliverable SKUs only
+- [`systems/`](./systems/) — runtime systems and internal applications (agents, RAG systems)
+- [`plans/`](./plans/) — non-sellable plans, concepts, and legacy artifacts
+- [`marketplace/`](./marketplace/) — storefront metadata and listing assets
 - [`skills/`](./skills/) — reusable prompt and execution skill modules
 - [`shared/`](./shared/) — cross-repo governance and shared documentation
 - [`archive/`](./archive/) — paused/deprecated work
 
 ## Product Index
 
-### Agent products (`agents/`)
-- Tender Analyzer GCC
-- Sales Outreach Agent
-- Lead Research Agent
-- Enterprise RFP Response Assistant
-- Social Content Ops Agent
-- Robot Demo Video Generator
-- Claw Hub Installer Agent
-- Tender Monitoring Agent
-- AI Agent Download Center
-- Protocol Marketplace Agent
+Canonical sellable catalog:
+- [`products/catalog.yaml`](./products/catalog.yaml)
 
-See full metadata (status, ports, priorities): [`AGENTS_LIST.md`](./AGENTS_LIST.md).
+Protocol product manifests:
+- [`products/protocols/index.yaml`](./products/protocols/index.yaml)
+- [`marketplace/protocols/catalog.yaml`](./marketplace/protocols/catalog.yaml) (storefront mapping)
 
-### RAG products (`ai_products/rag/`)
-- Simple RAG Chain
-- Tool-Use RAG
-- Ollama RAG
-- RAG as a Service
-- Advanced RAG
-
-See detailed product docs: [`ai_products/rag/README.md`](./ai_products/rag/README.md).
-
-### Protocol products (`protocols/products/`)
-Canonical protocol manifests are indexed in:
-- [`protocols/products/index.yaml`](./protocols/products/index.yaml)
-- [`marketplace/protocols/catalog.yaml`](./marketplace/protocols/catalog.yaml)
+AI sellable package:
+- [`products/ai/rag-as-a-service`](./products/ai/rag-as-a-service)
 
 ## Navigation
 
-- Agent catalog: [`agents/README.md`](./agents/README.md)
+- Products overview: [`products/README.md`](./products/README.md)
+- Systems overview: [`systems/README.md`](./systems/README.md)
+- Plans overview: [`plans/README.md`](./plans/README.md)
 - Marketplace docs: [`marketplace/README.md`](./marketplace/README.md)
-- Protocol docs: [`protocols/README.md`](./protocols/README.md)
 - Skills overview: [`skills/README.md`](./skills/README.md)
 - Shared docs: [`shared/README.md`](./shared/README.md)

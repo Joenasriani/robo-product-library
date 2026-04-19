@@ -1,0 +1,104 @@
+id: gcc-mall-navigation-wayfinding-protocol-v1
+slug: gcc-mall-navigation-wayfinding-protocol-v1
+title: GCC Mall Navigation & Wayfinding Protocol
+version: 1.0.0
+vendor: RoboMarket.ae
+category: cultural-behavior-pack
+subcategory:
+- mall-protocol
+- wayfinding
+- gcc-localization
+summary: 'A GCC mall navigation and wayfinding behavior protocol for customer-facing
+  robots operating in family-oriented, retail, dining, entertainment, and concierge-like
+  mall environments.
+
+  '
+supported_countries:
+- saudi_arabia
+- united_arab_emirates
+- qatar
+- kuwait
+- bahrain
+- oman
+supported_use_cases:
+- mall_information_desk
+- store_finding
+- floor_navigation
+- elevator_escalator_guidance
+- family_sensitive_wayfinding
+- event_peak_time_guidance
+- luxury_zone_guidance
+- dining_zone_guidance
+risk_level: medium
+requires_operator_approval: false
+human_supervision_required: true
+required_capabilities:
+- speech_tts
+- distance_estimation
+- people_detection
+- gaze_control
+optional_capabilities:
+- multilingual_asr
+- indoor_navigation
+- store_directory_integration
+- floor_map_integration
+- operator_override
+deliverables:
+- yaml_policy_bundle
+- role_behavior_rules
+- country_overlays
+- zone_modes
+- mall_safety_rules
+- test_scenarios
+- compatibility_guide
+- manifest.yaml
+- RULES.yaml
+- README.md
+- bundle.zip
+commercial_tier: professional
+support_window_days: 90
+update_channel: stable
+status: inquiry_only
+name: GCC Mall Navigation & Wayfinding Protocol
+sales_mode: inquiry_only
+price_aed: 2300
+deliverable_type: protocol_configuration_bundle
+best_for:
+- Mall information desks
+- Store wayfinding
+- Family zone guidance
+- Luxury zone assistance
+- Dining and entertainment routing
+dependencies:
+- Robot behavior runtime capable of loading YAML policy files
+- On-site operator escalation workflow
+- Venue-specific map/directory data for navigation prompts
+hardware_requirements:
+- Speaker and TTS-capable audio output
+- Microphone input for operator-assisted interactions
+- People detection sensor (camera or depth sensor)
+- Safe mobility platform or stationary kiosk with guidance prompts
+software_requirements:
+- Policy loader for YAML behavior packs
+- Dialogue engine with Arabic and English phrase handling
+- Safety override and escalation hooks to human operator
+- Robot middleware integration (ROS2 or equivalent)
+compatibility_notes: Validated for GCC service-robot deployments focused on mall wayfinding
+  and customer navigation. Final behavior quality depends on robot middleware integrations
+  listed in docs/compatibility.md.
+setup_time_estimate: 6-8 hours including map and directory checks
+support_scope: Remote implementation guidance during onboarding, one deployment review
+  session, and issue triage for protocol logic within the active support window.
+license_type: commercial_internal_deployment_license
+fulfillment_method: manual_delivery_after_inquiry_approval
+customer_receives:
+- Protocol package directory with core YAML behavior files
+- Product-specific setup and compatibility documentation
+- Acceptance criteria and QA checklist for deployment sign-off
+- Commercial usage license terms
+limitations:
+- Does not process payments or purchases autonomously.
+- Does not replace mall customer-service staff.
+- Requires human supervision for VIP, child-safety, and distress scenarios.
+- Indoor routing quality depends on map and navigation integration.
+qa_status: acceptance_criteria_defined_with_manual_qa_checklist

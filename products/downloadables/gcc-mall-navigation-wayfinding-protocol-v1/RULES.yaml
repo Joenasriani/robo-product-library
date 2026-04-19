@@ -1,0 +1,56 @@
+product:
+  id: gcc-mall-navigation-wayfinding-protocol-v1
+  name: GCC Mall Navigation & Wayfinding Protocol
+  version: 1.0.0
+  risk_level: medium
+runtime_policy:
+  decision_model: rules_first
+  human_supervision_required: true
+  requires_operator_approval: false
+  fallback_behavior: handoff_to_human_on_low_confidence_or_sensitive_request
+coverage:
+  supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+  supported_use_cases:
+  - mall_information_desk
+  - store_finding
+  - floor_navigation
+  - elevator_escalator_guidance
+  - family_sensitive_wayfinding
+  - event_peak_time_guidance
+  - luxury_zone_guidance
+  - dining_zone_guidance
+constraints:
+  limitations:
+  - Does not process payments or purchases autonomously.
+  - Does not replace mall customer-service staff.
+  - Requires human supervision for VIP, child-safety, and distress scenarios.
+  - Indoor routing quality depends on map and navigation integration.
+  required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+  dependencies:
+  - Robot behavior runtime capable of loading YAML policy files
+  - On-site operator escalation workflow
+  - Venue-specific map/directory data for navigation prompts
+rule_sources:
+  core_policy_files:
+  - core/base_policy.yaml
+  - core/country_overlays.yaml
+  - core/role_rules.yaml
+  - core/safety_overrides.yaml
+  - core/zone_modes.yaml
+  test_scenarios:
+  - tests/acceptance_criteria.yaml
+  - tests/scenarios.yaml
+  documentation:
+  - README.md
+  - docs/setup.md
+  - docs/compatibility.md
