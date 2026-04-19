@@ -15,11 +15,13 @@ function catColor(c) {
   const m = {Royal:'badge-red','Privacy & Security':'badge-red',Healthcare:'badge-blue',Hospitality:'badge-green',Retail:'badge-yellow'};
   return m[c] || 'badge-blue';
 }
+const productCache = new Map();
 
 window.addEventListener('load', loadCatalog);
 
 async function loadCatalog() {
   const products = await fetch('/api/v1/products').then(r => r.json()).catch(() => []);
+  products.forEach(p => productCache.set(p.id, p));
   const grid = document.getElementById('catalogGrid');
   if (!products.length) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1">No protocols available.</div>'; return; }
   grid.innerHTML = products.map(p => `
@@ -33,7 +35,7 @@ async function loadCatalog() {
       <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:14px">${p.description.substring(0,120)}...</div>
       <div style="display:flex;justify-content:space-between;align-items:center">
         <span style="font-weight:700;font-size:17px;color:var(--text)">AED ${p.price_aed?.toLocaleString()}</span>
-        <button class="btn btn-primary" style="width:auto;margin:0;padding:7px 14px;font-size:13px" onclick="event.stopPropagation();openInquiry(${p.id},'${p.name}',${p.price_aed})">Inquire</button>
+        <button class="btn btn-primary" style="width:auto;margin:0;padding:7px 14px;font-size:13px" onclick="event.stopPropagation();openInquiryById(${p.id})">Inquire</button>
       </div>
       <div style="font-size:11px;color:var(--muted);margin-top:8px">Inquiry-only: no instant checkout on this marketplace.</div>
     </div>`).join('');
@@ -42,6 +44,7 @@ async function loadCatalog() {
 async function showProduct(productId) {
   const p = await fetch(`/api/v1/products/${productId}`).then(r => r.json()).catch(() => null);
   if (!p) return;
+  productCache.set(p.id, p);
   const hw = (p.hardware_requirements||[]).map(h=>`<li>${h}</li>`).join('');
   const files = (p.included_files||[]).map(f=>`<li><code>${f}</code></li>`).join('');
   const useCases = (p.use_cases||[]).map(u=>`<li>${u}</li>`).join('');
@@ -60,7 +63,7 @@ async function showProduct(productId) {
     ${files ? `<div style="margin-bottom:12px"><div class="result-section-title">Deliverables / Included Files</div><ul class="req-list">${files}</ul></div>` : ''}
     ${useCases ? `<div style="margin-bottom:12px"><div class="result-section-title">Use Cases / Best Fit</div><ul class="req-list">${useCases}</ul></div>` : ''}
     ${limitations ? `<div style="margin-bottom:18px"><div class="result-section-title">Limitations</div><ul class="req-list">${limitations}</ul></div>` : ''}
-    <button class="btn btn-primary" onclick="closeModal();openInquiry(${p.id},'${p.name}',${p.price_aed})">
+    <button class="btn btn-primary" onclick="closeModal();openInquiryById(${p.id})">
       <span class="btn-text">Submit Inquiry →</span>
     </button>
     <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px">Support & fulfillment: ${p.support_mode || p.delivery_type} · Response within 1 business day</p>
@@ -70,6 +73,16 @@ async function showProduct(productId) {
 
 function closeModal() { document.getElementById('productModal').style.display = 'none'; }
 window.addEventListener('click', e => { if (e.target === document.getElementById('productModal')) closeModal(); });
+
+async function openInquiryById(productId) {
+  let p = productCache.get(productId);
+  if (!p) {
+    p = await fetch(`/api/v1/products/${productId}`).then(r => r.json()).catch(() => null);
+    if (!p) return;
+    productCache.set(productId, p);
+  }
+  openInquiry(productId, p.name, p.price_aed);
+}
 
 function openInquiry(productId, productName, price) {
   document.getElementById('inquiryProductId').value = productId;

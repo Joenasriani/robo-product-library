@@ -224,11 +224,26 @@ def create_product(slug, name, category, region, description, price_aed, version
                     slug, name, category, region, description, price_aed, version, risk_level,
                     hardware_requirements_json, included_files_json, delivery_type, use_cases_json,
                     limitations_json, support_mode, created_at
-                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
-                (slug, name, category, region, description, price_aed, version, risk_level,
-                 json.dumps(hardware_requirements), json.dumps(included_files), delivery_type,
-                 json.dumps(use_cases or []), json.dumps(limitations or []), support_mode,
-                 datetime.utcnow().isoformat()))
+                ) VALUES (:slug,:name,:category,:region,:description,:price_aed,:version,:risk_level,
+                          :hardware_requirements_json,:included_files_json,:delivery_type,:use_cases_json,
+                          :limitations_json,:support_mode,:created_at)""",
+                {
+                    "slug": slug,
+                    "name": name,
+                    "category": category,
+                    "region": region,
+                    "description": description,
+                    "price_aed": price_aed,
+                    "version": version,
+                    "risk_level": risk_level,
+                    "hardware_requirements_json": json.dumps(hardware_requirements),
+                    "included_files_json": json.dumps(included_files),
+                    "delivery_type": delivery_type,
+                    "use_cases_json": json.dumps(use_cases or []),
+                    "limitations_json": json.dumps(limitations or []),
+                    "support_mode": support_mode,
+                    "created_at": datetime.utcnow().isoformat(),
+                })
     conn.commit()
     product_id = cur.lastrowid
     conn.close()

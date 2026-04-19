@@ -17,5 +17,5 @@
     "Analyzes submitted files/text only; no autonomous tender crawling",
     "Decision support only; not legal or compliance advice"
   ],
-  "support_fulfillment_mode": "inquiry_only_code_package_with_buyer_managed_deployment"
+  "support_mode": "inquiry_only_code_package_with_buyer_managed_deployment"
 }
