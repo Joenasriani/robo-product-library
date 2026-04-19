@@ -1,4 +1,5 @@
 *.zip
+!products/**/bundle.zip
 .env
 **/.env
 data/
