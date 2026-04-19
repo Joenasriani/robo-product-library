@@ -39,7 +39,11 @@ def init_db():
         version TEXT NOT NULL DEFAULT "1.0.0", risk_level TEXT NOT NULL DEFAULT "medium",
         hardware_requirements_json TEXT NOT NULL DEFAULT "[]",
         included_files_json TEXT NOT NULL DEFAULT "[]",
+        use_cases_json TEXT NOT NULL DEFAULT "[]",
+        limitations_json TEXT NOT NULL DEFAULT "[]",
+        support_mode TEXT NOT NULL DEFAULT "inquiry_and_manual_fulfillment",
         delivery_type TEXT NOT NULL DEFAULT "download", created_at TEXT NOT NULL)""")
+    _ensure_protocol_products_columns(cur)
     cur.execute("""CREATE TABLE IF NOT EXISTS protocol_inquiries (
         id INTEGER PRIMARY KEY AUTOINCREMENT, product_id INTEGER NOT NULL,
         buyer_name TEXT NOT NULL, buyer_email TEXT NOT NULL, buyer_organization TEXT NOT NULL,
@@ -59,6 +63,16 @@ def init_db():
     _seed_products(conn)
     conn.close()
 
+def _ensure_protocol_products_columns(cur):
+    cur.execute("PRAGMA table_info(protocol_products)")
+    columns = {row[1] for row in cur.fetchall()}
+    if "use_cases_json" not in columns:
+        cur.execute("ALTER TABLE protocol_products ADD COLUMN use_cases_json TEXT NOT NULL DEFAULT '[]'")
+    if "limitations_json" not in columns:
+        cur.execute("ALTER TABLE protocol_products ADD COLUMN limitations_json TEXT NOT NULL DEFAULT '[]'")
+    if "support_mode" not in columns:
+        cur.execute("ALTER TABLE protocol_products ADD COLUMN support_mode TEXT NOT NULL DEFAULT 'inquiry_and_manual_fulfillment'")
+
 def _seed_products(conn):
     cur = conn.cursor()
     cur.execute("SELECT COUNT(*) FROM protocol_products")
@@ -69,31 +83,51 @@ def _seed_products(conn):
          "Complete behavioral protocol for robots operating in royal courts, government palaces, and high-level state events in GCC countries. Includes deference postures, VIP recognition behaviors, ceremonial movement sequences, and restricted zone awareness.",
          4200.0, "1.2.0", "high",
          ["Universal Robots UR5/UR10", "Boston Dynamics Spot", "Custom humanoid platforms"],
-         ["gcc_royal_protocol.yaml", "posture_library/", "vip_recognition_model.pkl", "README.md", "integration_guide.pdf"]),
+         ["gcc_royal_protocol.yaml", "posture_library/", "vip_recognition_model.pkl", "README.md", "integration_guide.pdf"],
+         ["Government reception", "Executive arrival protocols", "VIP hosting"],
+         ["Requires operator approval for authority-sensitive contexts", "Does not replace a human protocol officer"],
+         "Inquiry-only with manual delivery after approval"),
         ("gcc-hotel-concierge-protocol", "GCC Hotel Concierge Protocol", "Hospitality", "GCC",
          "Hospitality-grade behavioral pack for robot concierges in luxury UAE and KSA hotels. Covers greeting rituals, multilingual interaction (Arabic/English), luggage assistance cues, prayer time awareness, and halal dining guidance.",
          2800.0, "1.1.0", "low",
          ["Softbank Pepper", "PAL Robotics ARI", "Any ROS2-compatible platform"],
-         ["concierge_behaviors.yaml", "language_packs/", "hotel_zones_config.json", "README.md"]),
+         ["concierge_behaviors.yaml", "language_packs/", "hotel_zones_config.json", "README.md"],
+         ["Hotel lobbies", "Guest check-in support", "Concierge routing"],
+         ["Does not process bookings or payments autonomously", "Does not replace front-desk staff"],
+         "Inquiry-only with manual delivery after approval"),
         ("gcc-royal-privacy-protocol-v1", "GCC Royal Privacy Protocol v1", "Privacy & Security", "GCC",
          "Privacy-first behavioral constraints for robots deployed near royal family members, government officials, and sensitive diplomatic environments. Implements camera deactivation zones, conversation non-recording policies, and secure data handling.",
          3900.0, "1.0.1", "high",
          ["Any camera-equipped robot platform", "ROS2 middleware"],
-         ["privacy_zones.yaml", "camera_control_module/", "audit_logging_config.json", "README.md", "compliance_checklist.pdf"]),
+         ["privacy_zones.yaml", "camera_control_module/", "audit_logging_config.json", "README.md", "compliance_checklist.pdf"],
+         ["Government reception", "VIP arrivals", "Privacy-sensitive spaces"],
+         ["Does not infer gender identity from appearance", "Does not replace a human privacy officer"],
+         "Inquiry-only with manual delivery after approval"),
         ("gcc-hospital-reception-protocol", "GCC Hospital Reception Protocol", "Healthcare", "GCC",
          "Clinical-grade reception and navigation protocol for robots in GCC hospitals and clinics. Includes patient triage guidance, wayfinding in HIPAA-adjacent environments, prayer room navigation, and family waiting area management.",
          2200.0, "1.0.0", "medium",
          ["Moxi (Diligent Robotics)", "Aethon TUG", "ROS2-compatible mobile platforms"],
-         ["hospital_behaviors.yaml", "wayfinding_maps/", "triage_script_library/", "README.md"]),
+         ["hospital_behaviors.yaml", "wayfinding_maps/", "triage_script_library/", "README.md"],
+         ["Hospital reception", "Patient intake direction", "Department wayfinding"],
+         ["No diagnosis or treatment advice", "Requires on-site supervision for emergency escalation"],
+         "Inquiry-only with manual delivery after approval"),
         ("gcc-retail-floor-assistance-protocol", "GCC Retail Floor Assistance Protocol", "Retail", "GCC",
          "Smart retail assistance protocol for robots on UAE and KSA mall floors. Covers product location assistance, multilingual greeting (Arabic/English/Hindi), modesty-aware behavior near prayer times, and seasonal campaign integration.",
          1800.0, "1.0.0", "low",
          ["Softbank Pepper", "LG CLOi", "Any mobile service robot"],
-         ["retail_behaviors.yaml", "product_catalog_integration/", "multilingual_greetings/", "README.md"]),
+         ["retail_behaviors.yaml", "product_catalog_integration/", "multilingual_greetings/", "README.md"],
+         ["Mall floor guidance", "Product location assistance", "Retail greeting support"],
+         ["No checkout/payment processing", "Needs operator escalation path for sensitive incidents"],
+         "Inquiry-only with manual delivery after approval"),
     ]
-    for slug, name, cat, region, desc, price, ver, risk, hw, files in products:
-        cur.execute("INSERT INTO protocol_products (slug, name, category, region, description, price_aed, version, risk_level, hardware_requirements_json, included_files_json, created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
-                    (slug, name, cat, region, desc, price, ver, risk, json.dumps(hw), json.dumps(files), datetime.utcnow().isoformat()))
+    for slug, name, cat, region, desc, price, ver, risk, hw, files, use_cases, limitations, support_mode in products:
+        cur.execute("""INSERT INTO protocol_products (
+                        slug, name, category, region, description, price_aed, version, risk_level,
+                        hardware_requirements_json, included_files_json, use_cases_json, limitations_json, support_mode, created_at
+                    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                    (slug, name, cat, region, desc, price, ver, risk,
+                     json.dumps(hw), json.dumps(files), json.dumps(use_cases), json.dumps(limitations),
+                     support_mode, datetime.utcnow().isoformat()))
     conn.commit()
 
 def create_client(name, email, plan, initial_credits, api_key=None):
@@ -178,13 +212,23 @@ def _product_row(row):
             "status": row["status"], "version": row["version"], "risk_level": row["risk_level"],
             "hardware_requirements": json.loads(row["hardware_requirements_json"] or "[]"),
             "included_files": json.loads(row["included_files_json"] or "[]"),
+            "use_cases": json.loads(row["use_cases_json"] or "[]"),
+            "limitations": json.loads(row["limitations_json"] or "[]"),
+            "support_mode": row["support_mode"],
             "delivery_type": row["delivery_type"]}
 
-def create_product(slug, name, category, region, description, price_aed, version, risk_level, hardware_requirements, included_files, delivery_type):
+def create_product(slug, name, category, region, description, price_aed, version, risk_level, hardware_requirements, included_files, delivery_type, use_cases=None, limitations=None, support_mode="inquiry_and_manual_fulfillment"):
     conn = _connect()
     cur = conn.cursor()
-    cur.execute("INSERT INTO protocol_products (slug, name, category, region, description, price_aed, version, risk_level, hardware_requirements_json, included_files_json, delivery_type, created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
-                (slug, name, category, region, description, price_aed, version, risk_level, json.dumps(hardware_requirements), json.dumps(included_files), delivery_type, datetime.utcnow().isoformat()))
+    cur.execute("""INSERT INTO protocol_products (
+                    slug, name, category, region, description, price_aed, version, risk_level,
+                    hardware_requirements_json, included_files_json, delivery_type, use_cases_json,
+                    limitations_json, support_mode, created_at
+                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                (slug, name, category, region, description, price_aed, version, risk_level,
+                 json.dumps(hardware_requirements), json.dumps(included_files), delivery_type,
+                 json.dumps(use_cases or []), json.dumps(limitations or []), support_mode,
+                 datetime.utcnow().isoformat()))
     conn.commit()
     product_id = cur.lastrowid
     conn.close()
@@ -269,13 +313,13 @@ def get_entitlement_by_id(entitlement_id):
 
 def update_product(product_id, **kwargs):
     allowed = {"name", "description", "price_aed", "status", "version", "risk_level",
-                "hardware_requirements", "included_files"}
+                "hardware_requirements", "included_files", "use_cases", "limitations", "support_mode"}
     conn = _connect()
     cur = conn.cursor()
     for key, value in kwargs.items():
         if key not in allowed:
             continue
-        if key in ("hardware_requirements", "included_files"):
+        if key in ("hardware_requirements", "included_files", "use_cases", "limitations"):
             cur.execute(f"UPDATE protocol_products SET {key}_json = ? WHERE id = ?",
                         (json.dumps(value), product_id))
         else:

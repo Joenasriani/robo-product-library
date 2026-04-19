@@ -8,6 +8,12 @@ Research B2B leads and generate tailored outreach sequences for GCC/Middle East 
 ## Quick Start
 See [QUICK_START.md](QUICK_START.md)
 
+## Product Readiness
+- Deliverables: source API/runtime + frontend + deployment files (see repository tree)
+- Setup expectations: `.env` values + API/admin keys ([QUICK_START.md](QUICK_START.md))
+- Commercial boundaries: [LIMITATIONS.md](LIMITATIONS.md)
+- Support & fulfillment: [SUPPORT.md](SUPPORT.md)
+
 ## API
 - `GET /health` — Health check
 - `GET /api/v1/account/me` — Account info

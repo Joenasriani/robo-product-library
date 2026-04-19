@@ -4,7 +4,8 @@ Product Card:
 - title
 - category
 - price
-- buttons: View / Inquire
+- readiness note: inquiry-only (no instant checkout)
+- buttons: View details / Inquire
 
 ---
 
@@ -14,9 +15,11 @@ Sections:
 - Title
 - Subtitle
 - Description
-- Includes
+- Deliverables / Included files
 - Requirements
-- Use cases
+- Use cases / best fit
+- Limitations
+- Support & fulfillment mode
 
 ---
 
@@ -40,7 +43,8 @@ Submit:
 ---
 
 Buy:
-- hidden OR disabled initially
+- not shown while checkout flow is not implemented
+- product pages must explicitly state inquiry-only fulfillment
 
 ---
 

@@ -139,7 +139,8 @@ async def admin_list_products(admin=Depends(require_admin)):
 async def admin_create_product(body: AdminCreateProtocolRequest, admin=Depends(require_admin)):
     return db.create_product(body.slug, body.name, body.category, body.region, body.description,
                               body.price_aed, body.version, body.risk_level, body.hardware_requirements,
-                              body.included_files, body.delivery_type)
+                              body.included_files, body.delivery_type, body.use_cases,
+                              body.limitations, body.support_mode)
 
 
 @app.patch("/api/v1/admin/products/{product_id}")

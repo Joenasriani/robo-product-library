@@ -33,8 +33,9 @@ async function loadCatalog() {
       <div style="font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:14px">${p.description.substring(0,120)}...</div>
       <div style="display:flex;justify-content:space-between;align-items:center">
         <span style="font-weight:700;font-size:17px;color:var(--text)">AED ${p.price_aed?.toLocaleString()}</span>
-        <button class="btn btn-primary" style="width:auto;margin:0;padding:7px 14px;font-size:13px" onclick="event.stopPropagation();openInquiry(${p.id},'${p.name}',${p.price_aed})">Inquire / Buy</button>
+        <button class="btn btn-primary" style="width:auto;margin:0;padding:7px 14px;font-size:13px" onclick="event.stopPropagation();openInquiry(${p.id},'${p.name}',${p.price_aed})">Inquire</button>
       </div>
+      <div style="font-size:11px;color:var(--muted);margin-top:8px">Inquiry-only: no instant checkout on this marketplace.</div>
     </div>`).join('');
 }
 
@@ -43,6 +44,8 @@ async function showProduct(productId) {
   if (!p) return;
   const hw = (p.hardware_requirements||[]).map(h=>`<li>${h}</li>`).join('');
   const files = (p.included_files||[]).map(f=>`<li><code>${f}</code></li>`).join('');
+  const useCases = (p.use_cases||[]).map(u=>`<li>${u}</li>`).join('');
+  const limitations = (p.limitations||[]).map(l=>`<li>${l}</li>`).join('');
   document.getElementById('modalContent').innerHTML = `
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
       <span class="badge ${catColor(p.category)}">${p.category}</span>
@@ -54,11 +57,14 @@ async function showProduct(productId) {
     <p style="color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:16px">${p.description}</p>
     <div style="font-size:22px;font-weight:700;color:var(--text);margin-bottom:20px">AED ${p.price_aed?.toLocaleString()}</div>
     ${hw ? `<div style="margin-bottom:12px"><div class="result-section-title">Hardware Requirements</div><ul class="req-list">${hw}</ul></div>` : ''}
-    ${files ? `<div style="margin-bottom:20px"><div class="result-section-title">Included Files</div><ul class="req-list">${files}</ul></div>` : ''}
+    ${files ? `<div style="margin-bottom:12px"><div class="result-section-title">Deliverables / Included Files</div><ul class="req-list">${files}</ul></div>` : ''}
+    ${useCases ? `<div style="margin-bottom:12px"><div class="result-section-title">Use Cases / Best Fit</div><ul class="req-list">${useCases}</ul></div>` : ''}
+    ${limitations ? `<div style="margin-bottom:18px"><div class="result-section-title">Limitations</div><ul class="req-list">${limitations}</ul></div>` : ''}
     <button class="btn btn-primary" onclick="closeModal();openInquiry(${p.id},'${p.name}',${p.price_aed})">
-      <span class="btn-text">Inquire / Buy →</span>
+      <span class="btn-text">Submit Inquiry →</span>
     </button>
-    <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px">Delivery: ${p.delivery_type} · Response within 1 business day</p>`;
+    <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:8px">Support & fulfillment: ${p.support_mode || p.delivery_type} · Response within 1 business day</p>
+    <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:4px">Checkout is not enabled here yet. Commercial approval and fulfillment are handled after inquiry review.</p>`;
   document.getElementById('productModal').style.display = 'block';
 }
 
