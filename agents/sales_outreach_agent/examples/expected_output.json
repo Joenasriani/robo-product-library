@@ -1,0 +1,10 @@
+{
+  "result": {
+    "short_message": "...",
+    "followup_message": "...",
+    "call_to_action": "...",
+    "value_proposition": "...",
+    "subject_line": "...",
+    "confidence_score": 0.5
+  }
+}

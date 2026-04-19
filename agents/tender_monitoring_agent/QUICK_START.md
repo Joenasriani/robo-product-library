@@ -1,33 +1,35 @@
 # Tender Monitoring Agent - Quick Start
 
 ## Prerequisites
-- Docker & Docker Compose
-- OpenAI API key (or Anthropic/Gemini)
+- Docker Engine + Docker Compose plugin
+- One valid provider key configured in `.env` (OpenAI/Anthropic/Gemini/local OpenAI-compatible endpoint)
 
-## Setup
-
+## 1) Configure
 ```bash
 cp .env.example .env
-# Edit .env and set your OPENAI_API_KEY and ADMIN_TOKEN
-docker-compose up -d
 ```
+Set at minimum: `LLM_PROVIDER`, `LLM_MODEL`, matching provider key, and `ADMIN_TOKEN`.
 
-## Test
-
+## 2) Start
 ```bash
-# Health check
-curl http://localhost:8007/health
-
-# Create a client
-curl -X POST http://localhost:8007/api/v1/admin/clients \
-  -H "X-Admin-Token: YOUR_ADMIN_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Test","email":"test@example.com","plan":"starter","initial_credits":50}'
-
-# Use the returned api_key for analysis requests
-curl http://localhost:8007/api/v1/account/me \
-  -H "X-API-Key: YOUR_API_KEY"
+docker compose up -d --build
 ```
 
-## Dashboard
-Open http://localhost:8007 in your browser.
+## 3) Run smoke test
+```bash
+ADMIN_TOKEN=change-admin-token ./validation/smoke_test.sh
+```
+
+## 4) Open dashboard
+- http://127.0.0.1:8007
+
+## Troubleshooting
+- `502`/`503` on analyze endpoints: provider key/model in `.env` is missing/invalid.
+- Port busy: change `PORT` in `.env`, then restart.
+
+## Stop / reset
+```bash
+docker compose down
+# full cleanup
+docker compose down -v
+```

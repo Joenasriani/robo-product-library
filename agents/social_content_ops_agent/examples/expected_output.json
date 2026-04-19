@@ -1,0 +1,28 @@
+{
+  "result": {
+    "content_calendar": [
+      {
+        "day": "Monday",
+        "platform": "LinkedIn",
+        "topic": "Launch teaser",
+        "format": "post"
+      }
+    ],
+    "post_concepts": [
+      {
+        "platform": "Instagram",
+        "post_type": "reel",
+        "caption": "...",
+        "hashtags": [
+          "#robotics"
+        ],
+        "best_time": "19:00"
+      }
+    ],
+    "repurposing_plan": "...",
+    "content_themes": [
+      "innovation"
+    ],
+    "confidence_score": 0.5
+  }
+}

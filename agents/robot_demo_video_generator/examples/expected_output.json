@@ -1,0 +1,19 @@
+{
+  "result": {
+    "storyboard": [
+      {
+        "scene_number": 1,
+        "title": "Opening",
+        "duration_seconds": 10,
+        "description": "...",
+        "camera_angle": "wide",
+        "ai_image_prompt": "..."
+      }
+    ],
+    "scene_plan_summary": "...",
+    "production_notes": "...",
+    "voiceover_script": "...",
+    "total_estimated_duration": 90,
+    "confidence_score": 0.5
+  }
+}

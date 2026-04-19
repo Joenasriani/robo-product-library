@@ -1,0 +1,24 @@
+{
+  "result": {
+    "matched_opportunities": [
+      {
+        "title": "Representative opportunity",
+        "estimated_value": "AED 3M",
+        "country": "UAE",
+        "sector": "Logistics",
+        "match_score": 75,
+        "match_rationale": "...",
+        "recommended_action": "monitor",
+        "source_type": "Government eProcurement",
+        "source_url": null
+      }
+    ],
+    "monitoring_summary": "...",
+    "top_opportunity_rationale": "...",
+    "shortlist_count": 1,
+    "next_recommended_action": "Verify on official portals.",
+    "confidence_score": 0.5,
+    "ai_generated": true,
+    "disclaimer": "Results are AI-generated research summaries based on your criteria. Always verify opportunities against official procurement portals before taking action."
+  }
+}

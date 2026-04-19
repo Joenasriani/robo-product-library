@@ -1,30 +1,21 @@
 # Sales Outreach Agent
 
-> **Status:** testing
+> **Status:** ready
 
 ## Overview
-Research B2B leads and generate tailored outreach sequences for GCC/Middle East sales.
+Docker-downloadable agent package with FastAPI backend + dashboard frontend.
 
-## Quick Start
-See [QUICK_START.md](QUICK_START.md)
+## Run
+See [QUICK_START.md](QUICK_START.md).
 
-## Product Readiness
-- Deliverables: source API/runtime + frontend + deployment files (see repository tree)
-- Setup expectations: `.env` values + API/admin keys ([QUICK_START.md](QUICK_START.md))
-- Commercial boundaries: [LIMITATIONS.md](LIMITATIONS.md)
-- Support & fulfillment: [SUPPORT.md](SUPPORT.md)
+## Smoke test
+Run [`validation/smoke_test.sh`](validation/smoke_test.sh) after startup.
 
-## API
-- `GET /health` — Health check
-- `GET /api/v1/account/me` — Account info
-- `POST /api/v1/*/analyze` — Run analysis (costs 1 credit)
-- `GET /api/v1/*/history` — Analysis history
-- `POST /api/v1/admin/clients` — Create client (admin)
-- `POST /api/v1/admin/credits/add` — Add credits (admin)
+## Examples
+- Input: [`examples/sample_input.json`](examples/sample_input.json)
+- Representative output: [`examples/expected_output.json`](examples/expected_output.json)
 
-## Port
-Default: `8001`
-
-## Auth
-All analysis endpoints require `X-API-Key` header.
-Admin endpoints require `X-Admin-Token` header.
+## Product docs
+- Status checklist: [STATUS.md](STATUS.md)
+- Limitations: [LIMITATIONS.md](LIMITATIONS.md)
+- Support: [SUPPORT.md](SUPPORT.md)

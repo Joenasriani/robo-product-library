@@ -1,0 +1,16 @@
+{
+  "result": {
+    "company_summary": "...",
+    "opportunity_signals": [
+      {
+        "signal": "Expansion",
+        "strength": "high"
+      }
+    ],
+    "qualification_notes": "...",
+    "lead_score": 60,
+    "lead_status": "warm",
+    "recommended_approach": "...",
+    "confidence_score": 0.5
+  }
+}
