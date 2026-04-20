@@ -58,13 +58,15 @@ function scoreColor(score) {
   return 'red';
 }
 function actionBadgeClass(action) {
-  if (action === 'pursue') return 'badge-green';
-  if (action === 'review') return 'badge-yellow';
+  const normalized = String(action || '').toLowerCase();
+  if (normalized === 'pursue') return 'badge-green';
+  if (normalized === 'review') return 'badge-yellow';
   return 'badge-red';
 }
 function riskBadgeClass(risk) {
-  if (risk === 'low') return 'badge-green';
-  if (risk === 'medium') return 'badge-yellow';
+  const normalized = String(risk || '').toLowerCase();
+  if (normalized === 'low') return 'badge-green';
+  if (normalized === 'medium') return 'badge-yellow';
   return 'badge-red';
 }
 
@@ -74,8 +76,8 @@ function renderResult(item) {
   const sc = scoreColor(scoreValue);
   const reqs = (a.key_requirements || []).map(r => `<li>${escapeHtml(r)}</li>`).join('');
   const cr = item.credits_remaining != null ? item.credits_remaining : (a.credits_remaining != null ? a.credits_remaining : null);
-  const action = String(a.recommended_action || '').toLowerCase();
-  const risk = String(a.risk_level || '').toLowerCase();
+  const action = String(a.recommended_action || '');
+  const risk = String(a.risk_level || '');
   return `
   <div class="result-card">
     <div class="result-header">
@@ -83,7 +85,7 @@ function renderResult(item) {
         <div class="result-title">${escapeHtml(item.id || 'Analysis Result')}</div>
         <div class="result-meta" style="margin-top:6px">
           <span class="badge ${actionBadgeClass(action)}">⚡ ${escapeHtml(action.toUpperCase())}</span>
-          <span class="badge ${riskBadgeClass(risk)}">Risk: ${escapeHtml(risk)}</span>
+          <span class="badge ${riskBadgeClass(risk)}">Risk: ${escapeHtml(risk.toLowerCase())}</span>
           <span class="badge badge-blue">Confidence: ${Math.round((a.confidence_score||0)*100)}%</span>
         </div>
       </div>
@@ -198,7 +200,7 @@ document.getElementById('uploadBtn').addEventListener('click', async () => {
   for (const { file, res } of settled) {
     if (!res.ok) {
       const msg = res.status === 402 ? 'Insufficient credits.' : (res.data?.detail || 'Upload failed.');
-      failures.push(`${file.name.replace(/\\s+/g, ' ').trim()}: ${msg}`);
+      failures.push(`${file.name.replace(/\s+/g, ' ').trim()}: ${msg}`);
       continue;
     }
     const items = Array.isArray(res.data) ? res.data : [res.data];
