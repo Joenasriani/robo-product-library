@@ -11,4 +11,4 @@ __pycache__/
 *.log
 node_modules/
 .DS_Store
-ai_products/rag/**/.chroma/
+**/.chroma/

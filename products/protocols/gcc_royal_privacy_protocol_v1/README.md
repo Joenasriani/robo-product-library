@@ -1,6 +1,6 @@
 # GCC Royal + Privacy Protocol v1
 
-Status: draft
+Status: product-ready (inquiry-only fulfillment)
 
 Purpose:
 A standalone premium RoboMarket protocol product for GCC robot deployments requiring:

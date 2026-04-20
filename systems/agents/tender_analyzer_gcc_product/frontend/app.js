@@ -155,36 +155,53 @@ document.getElementById('uploadBtn').addEventListener('click', async () => {
   const btn = document.getElementById('uploadBtn');
   const alertEl = document.getElementById('uploadAlert');
   hideAlert(alertEl);
-  const file = document.getElementById('pdfFile').files[0];
-  if (!file) { showAlert(alertEl, 'Please select a file first.'); return; }
+  const files = Array.from(document.getElementById('pdfFile').files || []);
+  if (!files.length) { showAlert(alertEl, 'Please select at least one file first.'); return; }
   setLoading(btn, true);
-  const form = new FormData();
-  form.append('file', file);
-  form.append('title', document.getElementById('pdfTitle').value);
-  form.append('issuer', document.getElementById('pdfIssuer').value);
-  form.append('country', document.getElementById('pdfCountry').value || 'GCC');
-  form.append('sector', document.getElementById('pdfSector').value);
   const key = getApiKey();
-  const res = await fetch('/api/v1/tenders/analyze-file', {
-    method: 'POST',
-    headers: key ? { 'X-API-Key': key } : {},
-    body: form
-  }).then(async r => {
-    const t = await r.text();
-    let d; try { d = JSON.parse(t); } catch { d = t; }
-    return { ok: r.ok, status: r.status, data: d };
-  }).catch(e => ({ ok: false, status: 0, data: { detail: e.message } }));
+  const titleOverride = document.getElementById('pdfTitle').value;
+  const issuerOverride = document.getElementById('pdfIssuer').value;
+  const country = document.getElementById('pdfCountry').value || 'GCC';
+  const sector = document.getElementById('pdfSector').value;
+  const allItems = [];
+  const failures = [];
+  for (const file of files) {
+    const form = new FormData();
+    form.append('file', file);
+    form.append('title', titleOverride);
+    form.append('issuer', issuerOverride);
+    form.append('country', country);
+    form.append('sector', sector);
+    const res = await fetch('/api/v1/tenders/analyze-file', {
+      method: 'POST',
+      headers: key ? { 'X-API-Key': key } : {},
+      body: form
+    }).then(async r => {
+      const t = await r.text();
+      let d; try { d = JSON.parse(t); } catch { d = t; }
+      return { ok: r.ok, status: r.status, data: d };
+    }).catch(e => ({ ok: false, status: 0, data: { detail: e.message } }));
+    if (!res.ok) {
+      const msg = res.status === 402 ? 'Insufficient credits.' : (res.data?.detail || 'Upload failed.');
+      failures.push(`${file.name}: ${msg}`);
+      continue;
+    }
+    const items = Array.isArray(res.data) ? res.data : [res.data];
+    allItems.push(...items);
+  }
   setLoading(btn, false);
-  if (!res.ok) {
-    const msg = res.status === 402 ? '⚡ Insufficient credits — please top up your account.' : (res.data?.detail || 'Upload failed.');
-    showAlert(alertEl, msg, res.status === 402 ? 'info' : 'error');
+  if (!allItems.length) {
+    const msg = failures[0] || 'Upload failed.';
+    showAlert(alertEl, msg.includes('Insufficient credits') ? '⚡ Insufficient credits — please top up your account.' : msg, msg.includes('Insufficient credits') ? 'info' : 'error');
     return;
   }
-  const items = Array.isArray(res.data) ? res.data : [res.data];
   const container = document.getElementById('resultContainer');
   container.style.display = 'block';
-  container.innerHTML = '<h2 style="font-size:16px;font-weight:600;margin-bottom:4px">Analysis Results</h2>' + items.map(renderResult).join('');
-  if (items[0]?.credits_remaining != null) updateCreditsDisplay(items[0].credits_remaining);
+  container.innerHTML = '<h2 style="font-size:16px;font-weight:600;margin-bottom:4px">Analysis Results</h2>' + allItems.map(renderResult).join('');
+  if (allItems[allItems.length - 1]?.credits_remaining != null) updateCreditsDisplay(allItems[allItems.length - 1].credits_remaining);
+  if (failures.length) {
+    showAlert(alertEl, `Analyzed ${allItems.length} file(s). ${failures.length} failed: ${failures.join(' | ')}`, 'info');
+  }
   container.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
