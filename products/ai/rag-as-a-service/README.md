@@ -1,7 +1,7 @@
 # rag-as-a-service
 
 > **Category:** RAG — API Service &nbsp;|&nbsp; **Complexity:** ⭐⭐⭐ Advanced  
-> **Stack:** Python · FastAPI · LangChain · Chroma · OpenAI
+> **Stack:** Python · FastAPI · LangChain · Chroma · OpenAI-compatible APIs
 
 A production-grade **RAG microservice** exposing a REST API. Index documents and query them programmatically via simple HTTP endpoints — no UI required. Suitable for integration with any application or platform.
 
@@ -36,9 +36,9 @@ GET  /health →  service health check
 | Component | Technology |
 |-----------|------------|
 | API framework | FastAPI |
-| Embeddings | OpenAI `text-embedding-3-small` |
+| Embeddings | OpenAI-compatible embedding model (default `text-embedding-3-small`) |
 | Vector store | Chroma (persistent, on disk) |
-| LLM | OpenAI `gpt-4o-mini` |
+| LLM | OpenAI-compatible chat model (default `gpt-4o-mini`) |
 | RAG framework | LangChain (LCEL chain) |
 | Schema validation | Pydantic v2 |
 
@@ -47,7 +47,7 @@ GET  /health →  service health check
 ## Prerequisites
 
 - Python 3.11+
-- An [OpenAI API key](https://platform.openai.com/api-keys)
+- An API key for your chosen provider (BYOK recommended)
 
 ---
 
@@ -64,7 +64,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 cp .env.example .env
-# Edit .env and set OPENAI_API_KEY=sk-...
+# Edit .env and set AI_API_KEY=...
 
 python app.py
 # or: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
@@ -83,14 +83,63 @@ docker compose up --build
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `OPENAI_API_KEY` | *(required)* | OpenAI API key |
-| `OPENAI_MODEL` | `gpt-4o-mini` | Chat completion model |
-| `OPENAI_EMBEDDING_MODEL` | `text-embedding-3-small` | Embedding model |
+| `AI_PROVIDER` | `openai` | Provider label: `openai`, `openrouter`, or `custom` |
+| `AI_BASE_URL` | *(empty)* | Optional OpenAI-compatible base URL (e.g., gateway URL) |
+| `AI_API_KEY` | *(recommended)* | BYOK API key (preferred) |
+| `AI_MODEL` | `gpt-4o-mini` | Chat completion model |
+| `AI_EMBEDDING_MODEL` | `text-embedding-3-small` | Embedding model |
+| `DEMO_MODE` | `false` | If `true`, allows demo key fallback when `AI_API_KEY` is not set |
+| `DEMO_AI_API_KEY` | *(empty)* | Demo key used only when `DEMO_MODE=true` and `AI_API_KEY` is empty |
+| `OPENAI_API_KEY` | *(legacy fallback)* | Backward-compatible fallback for `AI_API_KEY` |
+| `OPENAI_MODEL` | `gpt-4o-mini` | Backward-compatible fallback for `AI_MODEL` |
+| `OPENAI_EMBEDDING_MODEL` | `text-embedding-3-small` | Backward-compatible fallback for `AI_EMBEDDING_MODEL` |
 | `CHUNK_SIZE` | `800` | Max characters per chunk |
 | `CHUNK_OVERLAP` | `150` | Overlap between chunks |
 | `RETRIEVAL_K` | `4` | Chunks per query |
 | `HOST` | `0.0.0.0` | Bind host |
 | `PORT` | `8000` | Bind port |
+
+---
+
+## Provider Configuration (BYOK)
+
+### Run with OpenAI
+
+```env
+AI_PROVIDER=openai
+AI_BASE_URL=
+AI_API_KEY=sk-...
+AI_MODEL=gpt-4o-mini
+AI_EMBEDDING_MODEL=text-embedding-3-small
+```
+
+### Run with OpenRouter (OpenAI-compatible)
+
+```env
+AI_PROVIDER=openrouter
+AI_BASE_URL=https://openrouter.ai/api/v1
+AI_API_KEY=...
+AI_MODEL=openai/gpt-4o-mini
+AI_EMBEDDING_MODEL=text-embedding-3-small
+```
+
+### Run with other providers via OpenAI-compatible gateway routing
+
+```env
+AI_PROVIDER=custom
+AI_BASE_URL=https://your-gateway.example.com/v1
+AI_API_KEY=...
+AI_MODEL=provider/model-id
+AI_EMBEDDING_MODEL=provider/embedding-model-id
+```
+
+> Ensure your chosen gateway supports both chat and embeddings for RAG.
+
+### Demo mode (evaluation only)
+
+If `DEMO_MODE=true` and `AI_API_KEY` is not set, the service will use `DEMO_AI_API_KEY`.
+
+⚠️ Demo keys are evaluation-only, may be rate-limited or revoked at any time, and are not intended for production. Production users should bring their own key (`AI_API_KEY`).
 
 ---
 
@@ -176,7 +225,7 @@ Tests do **not** require a real OpenAI API key. API tests use `FakeEmbeddings` a
 |--------|---------|
 | 422 | Invalid `store_id` pattern, mismatched `source_names`, empty documents |
 | 404 | Query against a non-existent store |
-| 503 | `OPENAI_API_KEY` not configured |
+| 503 | No API key configured (`AI_API_KEY`/`OPENAI_API_KEY`, or demo key in demo mode) |
 | 500 | Indexing or generation failure |
 
 ---
@@ -197,7 +246,7 @@ MIT — see [LICENSE](../../../LICENSE) in the repository root.
 ## Sellable Package Usage
 
 1. Install dependencies: `pip install -r requirements.txt`
-2. Configure `.env` using `.env.example` (set `OPENAI_API_KEY`).
+2. Configure `.env` using `.env.example` (set `AI_API_KEY`, or `OPENAI_API_KEY` for legacy compatibility).
 3. Start API: `python app.py`
 4. Health check: `GET /health`
 5. Index docs: `POST /index`

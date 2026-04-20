@@ -59,9 +59,10 @@ def generate(
     """Generate a grounded answer from retrieved context chunks."""
     t0 = time.monotonic()
     llm = ChatOpenAI(
-        model=model or Config.OPENAI_MODEL,
+        model=model or Config.AI_MODEL,
         temperature=0,
-        openai_api_key=Config.OPENAI_API_KEY,
+        api_key=Config.ACTIVE_AI_API_KEY,
+        base_url=Config.AI_BASE_URL or None,
     )
     chain = _PROMPT | llm | StrOutputParser()
     context_text = _format_context(context)
