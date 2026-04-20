@@ -24,7 +24,7 @@ jobs:
       AI_BASE_URL: https://openrouter.ai/api/v1
       AI_API_KEY: ${{ secrets.FREE_ROBOMARKET_API }}
       AI_MODEL: openai/gpt-4o-mini
-      AI_EMBEDDING_MODEL: text-embedding-3-small
+      AI_EMBEDDING_MODEL: openai/text-embedding-3-small
       DEMO_MODE: "true"
     steps:
       - uses: actions/checkout@v4

@@ -120,7 +120,7 @@ AI_PROVIDER=openrouter
 AI_BASE_URL=https://openrouter.ai/api/v1
 AI_API_KEY=...
 AI_MODEL=openai/gpt-4o-mini
-AI_EMBEDDING_MODEL=text-embedding-3-small
+AI_EMBEDDING_MODEL=openai/text-embedding-3-small
 ```
 
 ### Run with other providers via OpenAI-compatible gateway routing
