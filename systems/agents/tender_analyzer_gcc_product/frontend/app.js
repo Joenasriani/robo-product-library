@@ -200,7 +200,8 @@ document.getElementById('uploadBtn').addEventListener('click', async () => {
   for (const { file, res } of settled) {
     if (!res.ok) {
       const msg = res.status === 402 ? 'Insufficient credits.' : (res.data?.detail || 'Upload failed.');
-      failures.push(`${file.name.replace(/\s+/g, ' ').trim()}: ${msg}`);
+      const safeFileName = file.name.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim();
+      failures.push(`${safeFileName}: ${msg}`);
       continue;
     }
     const items = Array.isArray(res.data) ? res.data : [res.data];
@@ -215,7 +216,8 @@ document.getElementById('uploadBtn').addEventListener('click', async () => {
   const container = document.getElementById('resultContainer');
   container.style.display = 'block';
   container.innerHTML = '<h2 style="font-size:16px;font-weight:600;margin-bottom:4px">Analysis Results</h2>' + allItems.map(renderResult).join('');
-  if (allItems[allItems.length - 1]?.credits_remaining != null) updateCreditsDisplay(allItems[allItems.length - 1].credits_remaining);
+  const lastItem = allItems[allItems.length - 1];
+  if (lastItem?.credits_remaining != null) updateCreditsDisplay(lastItem.credits_remaining);
   if (failures.length) {
     showAlert(alertEl, `Analyzed ${allItems.length} file(s). ${failures.length} failed: ${failures.join(' | ')}`, 'info');
   }
