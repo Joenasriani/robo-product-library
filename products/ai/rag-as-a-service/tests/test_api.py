@@ -48,7 +48,7 @@ async def test_query_unknown_store_returns_404():
 @pytest.mark.asyncio
 async def test_index_without_api_key_returns_503(monkeypatch):
     import config as cfg
-    monkeypatch.setattr(cfg.Config, "OPENAI_API_KEY", "")
+    monkeypatch.setattr(cfg.Config, "ACTIVE_AI_API_KEY", "")
     from httpx import ASGITransport, AsyncClient
     async with AsyncClient(transport=ASGITransport(app=api_module.app), base_url="http://test") as client:
         resp = await client.post(
@@ -61,7 +61,7 @@ async def test_index_without_api_key_returns_503(monkeypatch):
 @pytest.mark.asyncio
 async def test_index_mismatched_source_names_returns_422(monkeypatch):
     import config as cfg
-    monkeypatch.setattr(cfg.Config, "OPENAI_API_KEY", "sk-test")
+    monkeypatch.setattr(cfg.Config, "ACTIVE_AI_API_KEY", "sk-test")
     from httpx import ASGITransport, AsyncClient
     async with AsyncClient(transport=ASGITransport(app=api_module.app), base_url="http://test") as client:
         resp = await client.post(
@@ -79,7 +79,7 @@ async def test_index_mismatched_source_names_returns_422(monkeypatch):
 async def test_index_and_query_end_to_end(tmp_path, fake_embeddings, monkeypatch):
     """Full end-to-end: index a document, then query it."""
     import config as cfg
-    monkeypatch.setattr(cfg.Config, "OPENAI_API_KEY", "sk-test")
+    monkeypatch.setattr(cfg.Config, "ACTIVE_AI_API_KEY", "sk-test")
     monkeypatch.setattr(cfg.Config, "CHROMA_BASE_DIR", tmp_path / ".chroma")
 
     from httpx import ASGITransport, AsyncClient

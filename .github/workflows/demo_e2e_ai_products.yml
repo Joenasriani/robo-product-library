@@ -1,0 +1,43 @@
+name: Demo E2E AI Products
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "products/ai/**"
+      - ".github/workflows/demo_e2e_ai_products.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  rag-as-a-service-smoke:
+    name: rag-as-a-service smoke
+    runs-on: ubuntu-latest
+    environment: FREE_ROBOMARKET_API
+    defaults:
+      run:
+        working-directory: products/ai/rag-as-a-service
+    env:
+      AI_PROVIDER: openrouter
+      AI_BASE_URL: https://openrouter.ai/api/v1
+      AI_API_KEY: ${{ secrets.FREE_ROBOMARKET_API }}
+      AI_MODEL: openai/gpt-4o-mini
+      AI_EMBEDDING_MODEL: openai/text-embedding-3-small
+      DEMO_MODE: "true"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Verify demo key is injected without logging it
+        run: python -c "from config import Config; assert bool(Config.ACTIVE_AI_API_KEY)"
+
+      - name: Run rag-as-a-service tests
+        run: pytest tests/ -v

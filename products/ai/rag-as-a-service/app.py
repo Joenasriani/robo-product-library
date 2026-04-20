@@ -11,7 +11,7 @@ Run:
     uvicorn app:app --host 0.0.0.0 --port 8000
 
 Requires:
-    OPENAI_API_KEY set in .env (see .env.example)
+    AI_API_KEY (preferred) or OPENAI_API_KEY set in .env (see .env.example)
 """
 
 import logging
@@ -39,6 +39,8 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s %(name)s %(message)s",
 )
 logger = logging.getLogger(__name__)
+for warning in Config.warnings():
+    logger.warning(warning)
 
 # ── App ───────────────────────────────────────────────────────────────────────
 
@@ -112,7 +114,11 @@ class QueryResponse(BaseModel):
 
 @app.get("/health", summary="Health check")
 async def health() -> dict:
-    return {"status": "ok", "service": "robomarket-rag-api"}
+    payload = {"status": "ok", "service": "robomarket-rag-api"}
+    warnings = Config.warnings()
+    if warnings:
+        payload["warnings"] = warnings
+    return payload
 
 
 @app.post(
@@ -123,10 +129,13 @@ async def health() -> dict:
 )
 async def index_endpoint(req: IndexRequest) -> IndexResponse:
     """Chunk and embed the provided document texts into a named Chroma store."""
-    if not Config.OPENAI_API_KEY:
+    if not Config.ACTIVE_AI_API_KEY:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="OPENAI_API_KEY is not configured on the server.",
+            detail=(
+                "No AI API key configured. Set AI_API_KEY (preferred) or OPENAI_API_KEY. "
+                "For evaluation only, you may set DEMO_MODE=true with DEMO_AI_API_KEY."
+            ),
         )
 
     source_names = req.source_names or [
@@ -188,10 +197,13 @@ async def query_endpoint(req: QueryRequest) -> QueryResponse:
             detail=f"Store '{req.store_id}' not found. Index documents first via POST /index.",
         )
 
-    if not Config.OPENAI_API_KEY:
+    if not Config.ACTIVE_AI_API_KEY:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="OPENAI_API_KEY is not configured on the server.",
+            detail=(
+                "No AI API key configured. Set AI_API_KEY (preferred) or OPENAI_API_KEY. "
+                "For evaluation only, you may set DEMO_MODE=true with DEMO_AI_API_KEY."
+            ),
         )
 
     try:

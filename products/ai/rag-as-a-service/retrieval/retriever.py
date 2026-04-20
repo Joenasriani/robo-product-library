@@ -102,9 +102,14 @@ def _chroma_dir() -> Path:
 
 
 def _make_embeddings() -> OpenAIEmbeddings:
+    embeddings_kwargs = {}
+    if Config.AI_BASE_URL:
+        embeddings_kwargs["base_url"] = Config.AI_BASE_URL
+
     return OpenAIEmbeddings(
-        model=Config.OPENAI_EMBEDDING_MODEL,
-        openai_api_key=Config.OPENAI_API_KEY,
+        model=Config.AI_EMBEDDING_MODEL,
+        api_key=Config.ACTIVE_AI_API_KEY,
+        **embeddings_kwargs,
     )
 
 
