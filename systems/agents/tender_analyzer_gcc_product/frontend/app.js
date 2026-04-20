@@ -18,6 +18,14 @@ function showAlert(el, msg, type='error') {
   el.textContent = msg;
 }
 function hideAlert(el) { el.className = 'alert'; el.textContent = ''; }
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
 
 async function apiFetch(url, options = {}) {
   const headers = options.headers || {};
@@ -62,36 +70,39 @@ function riskBadgeClass(risk) {
 
 function renderResult(item) {
   const a = item.analysis || item;
-  const sc = scoreColor(a.score);
-  const reqs = (a.key_requirements || []).map(r => `<li>${r}</li>`).join('');
+  const scoreValue = Number.isFinite(Number(a.score)) ? Number(a.score) : 0;
+  const sc = scoreColor(scoreValue);
+  const reqs = (a.key_requirements || []).map(r => `<li>${escapeHtml(r)}</li>`).join('');
   const cr = item.credits_remaining != null ? item.credits_remaining : (a.credits_remaining != null ? a.credits_remaining : null);
+  const action = String(a.recommended_action || '').toLowerCase();
+  const risk = String(a.risk_level || '').toLowerCase();
   return `
   <div class="result-card">
     <div class="result-header">
       <div>
-        <div class="result-title">${item.id || 'Analysis Result'}</div>
+        <div class="result-title">${escapeHtml(item.id || 'Analysis Result')}</div>
         <div class="result-meta" style="margin-top:6px">
-          <span class="badge ${actionBadgeClass(a.recommended_action)}">⚡ ${a.recommended_action?.toUpperCase()}</span>
-          <span class="badge ${riskBadgeClass(a.risk_level)}">Risk: ${a.risk_level}</span>
+          <span class="badge ${actionBadgeClass(action)}">⚡ ${escapeHtml(action.toUpperCase())}</span>
+          <span class="badge ${riskBadgeClass(risk)}">Risk: ${escapeHtml(risk)}</span>
           <span class="badge badge-blue">Confidence: ${Math.round((a.confidence_score||0)*100)}%</span>
         </div>
       </div>
       <div class="score-section">
         <div>
-          <div class="score-num" style="color:var(--${sc === 'green' ? 'success' : sc === 'yellow' ? 'warning' : 'danger'})">${a.score}</div>
+          <div class="score-num" style="color:var(--${sc === 'green' ? 'success' : sc === 'yellow' ? 'warning' : 'danger'})">${scoreValue}</div>
           <div class="score-label">/ 100</div>
         </div>
       </div>
     </div>
-    <div class="progress-wrap"><div class="progress-bar ${sc}" style="width:${a.score}%"></div></div>
+    <div class="progress-wrap"><div class="progress-bar ${sc}" style="width:${scoreValue}%"></div></div>
     <div class="result-section">
       <div class="result-section-title">Summary</div>
-      <div class="result-text">${a.summary}</div>
+      <div class="result-text">${escapeHtml(a.summary)}</div>
     </div>
     ${reqs ? `<div class="result-section"><div class="result-section-title">Key Requirements</div><ul class="req-list">${reqs}</ul></div>` : ''}
     <div class="result-section">
       <div class="result-section-title">Reasoning</div>
-      <div class="result-text">${a.reasoning}</div>
+      <div class="result-text">${escapeHtml(a.reasoning)}</div>
     </div>
     ${cr != null ? `<div class="credits-note">⚡ ${cr} credits remaining</div>` : ''}
   </div>`;
@@ -163,9 +174,7 @@ document.getElementById('uploadBtn').addEventListener('click', async () => {
   const issuerOverride = document.getElementById('pdfIssuer').value;
   const country = document.getElementById('pdfCountry').value || 'GCC';
   const sector = document.getElementById('pdfSector').value;
-  const allItems = [];
-  const failures = [];
-  for (const file of files) {
+  const requests = files.map(async file => {
     const form = new FormData();
     form.append('file', file);
     form.append('title', titleOverride);
@@ -181,9 +190,15 @@ document.getElementById('uploadBtn').addEventListener('click', async () => {
       let d; try { d = JSON.parse(t); } catch { d = t; }
       return { ok: r.ok, status: r.status, data: d };
     }).catch(e => ({ ok: false, status: 0, data: { detail: e.message } }));
+    return { file, res };
+  });
+  const settled = await Promise.all(requests);
+  const allItems = [];
+  const failures = [];
+  for (const { file, res } of settled) {
     if (!res.ok) {
       const msg = res.status === 402 ? 'Insufficient credits.' : (res.data?.detail || 'Upload failed.');
-      failures.push(`${file.name}: ${msg}`);
+      failures.push(`${file.name.replace(/\\s+/g, ' ').trim()}: ${msg}`);
       continue;
     }
     const items = Array.isArray(res.data) ? res.data : [res.data];
