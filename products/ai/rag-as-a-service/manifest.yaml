@@ -1,0 +1,18 @@
+id: rag-as-a-service-v1
+slug: rag-as-a-service
+name: RAG as a Service
+version: 1.0.0
+category: AI Product
+sales_mode: inquiry_only
+status: inquiry_only
+price_aed: 3500
+deliverable_type: runnable_api_package
+entry_point: python app.py
+runtime: FastAPI
+fulfillment_method: manual_delivery_after_inquiry_approval
+deliverables:
+- manifest.yaml
+- README.md
+- requirements.txt
+- app.py
+- bundle.zip

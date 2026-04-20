@@ -1,0 +1,14 @@
+products:
+- products/protocols/gcc_base_civility_pack/manifest.yaml
+- products/protocols/gcc_clinic_patient_interaction_protocol/manifest.yaml
+- products/protocols/gcc_event_reception_protocol/manifest.yaml
+- products/protocols/gcc_hospital_reception_protocol/manifest.yaml
+- products/protocols/gcc_hotel_concierge_protocol/manifest.yaml
+- products/protocols/gcc_mall_navigation_wayfinding_protocol/manifest.yaml
+- products/protocols/gcc_pharmacy_assistance_protocol/manifest.yaml
+- products/protocols/gcc_privacy_zone_protocol_pack/manifest.yaml
+- products/protocols/gcc_restaurant_host_protocol/manifest.yaml
+- products/protocols/gcc_retail_floor_assistance_protocol/manifest.yaml
+- products/protocols/gcc_royal_privacy_protocol_v1/manifest.yaml
+- products/protocols/gcc_royal_protocol_pack/manifest.yaml
+- products/protocols/gcc_security_access_control_protocol/manifest.yaml

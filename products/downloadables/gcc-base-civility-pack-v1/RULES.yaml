@@ -1,0 +1,51 @@
+product:
+  id: gcc-base-civility-pack-v1
+  name: GCC Base Civility Pack
+  version: 1.0.0
+  risk_level: medium
+runtime_policy:
+  decision_model: rules_first
+  human_supervision_required: true
+  requires_operator_approval: false
+  fallback_behavior: handoff_to_human_on_low_confidence_or_sensitive_request
+coverage:
+  supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+  supported_use_cases:
+  - hotel_concierge
+  - mall_information
+  - event_hosting
+  - museum_greeting
+  - public_reception
+constraints:
+  limitations:
+  - This pack is a civility layer, not a full navigation stack.
+  - Execution quality depends on robot hardware and middleware.
+  - Complex venue-level protocol should be reviewed before deployment.
+  required_capabilities:
+  - speech_tts
+  - distance_estimation
+  - people_detection
+  - gaze_control
+  dependencies:
+  - Robot behavior runtime capable of loading YAML policy files
+  - On-site operator escalation workflow
+  - Venue-specific map/directory data for navigation prompts
+rule_sources:
+  core_policy_files:
+  - core/base_policy.yaml
+  - core/country_overlays.yaml
+  - core/dialogue_templates.yaml
+  - core/venue_modes.yaml
+  test_scenarios:
+  - tests/acceptance_criteria.yaml
+  - tests/scenarios.yaml
+  documentation:
+  - README.md
+  - docs/setup.md
+  - docs/compatibility.md

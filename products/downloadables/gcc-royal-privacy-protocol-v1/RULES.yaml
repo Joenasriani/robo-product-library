@@ -1,0 +1,59 @@
+product:
+  id: gcc-royal-privacy-protocol-v1
+  name: GCC Royal + Privacy Protocol v1
+  version: 1.0.0
+  risk_level: high
+runtime_policy:
+  decision_model: rules_first
+  human_supervision_required: true
+  requires_operator_approval: true
+  fallback_behavior: handoff_to_human_on_low_confidence_or_sensitive_request
+coverage:
+  supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
+  supported_use_cases:
+  - executive_reception
+  - government_reception
+  - hotel_concierge
+  - event_hosting
+  - museum_greeting
+  - vip_arrival
+  - privacy_sensitive_public_space
+constraints:
+  limitations:
+  - does_not_infer_gender_identity_from_appearance
+  - does_not_identify_royalty_without_operator_or_metadata_signal
+  - does_not_initiate_physical_contact
+  - does_not_replace_human_protocol_officer
+  required_capabilities:
+  - speech_tts
+  - speech_asr
+  - distance_estimation
+  - people_detection
+  - gaze_control
+  dependencies:
+  - Robot behavior runtime capable of loading YAML policy files
+  - On-site operator escalation workflow
+  - Venue-specific map/directory data for navigation prompts
+rule_sources:
+  core_policy_files:
+  - core/base_policy.yaml
+  - core/country_overlays.yaml
+  - core/dialogue_templates.yaml
+  - core/privacy_mode.yaml
+  - core/royal_mode.yaml
+  - core/safety_overrides.yaml
+  - core/venue_modes.yaml
+  test_scenarios:
+  - tests/acceptance_criteria.yaml
+  - tests/regression_tests.yaml
+  - tests/scenarios.yaml
+  documentation:
+  - README.md
+  - docs/setup.md
+  - docs/compatibility.md
