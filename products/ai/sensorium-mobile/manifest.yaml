@@ -1,0 +1,54 @@
+id: sensorium-mobile-v1
+slug: sensorium-mobile
+name: Sensorium Mobile
+version: 1.0.0
+category: Robotics Sensor Bridge
+sales_mode: inquiry_only
+status: inquiry_only
+price_aed: null
+deliverable_type: runnable_mobile_sensor_bridge_package
+entry_point: npm run dev
+runtime: Vite React frontend with Node/tRPC/WebSocket backend and optional ROS2 publishing
+fulfillment_method: manual_delivery_after_inquiry_approval
+store_positioning: independent_sellable_product
+commercial_truth:
+  sellable_independently: true
+  one_click_saas: false
+  requires_customer_environment_validation: true
+  ros2_publishing_requires_external_runtime: true
+  recommended_listing_status: inquiry_only
+capabilities:
+  - mobile_camera_streaming
+  - mobile_imu_streaming
+  - mobile_gps_streaming
+  - mobile_audio_streaming
+  - websocket_sensor_bridge
+  - authenticated_bridge_token_support
+  - zod_sensor_payload_validation
+  - ros2_optional_publishing
+  - mock_mode_when_ros2_unavailable
+requirements:
+  local_development:
+    - Node.js 20+
+    - npm
+  production_mobile_use:
+    - HTTPS/WSS secure_context
+    - trusted_tls_certificate
+  ros2_mode:
+    - Ubuntu ROS2 environment
+    - sourced ROS2 setup
+    - rclnodejs installed and compatible
+verification:
+  local_commands:
+    - npm ci
+    - npm run check
+    - npm test
+    - npm run build
+  not_fully_verified_in_chat_sandbox:
+    - dependency_installation_timed_out
+    - real_ros2_publishing_requires_external_ros2_environment
+deliverables:
+  - manifest.yaml
+  - README.md
+  - SENSORIUM_FIX_REPORT.md
+  - BUNDLE_UPLOAD_REQUIRED.md
