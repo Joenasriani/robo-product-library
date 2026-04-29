@@ -3,6 +3,10 @@ slug: rag-as-a-service
 name: RAG as a Service
 version: 1.0.0
 category: AI Product
+subcategory:
+- retrieval-augmented-generation
+- fastapi-service
+- developer-api
 sales_mode: inquiry_only
 status: inquiry_only
 price_aed: 3500
@@ -10,9 +14,68 @@ deliverable_type: runnable_api_package
 entry_point: python app.py
 runtime: FastAPI
 fulfillment_method: manual_delivery_after_inquiry_approval
+commercial_status_note: Buyer receives a runnable API package and setup documentation. Hosting, production hardening, customer-specific data ingestion, and managed operations require separate implementation scope.
+best_for:
+- Software teams adding document-grounded Q&A to an existing app
+- IT teams evaluating internal knowledge-base search
+- Robotics or automation teams needing a small API layer for manual documentation lookup
+intended_buyers:
+- IT managers
+- software developers
+- AI integrators
+- enterprise prototype teams
+buyer_must_provide:
+- API key for an OpenAI-compatible LLM and embedding provider
+- Documents or knowledge files to index
+- Deployment environment, hosting account, or local server
+- Security, authentication, logging, and access-control requirements for production use
+hardware_requirements:
+- Development machine or server capable of running Python 3.11+
+- Disk storage for local Chroma vector data
+software_requirements:
+- Python 3.11+
+- pip-compatible Python environment
+- API key for configured AI provider
+- Optional Docker runtime if using containerized deployment
+compatibility_notes: Runs as a FastAPI service with Chroma persistence and OpenAI-compatible model configuration. Final production compatibility depends on the buyer's hosting, authentication, data-governance, and model-provider setup.
+setup_time_estimate: 1-3 hours for local evaluation; production deployment requires additional hardening and integration work.
+support_scope: Remote setup guidance, configuration review, and issue triage for the delivered package during the support window. Custom hosting, security hardening, UI development, and managed operations are outside the base package.
+support_window_days: 30
+license_type: commercial_internal_deployment_license
+customer_receives:
+- Runnable FastAPI RAG service source files
+- Environment configuration example
+- Dependency list
+- Sample data for evaluation only
+- README with local setup, API usage, provider configuration, and testing notes
+- Bundle artifact if generated for delivery
+what_is_not_included:
+- Hosted SaaS account
+- Managed production deployment
+- Customer-specific document cleaning or ingestion pipeline
+- Authentication/authorization layer
+- Legal, security, or compliance certification
+- Guaranteed model accuracy or hallucination-free answers
+limitations:
+- Answers depend on indexed document quality and selected AI provider behavior.
+- The package is not a compliance-certified knowledge-management system.
+- Production deployments require buyer-side security, monitoring, backup, and access-control decisions.
+- Sample data is for evaluation only and is not customer-specific production data.
+validation_notes:
+- Local tests should pass before delivery.
+- Buyer should run a smoke test for /health, /index, and /query after configuring their own provider key.
+- Retrieved answers must be reviewed with representative customer documents before operational use.
+qa_status: acceptance_criteria_defined_with_manual_qa_checklist
 deliverables:
 - manifest.yaml
 - README.md
 - requirements.txt
 - app.py
+- config.py
+- docker-compose.yml
+- Dockerfile
+- generation/
+- retrieval/
+- tests/
+- sample_data/
 - bundle.zip
