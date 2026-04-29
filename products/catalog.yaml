@@ -52,7 +52,7 @@ protocol_products:
   bundle: products/protocols/gcc_security_access_control_protocol/bundle.zip
   readme: products/protocols/gcc_security_access_control_protocol/README.md
 ai_products:
-- id: rag-as-a-service
+- id: rag-as-a-service-v1
   manifest: products/ai/rag-as-a-service/manifest.yaml
   bundle: products/ai/rag-as-a-service/bundle.zip
   readme: products/ai/rag-as-a-service/README.md
