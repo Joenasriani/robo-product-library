@@ -1,18 +1,16 @@
-id: gcc-royal-privacy-protocol-v1
-slug: gcc-royal-privacy-protocol-v1
-title: GCC Royal + Privacy Protocol v1
+id: gcc-royal-privacy-protocol-v1-downloadable
+slug: gcc-royal-privacy-protocol-v1-downloadable
+source_product_id: gcc-royal-privacy-protocol-v1
+name: GCC Royal + Privacy Protocol v1 Downloadable Bundle
+title: GCC Royal + Privacy Protocol v1 Downloadable Bundle
 version: 1.0.0
 vendor: RoboMarket.ae
-category: cultural-behavior-pack
+category: downloadable-protocol-bundle
 subcategory:
 - royal-protocol
 - privacy-protocol
 - gcc-localization
-summary: 'A context-aware protocol product for GCC robot deployments with country
-  overlays, high-authority interaction logic, women’s privacy-zone behavior, safe
-  fallback rules, and ROS2/adaptor mappings.
-
-  '
+summary: A manually fulfilled downloadable bundle packaging the GCC Royal + Privacy Protocol v1 files for approved customer delivery. This is a protocol/configuration package, not a complete robot, hosted SaaS product, compliance certification, or autonomous deployment.
 supported_countries:
 - saudi_arabia
 - united_arab_emirates
@@ -57,22 +55,24 @@ deliverables:
 commercial_tier: professional
 support_window_days: 90
 update_channel: stable
-limitations:
-- does_not_infer_gender_identity_from_appearance
-- does_not_identify_royalty_without_operator_or_metadata_signal
-- does_not_initiate_physical_contact
-- does_not_replace_human_protocol_officer
-status: inquiry_only
-name: GCC Royal + Privacy Protocol v1
-sales_mode: inquiry_only
+status: manual-fulfillment
+sales_mode: manual-fulfillment
 price_aed: 4200
-deliverable_type: protocol_configuration_bundle
+deliverable_type: downloadable_protocol_configuration_bundle
+fulfillment_method: manual_delivery_after_inquiry_approval
+commercial_status_note: The downloadable bundle may be delivered manually after buyer qualification and scope review. It should not be exposed as instant checkout unless delivery, license acceptance, and buyer review flows are implemented.
 best_for:
 - Government reception
 - Executive offices
 - VIP arrivals
 - Hospitality concierge deployments
 - Privacy-sensitive public spaces
+intended_buyers:
+- Robotics integrators
+- Enterprise IT teams
+- Hospitality innovation teams
+- Event technology teams
+- Government or VIP reception operators with local review authority
 dependencies:
 - Robot behavior runtime capable of loading YAML policy files
 - On-site operator escalation workflow
@@ -80,24 +80,41 @@ dependencies:
 hardware_requirements:
 - Speaker and TTS-capable audio output
 - Microphone input for operator-assisted interactions
-- People detection sensor (camera or depth sensor)
+- People detection sensor such as camera or depth sensor
 - Safe mobility platform or stationary kiosk with guidance prompts
 software_requirements:
 - Policy loader for YAML behavior packs
 - Dialogue engine with Arabic and English phrase handling
 - Safety override and escalation hooks to human operator
-- Robot middleware integration (ROS2 or equivalent)
-compatibility_notes: Validated for GCC service-robot deployments focused on executive
-  and privacy-sensitive deployments. Final behavior quality depends on robot middleware
-  integrations listed in docs/compatibility.md.
+- Robot middleware integration such as ROS2 or equivalent
+compatibility_notes: Intended for GCC service-robot deployments focused on executive and privacy-sensitive contexts. Final behavior quality depends on robot middleware integration, venue data, human review, and operator escalation workflows.
 setup_time_estimate: 6-10 hours including staged validation and operator sign-off
-support_scope: Remote implementation guidance during onboarding, one deployment review
-  session, and issue triage for protocol logic within the active support window.
+support_scope: Remote implementation guidance during onboarding, one deployment review session, and issue triage for protocol logic within the active support window.
 license_type: commercial_internal_deployment_license
-fulfillment_method: manual_delivery_after_inquiry_approval
 customer_receives:
-- Protocol package directory with core YAML behavior files
+- Downloadable protocol package directory with core YAML behavior files
 - Product-specific setup and compatibility documentation
 - Acceptance criteria and QA checklist for deployment sign-off
 - Commercial usage license terms
+buyer_must_provide:
+- Target robot model and middleware details
+- Local cultural, legal, and venue review
+- Human operator escalation process
+- Venue-specific maps, directories, scripts, and restricted-area rules
+what_is_not_included:
+- Complete robot hardware
+- Hosted SaaS dashboard
+- Autonomous deployment service
+- Legal, religious, diplomatic, privacy, or compliance certification
+- Identity verification system
+- Replacement for human protocol officers, security teams, or compliance staff
+limitations:
+- Does not infer gender identity from appearance.
+- Does not identify royalty, VIPs, protected persons, or authority figures without operator or trusted metadata signal.
+- Does not initiate physical contact.
+- Does not replace a human protocol officer.
+- Requires local human review before deployment in high-stakes or public-facing contexts.
 qa_status: acceptance_criteria_defined_with_manual_qa_checklist
+validation_notes:
+- Buyer must validate all greetings, escalation paths, privacy-zone rules, and fallback behaviors in a controlled staging environment.
+- Deployment sign-off should include local operations, safety, and cultural review.
