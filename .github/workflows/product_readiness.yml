@@ -1,0 +1,35 @@
+name: Product Readiness
+
+on:
+  pull_request:
+    paths:
+      - "products/**"
+      - "marketplace/**"
+      - "shared/docs/audits/**"
+      - "tools/validate_product_readiness.py"
+      - ".github/workflows/product_readiness.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "products/**"
+      - "marketplace/**"
+      - "shared/docs/audits/**"
+      - "tools/validate_product_readiness.py"
+      - ".github/workflows/product_readiness.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-product-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate catalog and product readiness metadata
+        run: python tools/validate_product_readiness.py
