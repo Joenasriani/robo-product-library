@@ -1,0 +1,75 @@
+{
+  "facility_type": "hotel",
+  "facility_name": "Sample GCC Business Hotel",
+  "country": "united_arab_emirates",
+  "robot_type": "delivery_robot",
+  "zones": [
+    {
+      "zone_id": "lobby",
+      "name": "Main Lobby",
+      "access_type": "public",
+      "traffic_level": "high",
+      "risk_level": "medium",
+      "notes": "Peak guest movement during check-in and checkout windows."
+    },
+    {
+      "zone_id": "service_corridor",
+      "name": "Service Corridor",
+      "access_type": "staff_only",
+      "traffic_level": "medium",
+      "risk_level": "medium",
+      "notes": "Used by housekeeping and delivery staff."
+    },
+    {
+      "zone_id": "guest_floor_12",
+      "name": "Guest Floor 12",
+      "access_type": "public",
+      "traffic_level": "low",
+      "risk_level": "low",
+      "notes": "Room delivery destination area."
+    },
+    {
+      "zone_id": "kitchen_back_of_house",
+      "name": "Kitchen Back of House",
+      "access_type": "restricted",
+      "traffic_level": "high",
+      "risk_level": "critical",
+      "notes": "Excluded from autonomous guest delivery planning."
+    }
+  ],
+  "restricted_areas": ["kitchen_back_of_house", "staff_changing_rooms", "security_office"],
+  "human_traffic_patterns": [
+    {
+      "time_window": "07:00-10:00",
+      "traffic_level": "high",
+      "affected_zones": ["lobby", "service_corridor"]
+    },
+    {
+      "time_window": "15:00-18:00",
+      "traffic_level": "high",
+      "affected_zones": ["lobby"]
+    }
+  ],
+  "task_schedule": [
+    {
+      "task_id": "room_delivery_evening",
+      "task_name": "Evening guest room delivery",
+      "preferred_time_window": "18:00-22:00",
+      "zones": ["service_corridor", "guest_floor_12"],
+      "requires_human_review": false
+    }
+  ],
+  "escalation_contacts": [
+    {
+      "role": "Duty Manager",
+      "contact_method": "hotel operations desk",
+      "coverage_window": "24/7"
+    },
+    {
+      "role": "Facilities Supervisor",
+      "contact_method": "facility radio channel",
+      "coverage_window": "07:00-23:00"
+    }
+  ],
+  "incident_severity_levels": ["low", "medium", "high", "critical"]
+}
