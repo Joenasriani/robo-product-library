@@ -1,0 +1,61 @@
+id: gcc-humanoid-etiquette-protocol-pack
+name: GCC Humanoid Etiquette Protocol Pack
+product_type: robotics_protocol_pack
+category: protocols
+commercial_status: draft_ready_for_marketplace_review
+intended_buyers:
+  - robotics integrators
+  - humanoid robot developers
+  - hospitality automation teams
+  - mall and premium residential robotics operators
+primary_environment: GCC hospitality, majlis, reception, mall concierge, and premium residential spaces
+supported_robot_classes:
+  - humanoid service robot
+  - mobile social robot with ROS 2 action support
+  - reception or hospitality robot
+buyer_value: Structured state-machine protocol for culturally aware GCC humanoid interactions with multimodal sensing and ROS 2 action outputs.
+deliverables:
+  - README.md
+  - protocol.json
+  - ros2_action_mapping.md
+  - validation_checklist.md
+  - integration_notes.md
+inputs:
+  sensors:
+    - vision
+    - lidar
+    - audio
+    - operator_override
+outputs:
+  ros2_actions:
+    - NavigateToPose
+    - FollowWaypoints
+    - Speak
+    - PlayGesture
+    - SetFaceExpression
+    - ServeItem
+    - StopMotion
+    - YieldPath
+    - RequestHumanAssistance
+logic_priorities:
+  - human_safety
+  - hierarchical_status
+  - cultural_etiquette
+  - task_success
+  - efficiency
+limitations:
+  - Does not claim legal, religious, or safety certification.
+  - Requires site-specific validation before live deployment.
+  - Requires robot-specific ROS 2 adapter implementation.
+  - Cultural rules must be reviewed by the deployment owner for each venue.
+compatibility:
+  middleware: ROS 2 action/service architecture
+  recommended_ros2_distributions:
+    - Humble
+    - Iron
+    - Jazzy
+support_expectations: Buyer receives protocol documentation and structured logic schema; implementation support is separate.
+pricing:
+  amount: null
+  currency: null
+  pricing_note: Price intentionally not set in repository until marketplace pricing policy is finalized.
