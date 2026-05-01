@@ -74,6 +74,20 @@ INCIDENT_HEADERS = [
     "closed_at",
 ]
 
+REQUIRED_DISCLOSURES = [
+    "not a physics simulator",
+    "does not ship a certified robot controller",
+    "does not claim iso",
+    "does not connect directly to robots without custom integration",
+]
+
+BANNED_AFFIRMATIVE_CLAIMS = [
+    "guaranteed compliance",
+    "iso certified product",
+    "live robot control included",
+    "certified safety runtime included",
+]
+
 
 def fail(message: str) -> None:
     print(f"RoboSafeOS validation failed: {message}", file=sys.stderr)
@@ -165,14 +179,10 @@ def validate_truth_boundaries() -> None:
         (ROOT / path).read_text(encoding="utf-8")
         for path in ["README.md", "RULES.yaml", "docs/limitations.md", "manifest.yaml"]
     ).lower()
-    banned_claims = [
-        "certified simulator",
-        "certified robot controller",
-        "guaranteed compliance",
-        "iso certified",
-        "live robot control included",
-    ]
-    for phrase in banned_claims:
+    for disclosure in REQUIRED_DISCLOSURES:
+        if disclosure not in combined:
+            fail(f"missing required disclosure: {disclosure}")
+    for phrase in BANNED_AFFIRMATIVE_CLAIMS:
         if phrase in combined:
             fail(f"truth-boundary violation phrase found: {phrase}")
 
