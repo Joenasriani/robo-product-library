@@ -1,0 +1,40 @@
+{
+  "id": "gcc-humanoid-etiquette-protocol-pack-v1",
+  "title": "GCC Humanoid Etiquette Protocol Pack",
+  "category": "robotics_protocol_pack",
+  "listing_status": "inquiry_only",
+  "sales_mode": "inquiry_only",
+  "summary": "Structured state-machine protocol for GCC-aware humanoid service robots, with multimodal sensor inputs, priority interrupts, gahwa service logic, and ROS 2 action outputs.",
+  "buyer": [
+    "robotics integrators",
+    "humanoid robot developers",
+    "hospitality automation teams",
+    "mall and premium residential robotics operators"
+  ],
+  "use_cases": [
+    "hotel lobby humanoid greeting",
+    "majlis reception etiquette flow",
+    "VIP or elder priority interruption handling",
+    "gahwa serving decision tree",
+    "ROS 2 behavior-policy integration reference"
+  ],
+  "deliverables": [
+    "products/protocols/gcc-humanoid-etiquette-protocol-pack/manifest.yaml",
+    "products/protocols/gcc-humanoid-etiquette-protocol-pack/README.md",
+    "products/protocols/gcc-humanoid-etiquette-protocol-pack/protocol.json",
+    "products/protocols/gcc-humanoid-etiquette-protocol-pack/ros2_action_mapping.md",
+    "products/protocols/gcc-humanoid-etiquette-protocol-pack/validation_checklist.md",
+    "products/protocols/gcc-humanoid-etiquette-protocol-pack/integration_notes.md"
+  ],
+  "limitations": [
+    "Not a certified safety system.",
+    "Not a complete robot firmware package.",
+    "Requires robot-specific ROS 2 adapter implementation.",
+    "Requires site-specific cultural, safety, privacy, and operator validation before live deployment."
+  ],
+  "inquiry_subject": "GCC Humanoid Etiquette Protocol Pack",
+  "inquiry_email": "hello@robomarket.ae",
+  "price": null,
+  "currency": null,
+  "pricing_note": "Pricing intentionally unset until marketplace pricing policy is finalized."
+}
