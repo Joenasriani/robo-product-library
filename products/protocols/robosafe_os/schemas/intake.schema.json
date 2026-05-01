@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robomarket.ae/schemas/robosafe-os/intake.schema.json",
+  "title": "RoboSafeOS Facility Intake",
+  "type": "object",
+  "required": [
+    "facility_type",
+    "robot_type",
+    "zones",
+    "restricted_areas",
+    "human_traffic_patterns",
+    "task_schedule",
+    "escalation_contacts",
+    "incident_severity_levels"
+  ],
+  "properties": {
+    "facility_type": {
+      "type": "string",
+      "enum": ["hotel", "mall", "hospital", "warehouse", "premium_residential"]
+    },
+    "robot_type": { "type": "string", "minLength": 2 },
+    "facility_name": { "type": "string" },
+    "country": { "type": "string" },
+    "zones": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["zone_id", "name", "access_type", "traffic_level", "risk_level"],
+        "properties": {
+          "zone_id": { "type": "string" },
+          "name": { "type": "string" },
+          "access_type": { "type": "string", "enum": ["public", "staff_only", "restricted", "service_only"] },
+          "traffic_level": { "type": "string", "enum": ["low", "medium", "high"] },
+          "risk_level": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "restricted_areas": { "type": "array", "items": { "type": "string" } },
+    "human_traffic_patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["time_window", "traffic_level", "affected_zones"],
+        "properties": {
+          "time_window": { "type": "string" },
+          "traffic_level": { "type": "string", "enum": ["low", "medium", "high"] },
+          "affected_zones": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "task_schedule": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["task_id", "task_name", "preferred_time_window", "zones"],
+        "properties": {
+          "task_id": { "type": "string" },
+          "task_name": { "type": "string" },
+          "preferred_time_window": { "type": "string" },
+          "zones": { "type": "array", "items": { "type": "string" } },
+          "requires_human_review": { "type": "boolean" }
+        }
+      }
+    },
+    "escalation_contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "contact_method"],
+        "properties": {
+          "role": { "type": "string" },
+          "contact_method": { "type": "string" },
+          "coverage_window": { "type": "string" }
+        }
+      }
+    },
+    "incident_severity_levels": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["low", "medium", "high", "critical"] }
+    }
+  }
+}
