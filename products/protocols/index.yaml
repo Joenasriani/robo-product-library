@@ -12,3 +12,4 @@ products:
 - products/protocols/gcc_royal_privacy_protocol_v1/manifest.yaml
 - products/protocols/gcc_royal_protocol_pack/manifest.yaml
 - products/protocols/gcc_security_access_control_protocol/manifest.yaml
+- products/protocols/robosafe_os/manifest.yaml

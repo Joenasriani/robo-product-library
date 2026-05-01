@@ -1,0 +1,50 @@
+{
+  "facility_type": "hotel",
+  "robot_type": "delivery_robot",
+  "zones": [
+    {
+      "zone_id": "lobby",
+      "risk_score": 3,
+      "max_speed_mode": "slow",
+      "human_density_assumption": "high",
+      "notes": "Public guest area with peak movement windows."
+    },
+    {
+      "zone_id": "service_corridor",
+      "risk_score": 3,
+      "max_speed_mode": "slow",
+      "human_density_assumption": "medium",
+      "notes": "Staff movement area."
+    },
+    {
+      "zone_id": "guest_floor_12",
+      "risk_score": 2,
+      "max_speed_mode": "slow",
+      "human_density_assumption": "low",
+      "notes": "Guest room destination corridor."
+    }
+  ],
+  "allowed_routes": [
+    {
+      "route_id": "service_to_guest_floor_12",
+      "from_zone": "service_corridor",
+      "to_zone": "guest_floor_12",
+      "time_windows": ["18:00-22:00"],
+      "conditions": ["staff review not required for normal delivery", "avoid lobby during peak traffic"]
+    }
+  ],
+  "restricted_routes": [
+    {
+      "route_id": "any_to_kitchen_back_of_house",
+      "reason": "Restricted back-of-house area outside guest delivery scope.",
+      "affected_zones": ["kitchen_back_of_house"]
+    }
+  ],
+  "fallback_routes": ["pause task and request facility review if destination route is unavailable"],
+  "review_conditions": [
+    "guest congestion reported in lobby",
+    "restricted zone selected as destination",
+    "delivery task requested outside approved time window",
+    "incident severity marked high or critical"
+  ]
+}

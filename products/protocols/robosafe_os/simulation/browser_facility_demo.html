@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RoboSafeOS Browser Facility Demo</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f7f4ee; color: #1f2933; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 24px; }
+    .card { background: #fffaf2; border: 1px solid #e0d6c8; border-radius: 18px; padding: 18px; box-shadow: 0 10px 25px rgba(0,0,0,.06); }
+    .grid { display: grid; grid-template-columns: 1.4fr .8fr; gap: 18px; }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    p { line-height: 1.5; }
+    .stage { position: relative; height: 520px; background: #ebe4d8; border-radius: 16px; overflow: hidden; border: 1px solid #d2c8ba; }
+    .zone { position: absolute; border-radius: 14px; border: 2px solid #7b8794; display: flex; align-items: center; justify-content: center; text-align: center; padding: 8px; font-size: 13px; }
+    .low { background: #e8f5e9; }
+    .medium { background: #fff7d6; }
+    .high { background: #ffe3d8; }
+    .restricted { background: #f5d1d1; border-style: dashed; }
+    .robot { position: absolute; width: 30px; height: 30px; border-radius: 50%; background: #1f2933; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: left .7s linear, top .7s linear; z-index: 5; }
+    .legend span { display: inline-block; margin-right: 10px; margin-bottom: 8px; }
+    button { border: 0; border-radius: 12px; padding: 10px 14px; margin-right: 8px; cursor: pointer; background: #1f2933; color: white; }
+    button.secondary { background: #697386; }
+    ul { padding-left: 18px; }
+    li { margin-bottom: 8px; }
+    .note { font-size: 13px; color: #4b5563; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>RoboSafeOS Browser Facility Demo</h1>
+      <p>This is an explanatory browser demo for a facility planning review. It is not a physics simulator, certified control system, or live robot integration.</p>
+    </div>
+    <br />
+    <div class="grid">
+      <div class="card">
+        <div class="stage" id="stage">
+          <div class="zone high" style="left:4%;top:6%;width:38%;height:30%;">Main Lobby<br />High traffic</div>
+          <div class="zone medium" style="left:48%;top:6%;width:28%;height:30%;">Service Corridor<br />Staff flow</div>
+          <div class="zone low" style="left:48%;top:45%;width:42%;height:34%;">Guest Floor<br />Low traffic</div>
+          <div class="zone restricted" style="left:8%;top:48%;width:28%;height:30%;">Kitchen Back of House<br />Excluded</div>
+          <div class="robot" id="robot">R</div>
+        </div>
+        <br />
+        <button onclick="playDemo()">Play</button>
+        <button class="secondary" onclick="pauseDemo()">Pause</button>
+        <button class="secondary" onclick="resetDemo()">Reset</button>
+      </div>
+      <div class="card">
+        <h2>Event log</h2>
+        <ul id="log"></ul>
+        <h3>Legend</h3>
+        <div class="legend">
+          <span>Green: low risk</span>
+          <span>Yellow: medium risk</span>
+          <span>Orange: high traffic</span>
+          <span>Red dashed: excluded</span>
+        </div>
+        <p class="note">Planning rule shown: avoid excluded areas and review high-traffic zones before facility implementation.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    const robot = document.getElementById('robot');
+    const log = document.getElementById('log');
+    let step = 0;
+    let timer = null;
+    const route = [
+      { left: '58%', top: '18%', msg: 'Start at service corridor.' },
+      { left: '18%', top: '20%', msg: 'Lobby has high visitor traffic. Staff review recommended.' },
+      { left: '22%', top: '62%', msg: 'Excluded area detected. Demo reroutes away from kitchen back of house.' },
+      { left: '66%', top: '62%', msg: 'Route continues to guest floor review point.' }
+    ];
+    function addLog(text) {
+      const li = document.createElement('li');
+      li.textContent = text;
+      log.prepend(li);
+    }
+    function moveNext() {
+      const item = route[step % route.length];
+      robot.style.left = item.left;
+      robot.style.top = item.top;
+      addLog(item.msg);
+      step += 1;
+    }
+    function playDemo() {
+      if (timer) return;
+      moveNext();
+      timer = setInterval(moveNext, 1600);
+    }
+    function pauseDemo() {
+      clearInterval(timer);
+      timer = null;
+    }
+    function resetDemo() {
+      pauseDemo();
+      step = 0;
+      log.innerHTML = '';
+      robot.style.left = '58%';
+      robot.style.top = '18%';
+      addLog('Demo reset. Ready for facility review.');
+    }
+    resetDemo();
+  </script>
+</body>
+</html>
