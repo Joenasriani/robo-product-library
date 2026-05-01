@@ -7,6 +7,7 @@ This file describes the buyer package assembled after inquiry review.
 - `README.md`
 - `manifest.yaml`
 - `RULES.yaml`
+- `QA_REPORT.md`
 - `docs/buyer_overview.md`
 - `docs/deployment_workflow.md`
 - `docs/limitations.md`
@@ -14,11 +15,29 @@ This file describes the buyer package assembled after inquiry review.
 - `schemas/routing_rules.schema.json`
 - `schemas/incident_log.schema.json`
 - `templates/safety_policy_template.md`
-- `templates/human_override_plan_template.md`
+- `templates/human_review_plan_template.md`
 - `examples/hotel_service_robot/intake.json`
 - `examples/hotel_service_robot/routing_rules.json`
 - `examples/hotel_service_robot/incident_log_template.csv`
+- `examples/hotel_service_robot/generated_safety_policy.md`
+- `examples/hotel_service_robot/generated_human_review_plan.md`
 - `simulation/browser_facility_demo.html`
+- `tools/validate_product.py`
+- `tools/build_export_package.py`
+
+## Local export output
+
+Run this command from the repository root:
+
+```bash
+python3 products/protocols/robosafe_os/tools/build_export_package.py
+```
+
+Generated output:
+
+```text
+products/protocols/robosafe_os/deliverables/robosafe-os-sample-export.zip
+```
 
 ## Buyer-specific package after inquiry
 
