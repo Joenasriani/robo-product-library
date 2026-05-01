@@ -2,7 +2,7 @@ id: robosafe-os-v1
 slug: robosafe-os
 title: RoboSafeOS
 name: RoboSafeOS
-version: 1.0.0
+version: 1.0.1
 vendor: RoboMarket.ae
 category: robotics-deployment-safety
 subcategory:
@@ -50,6 +50,7 @@ required_inputs:
 deliverables:
 - README.md
 - RULES.yaml
+- QA_REPORT.md
 - docs/buyer_overview.md
 - docs/deployment_workflow.md
 - docs/limitations.md
@@ -57,12 +58,17 @@ deliverables:
 - schemas/routing_rules.schema.json
 - schemas/incident_log.schema.json
 - templates/safety_policy_template.md
-- templates/human_override_plan_template.md
+- templates/human_review_plan_template.md
 - examples/hotel_service_robot/intake.json
 - examples/hotel_service_robot/routing_rules.json
 - examples/hotel_service_robot/incident_log_template.csv
+- examples/hotel_service_robot/generated_safety_policy.md
+- examples/hotel_service_robot/generated_human_review_plan.md
 - simulation/browser_facility_demo.html
+- tools/validate_product.py
+- tools/build_export_package.py
 - deliverables/export_package_manifest.md
+- deliverables/robosafe-os-sample-export.zip
 commercial_tier: professional
 sales_mode: inquiry_only
 status: inquiry_only
@@ -70,11 +76,12 @@ price_aed: null
 deliverable_type: robotics_deployment_protocol_pack
 fulfillment_method: manual_delivery_after_inquiry_approval
 customer_receives:
-- Facility safety policy template customized from intake data
+- Facility safety policy generated from intake data
 - Routing rules schema and sample output
 - Incident log template
-- Human review and escalation template
+- Human review and escalation plan
 - Browser-based facility routing demonstration
+- ZIP export package assembled by local builder
 best_for:
 - GCC hotels planning service or delivery robot deployment
 - Malls planning cleaning, patrol, or wayfinding robots
@@ -89,6 +96,7 @@ hardware_requirements:
 - Robot platform with safe mobility stack supplied by vendor or integrator
 - Human-accessible review workflow supplied by facility or integrator
 software_requirements:
+- Python 3.9 or newer for validation and export tooling
 - Policy reader or implementation engineer to translate pack into robot runtime rules
 - Facility operations team to review site-specific constraints
 compatibility_notes: >-
@@ -103,4 +111,4 @@ limitations:
 - Does not connect directly to robots without custom integration.
 - Does not claim ISO, IEC, civil defense, hospital, or municipal compliance certification.
 - Browser demo is explanatory only and is not a physics simulator.
-qa_status: acceptance_criteria_defined_with_manual_qa_checklist
+qa_status: local_validation_tooling_added
