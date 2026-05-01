@@ -51,6 +51,10 @@ protocol_products:
   manifest: products/protocols/gcc_security_access_control_protocol/manifest.yaml
   bundle: products/protocols/gcc_security_access_control_protocol/bundle.zip
   readme: products/protocols/gcc_security_access_control_protocol/README.md
+- id: robosafe-os-v1
+  manifest: products/protocols/robosafe_os/manifest.yaml
+  bundle: products/protocols/robosafe_os/deliverables/export_package_manifest.md
+  readme: products/protocols/robosafe_os/README.md
 ai_products:
 - id: rag-as-a-service-v1
   manifest: products/ai/rag-as-a-service/manifest.yaml
