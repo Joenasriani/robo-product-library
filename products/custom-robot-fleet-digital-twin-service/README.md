@@ -6,6 +6,14 @@ Custom Robot Fleet Digital Twin Service is a paid customization product for robo
 
 Each buyer receives a tailored simulation package based on their machine specifications, map or facility information, payload rules, task logic, and operational workflows.
 
+## Demo and inquiry note
+
+This is presented as a demo-backed custom service. The demo shows the type of fleet simulation, facility-map interaction, task logic, exception handling, and operator view that can be customized for a buyer.
+
+If this product is relevant to your machines or facility, send an inquiry to `hello@robomarket.ae` and use this file/product name as the email subject:
+
+`custom-robot-fleet-digital-twin-service`
+
 ## Commercial position
 
 This is a custom service product, not a universal instant controller.
