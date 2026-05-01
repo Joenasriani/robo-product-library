@@ -1,0 +1,47 @@
+id: custom_robot_fleet_digital_twin_service
+name: Custom Robot Fleet Digital Twin Service
+type: service
+category: robotics_simulation
+subcategory: fleet_orchestration_digital_twin
+commercial_status: inquiry_only
+delivery_type: custom_service
+buyer_type:
+  - robotics_integrator
+  - robot_manufacturer
+  - warehouse_operator
+  - automation_consultant
+  - enterprise_innovation_team
+customization_supported: true
+live_machine_integration: conditional
+requires_discovery: true
+summary: >
+  Paid customization service to create a customer-specific browser-based robot fleet
+  digital twin and simulation package using the buyer's machine specifications,
+  facility layout, task logic, operational constraints, and workflow scenarios.
+limitations:
+  - Base delivery is a simulation and digital twin prototype.
+  - Live machine integration is not included by default.
+  - Integration depends on available APIs, telemetry access, permission model, vendor documentation, and technical feasibility.
+  - Certified industrial deployment and compliance approval are outside the base scope.
+deliverables:
+  - Customer-specific browser simulation package
+  - Robot or fleet model configuration
+  - Facility zone and obstacle model
+  - Mission workflow configuration
+  - Rule-based exception prototype
+  - Interactive map controls
+  - Scenario walkthroughs
+  - Exportable event log sample
+  - Technical feasibility note for optional live integration
+required_inputs:
+  - Robot or machine model information
+  - Payload limits and speed assumptions
+  - Facility layout or rough zone map
+  - Task types and workflow rules
+  - Exception scenarios to demonstrate
+  - Operator roles and demo goals
+  - API or telemetry documentation if live integration is requested
+pricing_model: inquiry_based
+instant_download: false
+version: 0.1.0
+status: productized_service_draft
