@@ -77,3 +77,9 @@ protocol_products:
   listing: marketplace/protocols/listings/gcc_security_access_control_protocol.json
   listing_status: inquiry_only
   sales_mode: inquiry_only
+- id: gcc-humanoid-etiquette-protocol-pack-v1
+  manifest: products/protocols/gcc-humanoid-etiquette-protocol-pack/manifest.yaml
+  page_copy: products/protocols/gcc-humanoid-etiquette-protocol-pack/README.md
+  listing: marketplace/protocols/listings/gcc_humanoid_etiquette_protocol_pack.json
+  listing_status: inquiry_only
+  sales_mode: inquiry_only
