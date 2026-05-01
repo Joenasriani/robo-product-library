@@ -1,0 +1,42 @@
+product_rules:
+  product_id: robosafe-os-v1
+  folder_is_self_contained: true
+  product_folder_boundary: products/protocols/robosafe_os
+  sales_mode: inquiry_only
+  no_placeholder_claims: true
+  no_fake_integrations: true
+  no_fake_certifications: true
+  no_live_robot_control_claim: true
+  browser_demo_label_required: true
+  deterministic_generation_required: true
+
+truth_rules:
+  - Every buyer-facing deliverable must exist as a file inside this product folder or be clearly marked as requiring custom delivery after inquiry approval.
+  - The browser demo must be described only as an explanatory demonstration, not a certified simulator or robot controller.
+  - The package must not claim ROS2, Nav2, AirSim, Isaac Sim, IR-SIM, fleet manager, BIM, CAD, or hardware integration unless a real integration file is added later.
+  - The product must not claim regulatory, ISO, IEC, civil defense, municipal, healthcare, or insurance compliance certification.
+  - The product must not invent pricing. price_aed remains null until a verified commercial pricing policy exists.
+  - Facility-specific deployment approval remains the responsibility of the buyer, site operator, robot vendor, and qualified integrator.
+
+buyer_boundary:
+  buyer_can_use_for:
+    - internal deployment planning
+    - integrator handoff
+    - robot vendor discussion
+    - facility operations review
+    - incident record template setup
+    - route restriction documentation
+  buyer_must_not_use_for:
+    - replacing certified safety assessment
+    - autonomous approval of live robots
+    - bypassing local authority review
+    - claiming certified compliance
+    - controlling physical robots without integration engineering
+
+qa_acceptance:
+  - README explains product purpose, files, real status, limits, and inquiry flow.
+  - manifest.yaml contains commercial and technical constraints.
+  - schemas are valid JSON files.
+  - examples map to schemas.
+  - simulation file is self-contained and browser-viewable.
+  - deliverables manifest lists buyer package contents without claiming unavailable files.
