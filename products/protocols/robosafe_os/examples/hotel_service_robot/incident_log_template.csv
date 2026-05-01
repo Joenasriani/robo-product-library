@@ -1,0 +1,2 @@
+incident_id,timestamp,robot_id,zone,task_id,severity,trigger,human_involved,review_used,resolution,evidence_notes,follow_up_required,follow_up_owner,closed_at
+INC-0001,2026-05-01T10:00:00+04:00,ROBOT-001,lobby,room_delivery_evening,low,example record,false,true,reviewed by duty manager,example only,false,,
