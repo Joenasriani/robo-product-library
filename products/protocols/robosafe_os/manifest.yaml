@@ -68,7 +68,9 @@ deliverables:
 - tools/validate_product.py
 - tools/build_export_package.py
 - deliverables/export_package_manifest.md
-- deliverables/robosafe-os-sample-export.zip
+generated_outputs:
+- path: deliverables/robosafe-os-sample-export.zip
+  build_command: python3 products/protocols/robosafe_os/tools/build_export_package.py
 commercial_tier: professional
 sales_mode: inquiry_only
 status: inquiry_only
