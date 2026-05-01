@@ -1,0 +1,233 @@
+{
+  "schema_version": "1.0.0",
+  "product_id": "gcc-humanoid-etiquette-protocol-pack",
+  "protocol_name": "GCC Humanoid Etiquette State Machine",
+  "domain": "GCC social etiquette for humanoid service robots",
+  "environment": [
+    "hotel lobby",
+    "majlis reception",
+    "mall concierge",
+    "premium residential reception",
+    "VIP hospitality room"
+  ],
+  "design_constraints": {
+    "sensor_inputs": ["vision", "lidar", "audio", "operator_override"],
+    "logic_priority_order": [
+      "human_safety",
+      "hierarchical_status",
+      "cultural_etiquette",
+      "task_success",
+      "efficiency"
+    ],
+    "output_target": "ROS 2 actions and services",
+    "non_goals": [
+      "legal certification",
+      "religious authority",
+      "hardware-specific driver implementation",
+      "facial identity recognition without venue approval"
+    ]
+  },
+  "state_zero": {
+    "id": "STATE_ZERO_OBSERVE_STANDBY",
+    "description": "Robot remains in a safe, non-intrusive observation posture while monitoring multimodal signals and awaiting a valid engagement trigger.",
+    "entry_actions": [
+      {"ros2_action": "StopMotion", "parameters": {"brake_mode": "controlled"}},
+      {"ros2_action": "SetFaceExpression", "parameters": {"expression": "neutral_welcoming"}},
+      {"ros2_action": "PlayGesture", "parameters": {"gesture": "hands_relaxed_front", "intensity": "low"}}
+    ],
+    "continuous_monitoring": {
+      "vision": ["human_presence", "approach_vector", "queue_order", "gesture_request", "blocked_path"],
+      "lidar": ["proximity_radius", "free_path", "crowd_density", "obstacle_change"],
+      "audio": ["wake_phrase", "distress_tone", "operator_command", "quiet_zone_cue"],
+      "operator_override": ["pause", "resume", "escort", "serve", "handoff_to_human"]
+    },
+    "exit_conditions": [
+      "priority_interrupt_detected",
+      "valid_service_request_detected",
+      "operator_override_received",
+      "scheduled_task_start"
+    ]
+  },
+  "priority_interrupts": [
+    {
+      "id": "INTERRUPT_HUMAN_SAFETY",
+      "priority": 100,
+      "trigger": {
+        "any": [
+          {"sensor": "lidar", "condition": "human_distance_m < 0.8"},
+          {"sensor": "vision", "condition": "fall_or_distress_detected"},
+          {"sensor": "audio", "condition": "distress_or_stop_command_detected"}
+        ]
+      },
+      "actions": [
+        {"ros2_action": "StopMotion", "parameters": {"reason": "safety_interrupt"}},
+        {"ros2_action": "Speak", "parameters": {"text_key": "safety_pause_polite", "language_policy": "venue_default"}},
+        {"ros2_action": "RequestHumanAssistance", "parameters": {"severity": "high"}}
+      ],
+      "resume_policy": "operator_clearance_required"
+    },
+    {
+      "id": "INTERRUPT_ELDER_OR_VIP_ENTRY",
+      "priority": 90,
+      "trigger": {
+        "all": [
+          {"sensor": "vision", "condition": "priority_guest_class_detected_or_operator_tagged"},
+          {"sensor": "lidar", "condition": "safe_yield_path_available"}
+        ]
+      },
+      "actions": [
+        {"ros2_action": "YieldPath", "parameters": {"side": "nearest_safe_side", "clearance_m": 1.5}},
+        {"ros2_action": "PlayGesture", "parameters": {"gesture": "respectful_greeting", "intensity": "medium"}},
+        {"ros2_action": "Speak", "parameters": {"text_key": "priority_guest_greeting", "tone": "formal"}}
+      ],
+      "resume_policy": "resume_after_priority_guest_passes_or_operator_confirms"
+    },
+    {
+      "id": "INTERRUPT_OPERATOR_OVERRIDE",
+      "priority": 95,
+      "trigger": {
+        "sensor": "operator_override",
+        "condition": "command_received"
+      },
+      "actions": [
+        {"ros2_action": "StopMotion", "parameters": {"reason": "operator_override"}},
+        {"ros2_action": "Speak", "parameters": {"text_key": "operator_override_acknowledged", "tone": "neutral"}}
+      ],
+      "resume_policy": "follow_operator_mode"
+    },
+    {
+      "id": "INTERRUPT_PRIVACY_OR_QUIET_ZONE",
+      "priority": 85,
+      "trigger": {
+        "any": [
+          {"sensor": "vision", "condition": "privacy_zone_marker_detected"},
+          {"sensor": "audio", "condition": "quiet_zone_cue_detected"},
+          {"sensor": "operator_override", "condition": "privacy_mode_enabled"}
+        ]
+      },
+      "actions": [
+        {"ros2_action": "SetFaceExpression", "parameters": {"expression": "low_attention"}},
+        {"ros2_action": "Speak", "parameters": {"text_key": "minimal_or_silent_mode", "volume": "low"}},
+        {"ros2_action": "YieldPath", "parameters": {"clearance_m": 2.0}}
+      ],
+      "resume_policy": "exit_zone_or_operator_clearance"
+    }
+  ],
+  "states": [
+    {
+      "id": "OBSERVE",
+      "description": "Passive room and queue observation.",
+      "allowed_transitions": ["GREET", "YIELD", "SERVE_GAHWA", "ESCORT", "HUMAN_HANDOFF"]
+    },
+    {
+      "id": "GREET",
+      "description": "Formal greeting with culturally appropriate distance, posture, and tone.",
+      "entry_actions": [
+        {"ros2_action": "NavigateToPose", "parameters": {"target": "greeting_position", "min_distance_m": 1.5}},
+        {"ros2_action": "PlayGesture", "parameters": {"gesture": "respectful_greeting"}},
+        {"ros2_action": "Speak", "parameters": {"text_key": "formal_welcome"}}
+      ],
+      "allowed_transitions": ["SERVE_GAHWA", "ESCORT", "OBSERVE", "HUMAN_HANDOFF"]
+    },
+    {
+      "id": "YIELD",
+      "description": "Robot yields space to priority guest, elder, operator, or blocked path.",
+      "entry_actions": [
+        {"ros2_action": "YieldPath", "parameters": {"side": "nearest_safe_side", "clearance_m": 1.5}}
+      ],
+      "allowed_transitions": ["OBSERVE", "GREET", "SERVE_GAHWA"]
+    },
+    {
+      "id": "SERVE_GAHWA",
+      "description": "Serving workflow for Arabic coffee with safety, order, and etiquette constraints.",
+      "allowed_transitions": ["OBSERVE", "HUMAN_HANDOFF", "YIELD"]
+    },
+    {
+      "id": "HUMAN_HANDOFF",
+      "description": "Robot escalates to a human operator when etiquette, safety, sensor confidence, or task validity is uncertain.",
+      "entry_actions": [
+        {"ros2_action": "RequestHumanAssistance", "parameters": {"severity": "medium"}},
+        {"ros2_action": "Speak", "parameters": {"text_key": "human_assistance_requested"}}
+      ],
+      "allowed_transitions": ["OBSERVE"]
+    }
+  ],
+  "decision_tree_gahwa_service": {
+    "root": "serve_request_detected",
+    "steps": [
+      {
+        "id": "validate_service_context",
+        "checks": [
+          "operator_or_schedule_authorized",
+          "serving_area_safe",
+          "cup_payload_secured",
+          "no_privacy_or_quiet_zone_conflict"
+        ],
+        "on_fail": "HUMAN_HANDOFF"
+      },
+      {
+        "id": "rank_recipients",
+        "priority_order": [
+          "operator_tagged_priority_guest",
+          "elder_guest",
+          "host_or_senior_guest",
+          "seated_guest_order",
+          "queue_order"
+        ],
+        "tie_breaker": "operator_confirmation_or_nearest_safe_route"
+      },
+      {
+        "id": "approach_recipient",
+        "actions": [
+          {"ros2_action": "NavigateToPose", "parameters": {"target": "recipient_service_pose", "min_distance_m": 1.2, "max_speed_mps": 0.35}},
+          {"ros2_action": "SetFaceExpression", "parameters": {"expression": "calm_welcoming"}}
+        ],
+        "on_blocked": "YIELD"
+      },
+      {
+        "id": "offer_gahwa",
+        "actions": [
+          {"ros2_action": "Speak", "parameters": {"text_key": "gahwa_offer_formal", "tone": "respectful"}},
+          {"ros2_action": "PlayGesture", "parameters": {"gesture": "offer_cup"}}
+        ],
+        "acceptance_signals": ["hand_reach_detected", "verbal_acceptance", "operator_confirmed_acceptance"],
+        "decline_signals": ["palm_decline_gesture", "verbal_decline", "head_shake"],
+        "on_uncertain": "HUMAN_HANDOFF"
+      },
+      {
+        "id": "handover",
+        "actions": [
+          {"ros2_action": "ServeItem", "parameters": {"item": "gahwa_cup", "handover_mode": "slow_confirmed", "force_limit": "low"}}
+        ],
+        "on_success": "continue_or_return",
+        "on_fail": "HUMAN_HANDOFF"
+      },
+      {
+        "id": "continue_or_return",
+        "condition": "remaining_ranked_recipients_available_and_payload_available",
+        "true_transition": "approach_recipient",
+        "false_transition": "OBSERVE"
+      }
+    ]
+  },
+  "ros2_output_contract": {
+    "action_namespace": "/humanoid_etiquette",
+    "actions": [
+      {"name": "NavigateToPose", "expected_interface": "nav2_msgs/action/NavigateToPose"},
+      {"name": "FollowWaypoints", "expected_interface": "nav2_msgs/action/FollowWaypoints"},
+      {"name": "Speak", "expected_interface": "robot_interfaces/action/Speak"},
+      {"name": "PlayGesture", "expected_interface": "robot_interfaces/action/PlayGesture"},
+      {"name": "SetFaceExpression", "expected_interface": "robot_interfaces/action/SetFaceExpression"},
+      {"name": "ServeItem", "expected_interface": "robot_interfaces/action/ServeItem"},
+      {"name": "StopMotion", "expected_interface": "robot_interfaces/srv/StopMotion"},
+      {"name": "YieldPath", "expected_interface": "robot_interfaces/action/YieldPath"},
+      {"name": "RequestHumanAssistance", "expected_interface": "robot_interfaces/srv/RequestHumanAssistance"}
+    ]
+  },
+  "confidence_policy": {
+    "minimum_sensor_confidence_for_autonomous_service": 0.78,
+    "minimum_confidence_for_priority_classification": 0.9,
+    "below_threshold_action": "HUMAN_HANDOFF",
+    "privacy_note": "Deployments should avoid identity recognition unless explicitly approved by the venue and compliant with local requirements."
+  }
+}
