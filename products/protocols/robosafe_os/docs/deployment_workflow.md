@@ -35,7 +35,7 @@ Document who reviews events, when review is required, and which facility role ow
 
 Use:
 
-- `templates/human_override_plan_template.md`
+- `templates/human_review_plan_template.md`
 
 ## 5. Incident log setup
 
@@ -52,10 +52,21 @@ Open `simulation/browser_facility_demo.html` in a browser to show the operating 
 
 The demo is explanatory only. It is not a certified physics simulator or live robot controller.
 
-## 7. Integrator handoff
+## 7. Export package build
+
+Run:
+
+```bash
+python3 products/protocols/robosafe_os/tools/validate_product.py
+python3 products/protocols/robosafe_os/tools/build_export_package.py
+```
+
+The builder generates `deliverables/robosafe-os-sample-export.zip` locally.
+
+## 8. Integrator handoff
 
 Share the final pack with the robot vendor or integrator. The integrator is responsible for translating the documented rules into the robot runtime, fleet platform, or middleware.
 
-## 8. Site validation
+## 9. Site validation
 
 Before any live deployment, the buyer and integrator must perform site-specific review, facility walk-through, operator training, and approval according to local requirements.
