@@ -12,3 +12,9 @@ products:
 - products/protocols/gcc_royal_privacy_protocol_v1/manifest.yaml
 - products/protocols/gcc_royal_protocol_pack/manifest.yaml
 - products/protocols/gcc_security_access_control_protocol/manifest.yaml
+- products/protocols/robosafe_os/manifest.yaml
+- products/protocols/gcc-humanoid-etiquette-protocol-pack/manifest.yaml
+- products/protocols/robotics_buyer_readiness_wizard/manifest.yaml
+- products/protocols/operational_twin_builder/manifest.yaml
+- products/protocols/prompt_to_marketplace_product_builder/manifest.yaml
+- products/protocols/robot_behavior_black_box/manifest.yaml
