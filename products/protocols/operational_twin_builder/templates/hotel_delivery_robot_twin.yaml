@@ -1,0 +1,76 @@
+facility_type: hotel
+robot_type: delivery_robot
+zones:
+  - lobby
+  - service_elevator
+  - guest_corridor
+  - room_threshold
+  - charging_dock
+human_actor_roles:
+  - front_desk_operator
+  - concierge_runner
+  - operations_manager
+task_nodes:
+  - id: guest_request_received
+    actor: front_desk_operator
+    action: Confirm guest request and room eligibility.
+    zone: lobby
+    normal_next: robot_dispatch
+    timeout_seconds: 120
+    requires_human_approval: true
+    risk_notes:
+      - Confirm item is safe for robot delivery.
+  - id: robot_dispatch
+    actor: delivery_robot
+    action: Leave dock and navigate to service elevator.
+    zone: charging_dock
+    normal_next: elevator_access
+    timeout_seconds: 180
+    requires_human_approval: false
+    risk_notes:
+      - Avoid guest-only restricted areas.
+  - id: elevator_access
+    actor: delivery_robot
+    action: Wait for approved elevator access.
+    zone: service_elevator
+    normal_next: room_delivery
+    timeout_seconds: 180
+    requires_human_approval: true
+    risk_notes:
+      - Escalate if elevator wait exceeds threshold.
+  - id: room_delivery
+    actor: delivery_robot
+    action: Arrive at room threshold and request guest confirmation.
+    zone: room_threshold
+    normal_next: return_to_dock
+    timeout_seconds: 240
+    requires_human_approval: false
+    risk_notes:
+      - Do not enter room.
+  - id: return_to_dock
+    actor: delivery_robot
+    action: Return to charging dock after task completion.
+    zone: charging_dock
+    normal_next: null
+    timeout_seconds: 300
+    requires_human_approval: false
+    risk_notes: []
+escalation_rules:
+  - trigger: elevator_timeout
+    condition: elevator_access exceeds 180 seconds
+    action: notify concierge_runner and retry once
+  - trigger: guest_unavailable
+    condition: guest confirmation not received within 240 seconds
+    action: return item to front desk
+failure_branches:
+  - branch: elevator_unavailable
+    fallback: concierge_runner completes manual delivery
+  - branch: corridor_blocked
+    fallback: robot waits 60 seconds then returns to lobby
+safety_owner: Hotel operations manager
+assumptions:
+  - Robot has safe navigation stack supplied by vendor.
+  - Elevator use is approved by facility policy.
+unresolved_questions:
+  - Confirm elevator API or manual access procedure.
+  - Confirm Wi-Fi coverage in guest corridors.
