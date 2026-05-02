@@ -1,0 +1,49 @@
+facility_type: hotel
+robot_type: delivery_robot
+zones:
+  - lobby
+  - service_elevator
+  - guest_corridor
+  - room_threshold
+  - charging_dock
+human_actor_roles:
+  - front_desk_operator
+  - concierge_runner
+  - operations_manager
+task_nodes:
+  - id: request_received
+    actor: front_desk_operator
+    action: Confirm guest request and delivery eligibility.
+    zone: lobby
+    normal_next: dispatch
+  - id: dispatch
+    actor: delivery_robot
+    action: Move from dock to service access point.
+    zone: charging_dock
+    normal_next: access_review
+  - id: access_review
+    actor: front_desk_operator
+    action: Confirm access path is available.
+    zone: service_elevator
+    normal_next: delivery
+  - id: delivery
+    actor: delivery_robot
+    action: Arrive at room threshold and request confirmation.
+    zone: room_threshold
+    normal_next: return_to_dock
+  - id: return_to_dock
+    actor: delivery_robot
+    action: Return to charging dock.
+    zone: charging_dock
+    normal_next: null
+escalation_rules:
+  - trigger: access_delay
+    action: notify concierge_runner and retry once
+failure_branches:
+  - branch: route_unavailable
+    fallback: concierge_runner completes manual handoff
+safety_owner: Hotel operations manager
+assumptions:
+  - Robot capability sheet is supplied by vendor.
+unresolved_questions:
+  - Confirm access policy and connectivity coverage.

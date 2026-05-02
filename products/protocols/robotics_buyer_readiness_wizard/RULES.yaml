@@ -1,0 +1,25 @@
+product_truth_rules:
+- Readiness scores are planning signals, not certification.
+- Do not invent pricing, vendor availability, compliance, or deployment guarantees.
+- A qualified robotics integrator and facility safety owner must review outputs before deployment.
+required_customer_inputs:
+- facility_type
+- robot_type
+- zones
+- human_traffic_patterns
+- connectivity_status
+- staff_support_model
+- maintenance_capacity
+- safety_review_owner
+allowed_outputs:
+- readiness_score
+- blocker_list
+- missing_information_list
+- buyer_inquiry_packet
+forbidden_outputs:
+- certified_safety_approval
+- guaranteed_roi_claim
+- live_robot_control_instruction
+qa_requirements:
+- Run tools/validate_product.py before listing review.
+- Run tools/build_export_package.py before customer delivery.

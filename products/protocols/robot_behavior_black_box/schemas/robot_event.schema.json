@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Robot Event Record",
+  "type": "object",
+  "required": ["robot_id", "event_time", "zone", "task_state", "review_signal", "action_taken", "human_override", "outcome", "reviewer"],
+  "properties": {
+    "robot_id": {"type": "string"},
+    "event_time": {"type": "string"},
+    "zone": {"type": "string"},
+    "task_state": {"type": "string"},
+    "review_signal": {"type": "string"},
+    "action_taken": {"type": "string"},
+    "human_override": {"type": "boolean"},
+    "outcome": {"type": "string"},
+    "reviewer": {"type": "string"},
+    "severity": {"type": "string", "enum": ["low", "medium", "high", "critical"]},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": true
+}

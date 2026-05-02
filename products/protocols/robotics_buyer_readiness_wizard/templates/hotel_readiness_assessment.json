@@ -1,0 +1,11 @@
+{
+  "facility_type": "hotel",
+  "robot_type": "delivery_robot",
+  "zones": ["lobby", "guest_corridors", "service_elevator", "back_of_house", "charging_dock"],
+  "human_traffic_patterns": "High lobby activity in evening hours; moderate corridor activity during checkout windows.",
+  "connectivity_status": "needs_site_survey",
+  "staff_support_model": "Front desk owns task approval; concierge team owns exception handling.",
+  "maintenance_capacity": "trained_vendor_support",
+  "safety_review_owner": "Hotel operations manager",
+  "budget_status": "range_defined"
+}
