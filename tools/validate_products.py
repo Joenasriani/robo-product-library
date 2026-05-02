@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """Validate Robo Product Library marketplace listing readiness.
 
-This script intentionally validates readiness for later marketplace listing, not
-payment checkout, Stripe fulfillment, or live robot deployment.
+This script validates readiness for later marketplace listing, not payment
+checkout, Stripe fulfillment, or live robot deployment.
 """
 
 from __future__ import annotations
 
 import re
-import sys
 from pathlib import Path
 from typing import Any
 
@@ -29,12 +28,17 @@ REQUIRED_MANIFEST_FIELDS = {
 }
 
 REQUIRED_LISTING_FIELDS = {
-    "commercial_status",
     "status",
     "sales_mode",
     "fulfillment_method",
     "customer_receives",
     "limitations",
+}
+
+COMMERCIAL_BOUNDARY_FIELDS = {
+    "commercial_status",
+    "commercial_status_note",
+    "commercial_tier",
 }
 
 ALLOWED_LISTING_STATUSES = {
@@ -43,18 +47,26 @@ ALLOWED_LISTING_STATUSES = {
     "needs_manual_review",
 }
 
+ALLOWED_SALES_MODES = {
+    "inquiry_only",
+    "manual-fulfillment",
+    "manual_fulfillment",
+    "buy_now_future",
+    "staged_downloadable_package_review",
+}
+
 PAYMENT_CLAIM_PATTERNS = [
-    re.compile(r"stripe", re.IGNORECASE),
-    re.compile(r"checkout is live", re.IGNORECASE),
-    re.compile(r"automated file delivery", re.IGNORECASE),
-    re.compile(r"instant download is active", re.IGNORECASE),
+    re.compile(r"checkout\s+is\s+live", re.IGNORECASE),
+    re.compile(r"stripe\s+checkout\s+is\s+live", re.IGNORECASE),
+    re.compile(r"automated\s+file\s+delivery\s+is\s+active", re.IGNORECASE),
+    re.compile(r"instant\s+download\s+is\s+active", re.IGNORECASE),
 ]
 
 FORBIDDEN_ROBOTICS_OVERCLAIMS = [
-    re.compile(r"certified safety", re.IGNORECASE),
-    re.compile(r"legal compliance guaranteed", re.IGNORECASE),
-    re.compile(r"official royal protocol", re.IGNORECASE),
-    re.compile(r"medical advice", re.IGNORECASE),
+    re.compile(r"certified\s+safety\s+system", re.IGNORECASE),
+    re.compile(r"legal\s+compliance\s+guaranteed", re.IGNORECASE),
+    re.compile(r"official\s+royal\s+protocol", re.IGNORECASE),
+    re.compile(r"provides\s+medical\s+advice", re.IGNORECASE),
 ]
 
 
@@ -113,15 +125,26 @@ def validate_entry(section: str, entry: dict[str, Any]) -> list[str]:
         errors.append(f"{product_id}: manifest missing required fields {missing_manifest}")
 
     missing_listing = sorted(REQUIRED_LISTING_FIELDS - set(manifest))
-    if missing_listing and section != "downloadable_products":
+    if missing_listing:
         errors.append(f"{product_id}: manifest missing listing fields {missing_listing}")
 
+    if not (COMMERCIAL_BOUNDARY_FIELDS & set(manifest)):
+        errors.append(
+            f"{product_id}: manifest needs one commercial boundary field: "
+            f"{sorted(COMMERCIAL_BOUNDARY_FIELDS)}"
+        )
+
     sales_mode = manifest.get("sales_mode")
-    price = manifest.get("price_aed")
-    if sales_mode not in {"inquiry_only", "buy_now_future", "staged_downloadable_package_review", None}:
+    if sales_mode not in ALLOWED_SALES_MODES:
         errors.append(f"{product_id}: unsupported sales_mode {sales_mode!r}")
-    if sales_mode == "inquiry_only" and price not in {None, "null"}:
-        errors.append(f"{product_id}: inquiry_only products should not pretend fixed checkout pricing; price_aed must be null")
+
+    price = manifest.get("price_aed")
+    if sales_mode in {"inquiry_only", "manual-fulfillment", "manual_fulfillment"}:
+        # Pricing may be visible for later listing/inquiry, but must not imply checkout exists.
+        if price is not None and not isinstance(price, (int, float)):
+            errors.append(f"{product_id}: price_aed must be numeric or null")
+    elif sales_mode == "buy_now_future" and price is None:
+        errors.append(f"{product_id}: buy_now_future products need an intended price_aed or needs_manual_review")
 
     has_bundle = bool(entry.get("bundle"))
     has_deliverable_manifest = bool(entry.get("deliverable_manifest"))
