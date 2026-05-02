@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robomarket.ae/schemas/readiness-assessment.schema.json",
+  "title": "Robotics Buyer Readiness Assessment",
+  "type": "object",
+  "required": [
+    "facility_type",
+    "robot_type",
+    "zones",
+    "human_traffic_patterns",
+    "connectivity_status",
+    "staff_support_model",
+    "maintenance_capacity",
+    "safety_review_owner",
+    "budget_status"
+  ],
+  "properties": {
+    "facility_type": {"type": "string", "enum": ["hotel", "mall", "hospital", "warehouse", "premium_residential", "retail"]},
+    "robot_type": {"type": "string", "enum": ["service_robot", "delivery_robot", "cleaning_robot", "reception_robot", "patrol_robot", "autonomous_mobile_robot"]},
+    "zones": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "elevator_or_access_constraints": {"type": "array", "items": {"type": "string"}},
+    "human_traffic_patterns": {"type": "string", "minLength": 3},
+    "connectivity_status": {"type": "string", "enum": ["unknown", "partial", "confirmed", "needs_site_survey"]},
+    "staff_support_model": {"type": "string", "minLength": 3},
+    "maintenance_capacity": {"type": "string", "enum": ["none", "basic", "trained_vendor_support", "internal_robotics_team"]},
+    "safety_review_owner": {"type": "string", "minLength": 2},
+    "budget_status": {"type": "string", "enum": ["unknown", "exploratory", "range_defined", "approved"]},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}
