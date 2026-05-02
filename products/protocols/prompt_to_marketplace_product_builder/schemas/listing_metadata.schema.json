@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robomarket.ae/schemas/listing-metadata.schema.json",
+  "title": "Marketplace Listing Metadata",
+  "type": "object",
+  "required": ["title", "slug", "summary", "category", "listing_status", "sales_mode"],
+  "properties": {
+    "title": {"type": "string", "minLength": 3},
+    "slug": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "summary": {"type": "string", "minLength": 10},
+    "category": {"type": "string", "minLength": 3},
+    "listing_status": {"type": "string", "enum": ["draft", "inquiry_only", "ready_for_marketplace_listing_review", "paused"]},
+    "sales_mode": {"type": "string", "enum": ["inquiry_only", "manual_delivery", "download_after_checkout"]},
+    "price_aed": {"type": ["number", "null"]},
+    "proof_notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
