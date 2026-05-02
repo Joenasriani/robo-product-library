@@ -1,0 +1,76 @@
+facility_type: warehouse
+robot_type: autonomous_mobile_robot
+zones:
+  - receiving
+  - picking_aisles
+  - packing
+  - dispatch
+  - charging_area
+human_actor_roles:
+  - shift_supervisor
+  - warehouse_operator
+  - maintenance_lead
+task_nodes:
+  - id: pick_task_created
+    actor: warehouse_operator
+    action: Create AMR transport task from WMS or manual request.
+    zone: picking_aisles
+    normal_next: amr_dispatch
+    timeout_seconds: 60
+    requires_human_approval: true
+    risk_notes:
+      - Confirm payload size and route availability.
+  - id: amr_dispatch
+    actor: autonomous_mobile_robot
+    action: Navigate to pickup point.
+    zone: picking_aisles
+    normal_next: payload_loaded
+    timeout_seconds: 300
+    requires_human_approval: false
+    risk_notes:
+      - Yield at forklift intersections.
+  - id: payload_loaded
+    actor: warehouse_operator
+    action: Load payload and confirm AMR can proceed.
+    zone: picking_aisles
+    normal_next: transport_to_packing
+    timeout_seconds: 180
+    requires_human_approval: true
+    risk_notes:
+      - Payload must not exceed vendor limit.
+  - id: transport_to_packing
+    actor: autonomous_mobile_robot
+    action: Transport payload to packing zone.
+    zone: packing
+    normal_next: return_to_charging_area
+    timeout_seconds: 420
+    requires_human_approval: false
+    risk_notes:
+      - Monitor congestion near packing lanes.
+  - id: return_to_charging_area
+    actor: autonomous_mobile_robot
+    action: Return to charging area or await next assignment.
+    zone: charging_area
+    normal_next: null
+    timeout_seconds: 300
+    requires_human_approval: false
+    risk_notes: []
+escalation_rules:
+  - trigger: route_blocked
+    condition: route unavailable for more than 120 seconds
+    action: notify shift_supervisor and reroute if approved
+  - trigger: payload_issue
+    condition: payload mismatch or unsafe load detected
+    action: pause task and request operator correction
+failure_branches:
+  - branch: forklift_congestion
+    fallback: AMR waits then requests alternate route approval
+  - branch: charger_unavailable
+    fallback: maintenance_lead assigns backup charging area
+safety_owner: Warehouse HSE manager
+assumptions:
+  - Facility has marked AMR paths.
+  - AMR speed and payload limits are provided by vendor.
+unresolved_questions:
+  - Confirm WMS integration requirements.
+  - Confirm forklift intersection policy.
