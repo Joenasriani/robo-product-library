@@ -51,6 +51,26 @@ protocol_products:
   manifest: products/protocols/gcc_security_access_control_protocol/manifest.yaml
   bundle: products/protocols/gcc_security_access_control_protocol/bundle.zip
   readme: products/protocols/gcc_security_access_control_protocol/README.md
+- id: robotics-buyer-readiness-wizard-v1
+  manifest: products/protocols/robotics_buyer_readiness_wizard/manifest.yaml
+  deliverable_manifest: products/protocols/robotics_buyer_readiness_wizard/deliverables/export_package_manifest.md
+  readme: products/protocols/robotics_buyer_readiness_wizard/README.md
+  listing_status: ready_for_marketplace_listing_review
+- id: operational-twin-builder-v1
+  manifest: products/protocols/operational_twin_builder/manifest.yaml
+  deliverable_manifest: products/protocols/operational_twin_builder/deliverables/export_package_manifest.md
+  readme: products/protocols/operational_twin_builder/README.md
+  listing_status: ready_for_marketplace_listing_review
+- id: prompt-to-marketplace-product-builder-v1
+  manifest: products/protocols/prompt_to_marketplace_product_builder/manifest.yaml
+  deliverable_manifest: products/protocols/prompt_to_marketplace_product_builder/deliverables/export_package_manifest.md
+  readme: products/protocols/prompt_to_marketplace_product_builder/README.md
+  listing_status: ready_for_marketplace_listing_review
+- id: robot-behavior-black-box-v1
+  manifest: products/protocols/robot_behavior_black_box/manifest.yaml
+  deliverable_manifest: products/protocols/robot_behavior_black_box/deliverables/export_package_manifest.md
+  readme: products/protocols/robot_behavior_black_box/README.md
+  listing_status: ready_for_marketplace_listing_review
 ai_products:
 - id: rag-as-a-service
   manifest: products/ai/rag-as-a-service/manifest.yaml
