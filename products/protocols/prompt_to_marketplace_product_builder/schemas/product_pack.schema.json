@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robomarket.ae/schemas/product-pack.schema.json",
+  "title": "Marketplace Product Pack",
+  "type": "object",
+  "required": ["product_idea", "target_buyer", "use_case", "deliverables", "limitations", "support_scope", "commercial_status"],
+  "properties": {
+    "product_idea": {"type": "string", "minLength": 5},
+    "target_buyer": {"type": "string", "minLength": 3},
+    "use_case": {"type": "string", "minLength": 5},
+    "deliverables": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "setup_steps": {"type": "array", "items": {"type": "string"}},
+    "compatibility": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "support_scope": {"type": "string", "minLength": 5},
+    "commercial_status": {"type": "string", "enum": ["draft", "inquiry_only", "ready_for_listing_review", "paused"]}
+  },
+  "additionalProperties": false
+}
