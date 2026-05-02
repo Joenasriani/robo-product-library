@@ -1,0 +1,28 @@
+product_truth_rules:
+- A product pack must contain real deliverables or explicitly mark missing deliverables before marketplace review.
+- Do not invent price, certification, compatibility, buyer results, deployment proof, or support capability.
+- Product ideas must be separated from sellable products until deliverables exist.
+- Marketplace listing metadata must not claim automated checkout or instant delivery unless implemented.
+required_customer_inputs:
+- product_idea
+- target_buyer
+- use_case
+- deliverables
+- limitations
+- support_scope
+- commercial_status
+allowed_outputs:
+- product_folder_structure
+- product_manifest
+- listing_metadata
+- deliverables_checklist
+- limitations_document
+- support_policy
+forbidden_outputs:
+- fake_runtime_file
+- synthetic_bundle_claim
+- invented_price
+- unsupported_certification_claim
+qa_requirements:
+- Run tools/validate_product.py before listing review.
+- Run tools/build_export_package.py before customer delivery.
