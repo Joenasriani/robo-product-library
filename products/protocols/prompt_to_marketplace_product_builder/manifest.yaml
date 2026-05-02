@@ -1,0 +1,57 @@
+id: prompt-to-marketplace-product-builder-v1
+slug: prompt-to-marketplace-product-builder
+title: Prompt-to-Marketplace Product Builder
+name: Prompt-to-Marketplace Product Builder
+version: 1.0.0
+vendor: RoboMarket.ae
+category: robotics-product-packaging
+subcategory:
+- sku-builder
+- product-packaging
+- marketplace-readiness
+summary: >-
+  A product-packaging framework that converts a rough robotics, AI, or automation product idea into a structured downloadable SKU folder with manifest, README, deliverables checklist, listing metadata, limitations, and support policy.
+supported_product_types:
+- robotics_protocol_pack
+- safety_policy_pack
+- automation_workflow_pack
+- ai_agent_pack
+- deployment_checklist_pack
+risk_level: medium
+requires_operator_approval: true
+human_supervision_required: true
+required_inputs:
+- product_idea
+- target_buyer
+- use_case
+- deliverables
+- limitations
+- support_scope
+- commercial_status
+deliverables:
+- README.md
+- RULES.yaml
+- docs/product_pack_model.md
+- schemas/product_pack.schema.json
+- schemas/listing_metadata.schema.json
+- templates/protocol_pack_template/README.md
+- templates/protocol_pack_template/manifest.yaml
+- templates/protocol_pack_template/listing_metadata.json
+- examples/humanoid_hospitality_protocol_pack_example.md
+- tools/validate_product.py
+- tools/build_export_package.py
+- deliverables/export_package_manifest.md
+generated_outputs:
+- path: deliverables/prompt-to-marketplace-product-builder-sample-export.zip
+  build_command: python3 products/protocols/prompt_to_marketplace_product_builder/tools/build_export_package.py
+commercial_tier: professional
+sales_mode: inquiry_only
+status: inquiry_only
+price_aed: null
+deliverable_type: marketplace_product_packaging_framework
+fulfillment_method: manual_delivery_after_inquiry_approval
+limitations:
+- Does not invent product proof, pricing, compatibility, or certifications.
+- Does not create real runtime deliverables unless those files are supplied by the creator.
+- Does not publish to a marketplace automatically.
+qa_status: validation_and_export_tooling_added
