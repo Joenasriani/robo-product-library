@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robomarket.ae/schemas/task-node.schema.json",
+  "title": "Operational Twin Task Node",
+  "type": "object",
+  "required": ["id", "actor", "action", "zone", "normal_next"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "actor": {"type": "string", "minLength": 1},
+    "action": {"type": "string", "minLength": 3},
+    "zone": {"type": "string", "minLength": 1},
+    "normal_next": {"type": ["string", "null"]},
+    "timeout_seconds": {"type": "integer", "minimum": 0},
+    "requires_human_approval": {"type": "boolean"},
+    "risk_notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
