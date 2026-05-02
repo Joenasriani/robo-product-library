@@ -1,0 +1,13 @@
+{
+  "robot_id": "hotel-delivery-bot-01",
+  "event_time": "2026-05-02T18:40:00+03:00",
+  "zone": "lobby_elevator_bank",
+  "task_state": "waiting_for_service_access",
+  "review_signal": "wait_time_exceeded_expected_threshold",
+  "action_taken": "operator_was_notified",
+  "human_override": true,
+  "outcome": "staff_completed_handoff_after_delay",
+  "reviewer": "hotel_operations_manager",
+  "severity": "medium",
+  "notes": "Sample record; replace with real platform data during review."
+}
