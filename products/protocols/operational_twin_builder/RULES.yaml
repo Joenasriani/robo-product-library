@@ -1,0 +1,29 @@
+product_truth_rules:
+- This product is an operational planning framework, not a certified simulation engine.
+- Do not claim live robot compatibility unless an integrator maps the twin to a real robot stack.
+- Do not invent facility conditions, vendor capability, deployment timelines, or safety compliance.
+- Every twin must list assumptions, unresolved blockers, and human review owners.
+- Marketplace listing must remain inquiry-only until real fulfillment and checkout exist.
+required_customer_inputs:
+- facility_type
+- robot_type
+- zones
+- task_nodes
+- human_actor_roles
+- escalation_rules
+- failure_branches
+- safety_owner
+allowed_outputs:
+- operational_twin_yaml
+- task_flow_graph_description
+- risk_branch_table
+- escalation_tree
+- sop_draft
+forbidden_outputs:
+- live_robot_control_command
+- certified_safety_report
+- guaranteed_route_performance
+- physics_simulation_claim
+qa_requirements:
+- Run tools/validate_product.py before listing review.
+- Run tools/build_export_package.py before customer delivery.
