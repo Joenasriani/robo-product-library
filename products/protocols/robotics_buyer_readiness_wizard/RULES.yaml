@@ -1,0 +1,29 @@
+product_truth_rules:
+- This product is a readiness assessment pack, not a certified deployment approval.
+- Do not claim robot compatibility unless the buyer supplies a matching robot capability sheet.
+- Do not invent pricing, vendor availability, certifications, deployment timelines, or integration guarantees.
+- Any marketplace listing must state inquiry-only fulfillment until a real checkout/download flow exists.
+- The generated score is a planning signal and must be reviewed by a qualified operator or robotics integrator.
+required_customer_inputs:
+- facility_type
+- robot_type
+- zones
+- human_traffic_patterns
+- connectivity_status
+- staff_support_model
+- maintenance_capacity
+- safety_review_owner
+allowed_outputs:
+- readiness_score
+- blocker_list
+- missing_information_list
+- buyer_inquiry_packet
+- facility_gap_report
+forbidden_outputs:
+- certified_safety_approval
+- final_vendor_selection_without_review
+- guaranteed_roi_claim
+- live_robot_control_instruction
+qa_requirements:
+- Run tools/validate_product.py before listing review.
+- Run tools/build_export_package.py before customer delivery.
