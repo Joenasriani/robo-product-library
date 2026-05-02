@@ -1,0 +1,25 @@
+product_truth_rules:
+- This product is an operational planning framework, not a certified simulation engine.
+- Every twin must list assumptions, open questions, and a human review owner.
+- Do not invent facility conditions, vendor capability, deployment timelines, or safety approval.
+required_customer_inputs:
+- facility_type
+- robot_type
+- zones
+- task_nodes
+- human_actor_roles
+- escalation_rules
+- failure_branches
+- safety_owner
+allowed_outputs:
+- operational_twin_yaml
+- task_flow_description
+- risk_branch_table
+- escalation_tree
+forbidden_outputs:
+- certified_safety_report
+- guaranteed_route_performance
+- physics_simulation_claim
+qa_requirements:
+- Run tools/validate_product.py before listing review.
+- Run tools/build_export_package.py before customer delivery.
