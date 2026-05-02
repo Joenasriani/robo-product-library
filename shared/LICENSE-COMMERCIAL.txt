@@ -1,0 +1,79 @@
+ROBO MARKET COMMERCIAL PROTOCOL PRODUCT LICENSE
+
+Licensor: Apex Innovate FZE LLC | Ajman NuVentures Free Zone, UAE
+Brand: RoboMarket.ae
+Contact: hello@robomarket.ae
+Governing Law: United Arab Emirates
+
+1. Scope
+
+This commercial license governs RoboMarket.ae protocol product library files, including protocol packs, YAML files, schemas, templates, documentation, examples, and related deliverables distributed through the robo-product-library repository or RoboMarket.ae commercial channels.
+
+2. Commercial Unit
+
+One license equals one deployment environment.
+
+A deployment environment means one specific venue, facility, client site, operational installation, robot fleet environment, or customer implementation context.
+
+Separate licenses are required for separate venues, clients, facilities, robot fleet environments, or production deployment contexts.
+
+3. Permitted Use
+
+A licensed buyer may:
+
+- Load and read the protocol files for technical evaluation.
+- Adapt YAML files for integration into a licensed deployment environment.
+- Use the protocol in one (1) production deployment environment per license purchased.
+- Modify files for compatibility with the buyer's robot middleware stack.
+
+4. Prohibited Use
+
+A licensed buyer may not:
+
+- Redistribute original or modified files to any third party.
+- Resell, sublicense, or include the files in a competing product or library.
+- Deploy the protocol across multiple venues, clients, or environments under a single license.
+- Claim authorship or remove vendor attribution.
+
+5. Evaluation and Sample Packs
+
+Sample packs are for internal technical review only.
+
+Sample packs may not be used in production deployments.
+
+Sample packs may not be redistributed.
+
+Evaluation access does not grant production deployment rights. A commercial license is required before production use.
+
+6. Attribution
+
+Vendor attribution to RoboMarket.ae and Apex Innovate FZE LLC must remain visible in product files, manifests, documentation, and derivative deployment documentation where reasonably possible.
+
+7. Ownership
+
+Apex Innovate FZE LLC retains ownership, copyright, title, and intellectual property rights in the original RoboMarket.ae protocol product library materials.
+
+The licensee receives only the limited commercial usage rights expressly granted by this license.
+
+8. Modifications
+
+Modifications made for middleware compatibility or deployment adaptation remain subject to this license. Modified files may not be redistributed, resold, sublicensed, or used across multiple deployment environments under a single license.
+
+9. No Certification or Warranty
+
+Unless separately agreed in writing, RoboMarket.ae protocol products are not certified safety approvals, regulatory approvals, legal opinions, or guaranteed deployment systems.
+
+The buyer is responsible for professional review, safety validation, middleware integration, site testing, regulatory review, and operational approval before production use.
+
+10. Termination
+
+Any breach of this license terminates the licensee's rights to use the protocol files. Upon termination, the licensee must stop using the files and remove original and modified files from unauthorized environments, repositories, products, and deployment contexts.
+
+11. Contact
+
+For commercial licensing, multi-site licensing, redistribution permission, enterprise deployment terms, or written authorization, contact:
+
+hello@robomarket.ae
+
+Copyright (c) Apex Innovate FZE LLC. All rights reserved.
+RoboMarket.ae is a brand of Apex Innovate FZE LLC.
