@@ -1,20 +1,54 @@
-id: gcc-humanoid-etiquette-protocol-pack
+id: gcc-humanoid-etiquette-protocol-pack-v1
+slug: gcc-humanoid-etiquette-protocol-pack-v1
 name: GCC Humanoid Etiquette Protocol Pack
+title: GCC Humanoid Etiquette Protocol Pack
+version: 1.0.0
+vendor: RoboMarket.ae
 product_type: robotics_protocol_pack
 category: protocols
+subcategory:
+  - gcc-localization
+  - humanoid-etiquette
+  - social-service-robotics
 commercial_status: draft_ready_for_marketplace_review
+status: inquiry_only
+sales_mode: inquiry_only
 intended_buyers:
   - robotics integrators
   - humanoid robot developers
   - hospitality automation teams
   - mall and premium residential robotics operators
 primary_environment: GCC hospitality, majlis, reception, mall concierge, and premium residential spaces
+supported_countries:
+  - saudi_arabia
+  - united_arab_emirates
+  - qatar
+  - kuwait
+  - bahrain
+  - oman
 supported_robot_classes:
   - humanoid service robot
   - mobile social robot with ROS 2 action support
   - reception or hospitality robot
+supported_use_cases:
+  - hotel_lobby_greeting
+  - majlis_reception
+  - mall_concierge
+  - premium_residential_reception
+  - gahwa_service_protocol
+risk_level: medium
+requires_operator_approval: true
+human_supervision_required: true
 buyer_value: Structured state-machine protocol for culturally aware GCC humanoid interactions with multimodal sensing and ROS 2 action outputs.
+required_capabilities:
+  - speech_tts
+  - people_detection
+  - distance_estimation
+  - safe_navigation
+  - operator_override
+  - gesture_or_expression_control
 deliverables:
+  - manifest.yaml
   - README.md
   - protocol.json
   - ros2_action_mapping.md
@@ -43,18 +77,41 @@ logic_priorities:
   - cultural_etiquette
   - task_success
   - efficiency
-limitations:
-  - Does not claim legal, religious, or safety certification.
-  - Requires site-specific validation before live deployment.
-  - Requires robot-specific ROS 2 adapter implementation.
-  - Cultural rules must be reviewed by the deployment owner for each venue.
 compatibility:
   middleware: ROS 2 action/service architecture
   recommended_ros2_distributions:
     - Humble
     - Iron
     - Jazzy
+hardware_requirements:
+  - Humanoid or social service robot platform
+  - Speaker and TTS-capable audio output
+  - People detection sensor such as RGB-D camera or equivalent
+  - Lidar or depth sensor for safe clearance handling
+  - Safe mobility base or stationary service posture
+software_requirements:
+  - ROS 2-compatible behavior orchestration layer
+  - Navigation stack or pose execution adapter
+  - Speech and gesture adapter layer
+  - Operator override and human handoff interface
 support_expectations: Buyer receives protocol documentation and structured logic schema; implementation support is separate.
+support_window_days: null
+commercial_tier: inquiry_only
+update_channel: draft
+license_type: commercial_internal_deployment_license
+fulfillment_method: manual_delivery_after_inquiry_approval
+customer_receives:
+  - Structured protocol product folder
+  - State-machine JSON schema
+  - ROS 2 action mapping reference
+  - Integration and validation documentation
+limitations:
+  - Does not claim legal, religious, or safety certification.
+  - Requires site-specific validation before live deployment.
+  - Requires robot-specific ROS 2 adapter implementation.
+  - Cultural rules must be reviewed by the deployment owner for each venue.
+  - Not a complete robot firmware package.
+qa_status: acceptance_criteria_defined_with_manual_qa_checklist
 pricing:
   amount: null
   currency: null
