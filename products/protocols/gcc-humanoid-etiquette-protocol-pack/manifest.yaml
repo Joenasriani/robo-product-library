@@ -1,0 +1,101 @@
+id: gcc-humanoid-etiquette-protocol-pack-v1
+slug: gcc-humanoid-etiquette-protocol-pack-v1
+name: GCC Humanoid Etiquette Protocol Pack
+title: GCC Humanoid Etiquette Protocol Pack
+version: 1.0.0
+vendor: RoboMarket.ae
+product_type: robotics_protocol_pack
+category: protocols
+subcategory:
+- gcc-localization
+- humanoid-etiquette
+- social-service-robotics
+summary: >-
+  A GCC-focused humanoid etiquette protocol pack for service robots operating in
+  hospitality, majlis, mall concierge, reception, and premium residential spaces.
+  The pack provides a state-machine protocol, priority interrupts, gahwa service
+  decision logic, ROS 2 action mapping, integration notes, and validation guidance.
+commercial_status: draft_ready_for_marketplace_review
+status: inquiry_only
+sales_mode: inquiry_only
+supported_countries:
+- saudi_arabia
+- united_arab_emirates
+- qatar
+- kuwait
+- bahrain
+- oman
+supported_robot_classes:
+- humanoid_service_robot
+- mobile_social_robot
+- reception_robot
+supported_use_cases:
+- hotel_lobby_greeting
+- majlis_reception
+- mall_concierge
+- premium_residential_reception
+- gahwa_service_protocol
+intended_buyers:
+- robotics integrators
+- humanoid robot developers
+- hospitality automation teams
+- mall and premium residential robotics operators
+risk_level: medium
+requires_operator_approval: true
+human_supervision_required: true
+required_capabilities:
+- speech_tts
+- people_detection
+- distance_estimation
+- safe_navigation
+- operator_override
+- gesture_or_expression_control
+deliverables:
+- manifest.yaml
+- README.md
+- protocol.json
+- ros2_action_mapping.md
+- validation_checklist.md
+- integration_notes.md
+commercial_tier: inquiry_only
+price_aed: null
+deliverable_type: robotics_protocol_pack
+fulfillment_method: manual_delivery_after_inquiry_approval
+customer_receives:
+- Structured mini product folder
+- State-machine JSON protocol
+- ROS 2 action mapping reference
+- Integration notes for robotics teams
+- Validation checklist for deployment review
+logic_priorities:
+- human_safety
+- hierarchical_status
+- cultural_etiquette
+- task_success
+- efficiency
+hardware_requirements:
+- Humanoid or social service robot platform
+- Speaker and TTS-capable audio output
+- People detection sensor such as RGB-D camera or equivalent
+- Lidar or depth sensor for safe clearance handling
+- Safe mobility base or stationary service posture
+software_requirements:
+- ROS 2-compatible behavior orchestration layer
+- Navigation stack or pose execution adapter
+- Speech and gesture adapter layer
+- Operator override and human handoff interface
+compatibility_notes: >-
+  This pack is ROS 2-oriented but not hardware-specific. Implementation into a
+  live robot requires a qualified integrator to map the protocol actions to the
+  target robot middleware, navigation, speech, gesture, and service interfaces.
+setup_time_estimate: 4-8 hours for protocol review; integration time depends on robot stack and venue
+support_scope: Remote clarification of protocol files and one deployment-readiness review for inquiry-approved buyers.
+license_type: commercial_internal_deployment_license
+limitations:
+- Does not replace certified safety engineering or local regulatory review.
+- Does not claim legal, religious, or cultural authority.
+- Does not include robot firmware, perception models, drivers, or hardware adapters.
+- Requires site-specific validation before live deployment.
+- Cultural rules must be reviewed by the deployment owner for each venue.
+qa_status: acceptance_criteria_defined_with_manual_qa_checklist
+update_channel: draft
