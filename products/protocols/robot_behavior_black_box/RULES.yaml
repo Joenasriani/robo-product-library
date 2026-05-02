@@ -1,0 +1,27 @@
+product_truth_rules:
+- This product structures operational review data; it does not prove certified root cause.
+- Do not claim compatibility with proprietary logs unless an adapter exists.
+- Process updates must remain recommendations until approved by a human owner.
+required_customer_inputs:
+- robot_id
+- event_time
+- zone
+- task_state
+- review_signal
+- action_taken
+- human_override
+- outcome
+- reviewer
+allowed_outputs:
+- event_log_record
+- incident_report
+- root_cause_hypothesis
+- sop_update_recommendation
+forbidden_outputs:
+- legal_liability_determination
+- certified_root_cause
+- automatic_process_change
+- unsupported_vendor_log_claim
+qa_requirements:
+- Run tools/validate_product.py before listing review.
+- Run tools/build_export_package.py before customer delivery.
