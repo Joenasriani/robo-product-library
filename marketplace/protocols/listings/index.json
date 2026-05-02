@@ -11,5 +11,6 @@
   "marketplace/protocols/listings/gcc_retail_floor_assistance_protocol.json",
   "marketplace/protocols/listings/gcc_royal_privacy_protocol_v1.json",
   "marketplace/protocols/listings/gcc_royal_protocol_pack.json",
-  "marketplace/protocols/listings/gcc_security_access_control_protocol.json"
+  "marketplace/protocols/listings/gcc_security_access_control_protocol.json",
+  "marketplace/protocols/listings/gcc_humanoid_etiquette_protocol_pack.json"
 ]
