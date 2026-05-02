@@ -55,6 +55,9 @@ protocol_products:
   manifest: products/protocols/robosafe_os/manifest.yaml
   bundle: products/protocols/robosafe_os/deliverables/export_package_manifest.md
   readme: products/protocols/robosafe_os/README.md
+- id: gcc-humanoid-etiquette-protocol-pack-v1
+  manifest: products/protocols/gcc-humanoid-etiquette-protocol-pack/manifest.yaml
+  readme: products/protocols/gcc-humanoid-etiquette-protocol-pack/README.md
 ai_products:
 - id: rag-as-a-service-v1
   manifest: products/ai/rag-as-a-service/manifest.yaml
