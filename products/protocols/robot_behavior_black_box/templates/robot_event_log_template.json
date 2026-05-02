@@ -1,0 +1,13 @@
+{
+  "robot_id": "hotel-delivery-bot-01",
+  "event_time": "2026-05-02T18:40:00+03:00",
+  "zone": "lobby_elevator_bank",
+  "task_state": "waiting_for_elevator",
+  "review_signal": "wait_time_exceeded_expected_threshold",
+  "action_taken": "robot_waited_and_operator_was_notified",
+  "human_override": true,
+  "outcome": "staff_completed_delivery_manually_after_delay",
+  "reviewer": "hotel_operations_manager",
+  "severity": "medium",
+  "notes": "Use as a sample record; replace with real robot/platform event data during deployment review."
+}
