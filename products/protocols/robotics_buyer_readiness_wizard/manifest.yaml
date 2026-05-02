@@ -1,0 +1,70 @@
+id: robotics-buyer-readiness-wizard-v1
+slug: robotics-buyer-readiness-wizard
+title: Robotics Buyer Readiness Wizard
+name: Robotics Buyer Readiness Wizard
+version: 1.0.0
+vendor: RoboMarket.ae
+category: robotics-deployment-planning
+subcategory:
+- buyer-readiness
+- facility-intake
+- deployment-qualification
+summary: >-
+  A robotics buyer readiness assessment pack for facilities evaluating whether they
+  are prepared to purchase and deploy service, delivery, cleaning, reception, patrol,
+  or AMR robots. It provides working JSON schemas, facility assessment templates,
+  scoring rules, validation/build tooling, and sample reports.
+supported_facility_types:
+- hotel
+- mall
+- hospital
+- warehouse
+- premium_residential
+- retail
+supported_robot_types:
+- service_robot
+- delivery_robot
+- cleaning_robot
+- reception_robot
+- patrol_robot
+- autonomous_mobile_robot
+risk_level: medium
+requires_operator_approval: true
+human_supervision_required: true
+required_inputs:
+- facility_type
+- robot_type
+- facility_zones
+- elevator_or_access_constraints
+- human_traffic_patterns
+- connectivity_readiness
+- staff_support_model
+- maintenance_capacity
+- budget_range_or_budget_policy
+- safety_review_owner
+deliverables:
+- README.md
+- RULES.yaml
+- docs/readiness_model.md
+- templates/hotel_readiness_assessment.json
+- templates/warehouse_readiness_assessment.json
+- schemas/readiness_assessment.schema.json
+- schemas/buyer_inquiry_packet.schema.json
+- examples/hotel_buyer_readiness_report.md
+- tools/validate_product.py
+- tools/build_export_package.py
+- deliverables/export_package_manifest.md
+generated_outputs:
+- path: deliverables/robotics-buyer-readiness-wizard-sample-export.zip
+  build_command: python3 products/protocols/robotics_buyer_readiness_wizard/tools/build_export_package.py
+commercial_tier: professional
+sales_mode: inquiry_only
+status: inquiry_only
+price_aed: null
+deliverable_type: robotics_buyer_readiness_assessment_pack
+fulfillment_method: manual_delivery_after_inquiry_approval
+limitations:
+- Does not certify facility safety or regulatory compliance.
+- Does not select a final robot vendor without human review.
+- Does not control or simulate real robots.
+qa_status: validation_and_export_tooling_added
