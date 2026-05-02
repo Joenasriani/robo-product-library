@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Marketplace Product Pack",
+  "type": "object",
+  "required": ["product_idea", "target_buyer", "use_case", "deliverables", "limitations", "support_scope", "commercial_status"],
+  "properties": {
+    "product_idea": {"type": "string"},
+    "target_buyer": {"type": "string"},
+    "use_case": {"type": "string"},
+    "deliverables": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "limitations": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "support_scope": {"type": "string"},
+    "commercial_status": {"type": "string", "enum": ["draft", "inquiry_only", "ready_for_listing_review", "paused"]}
+  },
+  "additionalProperties": true
+}
