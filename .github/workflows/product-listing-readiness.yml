@@ -1,0 +1,33 @@
+name: Product Listing Readiness
+
+on:
+  pull_request:
+    paths:
+      - 'products/**'
+      - 'tools/validate_products.py'
+      - '.github/workflows/product-listing-readiness.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'products/**'
+      - 'tools/validate_products.py'
+      - '.github/workflows/product-listing-readiness.yml'
+
+jobs:
+  validate-products:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install validator dependencies
+        run: python -m pip install pyyaml
+
+      - name: Validate product listing readiness
+        run: python tools/validate_products.py
