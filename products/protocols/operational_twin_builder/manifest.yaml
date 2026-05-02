@@ -1,0 +1,68 @@
+id: operational-twin-builder-v1
+slug: operational-twin-builder
+title: Operational Twin Builder
+name: Operational Twin Builder
+version: 1.0.0
+vendor: RoboMarket.ae
+category: robotics-deployment-planning
+subcategory:
+- operational-twin
+- task-flow-modeling
+- risk-branching
+- escalation-planning
+summary: >-
+  A robotics operational twin framework for modeling facility zones, robot tasks,
+  human actors, escalation paths, and failure branches before deployment. It ships
+  working schemas, YAML templates, examples, validation tooling, and an export builder.
+supported_facility_types:
+- hotel
+- mall
+- hospital
+- warehouse
+- premium_residential
+- retail
+supported_robot_types:
+- service_robot
+- delivery_robot
+- cleaning_robot
+- reception_robot
+- patrol_robot
+- autonomous_mobile_robot
+risk_level: high
+requires_operator_approval: true
+human_supervision_required: true
+required_inputs:
+- facility_type
+- robot_type
+- zones
+- task_nodes
+- human_actor_roles
+- escalation_rules
+- failure_branches
+- safety_owner
+deliverables:
+- README.md
+- RULES.yaml
+- docs/operational_twin_model.md
+- schemas/operational_twin.schema.json
+- schemas/task_node.schema.json
+- templates/hotel_delivery_robot_twin.yaml
+- templates/warehouse_amr_twin.yaml
+- examples/hotel_delivery_robot_operational_twin.md
+- tools/validate_product.py
+- tools/build_export_package.py
+- deliverables/export_package_manifest.md
+generated_outputs:
+- path: deliverables/operational-twin-builder-sample-export.zip
+  build_command: python3 products/protocols/operational_twin_builder/tools/build_export_package.py
+commercial_tier: professional
+sales_mode: inquiry_only
+status: inquiry_only
+price_aed: null
+deliverable_type: robotics_operational_twin_framework
+fulfillment_method: manual_delivery_after_inquiry_approval
+limitations:
+- Does not simulate robot physics.
+- Does not connect to live robot control systems.
+- Does not replace site inspection, certified safety review, or integrator validation.
+qa_status: validation_and_export_tooling_added
