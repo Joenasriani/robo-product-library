@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robomarket.ae/schemas/operational-twin.schema.json",
+  "title": "Operational Twin",
+  "type": "object",
+  "required": ["facility_type", "robot_type", "zones", "task_nodes", "human_actor_roles", "escalation_rules", "failure_branches", "safety_owner"],
+  "properties": {
+    "facility_type": {"type": "string"},
+    "robot_type": {"type": "string"},
+    "zones": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "task_nodes": {"type": "array", "items": {"type": "object"}, "minItems": 1},
+    "human_actor_roles": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "escalation_rules": {"type": "array", "items": {"type": "object"}, "minItems": 1},
+    "failure_branches": {"type": "array", "items": {"type": "object"}},
+    "safety_owner": {"type": "string", "minLength": 2},
+    "assumptions": {"type": "array", "items": {"type": "string"}},
+    "unresolved_questions": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}
