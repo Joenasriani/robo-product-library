@@ -1,13 +1,48 @@
 required_files:
 - manifest.yaml
 - README.md
-- bundle.zip
+
 required_manifest_fields:
 - id
 - slug
 - name
 - version
-required_if_sellable:
-- price_aed
 - deliverable_type
+
+required_if_sellable:
+- commercial_status
+- status
+- sales_mode
+- fulfillment_method
+- customer_receives
+- limitations
+
+pricing_rule:
+  price_aed: required only when the product is buy_now or instant_download
+  inquiry_only: price_aed may be null when sales_mode is inquiry_only
+
 usage_instruction_requirement: README.md must include a Usage section
+
+listing_readiness_requirement:
+  purpose: >-
+    A product may be marketplace-listing-ready before payment checkout and instant-download fulfillment exist.
+    Listing-ready means the product is honest, self-contained, documented, and safe to advertise for later sale or inquiry.
+  acceptable_delivery_markers:
+  - bundle.zip
+  - deliverable_manifest
+  - customer_receives
+  not_required_for_listing_ready:
+  - payment checkout
+  - Stripe integration
+  - marketplace order routing
+  - automated file delivery
+  - live robot deployment
+
+protocol_product_requirements:
+- RULES.yaml should exist for protocol products unless limitations and operating boundaries are fully documented in README.md and manifest.yaml.
+- Protocol products must not claim to be firmware, certified safety systems, legal compliance products, or live robot controllers unless those deliverables exist.
+
+developer_readiness_requirement:
+  minimum: >-
+    A robotics developer or integrator must be able to understand what the pack contains, how to review it,
+    how to map it into their robot stack, what is excluded, and what needs venue-specific validation before deployment.
