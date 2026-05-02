@@ -1,0 +1,21 @@
+id: example-protocol-pack-v1
+slug: example-protocol-pack
+title: Example Protocol Pack
+version: 1.0.0
+vendor: Creator or Company Name
+category: robotics-protocol-pack
+summary: Replace with a verified summary of actual deliverables.
+target_buyer: Robotics integrator or facility operator
+use_case: Replace with a specific operational use case.
+deliverables:
+- README.md
+- manifest.yaml
+- setup_guide.md
+- limitations.md
+commercial_tier: draft
+sales_mode: inquiry_only
+status: draft
+price_aed: null
+limitations:
+- Replace with real limitations.
+- Do not claim certifications or compatibility without proof.
