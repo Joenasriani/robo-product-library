@@ -1,0 +1,13 @@
+{
+  "facility_type": "warehouse",
+  "robot_type": "autonomous_mobile_robot",
+  "zones": ["receiving", "picking_aisles", "packing", "dispatch", "charging_area"],
+  "elevator_or_access_constraints": ["forklift intersections require right-of-way policy", "charging area must be physically marked"],
+  "human_traffic_patterns": "Peak picker and forklift movement during morning inbound and afternoon outbound waves.",
+  "connectivity_status": "partial",
+  "staff_support_model": "Shift supervisor monitors AMR exceptions; maintenance team handles dock and charger checks.",
+  "maintenance_capacity": "basic",
+  "safety_review_owner": "Warehouse HSE manager",
+  "budget_status": "exploratory",
+  "notes": "Buyer should validate WMS integration and aisle width before vendor shortlist."
+}
