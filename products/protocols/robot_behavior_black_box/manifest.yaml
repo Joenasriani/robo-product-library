@@ -1,0 +1,70 @@
+id: robot-behavior-black-box-v1
+slug: robot-behavior-black-box
+title: Robot Behavior Black Box
+name: Robot Behavior Black Box
+version: 1.0.0
+vendor: RoboMarket.ae
+category: robotics-operations-audit
+subcategory:
+- decision-log
+- incident-analysis
+- root-cause-review
+- sop-update
+summary: >-
+  A robotics operations audit pack for documenting robot task events, decision traces,
+  human overrides, incidents, root-cause hypotheses, and SOP update recommendations.
+  It ships working schemas, templates, examples, validation tooling, and an export builder.
+supported_robot_types:
+- service_robot
+- delivery_robot
+- cleaning_robot
+- reception_robot
+- patrol_robot
+- autonomous_mobile_robot
+supported_contexts:
+- hotel
+- mall
+- hospital
+- warehouse
+- premium_residential
+- retail
+risk_level: high
+requires_operator_approval: true
+human_supervision_required: true
+required_inputs:
+- robot_id
+- event_time
+- zone
+- task_state
+- decision_trigger
+- action_taken
+- human_override
+- outcome
+- reviewer
+deliverables:
+- README.md
+- RULES.yaml
+- docs/event_log_model.md
+- schemas/robot_event.schema.json
+- schemas/incident_report.schema.json
+- templates/robot_event_log_template.json
+- templates/incident_report_template.md
+- examples/elevator_delay_incident_example.md
+- tools/validate_product.py
+- tools/build_export_package.py
+- deliverables/export_package_manifest.md
+generated_outputs:
+- path: deliverables/robot-behavior-black-box-sample-export.zip
+  build_command: python3 products/protocols/robot_behavior_black_box/tools/build_export_package.py
+commercial_tier: professional
+sales_mode: inquiry_only
+status: inquiry_only
+price_aed: null
+deliverable_type: robotics_decision_log_and_incident_audit_pack
+fulfillment_method: manual_delivery_after_inquiry_approval
+limitations:
+- Does not read proprietary robot logs without an adapter supplied by the customer or integrator.
+- Does not prove legal liability or certified root cause.
+- Does not control robot behavior.
+- Requires human review before SOP changes are applied.
+qa_status: validation_and_export_tooling_added
