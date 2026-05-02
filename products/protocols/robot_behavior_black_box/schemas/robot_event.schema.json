@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://robomarket.ae/schemas/robot-event.schema.json",
+  "title": "Robot Event Record",
+  "type": "object",
+  "required": ["robot_id", "event_time", "zone", "task_state", "review_signal", "action_taken", "human_override", "outcome", "reviewer"],
+  "properties": {
+    "robot_id": {"type": "string", "minLength": 1},
+    "event_time": {"type": "string", "minLength": 5},
+    "zone": {"type": "string", "minLength": 1},
+    "task_state": {"type": "string", "minLength": 2},
+    "review_signal": {"type": "string", "minLength": 3},
+    "action_taken": {"type": "string", "minLength": 3},
+    "human_override": {"type": "boolean"},
+    "outcome": {"type": "string", "minLength": 3},
+    "reviewer": {"type": "string", "minLength": 2},
+    "severity": {"type": "string", "enum": ["low", "medium", "high", "critical"]},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}
