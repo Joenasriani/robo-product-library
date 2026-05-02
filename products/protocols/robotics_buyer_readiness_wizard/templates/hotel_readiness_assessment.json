@@ -1,0 +1,13 @@
+{
+  "facility_type": "hotel",
+  "robot_type": "delivery_robot",
+  "zones": ["lobby", "guest_corridors", "service_elevator", "back_of_house", "charging_dock"],
+  "elevator_or_access_constraints": ["robot elevator access requires staff approval", "guest-only zones must be restricted"],
+  "human_traffic_patterns": "High traffic in lobby from 17:00 to 21:00; moderate corridor traffic during checkout windows.",
+  "connectivity_status": "needs_site_survey",
+  "staff_support_model": "Front desk supervises dispatch; concierge team handles exception recovery.",
+  "maintenance_capacity": "trained_vendor_support",
+  "safety_review_owner": "Hotel operations manager",
+  "budget_status": "range_defined",
+  "notes": "Pilot should start with low-risk amenities delivery before guest-critical workflows."
+}
