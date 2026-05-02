@@ -1,0 +1,22 @@
+{
+  "id": "gcc-humanoid-etiquette-protocol-pack-v1",
+  "slug": "gcc-humanoid-etiquette-protocol-pack-v1",
+  "name": "GCC Humanoid Etiquette Protocol Pack",
+  "category": "Protocol Pack",
+  "price_aed": null,
+  "button_primary": "View",
+  "button_secondary": "Inquire",
+  "sales_mode": "inquiry_only",
+  "status": "inquiry_only",
+  "card_subtitle": "Inquiry-led GCC humanoid etiquette behavior protocol for hospitality, majlis, concierge, and premium reception use cases.",
+  "best_for": [
+    "Humanoid service robot integrators",
+    "GCC hospitality automation teams",
+    "Mall concierge robotics deployments",
+    "Premium residential reception robots",
+    "Majlis and VIP guest reception workflows"
+  ],
+  "canonical_manifest": "products/protocols/gcc-humanoid-etiquette-protocol-pack/manifest.yaml",
+  "fulfillment_method": "manual_delivery_after_inquiry_approval",
+  "deliverable_type": "robotics_protocol_pack"
+}
