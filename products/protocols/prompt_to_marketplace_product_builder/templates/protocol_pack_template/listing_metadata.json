@@ -1,0 +1,13 @@
+{
+  "title": "Example Protocol Pack",
+  "slug": "example-protocol-pack",
+  "summary": "Replace with a verified buyer-facing summary of the product deliverables.",
+  "category": "robotics-protocol-pack",
+  "listing_status": "draft",
+  "sales_mode": "inquiry_only",
+  "price_aed": null,
+  "proof_notes": [
+    "Replace with evidence that deliverables exist.",
+    "Replace with compatibility notes reviewed by the creator."
+  ]
+}
