@@ -1,0 +1,9 @@
+Product: GCC Mall Navigation & Wayfinding Protocol
+Product ID: gcc-mall-navigation-wayfinding-protocol-v1
+Version: 1.0.0
+
+© Apex Innovate FZE LLC. All rights reserved.
+Licensed under the Apex Innovate FZE LLC Commercial License.
+
+Full terms: see shared/LICENSE-COMMERCIAL.txt
+Contact: hello@robomarket.ae
