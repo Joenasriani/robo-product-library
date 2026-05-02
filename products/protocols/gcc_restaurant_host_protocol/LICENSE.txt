@@ -1,0 +1,9 @@
+Product: GCC Restaurant Host Protocol
+Product ID: gcc-restaurant-host-protocol-v1
+Version: 1.0.0
+
+Copyright Apex Innovate FZE LLC. All rights reserved.
+Licensed under the Apex Innovate FZE LLC Commercial License.
+
+Full terms: see shared/LICENSE-COMMERCIAL.txt
+Contact: hello@robomarket.ae
