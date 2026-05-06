@@ -10,7 +10,9 @@ subcategory:
 - product-packaging
 - marketplace-readiness
 summary: >-
-  A product-packaging framework that converts a rough robotics, AI, or automation product idea into a structured downloadable SKU folder with manifest, README, deliverables checklist, listing metadata, limitations, and support policy.
+  A standalone product-packaging framework that converts a rough robotics, AI,
+  or automation product idea into a structured downloadable SKU folder with manifest,
+  README, deliverables checklist, listing metadata, limitations, and support policy.
 risk_level: medium
 requires_operator_approval: true
 human_supervision_required: true
@@ -24,6 +26,7 @@ required_inputs:
 - commercial_status
 deliverables:
 - README.md
+- LICENSE.txt
 - RULES.yaml
 - docs/product_pack_model.md
 - schemas/product_pack.schema.json
@@ -35,12 +38,20 @@ deliverables:
 generated_outputs:
 - path: deliverables/prompt-to-marketplace-product-builder-sample-export.zip
   build_command: python3 products/protocols/prompt_to_marketplace_product_builder/tools/build_export_package.py
+commercial_status: ready_for_marketplace_listing_review
 commercial_tier: professional
 sales_mode: inquiry_only
 status: inquiry_only
 price_aed: null
 deliverable_type: marketplace_product_packaging_framework
 fulfillment_method: manual_delivery_after_inquiry_approval
+customer_receives:
+- Standalone product-packaging mini product folder
+- Product pack schema
+- Protocol pack manifest template
+- Example humanoid hospitality product-pack outline
+- Validation script and export package builder
+- Product-specific commercial license stub
 limitations:
 - Does not invent product proof, pricing, compatibility, or certifications.
 - Does not create real runtime deliverables unless those files are supplied by the creator.
