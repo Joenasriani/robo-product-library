@@ -10,8 +10,9 @@ subcategory:
 - incident-analysis
 - root-cause-review
 summary: >-
-  A robotics operations audit pack for documenting robot task events, review notes,
-  human overrides, incident reports, root-cause hypotheses, and SOP update recommendations.
+  A standalone robotics operations audit pack for documenting robot task events,
+  review notes, human overrides, incident reports, root-cause hypotheses, and SOP
+  update recommendations.
 risk_level: high
 requires_operator_approval: true
 human_supervision_required: true
@@ -27,6 +28,7 @@ required_inputs:
 - reviewer
 deliverables:
 - README.md
+- LICENSE.txt
 - RULES.yaml
 - docs/event_log_model.md
 - schemas/robot_event.schema.json
@@ -38,12 +40,20 @@ deliverables:
 generated_outputs:
 - path: deliverables/robot-behavior-black-box-sample-export.zip
   build_command: python3 products/protocols/robot_behavior_black_box/tools/build_export_package.py
+commercial_status: ready_for_marketplace_listing_review
 commercial_tier: professional
 sales_mode: inquiry_only
 status: inquiry_only
 price_aed: null
 deliverable_type: robotics_decision_log_and_incident_audit_pack
 fulfillment_method: manual_delivery_after_inquiry_approval
+customer_receives:
+- Standalone robot event review mini product folder
+- Robot event schema
+- Event log template
+- Example incident review report
+- Validation script and export package builder
+- Product-specific commercial license stub
 limitations:
 - Does not read proprietary robot logs without an adapter supplied by the customer or integrator.
 - Does not prove legal liability or certified root cause.
