@@ -15,6 +15,14 @@ It includes:
 - Local validation tooling
 - Local export-package builder
 
+## Usage
+
+1. Start from `templates/protocol_pack_template/manifest.yaml`.
+2. Replace the sample product idea, buyer, use case, deliverables, limitations, and commercial status with real creator-supplied information.
+3. Check the product structure against `schemas/product_pack.schema.json`.
+4. Confirm every listed deliverable exists before marking the product ready for marketplace review.
+5. Keep unknown prices, certifications, compatibility, and deployment proof unset until evidence exists.
+
 ## Validate
 
 ```bash
