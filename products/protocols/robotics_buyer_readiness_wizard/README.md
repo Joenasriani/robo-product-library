@@ -25,6 +25,16 @@ It includes:
 - Premium residential buildings considering concierge or delivery robots
 - RoboMarket.ae buyer intake operators
 
+## Usage
+
+1. Copy one of the assessment templates from `templates/`.
+2. Replace the sample facility and robot assumptions with buyer-provided information.
+3. Validate the completed assessment against `schemas/readiness_assessment.schema.json`.
+4. Use `schemas/buyer_inquiry_packet.schema.json` to prepare a structured buyer handoff packet.
+5. Review the output with a qualified robotics integrator, facility operator, and safety owner before any deployment decision.
+
+This product is intended for readiness assessment and buyer qualification. It is not a certified safety approval or final vendor-selection system.
+
 ## How to validate
 
 ```bash
