@@ -14,6 +14,14 @@ Operational Twin Builder helps robotics integrators and facility teams convert a
 - safety owners
 - deployment assumptions
 
+## Usage
+
+1. Start from `templates/hotel_delivery_robot_twin.yaml` or create a new twin using `schemas/operational_twin.schema.json`.
+2. Replace sample zones, task nodes, actors, escalation rules, failure branches, assumptions, and unresolved questions with site-specific information.
+3. Review every human intervention point and escalation path with the facility operations owner.
+4. Validate the product folder before delivery using the validation command below.
+5. Use the generated package as a planning artifact for integrator review, not as a certified simulation or live robot controller.
+
 ## Validate
 
 ```bash
