@@ -1,0 +1,11 @@
+{
+  "facility_type": "warehouse",
+  "robot_type": "autonomous_mobile_robot",
+  "zones": ["receiving", "picking_aisles", "packing", "dispatch", "charging_area"],
+  "human_traffic_patterns": "Peak picker and equipment movement during inbound and outbound waves.",
+  "connectivity_status": "partial",
+  "staff_support_model": "Shift supervisor reviews exceptions; operations team handles workflow updates.",
+  "maintenance_capacity": "basic",
+  "safety_review_owner": "Warehouse HSE manager",
+  "budget_status": "exploratory"
+}
