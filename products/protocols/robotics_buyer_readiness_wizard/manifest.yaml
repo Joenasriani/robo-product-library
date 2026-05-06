@@ -10,10 +10,10 @@ subcategory:
 - facility-intake
 - deployment-qualification
 summary: >-
-  A robotics buyer readiness assessment pack for facilities evaluating whether they
-  are prepared to purchase and deploy service, delivery, cleaning, reception, patrol,
-  or AMR robots. It provides working JSON schemas, facility assessment templates,
-  scoring rules, validation/build tooling, and sample reports.
+  A standalone robotics buyer readiness assessment pack for facilities evaluating
+  whether they are prepared to purchase and deploy service, delivery, cleaning,
+  reception, patrol, or AMR robots. It provides working JSON schemas, facility
+  assessment templates, scoring rules, validation/build tooling, and sample reports.
 supported_facility_types:
 - hotel
 - mall
@@ -44,6 +44,7 @@ required_inputs:
 - safety_review_owner
 deliverables:
 - README.md
+- LICENSE.txt
 - RULES.yaml
 - docs/readiness_model.md
 - templates/hotel_readiness_assessment.json
@@ -57,12 +58,20 @@ deliverables:
 generated_outputs:
 - path: deliverables/robotics-buyer-readiness-wizard-sample-export.zip
   build_command: python3 products/protocols/robotics_buyer_readiness_wizard/tools/build_export_package.py
+commercial_status: ready_for_marketplace_listing_review
 commercial_tier: professional
 sales_mode: inquiry_only
 status: inquiry_only
 price_aed: null
 deliverable_type: robotics_buyer_readiness_assessment_pack
 fulfillment_method: manual_delivery_after_inquiry_approval
+customer_receives:
+- Standalone buyer readiness assessment mini product folder
+- Facility readiness schemas and templates
+- Buyer inquiry packet schema
+- Sample hotel readiness report
+- Validation script and export package builder
+- Product-specific commercial license stub
 limitations:
 - Does not certify facility safety or regulatory compliance.
 - Does not select a final robot vendor without human review.
