@@ -1,0 +1,9 @@
+Product: Robot Behavior Black Box
+Product ID: robot-behavior-black-box-v1
+Version: 1.0.0
+
+© Apex Innovate FZE LLC. All rights reserved.
+Licensed under the Apex Innovate FZE LLC Commercial License.
+
+Full terms: see shared/LICENSE-COMMERCIAL.txt
+Contact: hello@robomarket.ae
