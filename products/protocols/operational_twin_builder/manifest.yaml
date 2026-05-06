@@ -10,8 +10,8 @@ subcategory:
 - task-flow-modeling
 - risk-branching
 summary: >-
-  A robotics operational twin framework for modeling facility zones, robot tasks,
-  human actors, escalation paths, and failure branches before deployment.
+  A standalone robotics operational twin framework for modeling facility zones,
+  robot tasks, human actors, escalation paths, and failure branches before deployment.
 risk_level: high
 requires_operator_approval: true
 human_supervision_required: true
@@ -26,6 +26,7 @@ required_inputs:
 - safety_owner
 deliverables:
 - README.md
+- LICENSE.txt
 - RULES.yaml
 - docs/operational_twin_model.md
 - schemas/operational_twin.schema.json
@@ -37,12 +38,20 @@ deliverables:
 generated_outputs:
 - path: deliverables/operational-twin-builder-sample-export.zip
   build_command: python3 products/protocols/operational_twin_builder/tools/build_export_package.py
+commercial_status: ready_for_marketplace_listing_review
 commercial_tier: professional
 sales_mode: inquiry_only
 status: inquiry_only
 price_aed: null
 deliverable_type: robotics_operational_twin_framework
 fulfillment_method: manual_delivery_after_inquiry_approval
+customer_receives:
+- Standalone operational twin mini product folder
+- Operational twin schema
+- Hotel delivery robot twin template
+- Example operational twin report
+- Validation script and export package builder
+- Product-specific commercial license stub
 limitations:
 - Does not simulate robot physics.
 - Does not connect to live robot systems.
