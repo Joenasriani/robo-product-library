@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Robotics Buyer Inquiry Packet",
+  "type": "object",
+  "required": ["buyer_context", "readiness_level", "blockers", "recommended_next_steps"],
+  "properties": {
+    "buyer_context": {"type": "object"},
+    "readiness_level": {"type": "string", "enum": ["not_ready", "needs_preparation", "pilot_ready", "deployment_candidate"]},
+    "readiness_score": {"type": "integer", "minimum": 0, "maximum": 100},
+    "blockers": {"type": "array", "items": {"type": "string"}},
+    "missing_information": {"type": "array", "items": {"type": "string"}},
+    "recommended_robot_categories": {"type": "array", "items": {"type": "string"}},
+    "recommended_next_steps": {"type": "array", "items": {"type": "string"}},
+    "human_review_required": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}
