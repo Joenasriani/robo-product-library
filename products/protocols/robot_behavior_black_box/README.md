@@ -14,6 +14,14 @@ It includes:
 - Local validation tooling
 - Local export-package builder
 
+## Usage
+
+1. Start from `templates/robot_event_log_template.json`.
+2. Replace the sample event values with real event records supplied by the operator, integrator, or vendor platform.
+3. Validate the record structure against `schemas/robot_event.schema.json`.
+4. Use `examples/elevator_delay_incident_example.md` as a reporting pattern for incident review.
+5. Treat root-cause notes and process updates as review recommendations until approved by the responsible human owner.
+
 ## Validate
 
 ```bash
