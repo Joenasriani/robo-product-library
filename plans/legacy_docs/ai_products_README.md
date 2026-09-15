@@ -1,10 +1,10 @@
-# AI Products
+# AI Products Legacy Index
 
-AI product lines maintained outside the `agents/` marketplace apps.
+Historical product-line index retained for repository context.
 
 ## Contents
 
-- [`rag/`](./rag/) — production-ready RAG product library (5 products)
+- [`rag/`](./rag/) — earlier RAG package collection; current implementation notes and readiness boundaries are documented in the active RAG README
 - [`tender_analyzer_gcc/`](./tender_analyzer_gcc/) — legacy standalone Tender Analyzer implementation (`main.py`, `patch.py`)
 
-For detailed RAG product docs, see [`rag/README.md`](./rag/README.md).
+This file is a legacy navigation record. It is not a production-readiness assessment.
