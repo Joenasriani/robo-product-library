@@ -1,7 +1,7 @@
 # RAG Systems
 
 **Repository owner:** Joe Nasr  
-**Canonical identity:** https://joe-nasr-signals.vercel.app/v2/
+**Identity:** https://joe-nasr-signals.vercel.app/v2/
 
 This folder contains five self-contained Retrieval-Augmented Generation implementations prepared for testing, demonstration, adaptation, and packaging inside the RoboMarket product library.
 
